@@ -1085,6 +1085,54 @@
         "tournament_paired_weight_displacements",
         "exceptional_core_weight_displacements_eventually"
       ]
+    },
+    {
+      "section": "3.3",
+      "claim": "The actual singleton-free, pure-free partition core together with all its high-vertex decorations injects into genuine finite degree/colour/pairing/positive-length/original-edge-bijection encoding data. Decoding restores both original partitions and every labelled terminal, hence every decoration. Actual path weights are preserved and genuine decorated core mass is bounded by the full encoded-data mass. No graph-counting injection is assumed.",
+      "lean": [
+        "decodedCorePartition_left",
+        "decodedCorePartition_right",
+        "encodedTerminalHalfEdge_actual",
+        "decoratedHalfEdgeEquiv_injective_decorations",
+        "actualPackedCoreEncoding_injective",
+        "actualCoreFiberEncoding_injective",
+        "actualCoreFiberEncoding_weight",
+        "decoratedCorePathMass_le_encoded"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "The true signed actual core-excess coefficient obeys the decorated-fiber triangle inequality. Genuine encoded data are finite; positive path lengths across different total edge counts form a true injection into length vectors and have the proved geometric finite-window bound. The remaining full encoded weighted count is not yet included.",
+      "lean": [
+        "actualCoreExcessCoefficient_abs_weighted_le_decorated_mass",
+        "encodedCoreDataEquiv",
+        "positiveCoreLengths_sigma_injective",
+        "positiveCoreLengths_finite_window_le"
+      ]
+    },
+    {
+      "section": "3",
+      "claim": "The genuine real normalized permanent polynomial has actual coefficient recovery and real/complex analytic tail transfer. Combining exact finite Gaussian/core convolution, factorial recovery and both actual tails proves the complete explicit approximation budget. Actual default radii, cutoff fraction and scalar estimates give a dimension-independent K(C,q)/n error for the actual permanent of J+E, with only the two displayed actual core-excess window estimates remaining as premises.",
+      "lean": [
+        "normalizedPermanentPolynomial_ofReal",
+        "actual_normalized_coefficient_recovery",
+        "actual_normalized_permanent_finite_window_error_le",
+        "actual_permanent_approximation_of_core_activities",
+        "realFrobeniusNorm_normalized_entry_budget",
+        "permanentWindowFraction_pos",
+        "permanentApproximationActivityBudget_le_inverse",
+        "uniform_permanent_approximation_of_actual_activities"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "Further short deletions preserve the original exceptional set while the actual dense core keeps its score cap and logarithmic variance bound. Actual ambient paired weights and weighted cross terms satisfy the uniform budgets. The actual eventual exceptional path exclusion is proved from the explicitly named genuine remaining-permanent estimate and a vanishing scalar error; this is not an unconditional exclusion theorem.",
+      "lean": [
+        "short_deleted_exceptional_core_uniform_dense",
+        "ambient_deleted_core_weight_budgets",
+        "actual_deleted_exceptional_cross_bounds",
+        "largeScore_eventually_lt_mean_of_remaining_bound"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -1094,29 +1142,24 @@
       "claim": "Verify the manuscript ancillary exact cotangent eigenvalue formula and sharper ||S|| <= cot(pi/(2n)). The universal 2n/pi cap and unconditional C_* spectral bound required for MainBound are already proved."
     },
     {
-      "id": "compressed-core",
-      "section": "3.3",
-      "claim": "Complete the actual decorated encoding injectivity. Actual tensor contractions are now exactly the high-label sum of alternating chains. Canonical labelled readings have actual bijective edge/vertex coordinates and true incidence identities."
-    },
-    {
       "id": "activity",
       "section": "3.3",
-      "claim": "Count actual decorated core encodings and connect their finite fiber sum to the genuine numerical U_jb compensation majorant. Actual contraction/path-weight and decorated Mobius weight inequalities, independent positive-length sums and total numerical majorant are proved."
+      "claim": "Complete the full finite encoded-core weighted count, then combine the proved actual encoding injection and weight preservation with the numerical U_jb compensation majorant. The actual signed coefficient is already bounded by the genuine decorated fiber mass."
     },
     {
       "id": "finite-window",
       "section": "3.4",
-      "claim": "Discharge the actual finite core-excess activity estimates and combine factorial recovery. The exact actual finite Gaussian/core convolution error is proved in terms of actual core-excess windows, including the 8D^2/n^2 finite higher-excess tail."
+      "claim": "Discharge the actual finite core-excess activity estimates by the remaining encoded count. Exact coefficient convolution, factorial recovery, finite window and permanent/Gaussian tails are all proved."
     },
     {
       "id": "analytic-tail",
       "section": "3.5",
-      "claim": "Combine the proved actual permanent and Gaussian analytic tails with the finite core window and factorial recovery into the uniform permanent approximation. Actual circle, coefficient, exact floor cutoff and Gaussian exponential budget bounds are now proved unconditionally from their actual matrix norm hypotheses."
+      "claim": "Analytic tails are proved and combined into the actual explicit approximation budget. Their use in the unconditional approximation awaits only discharge of the actual finite core-excess activity estimates."
     },
     {
       "id": "uniform-permanent",
       "section": "3",
-      "claim": "Combine the full explicit budget into uniform absolute and relative O_C,q(1/n)."
+      "claim": "Discharge the actual core-excess activity premises of the proved genuine normalized permanent approximation. All remaining analytic constants are actual definitions and yield a dimension-independent K(C,q)/n error from the exact finite/tail budget."
     },
     {
       "id": "nonprincipal-restoration",
@@ -1131,7 +1174,7 @@
     {
       "id": "exceptional-exclusion",
       "section": "5.3",
-      "claim": "Discharge the actual uniform analytic permanent input in the finite exceptional exclusion criterion. Actual disjoint/meeting/long convolution, fixed original exceptional profiles, paired displacement and uniformly small cross-error budgets are proved."
+      "claim": "Discharge HasUniformExceptionalPermanentBound using actual analytic core-minor estimates. The global finite/eventual exceptional convolution and original-exceptional-set deletion budgets are proved, with this genuine remaining permanent input explicit."
     },
     {
       "id": "weighted-score-sum",

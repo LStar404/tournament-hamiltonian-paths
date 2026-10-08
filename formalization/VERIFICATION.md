@@ -52,3 +52,5 @@ python run_diagnostics.py
 `audit/lean-verification.json` 保存真实构建、公理审查与主定理检查输出；四个有限诊断记录保存在同一目录。`proof-status.json` 保存可在 Lean 中逐项查到的证明台账和准确的覆盖范围。最终提交需全部项目源码都在审查范围内，不能仅凭局部构建成功。
 
 本次最终 `--require-main` 检查退出码为零：完整构建、3674 个项目定理的传递公理审查、实际 `MainBound` 类型检查和全部项目源码覆盖均通过。原始英文稿件的 SHA-256 保存在 `audit/manuscript-source-hashes.json`；四项有限诊断均通过。
+
+最终证明与审计对应提交 `1b22101c3404aad3d749ad52ac5853b3ba4eb2d5`，已提交至上游 [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1)。后续仅补记提交状态与链接，不改变已审计的 Lean 源码。

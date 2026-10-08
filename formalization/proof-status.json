@@ -4,7 +4,7 @@
   "main_lean_proposition": "TournamentHamiltonian.MainBound",
   "main_theorem_proved": true,
   "research_correctness_confirmed": true,
-  "pull_request_submitted": false,
+  "pull_request_submitted": true,
   "completion_requires": [
     "An unconditional Lean theorem of type TournamentHamiltonian.MainBound, with the actual maximum path count and actual constants.",
     "All transitive dependencies audited; no placeholder, computation, or project-specific axioms.",
@@ -1499,5 +1499,7 @@
   "proof_implementation_notes": [
     "The uniform permanent rate uses a proved geometric-second-moment factorial-recovery constant. It gives the manuscript K(C,q)/n theorem for the same actual objects and quantifiers; it does not assert the manuscript displayed derivative-based K_G constant verbatim.",
     "The small-score two-sided restoration uses the genuine paired preconditioning and the same balancing witness, an alternative route to the same stated rate."
-  ]
+  ],
+  "pull_request_url": "https://github.com/LStar404/tournament-hamiltonian-paths/pull/1",
+  "final_verified_proof_revision": "1b22101c3404aad3d749ad52ac5853b3ba4eb2d5"
 }

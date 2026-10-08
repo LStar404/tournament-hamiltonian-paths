@@ -849,6 +849,50 @@
         "normalized_coeff_gaussian_core_convolution",
         "actualCoreCoefficient_zero"
       ]
+    },
+    {
+      "section": "4.3",
+      "claim": "One dimension-independent positive constant and one uniform threshold bound the actual same scaling witness Gaussian log error by K(sqrt(tau/n)+(t+1)/n), for all tournaments in fixed logarithmic score/deletion windows and all independently deleted row and column sets. Explicit actual retained marginal and preconditioning displacement bounds discharge every input.",
+      "lean": [
+        "preconditioned_deleted_marginal_budget_uniform_log",
+        "preconditioningGaussianCostConstant_pos",
+        "exists_preconditioned_scaling_gaussian_cost_uniform_log"
+      ]
+    },
+    {
+      "section": "3.2 and 3.3",
+      "claim": "The actual centered core coefficient splits into its empty constant plus a finite sum by genuine positive graph excess. The actual normalized permanent coefficient has the exact Gaussian/excess convolution.",
+      "lean": [
+        "coreCoordinateSum_excess_sum",
+        "actualCoreCoefficient_eq_constant_add_excess",
+        "distinctCoordinateSum_div_gaussian_excess_convolution"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "True weighted cross-minor sums are bounded by products of weighted neighbor sums, through injective enumeration of the actual minors. The selected permanent equals the genuine rectangular permanent. Under actual low degree variance the exceptional set has <=400 log n vertices and its actual induced core has score bound <=19/20 and score variance <=1200 log(core order), uniformly at large n.",
+      "lean": [
+        "weighted_cross_row_sum_le",
+        "weighted_cross_column_sum_le",
+        "selectedPermanent_le_factorial",
+        "selectedPermanent_eq_rectangularPermanent",
+        "exceptionalVertices_card_le_log",
+        "exceptional_core_uniform_dense"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "Actual exponential radial probability measure has integrable power moments k!. Finite primitive-root phase averaging has exact complex mixed moments and permutation Wick moments. Actual product exponential spectral moments equal n! times the complete homogeneous polynomial. Pointwise complex product AM-GM and its integral inequality are proved; the actual Gram permanent identity and PSD permanent bound are still pending.",
+      "lean": [
+        "radialExpMeasure_eq_expMeasure",
+        "radialExpMeasure_pow_moment",
+        "root_phase_cross_sum",
+        "circular_radial_product_mixed_moment",
+        "circular_radial_tuple_moment",
+        "radial_weighted_power_moment",
+        "complex_vector_product_amgm",
+        "complex_product_amgm_integral"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -875,7 +919,7 @@
     {
       "id": "psd-permanent",
       "section": "3.5",
-      "claim": "Complex Gaussian permanent identity and AM-GM give the n!/n^n complete-homogeneous bound."
+      "claim": "Prove the actual Gram permanent identity and its connection to the spectral quadratic moment, then combine actual AM-GM and complete-homogeneous moments for the n!/n^n bound. The actual exponential product measure, primitive-root phase orthogonality, complex Wick tuple moments, and spectral radial moment are proved."
     },
     {
       "id": "analytic-tail",
@@ -886,11 +930,6 @@
       "id": "uniform-permanent",
       "section": "3",
       "claim": "Combine the full explicit budget into uniform absolute and relative O_C,q(1/n)."
-    },
-    {
-      "id": "preconditioning",
-      "section": "4.3",
-      "claim": "Simplify the genuine scaled Gaussian error budget into a common constant times sqrt(tau/n)+(t+1)/n. The actual Gaussian comparison for the same genuine witness, all normalized/deleted mass/density/marginal/gap thresholds, and uniform scaling Frobenius displacement are proved."
     },
     {
       "id": "nonprincipal-restoration",
@@ -905,12 +944,12 @@
     {
       "id": "four-block",
       "section": "5.3",
-      "claim": "Factorial/cross-factor normalization and uniform exceptional-set estimates. The actual nonprincipal rectangular Laplace and four-block permanent expansion, grouped by internal edge count, are proved."
+      "claim": "Complete factorial/cross-factor normalization and its application to the actual four-block expansion. The actual nonprincipal permanent bridge, weighted cross-minor inequalities, and uniform actual dense exceptional core are proved."
     },
     {
       "id": "exceptional-exclusion",
       "section": "5.3",
-      "claim": "Uniform exceptional degree estimates and generating determinant bound imply H/mu < 1."
+      "claim": "Combine actual dense exceptional-core and weighted cross-minor bounds with the generating determinant estimate to imply H/mu < 1."
     },
     {
       "id": "weighted-score-sum",
@@ -959,7 +998,7 @@
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",

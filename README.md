@@ -3,7 +3,7 @@
 **Author / 作者:** Xingchen Liu / 刘星辰  
 **Affiliation / 单位:** Independent Researcher / 个人研究者  
 **Contact / 联系:** lxc-em5158@outlook.com  
-**Manuscript snapshot / 稿件版本:** 2026-10-08
+**Manuscript snapshot / 稿件版本:** 2026-10-09 (revised / 修订)
 
 This repository contains a bilingual research manuscript on constant-factor bounds for the maximum number of directed Hamiltonian paths in an n-vertex tournament, together with proof-audit reports and reproducible finite diagnostics.
 
@@ -12,7 +12,7 @@ This repository contains a bilingual research manuscript on constant-factor boun
 ## Read the paper / 阅读论文
 
 - [English PDF (25 pages)](papers/tournament_hamilton_paths_en.pdf)
-- [中文 PDF（22 页）](papers/tournament_hamilton_paths_zh.pdf)
+- [中文 PDF（23 页）](papers/tournament_hamilton_paths_zh.pdf)
 - [Editable English manuscript](materials/manuscript_en.md) / [可编辑中文主稿](materials/manuscript_zh.md)
 - [English LaTeX source](materials/manuscript_en.tex) / [中文 LaTeX 源文件](materials/manuscript_zh.tex)
 - [核验结论与未证明事项](materials/audit_summary_zh.md)
@@ -60,11 +60,13 @@ Not claimed / 未声称证明：
 - [Build/editing notes](materials/README.md): details on manuscript editing and the distinction between exported LaTeX and independently typeset PDFs.
 - [Raw diagnostic reruns](materials/audit_computations.json), [delivery checks and hashes](materials/delivery_qa.json).
 
-This is the internally audited manuscript snapshot, not a dump of all exploratory drafts. Earlier speculative or superseded conclusions are not published as established results. Local machine paths and temporary rendering files are excluded; manuscript and PDF contents are unchanged.
+This is the internally audited manuscript snapshot, not a dump of all exploratory drafts. Earlier speculative or superseded conclusions are not published as established results. Local machine paths and temporary rendering files are excluded. The manuscripts and PDFs were revised on 9 October 2026 to document the merged Lean formalization.
 
-本次发布只包含已复核论文版本及必要的核验材料，不将早期探索稿或已被替代的结论作为已证结果上传。本机路径和临时渲染文件不公开，论文与 PDF 内容保持原样。
+本次发布只包含已复核论文版本及必要的核验材料，不将早期探索稿或已被替代的结论作为已证结果上传。本机路径和临时渲染文件不公开。中英文论文及 PDF 已于 2026 年 10 月 9 日修订，加入合并后的 Lean 形式化证明说明。
 
 ## Lean formalization / Lean 形式化证明
+
+The formalization was contributed in [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1) and merged as commit [`2983cd9`](https://github.com/LStar404/tournament-hamiltonian-paths/commit/2983cd984a2698a738a91093060d42f394e64a89). The manuscripts describe the contributor's verification record; this revision did not independently rerun the full Lean build.
 
 The [Lean project](formalization/TournamentHamiltonian.lean) pins Lean and Mathlib 4.34.1. The unconditional theorem [`TournamentHamiltonian.mainBound`](formalization/TournamentHamiltonian/MainBound.lean) proves the displayed maximum-path bounds for the actual finite tournament and Hamiltonian-path definitions, with one absolute constant and one common threshold. It includes both carousel parities and an upper bound for every tournament.
 

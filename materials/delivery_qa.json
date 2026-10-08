@@ -1,26 +1,26 @@
 {
-  "date": "2026-10-08",
-  "bilingual_display_equations": 189,
+  "date": "2026-10-09",
+  "bilingual_display_equations": 190,
   "canonical_display_match": true,
   "pdf_checks": [
     {
       "language": "en",
       "pages": 25,
-      "embedded_formula_images": 814,
+      "embedded_formula_images": 824,
       "margin_outliers": 0,
       "author_email_verified": true,
-      "sha256": "65331356a55e59ce45fe955e7c3f28040d37895faf21a6ba7ae46cf742b92839"
+      "sha256": "bbab7e2801553b6a6e5de85b2b0599aaba26912a34598646cd944362a41d9bda"
     },
     {
       "language": "zh",
-      "pages": 22,
-      "embedded_formula_images": 806,
+      "pages": 23,
+      "embedded_formula_images": 816,
       "margin_outliers": 0,
       "author_email_verified": true,
-      "sha256": "6e98384db3d78067da351f376d30d3892cd85e0edd247616abaf5975de17c8c7"
+      "sha256": "0e1722e2ca7695875b93ea089ecc7e1c5c2871e45ae0ece7a47a9556e20ce36d"
     }
   ],
-  "proof_status": "Internal AI-assisted proof reconstruction; not external peer review",
+  "proof_status": "Companion Lean formalization reported in PR #1; no external human peer review reported",
   "source_hashes": {
     "verification/carousel_path_cover_recurrence.py": "7992aaf04b7f3d24c2b28cf4321efbf025c10a75489ee338c3385bc300eaca7c",
     "verification/centered_permanent_coefficients.py": "c331267a4a23252f987eef3aed0fb209bcff9ac642b83b7d06e65c954527d1e4",
@@ -48,32 +48,33 @@
     "verification/verify_standalone_linear_energy_reduction.py": "07ea0f7a2ce42289bda217ce9da8b86e18091d91e212fc1917811ab73ada1ad3",
     "verification/verify_uniform_permanent_zeroth_audit.py": "da1997b1defccbde93f99f5c7de296e4decd5bd37daf6fea2aa9c5244aba9186",
     "verification/verify_word_minor_and_cube.py": "293a64a4d34e4249b940d410be2f5f87ab3c5e279976340bda70e98095bd7be5",
-    "manuscript_en.md": "699250f29b63d711b0a0f5af6729c7e86aea22ddb5e726eec9e9b8d642c420b2",
-    "manuscript_en.tex": "e62b21f698e263bd9cd5c4220cdb376ae9c3728209d41be38b361e46b681d06a",
-    "manuscript_zh.md": "bc5f1e6a1b83f34bf698340ae51e4ff5ce3e0d77d4dbf6954f9652bf7a86b61f",
-    "manuscript_zh.tex": "cb2ef940e78aba50cc52a25e217f542faa07797d111b3dc80a2178e94d8d4aa4"
+    "manuscript_en.md": "498b0572890e18b59babd3c17fde1ec06123dbf90e36112fc26306b84411287c",
+    "manuscript_en.tex": "71d4e6d0e3291c41b10e12b6a70ae160d4280ff9aab9e135912de2ace82fb010",
+    "manuscript_zh.md": "a17730c6a33980ad5472e57f35debcd2b4eb004073fd17987668c5f92e8c77ba",
+    "manuscript_zh.tex": "67b0a8d6019aa0d461959d13165b97cd3d6a31d099a4ac459be224a652baf7da"
   },
   "visual_review": {
     "status": "completed",
     "method": "All final page renders inspected in contact sheets; selected pages inspected at full size",
     "pages_reviewed": {
       "en": 25,
-      "zh": 22
+      "zh": 23
     },
     "full_size_pages": {
       "en": [
         1,
-        7,
-        19
+        23,
+        24,
+        25
       ],
       "zh": [
         1,
-        2,
-        10,
-        22
+        21,
+        22,
+        23
       ]
     },
-    "result": "No clipping, image overlap, or missing mathematical glyphs observed; Chinese line wrapping corrected"
+    "result": "No clipping, image overlap, or missing mathematical glyphs observed in the revised manuscripts"
   },
   "contact_sheets_note": "Page-image contact sheets were used for the recorded local visual review; temporary image files are not published.",
   "public_copy_note": "Local absolute paths removed for publication; mathematical records and artifact hashes are unchanged."

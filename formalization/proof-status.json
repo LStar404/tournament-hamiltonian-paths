@@ -272,13 +272,106 @@
         "shiftedSkewKernel_gram_difference_posSemidef",
         "shiftedSkewKernel_gram_difference_trace"
       ]
+    },
+    {
+      "section": "4.3 and 4.5",
+      "claim": "Exact mass normalization, zero total normalized marginal errors, nonprincipal deleted-mass inclusion-exclusion, kappa and row/column marginal formulas for actual matrices; the actual normalized tournament adjacency has row errors s/(n-1), column errors -s/(n-1) and total mass n. No existence of balancing potentials or asymptotic approximation is asserted.",
+      "lean": [
+        "matrixEntryMass_deleted",
+        "matrixEntryMass_deleted_errors",
+        "matrixEntryMass_normalize",
+        "normalized_deleted_mass",
+        "normalized_deleted_row_error",
+        "normalized_deleted_column_error",
+        "normalized_row_errors_sum_zero",
+        "normalized_column_errors_sum_zero",
+        "tournamentDensity_eq_shiftedSkew",
+        "tournamentDensity_row_error",
+        "tournamentDensity_column_error",
+        "tournamentDensity_mass"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "Exact double partition-lattice expansion of actual distinct-coordinate sums using the recursively defined and inverted incidence-algebra Mobius coefficient; genuine quotient-label contractions, singleton cancellation under row/column centering, restriction to singleton-free partitions with degree at least two, and direct actual normalized permanent coefficient bridge. Empty degree and k>n are handled; the explicit block-factorial Mobius weight remains unproved.",
+      "lean": [
+        "moebius_fiber_bottom",
+        "partitionContraction_eq_constrained_sum",
+        "distinctCoordinateSum_partition_expansion",
+        "partitionContraction_eq_zero_of_row_singleton",
+        "partitionContraction_eq_zero_of_column_singleton",
+        "distinctCoordinateSum_centered_partition_expansion",
+        "singletonFree_block_card_ge_two",
+        "singletonFree_coordinateDegree_ge_two",
+        "normalized_coeff_partition_expansion",
+        "partition_expansion_eq_zero_of_lt",
+        "partition_expansion_degree_zero"
+      ]
+    },
+    {
+      "section": "4.2",
+      "claim": "Actual rectangular Gaussian factor, transpose/Sylvester invariance and log bridge; real Gram gap and positivity; inverse quadratic bound and genuine PSD logdet increment bound; complete arbitrary different row/column deletion loss between zero and deleted row-plus-column square mass divided by 2(1-q^2), including empty/full retained sets. No derivative bound or logdet monotonicity is assumed.",
+      "lean": [
+        "gramGaussian_transpose",
+        "gramGaussian_log",
+        "gram_complement_quadratic_lower",
+        "gram_complement_posDef",
+        "inverse_quadratic_upper_of_lower",
+        "posDef_logdet_increment_bound",
+        "row_gram_decomposition",
+        "row_deleted_gram_trace",
+        "row_submatrix_opNorm_le",
+        "gramGaussian_row_deletion_bound",
+        "gramGaussian_column_deletion_bound",
+        "gramGaussian_deletion_bound"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "The actual paired preconditioned tournament adjacency has the manuscript exact full-mass identity (W^2-V^2+W+2 w^T S v)/(n-1) and exact left/right marginal correction formulas, assuming the stated score interval. Finite skew bilinear cancellation, left/right decompositions and diagonal factors are proved; uniform asymptotic error bounds remain separate.",
+      "lean": [
+        "pairedLeft_decomposition",
+        "pairedRight_decomposition",
+        "pairedLeft_mul_right",
+        "signMatrix_bilinear_swap",
+        "pairedSkew_bilinear",
+        "preconditionedTournamentDensity_mass",
+        "preconditionedTournamentDensity_row_error",
+        "preconditionedTournamentDensity_column_error"
+      ]
+    },
+    {
+      "section": "2.2",
+      "claim": "All-order actual finite determinant/permanent inverse convolution over every real square matrix, including self-loops and empty order. Complementary subpermutations are reindexed to invariant whole permutations, restriction cycles and signs are identified, and all independent cycle colors cancel. This is the squarefree reciprocal-determinant ingredient; equality of actual pathCount with the positive convolution remains unproved.",
+      "lean": [
+        "colorClass_product_eq_cover_product",
+        "restriction_determinant_weight_eq_colors",
+        "signed_cycle_cover_sum_eq_zero",
+        "sum_invariant_determinant_sign_eq_zero",
+        "det_per_inverse_convolution_bool_all",
+        "permanent_submatrix_equiv_self",
+        "det_per_inverse_convolution"
+      ]
+    },
+    {
+      "section": "4.2",
+      "claim": "Actual arbitrary rectangular Gaussian loss under left/right unit-vector orthogonal rank-one projection, both-sided projection and the actual all-one centering Pi=I-J/card, with nonnegative loss bounded by the corresponding squared marginal actions divided by 2(1-q^2). The same-dimension two-kernel Lipschitz estimate remains unproved.",
+      "lean": [
+        "rankOneComplement_left_opNorm_le",
+        "gramGaussian_left_projection_bound",
+        "gramGaussian_right_projection_bound",
+        "gramGaussian_two_projection_bound",
+        "flatUnitVector_sum_sq",
+        "centeringProjection_eq",
+        "gramGaussian_centering_bound"
+      ]
     }
   ],
   "remaining_obligations": [
     {
       "id": "path-convolution",
       "section": "2.2",
-      "claim": "Prove the exact determinant/permanent convolution for the defined permutation pathCount."
+      "claim": "Connect the proved exact all-order det/per inverse convolution and finite walk determinant identity to the original permutation pathCount, and prove the positive convolution identity."
     },
     {
       "id": "long-subset-convolution-tail",
@@ -298,7 +391,7 @@
     {
       "id": "partition-expansion",
       "section": "3.2",
-      "claim": "Partition-lattice Mobius expansion, degree-one cancellation, and finite formal core decomposition."
+      "claim": "Identify the proved recursive partition Mobius coefficient with its explicit block signed-factorial weight and prove finite formal core decomposition. Exact actual partition expansion and degree-one cancellation are already proved."
     },
     {
       "id": "gaussian-pairings",
@@ -358,12 +451,12 @@
     {
       "id": "gram-deletion",
       "section": "4.2",
-      "claim": "Gram monotonicity, nonprincipal deletion, centering and logarithmic Lipschitz inequalities with the stated constants."
+      "claim": "Same-dimension two-kernel logarithmic Lipschitz comparison and the actual finite (24t+18tau+11)/n centered-tournament loss. General actual rectangular deletion, PSD logdet increment and centering inequalities are already proved."
     },
     {
       "id": "preconditioning",
       "section": "4.3",
-      "claim": "Exact paired mass and deletion marginal identities; uniform mass, norm and error estimates."
+      "claim": "Uniform paired preconditioning mass, density, marginal, norm and error estimates. Exact paired full-mass identity, paired marginal corrections, general normalized deletion identities and actual tournament marginals are already proved."
     },
     {
       "id": "scaled-gap",
@@ -442,7 +535,7 @@
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",

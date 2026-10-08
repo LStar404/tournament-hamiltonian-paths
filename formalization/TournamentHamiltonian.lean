@@ -19,3 +19,9 @@ import TournamentHamiltonian.OperatorCap
 import TournamentHamiltonian.PermanentExpansion
 import TournamentHamiltonian.PathConvolution
 import TournamentHamiltonian.SkewGeometry
+import TournamentHamiltonian.DeletionMass
+import TournamentHamiltonian.GramDeletion
+import TournamentHamiltonian.PartitionExpansion
+import TournamentHamiltonian.PairedPreconditioning
+import TournamentHamiltonian.GramCentering
+import TournamentHamiltonian.PathConvolutionCoefficients

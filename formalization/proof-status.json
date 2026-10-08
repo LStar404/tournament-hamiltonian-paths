@@ -695,14 +695,88 @@
         "shiftedSkewNormBudget_sqrt_le_three_quarters",
         "normalizedDeletedPreconditioned_centered_gap_uniform_log"
       ]
+    },
+    {
+      "section": "3.2 and 3.3",
+      "claim": "Actual canonical pure/core edge extraction through the join of the two setoids preserves retained block degrees; pure restrictions are genuine pairings and nonempty cores have positive excess. Actual high-degree vertices obey b<=2j, degree sum=2(b+j) and half-edge-pair count<=3j. This does not yet construct a compressed chain graph.",
+      "lean": [
+        "pureRowPartition_isPairing",
+        "pureColumnPartition_isPairing",
+        "coreComponent_positive_excess",
+        "highDegreeVertices_card_le",
+        "highDegreeVertices_degree_sum",
+        "compressedHalfEdgeCount_eq",
+        "compressedHalfEdgeCount_le"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "Actual partition Mobius weights and genuine quotient-label contractions factor across invariant complementary edge subsets. Canonical pure/core graph weights have the exact pairing/core product; full labeled assembly and the coefficient convolution remain separate.",
+      "lean": [
+        "coreComponent_weighted_contraction_product"
+      ]
+    },
+    {
+      "section": "4.1 and 4.3",
+      "claim": "The complete actual scaling witness transfers to distinct rectangular row/column types through true equivalence invariants. The rectangular permanent is independent of the chosen column equivalence; positive mass normalization has exact restoration and the exp(mass-card) upper bound. The actual rectangular centered kernel equals the two-sided projection.",
+      "lean": [
+        "rectangularPermanent_independent",
+        "exists_rectangular_scaling_witness",
+        "rectangularPermanent_massNormalized_restoration",
+        "rectangularPermanent_massNormalized_upper",
+        "exists_normalized_rectangular_scaling_witness",
+        "exists_nonprincipal_scaling_witness",
+        "rectangularCenteredKernel_eq_centering",
+        "rectangularCenteredKernel_density_bound"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Actual normalized-deleted preconditioned matrices have total mass n-t, uniform fixed density 8/(1-a0)^2/(n-t), and uniformly vanishing row/column marginal errors throughout the logarithmic variance/deletion window.",
+      "lean": [
+        "normalizedDeletedPreconditioned_marginal_error_uniform_log",
+        "normalizedDeletedPreconditioned_density_uniform_log"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "With fixed actual density and centered-gap budgets, one uniform threshold constructs the genuine complete rectangular scaling witness for every actual tournament and all independent logarithmic equal-cardinality deleted sets.",
+      "lean": [
+        "preconditioningScalingEpsilon_pos",
+        "exists_preconditioned_nonprincipal_scaling_uniform_log"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Actual preconditioning centered displacement tends uniformly to zero. The actual centered normalized-deleted Gaussian factor differs logarithmically from D_n by at most (250/19)*the true displacement budget+(24t+18tau+11)/n, with all positivity and gap hypotheses discharged uniformly.",
+      "lean": [
+        "preconditioningCenteredDisplacementBudget_uniform_eventually_small",
+        "normalizedDeletedPreconditioned_gaussian_finite_comparison",
+        "normalizedDeletedPreconditioned_gaussian_comparison_uniform_log"
+      ]
+    },
+    {
+      "section": "5.1 and 5.2",
+      "claim": "Actual induced tournaments preserve principal permanents; deleted scores retain variance with explicit losses. The true Hamiltonian positive convolution has exact factorial normalization, a uniform o(1/n) normalized long-subset tail, and uniform high-variance exclusion for the original pathCount when degreeVariance>=16*n^2*log n.",
+      "lean": [
+        "adjacency_principal_permanent_eq_induced",
+        "degreeVariance_inducedTournament_ge",
+        "adjacency_principal_permanent_le_stirling_retained_variance",
+        "longConvolution_eventually_small",
+        "sum_convolution_card_le_of_permanent_bound",
+        "highVariance_pathCount_eventually_small"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "For the actual same rectangular scaling witness, unit marginals imply B-P=Pi B Pi. Genuine Gaussian factors before and after scaling obey the explicit logarithmic Lipschitz bound (1400/39)*Frobenius(B-X), under the stated finite displacement and pre-scaling norm budgets; no Gaussian approximation is assumed.",
+      "lean": [
+        "rectangular_unit_marginals_centering",
+        "rectangularScaling_gaussian_finite_comparison"
+      ]
     }
   ],
   "remaining_obligations": [
-    {
-      "id": "long-subset-convolution-tail",
-      "section": "2.2 and 5.1",
-      "claim": "Combine the verified logarithmic-cutoff scalar tail with the actual path convolution, subset cardinalities and Bregman to obtain the uniform o(1/n) long-subset path contribution."
-    },
     {
       "id": "sharper-transitive-spectrum",
       "section": "2.3",
@@ -711,12 +785,12 @@
     {
       "id": "partition-expansion",
       "section": "3.2",
-      "claim": "Prove finite formal core decomposition from the exact double partition expansion. General explicit signed-factorial Mobius weights and degree-one cancellation are already proved."
+      "claim": "Complete labeled canonical pure/core decomposition and Gaussian/core coefficient convolution from the actual partition expansion. Actual component extraction, positive excess, and exact invariant-subset factorization of Mobius weights and contractions are proved."
     },
     {
       "id": "compressed-core",
       "section": "3.3",
-      "claim": "Decoration/chain counting, including loops, reversals and disconnected cores; U_jb compensation."
+      "claim": "Actual chain compression and decoration/chain counting, including loops, reversals and disconnected cores; U_jb compensation. Actual b<=2j and high-degree half-edge count=2(b+j) are proved."
     },
     {
       "id": "activity",
@@ -756,12 +830,12 @@
     {
       "id": "preconditioning",
       "section": "4.3",
-      "claim": "Prove uniform logarithmic-parameter thresholds for actual normalized/deleted marginal budgets and scaled Gaussian comparison. Actual full/deleted mass positivity, eta error and centered singular gap are uniform; finite operator/Frobenius/retained-mass budgets are proved."
+      "claim": "Compare the actual Gaussian factor after genuine scaling and simplify its uniform logarithmic error budget. Actual normalized-deleted mass/density/marginal/gap thresholds and genuine same-witness nonprincipal scalings are proved, as is the Gaussian comparison before genuine scaling."
     },
     {
       "id": "scaled-gap",
       "section": "4.3",
-      "claim": "Verify density, centering and singular gap after each transformation and genuine scaling."
+      "claim": "Obtain the sharper eventual centered singular gap and Gaussian comparison after genuine scaling. A uniform gap <=19/20 follows already from the complete genuine scaling witness."
     },
     {
       "id": "nonprincipal-restoration",
@@ -772,11 +846,6 @@
       "id": "small-score-permanent",
       "section": "4.5",
       "claim": "Uniform two-sided approximation with (d+t+1)^2/n error."
-    },
-    {
-      "id": "variance-exclusion",
-      "section": "5.2",
-      "claim": "Stirling normalization, score deletion and uniform high-variance exclusion; actual curvature, Jensen and finite score-variance permanent penalty are proved."
     },
     {
       "id": "four-block",

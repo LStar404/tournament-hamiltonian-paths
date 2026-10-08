@@ -10,3 +10,6 @@ import TournamentHamiltonian.Hadamard
 import TournamentHamiltonian.SubsetWeights
 import TournamentHamiltonian.LongTail
 import TournamentHamiltonian.TransitiveDeterminant
+import TournamentHamiltonian.PowerApproximation
+import TournamentHamiltonian.AlternatingTournament
+import TournamentHamiltonian.Carousel

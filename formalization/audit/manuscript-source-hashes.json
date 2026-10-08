@@ -1,0 +1,10 @@
+{
+  "source_revision": "04efafda8f4034a6b59e7def3f07c36151217201",
+  "sha256": {
+    "materials/sections/closing_en.md": "5ddbf82a0017e11f8c11eb6818b7b22bce7820472cc0735f120d4aa6ae8da043",
+    "materials/sections/global_en.md": "2cf2a0a9e5de3f25b4d6dac404c62b89a863f0bcbda3c4c3823cad3df568dc96",
+    "materials/sections/opening_en.md": "be9eebbad5e3f7b9b801595c9014534de46787cf6a713638ef62d229046c1aad",
+    "materials/sections/permanent_en.md": "19f850d91d151b388cf61889c5d408d321fc668feaba861e3e082d8936c82a88",
+    "materials/sections/scaling_en.md": "db017e1b72146701394cced58766689089b597ad5762ce197efcc8ae7004dfac"
+  }
+}

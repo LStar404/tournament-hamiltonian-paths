@@ -1,0 +1,1505 @@
+{
+  "source_revision": "04efafda8f4034a6b59e7def3f07c36151217201",
+  "main_claim": "There exist absolute K >= 0 and n0 >= 2 such that (L-K/n)*mu_n <= P(n) <= (C_*+K/n)*mu_n for all n >= n0.",
+  "main_lean_proposition": "TournamentHamiltonian.MainBound",
+  "main_theorem_proved": true,
+  "research_correctness_confirmed": true,
+  "pull_request_submitted": true,
+  "completion_requires": [
+    "An unconditional Lean theorem of type TournamentHamiltonian.MainBound, with the actual maximum path count and actual constants.",
+    "All transitive dependencies audited; no placeholder, computation, or project-specific axioms.",
+    "Independent review of equivalence between manuscript claims and formal definitions, including both parities and uniform quantifiers.",
+    "Successful reproducible build and verification on the submitted revision.",
+    "A PR against LStar404/tournament-hamiltonian-paths, created only after the mathematical and formal checks succeed."
+  ],
+  "verified_declarations": [
+    {
+      "section": "1",
+      "claim": "Random orientation count, exact expectation and P(n) >= mu_n",
+      "lean": [
+        "total_pathCount",
+        "path_completions_card",
+        "meanPaths_eq_orientation_average",
+        "meanPaths_le_maxPaths"
+      ]
+    },
+    {
+      "section": "2.1",
+      "claim": "Adjacency/sign convention, skew symmetry, zero total score and squared Frobenius mass",
+      "lean": [
+        "twice_adjacency",
+        "signMatrix_skew",
+        "score_sum_zero",
+        "signMatrix_total_sq"
+      ]
+    },
+    {
+      "section": "2.1",
+      "claim": "Actual skew and Gram unitary diagonalizations, positive/negative frequency pairing with multiplicities, exact paired mass (n-1)/(2n), and the generic Euclidean operator-norm gap on both real and complex vectors",
+      "lean": [
+        "complexSignMatrix_unitary_diagonalization",
+        "complexSignMatrix_gram_diagonalization",
+        "skewFrequency_multiset_neg",
+        "skewFrequency_multiset_decomposition",
+        "skewFrequency_sum_sq",
+        "pairedMasses_sum",
+        "skewFrequency_normalized_sq_le_pairedSum",
+        "normalizedSkewOpNorm_sq_le",
+        "normalizedRealSkewOpNorm_sq_le"
+      ]
+    },
+    {
+      "section": "2.1 and 3",
+      "claim": "The actual Gaussian Gram matrix is Hermitian and positive definite, with quadratic form at least half the squared Euclidean norm",
+      "lean": [
+        "skewGram_eq_identity_sub_normalized_gram",
+        "skewGram_quadratic_eq",
+        "skewGram_quadratic_lower_bound",
+        "skewGram_isHermitian",
+        "skewGram_quadraticPositive",
+        "skewGram_posDef"
+      ]
+    },
+    {
+      "section": "2.1 and 2.3",
+      "claim": "Paired determinant formulas for the actual matrices; positive Gram determinant; exact manuscript D_n and rho_n definitions, product identities and inverse imaginary determinant; uniform 0<D_n<2 and 0<rho_n<=3; actual rho_n satisfies the existing C_* packing bound conditional only on the stronger operator cap",
+      "lean": [
+        "complexSignMatrix_normalized_kernel_det",
+        "signMatrix_normalized_kernel_det",
+        "complexSignMatrix_imaginary_det_ne_zero",
+        "skewGram_det",
+        "skewGram_det_pos",
+        "gaussianFactor_eq_rpow",
+        "gaussianFactor_complex_eq_inverse_det",
+        "spectralRatio_eq_paired_product",
+        "determinantRatio_eq_spectralRatio",
+        "gaussianFactor_bounds",
+        "spectralRatio_bounds",
+        "spectralRatio_le_upperConstant_of_cap"
+      ]
+    },
+    {
+      "section": "2.2",
+      "claim": "All-order strict positivity of principal determinant weights, Hadamard row bound, exact total squared row mass, and manuscript h_k bound (including the empty subset)",
+      "lean": [
+        "det_pos_of_quadraticPositive",
+        "principal_weight_pos",
+        "hadamard",
+        "prod_le_mean_pow",
+        "principalWeightMatrix_total_sq",
+        "principal_weight_le_rpow"
+      ]
+    },
+    {
+      "section": "2.2",
+      "claim": "Exact w_k normalization, all fixed exponential/polynomial moments summable, explicit geometric cutoff and tail, factorial majorant and logarithmic superexponential bound",
+      "lean": [
+        "subsetWeight_eq",
+        "subsetWeight_succ_sq_le",
+        "subsetMoment_summable",
+        "subsetMoment_succ_le_half",
+        "subsetMoment_tail_le",
+        "subsetWeight_sq_le_factorial",
+        "subsetWeight_log_le",
+        "subsetWeight_exp_tail_le"
+      ]
+    },
+    {
+      "section": "2.2 and 5.1",
+      "claim": "The actual logarithmic cutoff including ceiling, eventual n^(-2+epsilon) scalar tail bound for every fixed c>0, and sqrt(n+1) times that tail is o(1/n)",
+      "lean": [
+        "cutoff_rounding_ratio_tendsto",
+        "cutoff_mul_log_div_log_tendsto",
+        "subsetTail_eventually_le_rpow",
+        "scaled_subsetTail_isLittleO",
+        "scaled_subsetTail_eventually_small"
+      ]
+    },
+    {
+      "section": "2.3",
+      "claim": "All-order transitive determinant formula over any characteristic-zero field (including real and complex parameters), with the actual transitive tournament and the singular triangular parameter handled",
+      "lean": [
+        "transitiveKernel_det",
+        "signMatrix_transitiveTournament",
+        "transitiveTournament_det"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "All-order complex exponential and binomial-mean approximation with O(1/n) error; the exact transitive determinant ratio has uniform C,n0 quantifiers and an eventually nonzero imaginary-parameter denominator",
+      "lean": [
+        "nat_log_one_add_error_isBigO",
+        "one_add_div_pow_error_isBigO",
+        "binomialMean_error_isBigO",
+        "transitiveKernel_imaginary_det_eventually_ne_zero",
+        "transitiveRatio_error_isBigO",
+        "transitiveRatio_error_bound"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "Actual odd carousel with the forward-residue arc definition, exact signed-transitive relabelling, and zero score; actual even carousel obtained by deleting exactly one vertex, with absolute score one; both actual determinant ratios have the same O(1/n) constants and eventually nonzero denominators",
+      "lean": [
+        "alternatingDiagonal_mul_self",
+        "alternatingSkew_signed_conjugation",
+        "carouselTournament_residue_arc",
+        "carousel_relabel",
+        "carouselTournament_score",
+        "carouselDeletionMap_range",
+        "evenCarouselTournament_eq_alternating",
+        "evenCarouselTournament_score",
+        "carouselTournament_kernel_det",
+        "evenCarouselTournament_kernel_det",
+        "carousel_determinantRatios_error_bound",
+        "carousel_imaginary_determinants_eventually_ne_zero"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "The actual real manuscript spectral factors rho_n of both carousel parities obey one common O(1/n) error bound around L (the actual path-count approximation is connected in UnitScorePathsApproximation and GeneralSmallScorePaths)",
+      "lean": [
+        "carousel_spectralRatio_eq",
+        "evenCarousel_spectralRatio_eq",
+        "carousel_spectralRatios_error_bound"
+      ]
+    },
+    {
+      "section": "1 and 6",
+      "claim": "Relabelling actual tournaments preserves the defined Hamiltonian path count and complex determinant ratio (no path-count invariance is asserted for diagonal sign switching)",
+      "lean": [
+        "pathCount_relabelTournament",
+        "determinantRatio_relabelTournament"
+      ]
+    },
+    {
+      "section": "2.3",
+      "claim": "Full finite convex packing conditional on the cap and paired mass",
+      "lean": [
+        "spectral_packing_at_mass",
+        "spectral_packing",
+        "spectral_product_le_upperConstant"
+      ]
+    },
+    {
+      "section": "2.3 and 7.1",
+      "claim": "Cap interval, rational form of C_* and exact decimal enclosure",
+      "lean": [
+        "spectralCap_bounds",
+        "upperConstant_eq_packed",
+        "upperConstant_decimal_bounds"
+      ]
+    },
+    {
+      "section": "4.1 and 4.4",
+      "claim": "Exact permanent row/column and exponential scaling/restoration, including nonprincipal factors",
+      "lean": [
+        "permanent_row_column_scaling",
+        "permanent_exp_scaling",
+        "permanent_exp_restoration",
+        "permanent_submatrix_scaling",
+        "paired_deleted_product"
+      ]
+    },
+    {
+      "section": "5.4",
+      "claim": "Whole-score product penalty, Young inequality and scalar absorption conditional on the polynomial error bound",
+      "lean": [
+        "score_product_le_exp",
+        "score_young",
+        "score_penalty_absorption"
+      ]
+    },
+    {
+      "section": "2.2",
+      "claim": "The actual pathCount equals its adjacency-weighted permutation sum (including empty order); the correct loop-inclusive complement and rank-one walk determinant identity; nonnegative positive determinant/permanent convolution sum and exact cardinality grouping. Equality with the original pathCount is proved in PathConvolutionGenerating for every order, including zero.",
+      "lean": [
+        "pathCount_eq_sum_pathWeight",
+        "pathCount_eq_sum_consecutive_product",
+        "complementAdjacency_eq",
+        "complementAdjacency_principal_det",
+        "pathConvolutionSum_pos",
+        "pathConvolutionSum_by_card",
+        "walk_determinant_identity",
+        "tournament_walk_determinant_ratio"
+      ]
+    },
+    {
+      "section": "2.3",
+      "claim": "Signed upper-half representatives and actual finite phase ordering give general tournament Rayleigh comparison with the transitive matrix; the actual normalized real and complex operator norms are strictly below 2/pi, the true paired masses obey 4/pi^2, and actual rho_n <= C_* without a cap hypothesis. The sharper cotangent eigenvalue formula remains separate.",
+      "lean": [
+        "transitiveKernel_imaginary_det_re_pos",
+        "transitive_skewFrequency_lt",
+        "exists_phase_ordered_vector",
+        "skewHermitian_quadratic_le_transitive_norm",
+        "signMatrix_opNorm_le_transitive",
+        "signMatrix_complex_opNorm_lt",
+        "normalizedSkewOpNorm_lt_two_div_pi",
+        "normalizedRealSkewOpNorm_lt_two_div_pi",
+        "pairedMasses_le_spectralCap",
+        "spectralRatio_le_upperConstant"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "Exact expansion of the actual permanent per(J+zB) into genuine rectangular minor permanents with (n-k)! extension multiplicity; actual polynomial coefficients normalized by (n)_k, exact F_k rescaling, and ordered distinct-coordinate 1/k! multiplicity, including n=0, k=0 and k>n.",
+      "lean": [
+        "permanent_one_add_expansion",
+        "permanent_selected_extension_count",
+        "selectedPermanent_eq_permanent",
+        "permanent_one_add_minor_expansion",
+        "permanent_one_add_degree_expansion",
+        "permanentPolynomial_coeff",
+        "normalizedPermanentPolynomial_coeff",
+        "normalized_coeff_rescaling",
+        "distinctCoordinateSum_eq_factorial_minorSum",
+        "normalized_coeff_distinct_coordinates"
+      ]
+    },
+    {
+      "section": "4.2",
+      "claim": "For the actual Y=(S-I)/(n-1), exact full Gram, row/column square mass and score mass; generic squared operator budget with explicit gap and norm<1 for n>=4; positive semidefinite difference from S^T S/n^2 and its exact trace. The full arbitrary-deletion logarithmic loss is proved in TournamentGaussianLoss.",
+      "lean": [
+        "shiftedSkewKernel_gram",
+        "shiftedSkewKernel_action_sq",
+        "shiftedSkewKernel_opNorm_sq_le",
+        "shiftedSkewNormBudget_gap",
+        "shiftedSkewKernel_opNorm_lt_one",
+        "shiftedSkewKernel_row_sq",
+        "shiftedSkewKernel_column_sq",
+        "shiftedSkewKernel_row_sum_sq",
+        "shiftedSkewKernel_column_sum_sq",
+        "shiftedSkewKernel_gram_difference",
+        "shiftedSkewKernel_gram_difference_posSemidef",
+        "shiftedSkewKernel_gram_difference_trace"
+      ]
+    },
+    {
+      "section": "4.3 and 4.5",
+      "claim": "Exact mass normalization, zero total normalized marginal errors, nonprincipal deleted-mass inclusion-exclusion, kappa and row/column marginal formulas for actual matrices; the actual normalized tournament adjacency has row errors s/(n-1), column errors -s/(n-1) and total mass n. No existence of balancing potentials or asymptotic approximation is asserted.",
+      "lean": [
+        "matrixEntryMass_deleted",
+        "matrixEntryMass_deleted_errors",
+        "matrixEntryMass_normalize",
+        "normalized_deleted_mass",
+        "normalized_deleted_row_error",
+        "normalized_deleted_column_error",
+        "normalized_row_errors_sum_zero",
+        "normalized_column_errors_sum_zero",
+        "tournamentDensity_eq_shiftedSkew",
+        "tournamentDensity_row_error",
+        "tournamentDensity_column_error",
+        "tournamentDensity_mass"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "Exact double partition-lattice expansion of actual distinct-coordinate sums using the recursively defined and inverted incidence-algebra Mobius coefficient; genuine quotient-label contractions, singleton cancellation under row/column centering, restriction to singleton-free partitions with degree at least two, and direct actual normalized permanent coefficient bridge. Empty degree and k>n are handled; the explicit block-factorial Mobius weight is proved in PartitionChromatic.",
+      "lean": [
+        "moebius_fiber_bottom",
+        "partitionContraction_eq_constrained_sum",
+        "distinctCoordinateSum_partition_expansion",
+        "partitionContraction_eq_zero_of_row_singleton",
+        "partitionContraction_eq_zero_of_column_singleton",
+        "distinctCoordinateSum_centered_partition_expansion",
+        "singletonFree_block_card_ge_two",
+        "singletonFree_coordinateDegree_ge_two",
+        "normalized_coeff_partition_expansion",
+        "partition_expansion_eq_zero_of_lt",
+        "partition_expansion_degree_zero"
+      ]
+    },
+    {
+      "section": "4.2",
+      "claim": "Actual rectangular Gaussian factor, transpose/Sylvester invariance and log bridge; real Gram gap and positivity; inverse quadratic bound and genuine PSD logdet increment bound; complete arbitrary different row/column deletion loss between zero and deleted row-plus-column square mass divided by 2(1-q^2), including empty/full retained sets. No derivative bound or logdet monotonicity is assumed.",
+      "lean": [
+        "gramGaussian_transpose",
+        "gramGaussian_log",
+        "gram_complement_quadratic_lower",
+        "gram_complement_posDef",
+        "inverse_quadratic_upper_of_lower",
+        "posDef_logdet_increment_bound",
+        "row_gram_decomposition",
+        "row_deleted_gram_trace",
+        "row_submatrix_opNorm_le",
+        "gramGaussian_row_deletion_bound",
+        "gramGaussian_column_deletion_bound",
+        "gramGaussian_deletion_bound"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "The actual paired preconditioned tournament adjacency has the manuscript exact full-mass identity (W^2-V^2+W+2 w^T S v)/(n-1) and exact left/right marginal correction formulas, assuming the stated score interval. Finite skew bilinear cancellation, left/right decompositions and diagonal factors are proved; uniform asymptotic error bounds are recorded in the subsequent uniform preconditioning entries.",
+      "lean": [
+        "pairedLeft_decomposition",
+        "pairedRight_decomposition",
+        "pairedLeft_mul_right",
+        "signMatrix_bilinear_swap",
+        "pairedSkew_bilinear",
+        "preconditionedTournamentDensity_mass",
+        "preconditionedTournamentDensity_row_error",
+        "preconditionedTournamentDensity_column_error"
+      ]
+    },
+    {
+      "section": "2.2",
+      "claim": "All-order actual finite determinant/permanent inverse convolution over every real square matrix, including self-loops and empty order. Complementary subpermutations are reindexed to invariant whole permutations, restriction cycles and signs are identified, and all independent cycle colors cancel. This is the squarefree reciprocal-determinant ingredient; equality of actual pathCount with the positive convolution is proved in PathConvolutionGenerating.",
+      "lean": [
+        "colorClass_product_eq_cover_product",
+        "restriction_determinant_weight_eq_colors",
+        "signed_cycle_cover_sum_eq_zero",
+        "sum_invariant_determinant_sign_eq_zero",
+        "det_per_inverse_convolution_bool_all",
+        "permanent_submatrix_equiv_self",
+        "det_per_inverse_convolution"
+      ]
+    },
+    {
+      "section": "4.2",
+      "claim": "Actual arbitrary rectangular Gaussian loss under left/right unit-vector orthogonal rank-one projection, both-sided projection and the actual all-one centering Pi=I-J/card, with nonnegative loss bounded by the corresponding squared marginal actions divided by 2(1-q^2). The same-dimension two-kernel Lipschitz estimate is proved in GramLipschitz.",
+      "lean": [
+        "rankOneComplement_left_opNorm_le",
+        "gramGaussian_left_projection_bound",
+        "gramGaussian_right_projection_bound",
+        "gramGaussian_two_projection_bound",
+        "flatUnitVector_sum_sq",
+        "centeringProjection_eq",
+        "gramGaussian_centering_bound"
+      ]
+    },
+    {
+      "section": "4.2",
+      "claim": "Actual same-dimension two-kernel Gaussian logarithmic Lipschitz estimate with the manuscript Frobenius constant, proved via the positive-definite logdet supporting-plane inequality and finite Frobenius Cauchy bounds; zero-row/zero-column padding leaves the actual Gaussian factor unchanged.",
+      "lean": [
+        "posDef_logdet_difference_le_trace",
+        "trace_transpose_mul_abs_le_frobenius",
+        "gram_trace_difference_bound",
+        "gramGaussian_log_difference_le",
+        "gramGaussian_log_lipschitz"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Actual score variance and exact normalization; positive W, |V|<=W, explicit W and squared-v bounds by variance, l1-v Cauchy bound, actual skew bilinear bound, and finite paired full-mass error <= [4/(1-a0^2)^2]*[(tau+tau^2)/n + tau*sqrt(tau/n)] under the stated fixed score interval, uniformly for every n>1.",
+      "lean": [
+        "scoreVariance_nonneg",
+        "scoreVariance_eq_score_sq",
+        "tournamentScorePotential_sum",
+        "preconditioned_V_abs_le_W",
+        "preconditioned_W_le_variance",
+        "preconditioned_v_sq_le_variance",
+        "preconditioned_v_l1_le_variance",
+        "nonneg_skew_bilinear_abs_le",
+        "preconditioned_mass_abs_le_variance",
+        "preconditioned_mass_error_bound"
+      ]
+    },
+    {
+      "section": "2.2",
+      "claim": "Exact positive determinant/permanent convolution of the original permutation pathCount for every n, including n=0, via actual full-cycle ordering equivalence and marked-cycle cancellation; actual pathCount dominates every principal weight and is positive.",
+      "lean": [
+        "pathCount_eq_pathConvolutionSum",
+        "pathCount_eq_positive_convolution",
+        "principal_weight_le_pathCount",
+        "pathCount_pos_from_convolution"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "The actual partition interval is a product of independent block partition lattices. Genuine Mobius weights are the product of signed block factorials over any CommRing, derived by injective coloring and the falling-factorial polynomial. The formula connects directly to actual permanent coefficients, including empty degree.",
+      "lean": [
+        "partitionIntervalOrderIso",
+        "partition_mu_eq_product_blocks",
+        "pair_partition_mu_product",
+        "partitionChromaticPolynomial_eq_descPochhammer",
+        "setoid_mu_top_factorial",
+        "partition_mu_block_weights",
+        "partition_mu_degree_weights",
+        "distinctCoordinateSum_factorial_partition_expansion",
+        "distinctCoordinateSum_centered_factorial_expansion",
+        "normalized_coeff_factorial_partition_expansion"
+      ]
+    },
+    {
+      "section": "4.2",
+      "claim": "For the actual tournament kernel Y=(S-I)/(n-1), actual independent deleted row and column sets I,J with card t and 2t<=n, n>=4, the centered deletion Z satisfies |log G(Z)-log D_n(S)| <= (24t+18tau+11)/n. Exact operator compression, deleted marginal estimates and explicit finite constants are proved.",
+      "lean": [
+        "submatrix_opNorm_le",
+        "shiftedSkewKernel_deletion_centering_finite_bound",
+        "shiftedSkewKernel_full_gram_loss",
+        "tournament_gaussian_deletion_loss"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Under the stated fixed score interval, actual paired preconditioned adjacency is nonnegative with entries <=4/((1-a0)^2*n). The actual difference F=Cprime-C has Frobenius and real Euclidean operator norms <=16/(1-a0)^2*sqrt(tau/n), derived directly from entrywise and squared-mass bounds.",
+      "lean": [
+        "paired_scale_difference_abs_le",
+        "real_opNorm_le_frobenius",
+        "tournamentDensity_entry_bounds",
+        "preconditionedTournamentDensity_entry_bounds",
+        "preconditionedDensityDifference_entry_bound",
+        "preconditionedDensityDifference_frobenius_sq_bound",
+        "preconditionedDensityDifference_frobenius_bound",
+        "preconditionedDensityDifference_opNorm_bound"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Actual paired row and column marginal infinity errors are <=4/(1-a0)^2*sqrt(tau/n), and their concatenated squared Euclidean sum is <=32*tau/(1-a0)^4, under the fixed score interval. All bounds follow from genuine paired marginal identities and finite Cauchy bounds.",
+      "lean": [
+        "preconditioned_row_error_sq_bound",
+        "preconditioned_column_error_sq_bound",
+        "preconditioned_row_error_abs_bound",
+        "preconditioned_column_error_abs_bound",
+        "preconditioned_row_error_sum_sq_bound",
+        "preconditioned_column_error_sum_sq_bound",
+        "preconditioned_marginal_error_sum_sq_bound"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Exact rectangular mass-normalized row variance identity, equal-cardinality column counterpart, normalized density bounds and infinity errors. If actual mass is at least half the target, squared marginal sums grow by at most a factor four. Actual paired full normalization satisfies the corresponding finite bounds; mass lower bound follows from the proved mass budget when that budget <=n/2.",
+      "lean": [
+        "normalized_row_error_sum_sq",
+        "normalized_column_error_sum_sq",
+        "mass_normalization_factor_bounds",
+        "mass_normalization_factor_error",
+        "normalized_rect_column_error_sum_sq_le",
+        "normalized_entry_bounds",
+        "preconditioned_mass_lower_of_budget",
+        "normalizedPreconditionedDensity_mass",
+        "normalizedPreconditionedDensity_entry_bounds",
+        "normalizedPreconditionedDensity_row_error_abs_le",
+        "normalizedPreconditionedDensity_column_error_abs_le",
+        "normalizedPreconditionedDensity_row_error_sum_sq_le",
+        "normalizedPreconditionedDensity_column_error_sum_sq_le"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "For any actual nonnegative normalized matrix with entries <=K/n and independently deleted t-element row/column sets, 2t<=n, the exact deletion formulas imply |kappa|<=4t*eps+2(K+1)t^2/n, pointwise marginal and squared Euclidean bounds, and entries <=K/(n-t). If deleted mass is at least half the target, final rectangular mass normalization gives the factor-four squared marginal bounds and density <=2K/(n-t). These finite hypotheses remain explicit; their uniform logarithmic-parameter thresholds are supplied by the later UniformDeletionBudgets and uniform scaling entries.",
+      "lean": [
+        "scaled_deleted_mass_error_bound",
+        "scaled_deleted_row_error_abs_le",
+        "scaled_deleted_column_error_abs_le",
+        "scaled_deleted_row_error_sum_sq_le",
+        "scaled_deleted_column_error_sum_sq_le",
+        "scaled_deleted_entry_bounds",
+        "normalized_deleted_entry_bounds",
+        "normalized_deleted_row_error_sum_sq_le",
+        "normalized_deleted_column_error_sum_sq_le"
+      ]
+    },
+    {
+      "section": "4.1",
+      "claim": "The genuine mass-corrected centered kernel is doubly centered. The actual balanced gauge Hessian has the proved explicit four-block inverse; actual Gram positivity, intertwining, density estimates, row/column absolute inverse sums, infinity action and squared Euclidean action controls yield the manuscript inverse budget. Actual nonlinear scaling existence and capacity estimates are proved in the subsequent local scaling modules.",
+      "lean": [
+        "localCenteredKernel_doublyCentered",
+        "localBalancedInverse_mul_hessian",
+        "localBalancedHessian_inverse",
+        "localGramLeft_opNorm_le",
+        "localGramRight_opNorm_le",
+        "localBalancedInverse_absolute_row_bound",
+        "localBalancedInverse_absolute_column_bound",
+        "localBalancedInverse_infinity_control",
+        "localBalancedInverse_euclidean_control_sq"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "The actual Setoid partitions into pairs are counted by double factorial for even cardinality and zero for odd cardinality. Actual pairings compatible with a coordinate kernel factor independently over its fibers, including empty sets and empty fibers. This is the finite combinatorial Wick ingredient, not yet the Gaussian determinant or permanent approximation.",
+      "lean": [
+        "pairingPartition_card",
+        "compatible_pairingPartition_card",
+        "compatible_pairingPartition_count"
+      ]
+    },
+    {
+      "section": "4.1",
+      "claim": "Actual Banach contraction constructs finite exp diagonal balancing potentials with infinity norm <=4*L0*eps and the actual gauge; all rows and columns of the genuine scaled matrix sum to one, nonnegativity and zero support are preserved. Under the explicit second gap smallness condition, scaled entries <=2K/p and centered operator norm <=(1+q)/2. No scaling existence or contraction is assumed.",
+      "lean": [
+        "exists_local_scaling_fixedPoint",
+        "localScaling_fixedPoint_balances",
+        "exists_local_balancing_potentials",
+        "localScaledMatrix_eq_exp_scaling",
+        "localScaledMatrix_nonnegative",
+        "localScaledMatrix_zero_support",
+        "localScaledMatrix_change_opNorm",
+        "marginalBalancedMatrix_change_opNorm",
+        "exists_local_scaling"
+      ]
+    },
+    {
+      "section": "2.2 and 5.2",
+      "claim": "Complete Bregman permanent bound for every finite real zero-one matrix, with zero rows and empty order covered. Genuine supported-permutation counting, random greedy coding and exact row-rank averages prove the inequality, which is applied directly to actual tournament adjacency and all principal adjacency submatrices.",
+      "lean": [
+        "boolMatrix_permanent_le_bregman",
+        "boolMatrix_permanent_le_bregman_fintype",
+        "zeroOneMatrix_permanent_le_bregman",
+        "adjacency_permanent_le_bregman",
+        "adjacency_principal_permanent_le_bregman"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "True standard Gaussian moments are derived from mgf derivatives; arbitrary rectangular bilinear moments equal actual Setoid pairing contractions. True Gaussian conditional integration yields the real Gram determinant factor for every |t|*operatorNorm(Z)<1, allowing singular/nonnormal rectangular matrices. Every Gram determinant Taylor derivative equals the actual bilinear moment, coefficients are nonnegative with odd terms zero, and the actual normalized permanent coefficient splits exactly into Gaussian pairing and nonpairing terms for all degrees, including cancellation above dimension.",
+      "lean": [
+        "standardGaussianMoment_add_two",
+        "standardGaussianMoment_even",
+        "standardGaussianMoment_odd",
+        "standardGaussian_product_moment",
+        "gaussianBilinearMoment_pairing_expansion",
+        "hermitian_gaussian_quadratic_integral_posDef",
+        "gaussianBilinearMGF_eq_gramGaussian_smul",
+        "gaussianBilinear_exp_integrable",
+        "gramGaussian_iteratedDeriv_zero",
+        "bilinearGaussianCoefficient_eq_derivative",
+        "bilinearGaussianCoefficient_nonneg",
+        "distinctCoordinateSum_eq_gaussian_add_nonpairing",
+        "normalized_coeff_eq_gaussian_add_nonpairing",
+        "nonPairingCoordinateSum_above_dimension"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Exact actual centered-kernel transformation after paired preconditioning, full mass normalization and independent row/column deletion/final normalization. The actual eta=n^2/(mass(Cprime)*mass(X)) is retained, also equals (n-t)/mass(Cprime[R,T]), and has a finite retained-mass error bound. Finite true centered operator and Frobenius displacement budgets follow by actual orthogonal compression, scalar factors and entrywise norms; uniform thresholds are supplied by the later uniform preconditioning and scaling entries.",
+      "lean": [
+        "centeringProjection_mul_ones",
+        "normalizedDeletedPreconditioned_eq",
+        "normalizedDeletedPreconditioned_centered_eq",
+        "normalizedDeletedPreconditioned_centered_opNorm_le",
+        "preconditioningDeletionEta_eq_retained_mass",
+        "realFrobeniusNorm_submatrix_le",
+        "centeredMatrix_frobenius_le",
+        "normalizedDeletedPreconditioned_centered_frobenius_displacement",
+        "retained_mass_error_bound",
+        "finite_eta_error_bound",
+        "preconditioningDeletionEta_error_bound"
+      ]
+    },
+    {
+      "section": "3.1 and 3.2",
+      "claim": "True bilinear Gaussian coefficient series has its actual Gram Gaussian sum throughout the operator-norm convergence disk; absolute and finite nonnegative weighted sums are bounded by that factor.",
+      "lean": [
+        "bilinearGaussianCoefficient_hasSum",
+        "bilinearGaussianCoefficient_tsum",
+        "bilinearGaussianCoefficient_finite_sum_le",
+        "bilinearGaussianCoefficient_abs_hasSum"
+      ]
+    },
+    {
+      "section": "3.2 and 3.3",
+      "claim": "Actual nonpairing singleton-free partition graphs have positive excess and an explicit fixed-degree O(1/n) coefficient remainder. This does not establish a bound uniform in a growing degree window.",
+      "lean": [
+        "nonPairing_graph_positive_excess",
+        "nonPairingCoordinateSum_centered",
+        "partitionContraction_abs_le",
+        "nonPairing_partitionContraction_abs_le",
+        "nonPairingCoordinateSum_abs_le"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Actual alternating B/B-transpose chains obey the operator norm and endpoint density estimates in either orientation, and all positive chain lengths have the convergent weighted absolute activity bound.",
+      "lean": [
+        "alternatingChain_peel_endpoints",
+        "alternatingChain_opNorm_le",
+        "alternatingChain_entry_abs_le",
+        "alternatingChain_weighted_summable",
+        "alternatingChain_weighted_tsum_le"
+      ]
+    },
+    {
+      "section": "4.1",
+      "claim": "The actual Banach balancing potentials have Euclidean displacement, Frobenius change and nonnegative capacity bounds; one complete witness records the density, centered gap, doubly stochastic marginals, gauge and support. Arbitrary positive mass is restored by an actual logarithmic shift, with exact permanent restoration and the mass-defect upper bound.",
+      "lean": [
+        "local_scaling_fixedPoint_euclidean_control",
+        "localScaledMatrix_frobenius_change_sq",
+        "localScalingCapacity_eq_integrand",
+        "localScalingCapacity_euclidean_bound",
+        "exists_local_scaling_displacement_capacity",
+        "massRestoredLocalPotentials_scaledMatrix",
+        "normalized_local_scaling_permanent_restoration",
+        "normalized_local_scaling_capacity_lower",
+        "normalized_local_scaling_permanent_upper",
+        "exists_local_scaling_witness",
+        "exists_normalized_local_scaling_witness"
+      ]
+    },
+    {
+      "section": "4.1 and 4.3",
+      "claim": "The actual local centered kernel equals Pi X Pi at unit total mass, and its entry density follows from actual matrix density and marginal errors.",
+      "lean": [
+        "localCenteredKernel_eq_centering",
+        "localCenteredKernel_density_bound"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "For any fixed logarithmic variance budget and score interval, actual preconditioned mass and marginal errors are uniformly small beyond one threshold; actual full mass is uniformly at least n/2. Deleted-mass and singular-gap thresholds are supplied by the later uniform deletion and gap entries.",
+      "lean": [
+        "preconditioned_mass_error_uniform_log",
+        "preconditioned_mass_uniform_lower_log",
+        "preconditioned_marginal_error_uniform_log"
+      ]
+    },
+    {
+      "section": "5.2",
+      "claim": "Actual factorial-mean discrete curvature and supporting-line estimates yield a uniform tournament permanent bound with explicit score-variance penalty and the half-integer Jensen correction. Stirling normalization and high-variance exclusion are connected in the later entries.",
+      "lean": [
+        "logFactorialMean_curvature_uniform",
+        "discreteConcave_supporting_line",
+        "rowDegree_sum",
+        "logFactorialMean_degree_variance",
+        "degreeVariance_eq_score_sum",
+        "adjacency_permanent_le_balanced_variance"
+      ]
+    },
+    {
+      "section": "4.1 and 4.3",
+      "claim": "Actual independent row and column Equiv relabellings preserve Euclidean operator norm, Frobenius norm and Gram Gaussian factor, and transport mass, normalization and both marginal errors.",
+      "lean": [
+        "matrix_l2_opNorm_submatrix_equiv",
+        "realFrobeniusNorm_submatrix_equiv",
+        "gramGaussian_submatrix_equiv",
+        "matrixEntryMass_submatrix_equiv",
+        "matrixRowError_submatrix_equiv",
+        "matrixColumnError_submatrix_equiv",
+        "massNormalizedMatrix_submatrix_equiv"
+      ]
+    },
+    {
+      "section": "5.2",
+      "claim": "Actual Bregman-Jensen-Stirling yields the exp(7)*sqrt(n+1)*n!/2^n bound for every order, and the additional exp(-degreeVariance/(8n^2)) factor for n>=3.",
+      "lean": [
+        "balancedLogFactorialMean_stirling_le",
+        "exp_balancedLogFactorialMean_le",
+        "adjacency_permanent_le_stirling_variance",
+        "adjacency_permanent_le_stirling_all"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Uniformly over actual tournaments with bounded score potentials, logarithmic variance and logarithmic equal-cardinality different deleted row/column sets, retained mass is at least (n-t)/2, all normalization masses are positive, and |eta-1|<=4(1+4t)/n and tends uniformly to zero.",
+      "lean": [
+        "preconditioned_retained_mass_uniform_log",
+        "scaledDeletedPreconditioned_mass",
+        "preconditioningDeletionEta_uniform_log_bound",
+        "preconditioningDeletionEta_uniform_eventually_small"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "The actual twice-centered normalized nonprincipal preconditioned kernel has Euclidean operator norm at most 9/10 uniformly in the logarithmic score-variance and deletion window.",
+      "lean": [
+        "shiftedSkewNormBudget_sqrt_le_three_quarters",
+        "normalizedDeletedPreconditioned_centered_gap_uniform_log"
+      ]
+    },
+    {
+      "section": "3.2 and 3.3",
+      "claim": "Actual canonical pure/core edge extraction through the join of the two setoids preserves retained block degrees; pure restrictions are genuine pairings and nonempty cores have positive excess. Actual high-degree vertices obey b<=2j, degree sum=2(b+j) and half-edge-pair count<=3j. This does not yet construct a compressed chain graph.",
+      "lean": [
+        "pureRowPartition_isPairing",
+        "pureColumnPartition_isPairing",
+        "coreComponent_positive_excess",
+        "highDegreeVertices_card_le",
+        "highDegreeVertices_degree_sum",
+        "compressedHalfEdgeCount_eq",
+        "compressedHalfEdgeCount_le"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "Actual partition Mobius weights and genuine quotient-label contractions factor across invariant complementary edge subsets. Canonical pure/core graph weights have the exact pairing/core product; full labeled assembly and the coefficient convolution are connected in the subsequent core generating entries.",
+      "lean": [
+        "coreComponent_weighted_contraction_product"
+      ]
+    },
+    {
+      "section": "4.1 and 4.3",
+      "claim": "The complete actual scaling witness transfers to distinct rectangular row/column types through true equivalence invariants. The rectangular permanent is independent of the chosen column equivalence; positive mass normalization has exact restoration and the exp(mass-card) upper bound. The actual rectangular centered kernel equals the two-sided projection.",
+      "lean": [
+        "rectangularPermanent_independent",
+        "exists_rectangular_scaling_witness",
+        "rectangularPermanent_massNormalized_restoration",
+        "rectangularPermanent_massNormalized_upper",
+        "exists_normalized_rectangular_scaling_witness",
+        "exists_nonprincipal_scaling_witness",
+        "rectangularCenteredKernel_eq_centering",
+        "rectangularCenteredKernel_density_bound"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Actual normalized-deleted preconditioned matrices have total mass n-t, uniform fixed density 8/(1-a0)^2/(n-t), and uniformly vanishing row/column marginal errors throughout the logarithmic variance/deletion window.",
+      "lean": [
+        "normalizedDeletedPreconditioned_marginal_error_uniform_log",
+        "normalizedDeletedPreconditioned_density_uniform_log"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "With fixed actual density and centered-gap budgets, one uniform threshold constructs the genuine complete rectangular scaling witness for every actual tournament and all independent logarithmic equal-cardinality deleted sets.",
+      "lean": [
+        "preconditioningScalingEpsilon_pos",
+        "exists_preconditioned_nonprincipal_scaling_uniform_log"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Actual preconditioning centered displacement tends uniformly to zero. The actual centered normalized-deleted Gaussian factor differs logarithmically from D_n by at most (250/19)*the true displacement budget+(24t+18tau+11)/n, with all positivity and gap hypotheses discharged uniformly.",
+      "lean": [
+        "preconditioningCenteredDisplacementBudget_uniform_eventually_small",
+        "normalizedDeletedPreconditioned_gaussian_finite_comparison",
+        "normalizedDeletedPreconditioned_gaussian_comparison_uniform_log"
+      ]
+    },
+    {
+      "section": "5.1 and 5.2",
+      "claim": "Actual induced tournaments preserve principal permanents; deleted scores retain variance with explicit losses. The true Hamiltonian positive convolution has exact factorial normalization, a uniform o(1/n) normalized long-subset tail, and uniform high-variance exclusion for the original pathCount when degreeVariance>=16*n^2*log n.",
+      "lean": [
+        "adjacency_principal_permanent_eq_induced",
+        "degreeVariance_inducedTournament_ge",
+        "adjacency_principal_permanent_le_stirling_retained_variance",
+        "longConvolution_eventually_small",
+        "sum_convolution_card_le_of_permanent_bound",
+        "highVariance_pathCount_eventually_small"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "For the actual same rectangular scaling witness, unit marginals imply B-P=Pi B Pi. Genuine Gaussian factors before and after scaling obey the explicit logarithmic Lipschitz bound (1400/39)*Frobenius(B-X), under the stated finite displacement and pre-scaling norm budgets; no Gaussian approximation is assumed.",
+      "lean": [
+        "rectangular_unit_marginals_centering",
+        "rectangularScaling_gaussian_finite_comparison"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "Unconditional actual permanent polarization for every complex matrix, including singular and nonnormal cases, proved from the genuine positive polar block, finite Hadamard-product and permanent Gram matrices, and the positive-semidefinite 2x2 Cauchy bound. The positive diagonal permanent factors are real and nonnegative.",
+      "lean": [
+        "permanent_polarization_block_posSemidef",
+        "complex_permanent_block_cauchy",
+        "complex_posSemidef_permanent_nonnegative",
+        "permanent_polarization"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Every actual complete rectangular scaling witness has Frobenius displacement at most 16*K*L times the genuine marginal infinity budget. For logarithmic variance and deletion windows this displacement is uniformly arbitrarily small. One uniform threshold produces the same actual scaling witness together with its Gaussian logarithmic comparison to D_n, including both genuine scaling and preconditioning errors.",
+      "lean": [
+        "rectangularMarginalVector_euclidean_le",
+        "rectangularScaling_frobenius_le_marginal_bound",
+        "preconditioned_scaling_displacement_uniform_eventually_small",
+        "exists_preconditioned_scaling_gaussian_uniform_log"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "Actual canonical edge-subset assembly is a bijection between all two-partition graphs and pure Wick pairings together with pure-component-free cores; genuine graph weights factor. Wick contractions hold for arbitrary finite edge types, and actual normalized permanent coefficients have the exact Gaussian/core subset expansion, including empty cases.",
+      "lean": [
+        "assemble_extractPureCore",
+        "assemblePureCore_injective",
+        "assemblePureCore_surjective",
+        "assemblePureCore_weight",
+        "partitionGraphSum_pure_core_decomposition",
+        "gaussianBilinearMoment_pairing_expansion_finite",
+        "partitionGraphSum_gaussian_core_subset_sum",
+        "normalized_coeff_gaussian_core_subset_sum"
+      ]
+    },
+    {
+      "section": "3.4",
+      "claim": "The actual factorial recovery ratio n^k/(n)_k is positive and >=1. For 2k<=n its log is <=k^2/n; k/n<=log(sigma) gives r_k<=sigma^k and r_k-1<=k^2*sigma^k/n. Actual Gaussian coefficients have a weighted second moment bounded by a geometric second moment times the true Gaussian factor. A genuine Gram/Frobenius estimate yields a dimension-independent explicit K_G(C,q,sigma,R)/n recovery error for every finite window, without assuming a Gaussian series or norm bound beyond the stated actual budgets.",
+      "lean": [
+        "factorialRecoveryRatio_log_le",
+        "factorialRecoveryRatio_le_pow",
+        "factorialRecoveryRatio_sub_one_bound",
+        "bilinearGaussianCoefficient_weighted_second_moment_le",
+        "gramGaussian_le_exp_frobenius_budget",
+        "gaussian_factorial_recovery_le"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "Actual complex polynomial circle values yield coefficient bounds through Parseval, and the entire finite-support tail obeys R/(R-1)*A/R^M. This is applied to the genuine normalized permanent polynomial; the input circle-value majorant remains an explicit hypothesis.",
+      "lean": [
+        "polynomial_circle_coefficient_bound",
+        "polynomial_circle_tail_bound",
+        "normalized_permanent_circle_tail_bound"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "Exact actual rectangular selected-permanent Laplace expansion and full nonprincipal four-block permanent expansion grouped by the internal edge count, over every commutative semiring and finite matrix.",
+      "lean": [
+        "selectedPermanent_laplace",
+        "permanent_four_blocks",
+        "permanent_four_blocks_by_size"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "Genuine core edge relabelling preserves block degrees, Mobius weights, contractions and pure-component predicates. Thus the actual core sum depends only on edge cardinality. Exact binomial/factorial compensation turns the actual subset decomposition into the all-degree standard coefficient identity F_k=sum_j g_j*c_(k-j), with actual core constant coefficient one. No convergence of the full core series is assumed.",
+      "lean": [
+        "coreCoordinateSum_edge_relabel",
+        "coreCoordinateSum_eq_card",
+        "distinctCoordinateSum_div_gaussian_core_convolution",
+        "normalized_coeff_gaussian_core_convolution",
+        "actualCoreCoefficient_zero"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "One dimension-independent positive constant and one uniform threshold bound the actual same scaling witness Gaussian log error by K(sqrt(tau/n)+(t+1)/n), for all tournaments in fixed logarithmic score/deletion windows and all independently deleted row and column sets. Explicit actual retained marginal and preconditioning displacement bounds discharge every input.",
+      "lean": [
+        "preconditioned_deleted_marginal_budget_uniform_log",
+        "preconditioningGaussianCostConstant_pos",
+        "exists_preconditioned_scaling_gaussian_cost_uniform_log"
+      ]
+    },
+    {
+      "section": "3.2 and 3.3",
+      "claim": "The actual centered core coefficient splits into its empty constant plus a finite sum by genuine positive graph excess. The actual normalized permanent coefficient has the exact Gaussian/excess convolution.",
+      "lean": [
+        "coreCoordinateSum_excess_sum",
+        "actualCoreCoefficient_eq_constant_add_excess",
+        "distinctCoordinateSum_div_gaussian_excess_convolution"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "True weighted cross-minor sums are bounded by products of weighted neighbor sums, through injective enumeration of the actual minors. The selected permanent equals the genuine rectangular permanent. Under actual low degree variance the exceptional set has <=400 log n vertices and its actual induced core has score bound <=19/20 and score variance <=1200 log(core order), uniformly at large n.",
+      "lean": [
+        "weighted_cross_row_sum_le",
+        "weighted_cross_column_sum_le",
+        "selectedPermanent_le_factorial",
+        "selectedPermanent_eq_rectangularPermanent",
+        "exceptionalVertices_card_le_log",
+        "exceptional_core_uniform_dense"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "Actual exponential radial probability measure has integrable power moments k!. Finite primitive-root phase averaging has exact complex mixed moments and permutation Wick moments. Actual product exponential spectral moments equal n! times the complete homogeneous polynomial. Pointwise complex product AM-GM and its integral inequality are proved; the actual Gram permanent identity and PSD permanent bound are proved in the subsequent listed declarations.",
+      "lean": [
+        "radialExpMeasure_eq_expMeasure",
+        "radialExpMeasure_pow_moment",
+        "root_phase_cross_sum",
+        "circular_radial_product_mixed_moment",
+        "circular_radial_tuple_moment",
+        "radial_weighted_power_moment",
+        "complex_vector_product_amgm",
+        "complex_product_amgm_integral"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "The actual rectangular Gram permanent equals the actual product-exponential integral of the finite phase average of squared linear-form products. Actual PSD spectral square-root factorization and pointwise AM-GM imply per(H).re <= n!/n^n times the genuine complete homogeneous polynomial of the actual PSD eigenvalues, with no assumed Gaussian identity or moment formula.",
+      "lean": [
+        "gramPermanent_eq_circular_moment",
+        "psdSpectralFactor_self_mul_star",
+        "psdSpectralFactor_star_mul_self",
+        "complex_posSemidef_permanent_le_homogeneous"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Actual partition-graph degree-two continuation is involutive. Finite half-edge paths induce a genuine terminal pairing, the compressed pairing quotient has cardinal b+j, and the real terminal pairing count is the odd double factorial. Full chain coverage and decoration compensation are proved below; complete contraction activity is still pending.",
+      "lean": [
+        "degreeTwoSplice_involutive",
+        "terminal_on_path_iff",
+        "actualCompressedPairPartition_pairing",
+        "actualCompressedPairPartition_card",
+        "partitionCoreTerminal_pairings_card"
+      ]
+    },
+    {
+      "section": "4.4",
+      "claim": "Actual nonprincipal adjacency permanents restore exactly through the paired Gamma product, independent deleted row/column factors and the same true scaling potentials. Actual witness capacity gives a finite upper bound; one common threshold supplies the same witness with this upper bound and the proved uniform Gaussian cost. Retained-mass normalization is proved below; the final unconditional uniform permanent approximation is recorded below.",
+      "lean": [
+        "pairedScoreProduct_le_exp",
+        "adjacency_nonprincipal_paired_restoration",
+        "adjacency_nonprincipal_true_scaling_restoration",
+        "adjacency_nonprincipal_true_scaling_upper",
+        "exists_paired_nonprincipal_restoration_uniform_log"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "Exact factorial and 2-power normalization of the four-block cross terms yields exp(4 f^2/N), with the true choose-squared/factorial bound. Paired cross products have the stated compensation for deleted exceptional endpoints. Actual exceptional vertex weighted cross profiles satisfy u,v<=2+2 beta and uv<=.19+4(f+1)/N+4 beta+4 beta^2 under actual core weight displacement budgets.",
+      "lean": [
+        "fourBlock_cross_normalization",
+        "fourBlock_factorial_normalization_le",
+        "choose_square_mul_factorial_le",
+        "retained_cross_product_le",
+        "exceptional_weighted_cross_pair"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Every half-edge in an actual pure-free partition core lies on a terminal path orbit. Actual compressed pairs biject to all path orbits. Actual high-vertex decorations have cardinal b! product(d_i!) and the genuine Mobius weight/decoration quotient equals 1/(b! product d_i), with the true decoration average.",
+      "lean": [
+        "pureFreeCore_halfEdge_path_coverage",
+        "compressedPairCycleEquiv",
+        "pureFreeCore_path_orbit_card",
+        "highVertexDecorations_card_degrees",
+        "highVertexDecoration_mobius_ratio",
+        "highVertexDecoration_mobius_average"
+      ]
+    },
+    {
+      "section": "3.3 and 3.4",
+      "claim": "The actual finite degree-sequence compensation U_jb has its genuine factorial pairing count. A true injection into positive compositions gives <=4^j sequences and yields the full sum <=(710 W^3 j)^j for W>=1. The exact first-excess sum is 3/2 W^2+10/3 W^3. The actual finite excess window has ratio <=1/2 and sum over j=2..M <=8D^2/n^2 under 16DM<=n; no infinite core-series convergence is assumed.",
+      "lean": [
+        "compressedDegreeSequences_card_le",
+        "pairing_factorial_ratio_eq",
+        "compressedActivityMajorant_le",
+        "compressedActivityMajorant_one",
+        "excessWindowTerm_half_ratio",
+        "finite_excess_window_tail_le"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "Actual complete homogeneous moments with one unit eigenvalue are bounded by the genuine finite geometric product. The actual PSD permanent is then bounded by n!/n^n times that product and by the true exponential sum/squared-eigenvalue envelope. Actual polar spectra give the corresponding nonnormal permanent envelope under the stated genuine spectral bounds; those circle-matrix spectral inputs are discharged in the later actual circle-tail entry.",
+      "lean": [
+        "spectralHomogeneousPolynomial_le_geometric",
+        "complex_posSemidef_permanent_le_geometric",
+        "geometric_product_le_exp_sqrt",
+        "complex_posSemidef_permanent_le_exponential",
+        "complex_permanent_le_exponential_spectral"
+      ]
+    },
+    {
+      "section": "4.4",
+      "claim": "The actual retained-mass power in paired permanent restoration is bounded by exp(-1+t/n+|full mass error|+|retained scaled mass error|), with all actual eta and order normalizations preserved.",
+      "lean": [
+        "retained_mass_power_le",
+        "preconditioning_mass_power_le"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "The true four-block permanent normalized by n!/2^n is bounded by B c^f exp(4f^2/N+2L^2f^2/(c^2N)), where B is the actual analytic core-minor bound. Actual exceptional degree profiles discharge all weighted cross terms with c=.19+4(f+1)/N+4 beta+4 beta^2 and L=2+2 beta. Actual paired inverse weights have total displacement bounded by sqrt(N tau)/(1-a0). Core analytic estimates and unconditional final exceptional exclusion are recorded below.",
+      "lean": [
+        "permanent_fourBlock_normalized_le",
+        "exceptional_permanent_normalized_le",
+        "pairedLeft_total_displacement_le",
+        "pairedRight_total_displacement_le"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Actual original edges biject to compressed chain positions, and actual graph vertices biject to high vertices plus internal positions. Actual endpoint, internal incidence and alternating side identities hold. Genuine high decorations give degree sequences, colours and conjugated labelled pairings. Canonical labelled paths give a bijective original-edge assignment using reversal of existing positions, without extra direction choices; full encoding injectivity is proved in the later CoreEncodingInjectivity entry.",
+      "lean": [
+        "compressedPathEdgeEquiv",
+        "compressedGraphVertexEquiv",
+        "compressedPathArrival_departure_side",
+        "compressedPathArrival_previous_departure_vertex",
+        "decoratedCoreDegree_mem",
+        "decoratedCoreColor_choices",
+        "decoratedPathEdgeAssignment",
+        "decoratedPathLength_sum"
+      ]
+    },
+    {
+      "section": "3.4",
+      "claim": "The actual finite Gaussian/core coefficient convolution obeys a genuine absolute error estimate G(RB)*(T1/n+8D^2/n^2), conditional only on the stated actual core-excess window estimates, which are discharged by the later actual contraction, counting and activity entries.",
+      "lean": [
+        "finite_nonnegative_convolution_sum_le",
+        "actual_finite_gaussian_core_error_le",
+        "actual_gaussian_finite_window_error_le"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "A genuine rectangular rank-one Gram factor and orthogonal polar identity discharge the circle spectral inputs. For an actual real doubly centered B with actual Euclidean operator norm <=q and Frobenius norm <=C, the actual permanent of P+zB is bounded by n!/n^n exp(|z| C sqrt(n)/(1-|z|q)); no assumed circle bound or Gaussian identity is used.",
+      "lean": [
+        "abs_projection_add_smul",
+        "rectangularGramPermanent_le_geometric",
+        "rankOne_projection_permanent_le_geometric",
+        "real_matrix_opNorm_eq_complexification",
+        "complex_posSemidef_eigenvalue_sq_sum",
+        "rankOne_projection_permanent_le_exponential",
+        "centered_complex_permanent_le_exponential",
+        "real_centered_permanent_le_exponential"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "The actual sum of core principal determinant weights equals the actual induced generating determinant and is <=2e times the core real skew determinant. Actual path counts split exactly into disjoint-short, meeting-short and long terms. Actual meeting-short contributions are uniformly negligible under low variance; the true deletion factorial normalization has exp(2k^2/n) control.",
+      "lean": [
+        "tournament_generating_det_le",
+        "matrix_principal_generating_det",
+        "core_principalWeight_generating_eq_induced",
+        "core_principalWeight_generating_le",
+        "exceptional_meeting_convolution_eventually_small",
+        "pathCount_eq_disjoint_meeting_long",
+        "convolution_factorial_ratio_le"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Actual partition contraction equals the sum over actual high-vertex labels of products of actual alternating matrix chains. Actual absolute contraction and decorated Mobius weights are bounded by genuine positive scalar path weights divided by n^actualExcess and b! product(degrees). Finite positive-length sums obey the true product of geometric activity bounds; counting actual encoding fibers is proved in the subsequent encoding count entry.",
+      "lean": [
+        "alternatingChainWord_sum",
+        "partitionContraction_alternating_chains",
+        "positiveChainWeight_finite_length_sum_le",
+        "partitionContraction_weighted_path_le",
+        "partitionContraction_decoration_weighted_path_le"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Labelled canonical readings agree with the actual original-edge bijection even when the terminal direction reverses. The corresponding internal/high vertex coordinates form a genuine vertex bijection and both canonical endpoint addresses reproduce actual incidence.",
+      "lean": [
+        "terminal_path_reverse_arrival",
+        "decoratedPathEdgeAssignment_reading",
+        "decoratedGraphVertexEquiv",
+        "decoratedDepartureAddress_vertex",
+        "decoratedArrivalAddress_vertex"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "The actual normalized permanent polynomial has the genuine centered-matrix circle majorant, coefficient bound and absolute tail. At the exact floor(alpha n) cutoff its tail is <=R/(R-1)*exp(beta sqrt(n)-alpha n log R). The actual convergent Gaussian Wick series tail is bounded by its true weighted Gaussian factor and by the explicit Frobenius/gap exponential budget. No circle or coefficient bound is assumed.",
+      "lean": [
+        "actual_normalized_permanent_circle_bound",
+        "actual_normalized_permanent_coefficient_bound",
+        "actual_normalized_permanent_tail_bound",
+        "actual_normalized_permanent_floor_tail_bound",
+        "bilinearGaussianCoefficient_tail_bound",
+        "bilinearGaussianCoefficient_floor_tail_bound",
+        "bilinearGaussianCoefficient_floor_tail_exp_budget"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "Actual disjoint-short convolution obeys the core spectral bound. A genuine finite criterion with actual remaining permanent bounds implies actual pathCount<meanPaths. Arbitrary further deletions preserve the original exceptional cross-profile estimate; true tournament paired-weight displacement and explicit uniform cross-error budgets are proved. The final uniform analytic input is supplied by UniformPairedPermanentGaussian and the unconditional ActualExceptionalExclusion entry.",
+      "lean": [
+        "disjointShortConvolution_le_spectral",
+        "exceptional_pathCount_lt_mean_of_core_bound",
+        "deleted_exceptional_weighted_cross_pair",
+        "tournament_paired_weight_displacements",
+        "exceptional_core_weight_displacements_eventually"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "The actual singleton-free, pure-free partition core together with all its high-vertex decorations injects into genuine finite degree/colour/pairing/positive-length/original-edge-bijection encoding data. Decoding restores both original partitions and every labelled terminal, hence every decoration. Actual path weights are preserved and genuine decorated core mass is bounded by the full encoded-data mass. No graph-counting injection is assumed.",
+      "lean": [
+        "decodedCorePartition_left",
+        "decodedCorePartition_right",
+        "encodedTerminalHalfEdge_actual",
+        "decoratedHalfEdgeEquiv_injective_decorations",
+        "actualPackedCoreEncoding_injective",
+        "actualCoreFiberEncoding_injective",
+        "actualCoreFiberEncoding_weight",
+        "decoratedCorePathMass_le_encoded"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "The true signed actual core-excess coefficient obeys the decorated-fiber triangle inequality. Genuine encoded data are finite; positive path lengths across different total edge counts form a true injection into length vectors and have the proved geometric finite-window bound. The full encoded weighted count is supplied by the subsequent core-count entries.",
+      "lean": [
+        "actualCoreExcessCoefficient_abs_weighted_le_decorated_mass",
+        "encodedCoreDataEquiv",
+        "positiveCoreLengths_sigma_injective",
+        "positiveCoreLengths_finite_window_le"
+      ]
+    },
+    {
+      "section": "3",
+      "claim": "The genuine real normalized permanent polynomial has actual coefficient recovery and real/complex analytic tail transfer. Combining exact finite Gaussian/core convolution, factorial recovery and both actual tails proves the complete explicit approximation budget. Actual default radii, cutoff fraction and scalar estimates give a dimension-independent K(C,q)/n error for the actual permanent of J+E, with only the two displayed actual core-excess window estimates remaining as premises.",
+      "lean": [
+        "normalizedPermanentPolynomial_ofReal",
+        "actual_normalized_coefficient_recovery",
+        "actual_normalized_permanent_finite_window_error_le",
+        "actual_permanent_approximation_of_core_activities",
+        "realFrobeniusNorm_normalized_entry_budget",
+        "permanentWindowFraction_pos",
+        "permanentApproximationActivityBudget_le_inverse",
+        "uniform_permanent_approximation_of_actual_activities"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "Further short deletions preserve the original exceptional set while the actual dense core keeps its score cap and logarithmic variance bound. Actual ambient paired weights and weighted cross terms satisfy the uniform budgets. The actual eventual exceptional path exclusion is proved from the explicitly named genuine remaining-permanent estimate and a vanishing scalar error; this is not an unconditional exclusion theorem.",
+      "lean": [
+        "short_deleted_exceptional_core_uniform_dense",
+        "ambient_deleted_core_weight_budgets",
+        "actual_deleted_exceptional_cross_bounds",
+        "largeScore_eventually_lt_mean_of_remaining_bound"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Genuine finite encoded-core weighted counting, actual matrix core activities and finite Gaussian windows; all encoding, activity and window inputs are discharged by true matrix entry and operator bounds.",
+      "lean": [
+        "encodedCoreHalfEdges_card",
+        "encodedCorePaths_card",
+        "pairingProduct_eq_doubleFactorial",
+        "encodedCorePairings_card",
+        "encodedCoreLengthMass_finite_window_le",
+        "encodedCoreAssignment_sum_cancel",
+        "encodedCoreAssignment_sum_cancel_general",
+        "encodedCoreData_weight_sum_normalized_general",
+        "encodedCoreData_weight_sum_normalized",
+        "compressedDegreeCompensation_subtype_sum",
+        "encodedCoreData_finite_window_weight_le",
+        "actualCoreExcessCoefficient_finite_window_le",
+        "compressedActivityMajorant_mono",
+        "actualCoreExcessCoefficient_activity_le",
+        "actualCoreExcessCoefficient_one_window_le",
+        "actual_gaussian_window_error_from_matrix_bounds",
+        "actual_core_abs_window_from_matrix_bounds",
+        "actual_normalized_permanent_window_from_matrix_bounds",
+        "actualCoreActivities_of_matrix_bounds"
+      ]
+    },
+    {
+      "section": "3",
+      "claim": "Unconditional normalized permanent approximation for actual centered matrices, with dimension-independent K(C,q)/n error and no core-activity premise.",
+      "lean": [
+        "uniform_permanent_approximation_from_matrix_bounds"
+      ]
+    },
+    {
+      "section": "3 and 4",
+      "claim": "Actual rectangular permanent absolute and relative estimates, Gaussian positivity and same-witness scaling cost; these intermediate wrappers retain the explicit activity predicate, now discharged by actualCoreActivities_of_matrix_bounds.",
+      "lean": [
+        "uniform_permanent_approximation_of_activity_predicate",
+        "uniformPermanentActivityConstant_nonneg",
+        "rectangularPermanentKernel_doublyCentered",
+        "rectangularPermanentKernel_entry_bound",
+        "rectangularPermanent_approximation_of_activities",
+        "gramGaussian_one_le_of_gap",
+        "rectangularPermanent_upper_of_activities",
+        "relative_error_le_of_gaussian_one_le",
+        "rectangularPermanent_relative_of_activities",
+        "rectangularScaling_permanent_relative_of_activities",
+        "rectangularPermanent_lower_of_activities",
+        "positive_le_exp_log_difference",
+        "rectangularScaling_permanent_upper_of_activities",
+        "rectangularScaling_permanent_upper_from_log_cost"
+      ]
+    },
+    {
+      "section": "5.3 and 5.4",
+      "claim": "Actual selected-minor embeddings, ambient core-minor transfer, deleted four-block bounds and crude exceptional path exclusion; exclusion still has a genuine analytic core-minor input. Actual weighted principal determinant sums use Hadamard subset moments with dimension-independent error budgets.",
+      "lean": [
+        "selectedPermanent_submatrix_embedding",
+        "selectedPermanent_subtype_sets",
+        "subtype_compl_map",
+        "disjoint_subtype_compl_map",
+        "disjoint_subtype_card",
+        "deleted_permanent_fourBlock_normalized_le",
+        "short_deleted_permanent_fourBlock_eventually",
+        "coreVertexEmbedding_apply",
+        "coreIndexSet_map",
+        "coreIndexSet_card",
+        "coreVertexEmbedding_univ_map",
+        "coreIndexSet_compl_map",
+        "selectedPermanent_core_reindex",
+        "coreIndexSet_potential_prod",
+        "coreIndexSet_left_prod",
+        "coreIndexSet_right_prod",
+        "selectedPermanent_core_rectangular_reindex",
+        "ambient_core_minor_bound_of_rectangular",
+        "tournament_skew_kernel_det_le_exp_half",
+        "exp_half_lt_five_thirds",
+        "tournament_skew_kernel_det_lt_five_thirds",
+        "disjointShortConvolution_le_crude",
+        "exceptional_pathCount_lt_mean_of_crude_bound",
+        "lowVariance_exceptional_eventually_lt_mean_of_crude_bound",
+        "largeScore_eventually_lt_mean_of_crude_bound",
+        "exceptionalAssemblyError_tendsto_zero",
+        "exceptional_assembly_error_le",
+        "hasCrudeUniformExceptionalPermanentBound_of_core",
+        "largeScore_eventually_lt_mean_of_core_minor_bound",
+        "prod_excess_le_card_power",
+        "powersetCard_sum_vertex_weights",
+        "weighted_principal_card_excess_le",
+        "weightedPrincipalMoment_nonneg",
+        "weightedPrincipalMass_le",
+        "weightedPrincipalMass_le_kernel",
+        "weighted_principal_powerMoment_le"
+      ]
+    },
+    {
+      "section": "4.5",
+      "claim": "Actual small-score logarithmic product, full/retained mass and scaling capacity budgets; genuine restoration algebra and scalar exponential error control for the forthcoming two-sided minor approximation.",
+      "lean": [
+        "abs_log_le_twice_sub_one",
+        "abs_log_one_sub_add_self_le",
+        "pairedLeft_log_abs_le",
+        "pairedRight_log_abs_le",
+        "pairedScoreProduct_log_abs_le",
+        "baseline_mass_power_log_error",
+        "retained_mass_power_log_error",
+        "preconditioning_mass_power_log_error",
+        "tournamentScorePotential_le_score_budget",
+        "scoreVariance_le_score_budget",
+        "score_sqrt_le_score_budget",
+        "preconditionedDeletedMarginalBudget_le_small_score",
+        "rectangularScaling_capacity_le_marginal_bound",
+        "pairedScoreProduct_pos_small_score",
+        "pairedLeft_deleted_log_bound",
+        "pairedRight_deleted_log_bound",
+        "paired_restoration_score_log_bound",
+        "relative_gaussian_error_le",
+        "relative_exponential_product_error",
+        "gaussian_restoration_absolute_error",
+        "pairedMassErrorBudget_le_bounded_variance",
+        "preconditioned_mass_error_le_small_score",
+        "normalizedPreconditioned_marginal_small_score",
+        "retained_preconditioned_mass_error_small_score",
+        "preconditioning_mass_power_small_score",
+        "small_score_combined_log_budget",
+        "rectangularScaling_capacity_small_score",
+        "preconditioned_gaussian_cost_small_score",
+        "gaussian_restoration_log_identity",
+        "gaussian_restoration_log_error"
+      ]
+    },
+    {
+      "section": "3 and 4.4",
+      "claim": "Unconditional actual rectangular permanent absolute and relative approximation; genuine same-witness Gaussian log cost. Actual retained/full mass errors combine with the complete score-variance error budget. Uniform actual adjacency nonprincipal permanent upper bound constructs all witnesses internally and has no analytic/activity/scaling premises.",
+      "lean": [
+        "rectangularPermanentKernel_actualCoreActivities",
+        "rectangularPermanent_approximation_from_matrix_bounds",
+        "rectangularPermanent_relative_from_matrix_bounds",
+        "rectangularScaling_actualCoreActivities",
+        "rectangularScaling_permanent_relative_from_matrix_bounds",
+        "rectangularScaling_permanent_upper_from_actual_log_cost",
+        "preconditioned_retained_mass_error_budget",
+        "pairedPermanentErrorBudget_nonneg",
+        "pairedPermanentErrorConstant_pos",
+        "positive_rate_budget_combine",
+        "paired_permanent_error_exponent_le",
+        "paired_restoration_factor_nonneg",
+        "adjacency_nonprincipal_gaussian_upper_of_activities",
+        "adjacency_nonprincipal_gaussian_uniform_log"
+      ]
+    },
+    {
+      "section": "5.4",
+      "claim": "Actual short Hamiltonian-path convolution upper bound from genuine principal-minor estimates, with factorial correction accumulated against the true second subset moment to retain absolute O(1/n) error.",
+      "lean": [
+        "exp_sub_one_le_self_mul_exp",
+        "shortConvolution_le_weighted_mass"
+      ]
+    },
+    {
+      "section": "2.3 and 3.3",
+      "claim": "Actual complete cotangent eigenvector basis and sharper cot operator norm cap, including all positive dimensions and both parities; whole-degree actual core activity series are summable with genuine fixed-excess majorants.",
+      "lean": [
+        "transitiveSkew_geometric_mul",
+        "transitiveSkew_geometric_eigenvector",
+        "transitiveCotRoot_pow",
+        "transitiveCotRoot_ne_one",
+        "transitiveCotRoot_eigenvalue",
+        "transitiveSkew_cot_eigenvector",
+        "transitiveCotAngle_mem",
+        "transitiveCotAngle_strictMono",
+        "transitiveCot_eigenvalues_injective",
+        "transitiveCotVector_hasEigenvector",
+        "transitiveCotVector_linearIndependent",
+        "transitiveCotBasis_toMatrix",
+        "transitiveSkew_spectrum_cot",
+        "transitiveHermitian_cotBasis_toMatrix",
+        "transitiveHermitian_spectrum_cot",
+        "transitive_skewFrequency_eq_neg_cot",
+        "transitiveCotAngle_last",
+        "transitiveCot_abs_le_first",
+        "transitive_signMatrix_opNorm_eq_cot",
+        "signMatrix_complex_opNorm_le_cot",
+        "transitive_cot_lt_two_mul_div_pi",
+        "actualCoreExcessCoefficient_weighted_summable",
+        "actualCoreExcessCoefficient_tsum_activity_le",
+        "actualCoreExcessCoefficient_one_tsum_le"
+      ]
+    },
+    {
+      "section": "4.5",
+      "claim": "Unconditional uniform two-sided actual nonprincipal permanent approximation in the small-score window. Actual full and retained masses, same scaling witness, Gaussian log cost, activity estimates and restoration errors are proved internally; remaining size premises are explicit scalar domain conditions.",
+      "lean": [
+        "normalization_mass_half_of_eta",
+        "preconditioned_normalization_masses_uniform_half_log",
+        "adjacency_nonprincipal_normalized_restoration",
+        "adjacency_nonprincipal_gaussian_error_from_actual_budgets",
+        "smallScoreRestorationConstant_pos",
+        "smallScoreRestorationConstant_lower",
+        "nonprincipalRestorationLog_small_score",
+        "smallScoreUniformLogConstant_pos",
+        "smallScoreUniformPermanentConstant_pos",
+        "small_score_budget_implies_quarter",
+        "preconditionedDeletedMarginalBudget_small_score",
+        "adjacency_nonprincipal_small_score_uniform"
+      ]
+    },
+    {
+      "section": "5.3 and 5.4",
+      "claim": "Unconditional actual large-score Hamiltonian-path exclusion, with genuine core-minor bound derived from the uniform nonprincipal theorem. Initial paired weight and score absorption estimates are proved; complete mass-defect absorption and the unconditional global upper theorem are recorded in the following final upper entry.",
+      "lean": [
+        "pairedPermanentErrorBudget_le_sqrt",
+        "exceptionalMinorError_tendsto_zero",
+        "pairedPermanentErrorBudget_deleted_log_le",
+        "exists_uniformExceptionalCoreMinorBound",
+        "actual_largeScore_eventually_lt_mean",
+        "score_error_young",
+        "exp_div_le_one_add_constant",
+        "score_error_exp_le",
+        "score_error_exp_le_one_add",
+        "score_error_exp_moment_le",
+        "pairedConvolutionWeight_bounds",
+        "pairedConvolutionWeight_excess"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "Actual factorial deletion lower bound and true short-convolution lower bound. Hadamard subset moments control all second-degree minor errors; the actual generating determinant loses only its genuine subset tail when truncated. These give the actual normalized path spectral lower bound from genuine short-minor and generating estimates, which remain explicit inputs to this intermediate finite bridge.",
+      "lean": [
+        "factorial_deletion_ratio_one_le",
+        "convolution_factorial_ratio_ge",
+        "shortConvolution_lower_from_minors",
+        "shortConvolution_le_pathCount",
+        "principalErrorMomentConstant_nonneg",
+        "shortPrincipalErrorMoment_le",
+        "principal_card_mass_le",
+        "short_add_long_principal_mass",
+        "longPrincipalMass_le_subsetTail",
+        "shortPrincipalMass_lower",
+        "pathCount_normalized_lower_from_small_minors",
+        "pathLowerPermanentFactor_bounds",
+        "pathCount_spectral_lower_from_actual_minors"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "The true generating determinant has a uniform actual small-score lower bound, and actual unit-score tournaments have the genuine simultaneous short principal-minor approximation and positivity budgets under one scalar threshold.",
+      "lean": [
+        "skew_inverse_quadratic_lower",
+        "det_one_add_skew_add_ones_lower",
+        "one_add_inv_pow_lower",
+        "multiset_sq_kernel_prod_difference_le",
+        "signMatrix_kernel_det_difference_le",
+        "signMatrix_kernel_det_successor_difference_le",
+        "one_add_inv_pow_upper",
+        "tournament_score_image_square_sum_le",
+        "tournament_generating_det_lower_small_scores",
+        "tournament_generating_det_lower_unit_scores",
+        "smallScoreUniformLogConstant_le_permanentConstant",
+        "logarithmic_unit_score_budget_tendsto_zero",
+        "unit_score_cutoff_budget_eventually_small",
+        "rectangularPermanent_principal_deleted",
+        "unit_score_principal_minors_uniform",
+        "tournament_generating_det_lower_unit_scores_absolute"
+      ]
+    },
+    {
+      "section": "5.4 and 5.5",
+      "claim": "Complete actual weighted short-convolution score absorption, retaining all paired mass defects and the true Gamma penalty. The true high-variance, exceptional and dense classes give an unconditional uniform upper bound for every actual tournament path count.",
+      "lean": [
+        "full_score_exponent_uniform",
+        "actual_full_score_factor_uniform",
+        "shortConvolution_le_quadratic_weighted_mass",
+        "pairedErrorWeight_bounds",
+        "pairedErrorWeight_excess",
+        "pairedErrorWeight_prod",
+        "pairedPermanentErrorBudget_card_split",
+        "actual_skew_kernel_det_ge_one",
+        "weightedPrincipalMass_add_le_kernel_exp",
+        "paired_shortConvolution_spectral_of_principal_bound",
+        "principalPermanent_eq_rectangularPermanent",
+        "actual_paired_shortConvolution_uniform_upper",
+        "scorePotential_cap_of_exceptional_empty",
+        "scoreVariance_le_256_log_of_lowVariance",
+        "actual_uniform_pathCount_upper"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "Actual unit-score path spectral approximation on both sides, and actual odd/even carousel paths give the uniform maximum-path lower bound with lowerConstant.",
+      "lean": [
+        "unitScorePathLowerConstant_pos",
+        "principal_subset_tail_eventually_le_inverse",
+        "unit_score_pathCount_spectral_lower_uniform",
+        "exists_unit_score_spectral_near_lower_constant",
+        "maxPaths_lower_uniform",
+        "exponential_minor_error_product_le",
+        "shortConvolution_upper_from_small_minors",
+        "unitScorePathUpperConstant_pos",
+        "unit_score_path_upper_uniform",
+        "unitScorePathApproximationConstant_pos",
+        "unit_score_pathCount_spectral_approximation_uniform"
+      ]
+    },
+    {
+      "section": "1 and 6",
+      "claim": "Unconditional MainBound for the actual maximum path count and exact manuscript constants. One common absolute K and one common n0 are constructed from the actual uniform upper and lower bounds; no permanent, activity, encoding, scaling, Gaussian or path estimate is assumed.",
+      "lean": [
+        "maxPaths_upper_uniform",
+        "mainBound"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "Actual general small-score whole-path two-sided approximation with dimension-independent constant: every nonnegative d(n) with d(n)/sqrt(n) tending to zero admits one eventual threshold for all actual tournaments with scores bounded by d(n). The actual original minor window and variance domain are discharged internally, without a d(n) log(n) restriction.",
+      "lean": [
+        "score_minor_radius_sq_le",
+        "shortConvolution_upper_from_score_minors",
+        "shortConvolution_lower_from_signed_minors",
+        "pathCount_normalized_lower_from_signed_minors",
+        "pathCount_spectral_lower_from_signed_minors",
+        "tournament_generating_det_lower_score_absolute",
+        "score_principal_minors_uniform",
+        "score_path_upper_uniform",
+        "score_path_lower_uniform",
+        "score_pathCount_spectral_approximation_uniform",
+        "small_score_logarithmic_budget_tendsto_zero",
+        "small_score_quadratic_budget_tendsto_zero",
+        "small_score_path_hypotheses_eventually",
+        "small_score_pathCount_spectral_approximation_eventually",
+        "small_score_pathCount_spectral_error_eventually_small"
+      ]
+    }
+  ],
+  "remaining_obligations": [],
+  "external_sources_checked": [
+    {
+      "url": "https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf",
+      "item": "Lemma 2.1 and Corollary 2.3: Bregman and degree balancing."
+    },
+    {
+      "url": "https://arxiv.org/html/2408.09341v2",
+      "item": "Lemmas 4.3-4.4: PSD Gaussian permanent/AM-GM ingredients; not the general nonnormal approximation."
+    },
+    {
+      "url": "https://www.combinatorics.org/ojs/index.php/eljc/article/download/v32i4p43/pdf/",
+      "item": "Proposition 2: Hamilton path permanent/determinant convolution with complement adjacency convention."
+    }
+  ],
+  "commands": [
+    "cd formalization",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap Mathlib.Combinatorics.Enumerative.Composition Mathlib.Data.Fin.Tuple.NatAntidiagonal Mathlib.Analysis.SpecificLimits.Basic Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff Mathlib.Data.Matrix.ColumnRowPartitioned Mathlib.Data.Fin.Rev Mathlib.Algebra.Order.Floor.Semiring Mathlib.Analysis.Complex.Exponential",
+    "lake build",
+    "lake env lean Audit.lean",
+    "python verify_lean.py --require-main",
+    "python run_diagnostics.py"
+  ],
+  "scope_note": "The actual MainBound and the general d=o(sqrt n) whole-path approximation are proved unconditionally and their manuscript definitions and uniform quantifiers have been independently reviewed. Some sharper intermediate displayed constants use mathematically sufficient alternative Lean bounds; see proof_implementation_notes. The final audit checks every project source.",
+  "progress_publication": {
+    "remote": "https://github.com/makerY666/tournament-hamiltonian-paths",
+    "branch": "codex/verify-and-formalize",
+    "policy": "Push each significant progress batch after its reproducible component build and axiom audit. Submit the upstream PR only after the full MainBound and manuscript equivalence checks pass."
+  },
+  "proof_implementation_notes": [
+    "The uniform permanent rate uses a proved geometric-second-moment factorial-recovery constant. It gives the manuscript K(C,q)/n theorem for the same actual objects and quantifiers; it does not assert the manuscript displayed derivative-based K_G constant verbatim.",
+    "The small-score two-sided restoration uses the genuine paired preconditioning and the same balancing witness, an alternative route to the same stated rate."
+  ],
+  "pull_request_url": "https://github.com/LStar404/tournament-hamiltonian-paths/pull/1",
+  "final_verified_proof_revision": "1b22101c3404aad3d749ad52ac5853b3ba4eb2d5"
+}

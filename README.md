@@ -39,9 +39,9 @@ The proof uses a uniform zeroth-order permanent approximation, local matrix scal
 
 ### Research status / 研究状态
 
-The arguments were reconstructed and cross-checked in an AI-assisted internal research workflow. They have **not** undergone external human peer review or formal proof-assistant verification. Finite computations are diagnostics, not replacements for the all-order proof. Independent expert review is recommended before relying on the manuscript as a settled result.
+The arguments were reconstructed and cross-checked in an AI-assisted internal research workflow. The main theorem now has a complete Lean proof; external human peer review has not been reported. Finite computations are diagnostics, not replacements for the all-order proof. Independent expert review is recommended before relying on the manuscript as a settled result.
 
-证明经过 AI 辅助内部重建和交叉复核，当前未发现致命缺口；这不等于外部人工同行评审或形式化证明认证。建议投稿前由作者和独立专家进一步检查。
+证明经过 AI 辅助内部重建和交叉复核，主要渐近定理现已有完整 Lean 形式化证明；这不代表已完成外部人工同行评审。建议投稿前由作者和独立专家进一步检查。
 
 Not claimed / 未声称证明：
 
@@ -63,6 +63,24 @@ Not claimed / 未声称证明：
 This is the internally audited manuscript snapshot, not a dump of all exploratory drafts. Earlier speculative or superseded conclusions are not published as established results. Local machine paths and temporary rendering files are excluded; manuscript and PDF contents are unchanged.
 
 本次发布只包含已复核论文版本及必要的核验材料，不将早期探索稿或已被替代的结论作为已证结果上传。本机路径和临时渲染文件不公开，论文与 PDF 内容保持原样。
+
+## Lean formalization / Lean 形式化证明
+
+The [Lean project](formalization/TournamentHamiltonian.lean) pins Lean and Mathlib 4.34.1. The unconditional theorem [`TournamentHamiltonian.mainBound`](formalization/TournamentHamiltonian/MainBound.lean) proves the displayed maximum-path bounds for the actual finite tournament and Hamiltonian-path definitions, with one absolute constant and one common threshold. It includes both carousel parities and an upper bound for every tournament.
+
+The proof constructs all required permanent, compressed-core activity, local-scaling and Gaussian estimates internally. Its [axiom audit](formalization/Audit.lean) permits only `propext`, `Classical.choice` and `Quot.sound`, and checks transitive dependencies of every imported project theorem. No placeholder or computation axiom is permitted. [The proof ledger](formalization/proof-status.json) records declarations, source coverage and implementation differences. The more conservative Gaussian factorial-recovery constant proves the same uniform rate without claiming the manuscript's displayed derivative constant verbatim. The ancillary whole-path approximation is also proved for every nonnegative score bound d(n) with d(n)/sqrt(n) tending to zero, using one dimension-independent constant and a threshold uniform over all actual tournaments.
+
+无条件定理 `mainBound : MainBound` 已证明原文的真实最大 Hamilton 路径数上下界，使用同一绝对误差常数和同一起始阶数。两种奇偶轮转构造与所有锦标赛的统一上界均已接入。公理审查检查全部传递依赖，仅允许 Lean/Mathlib 的三个标准基础公理。主定理不依赖未证明的永久量、缩放、活动度或高斯前提。部分中间预算采用更保守但充分的常数；对任意非负比分界 d(n)=o(sqrt n)，附属整个路径数双侧近似也已证明，误差常数不依赖阶数，阈值对所有实际锦标赛统一。
+
+To reproduce the final submission gate:
+
+```text
+cd formalization
+lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap Mathlib.Combinatorics.Enumerative.Composition Mathlib.Data.Fin.Tuple.NatAntidiagonal Mathlib.Analysis.SpecificLimits.Basic Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff Mathlib.Data.Matrix.ColumnRowPartitioned Mathlib.Data.Fin.Rev Mathlib.Algebra.Order.Floor.Semiring Mathlib.Analysis.Complex.Exponential
+python verify_lean.py --require-main
+```
+
+For component verification during development, omit `--require-main`. The verifier builds the project, checks transitive axiom dependencies, records hashes of the project sources reached through imports, lists unimported sources separately, and reports the main-theorem status. The submission gate also requires every project Lean source to be imported for audit. `python run_diagnostics.py` reruns the four published finite diagnostics and records their scope and raw output under `formalization/audit/`.
 
 ## Reproduce the finite diagnostics / 复现有限检查
 

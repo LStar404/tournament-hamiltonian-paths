@@ -83,6 +83,6 @@ LaTeX sources target XeLaTeX, using Times New Roman and, for Chinese, SimSun; su
 
 ## License / 授权
 
-No reuse license has been selected for this snapshot, and no LICENSE file has been added. License selection remains with the author.
+This work is released under [CC BY 4.0 International](LICENSE). Reuse, modification, redistribution, and commercial use are permitted, provided that appropriate credit is given to Xingchen Liu / 刘星辰, a link to the license is provided, and changes are indicated.
 
-本次尚未由作者指定再利用许可证，未代为添加 LICENSE 文件。
+本成果采用 [CC BY 4.0 International](LICENSE) 发布；允许再利用、修改、再发布和商业使用，但必须对刘星辰作适当署名、附上许可证链接并说明改动。

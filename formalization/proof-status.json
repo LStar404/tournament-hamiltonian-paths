@@ -1291,24 +1291,116 @@
         "exp_sub_one_le_self_mul_exp",
         "shortConvolution_le_weighted_mass"
       ]
+    },
+    {
+      "section": "2.3 and 3.3",
+      "claim": "Actual complete cotangent eigenvector basis and sharper cot operator norm cap, including all positive dimensions and both parities; whole-degree actual core activity series are summable with genuine fixed-excess majorants.",
+      "lean": [
+        "transitiveSkew_geometric_mul",
+        "transitiveSkew_geometric_eigenvector",
+        "transitiveCotRoot_pow",
+        "transitiveCotRoot_ne_one",
+        "transitiveCotRoot_eigenvalue",
+        "transitiveSkew_cot_eigenvector",
+        "transitiveCotAngle_mem",
+        "transitiveCotAngle_strictMono",
+        "transitiveCot_eigenvalues_injective",
+        "transitiveCotVector_hasEigenvector",
+        "transitiveCotVector_linearIndependent",
+        "transitiveCotBasis_toMatrix",
+        "transitiveSkew_spectrum_cot",
+        "transitiveHermitian_cotBasis_toMatrix",
+        "transitiveHermitian_spectrum_cot",
+        "transitive_skewFrequency_eq_neg_cot",
+        "transitiveCotAngle_last",
+        "transitiveCot_abs_le_first",
+        "transitive_signMatrix_opNorm_eq_cot",
+        "signMatrix_complex_opNorm_le_cot",
+        "transitive_cot_lt_two_mul_div_pi",
+        "actualCoreExcessCoefficient_weighted_summable",
+        "actualCoreExcessCoefficient_tsum_activity_le",
+        "actualCoreExcessCoefficient_one_tsum_le"
+      ]
+    },
+    {
+      "section": "4.5",
+      "claim": "Unconditional uniform two-sided actual nonprincipal permanent approximation in the small-score window. Actual full and retained masses, same scaling witness, Gaussian log cost, activity estimates and restoration errors are proved internally; remaining size premises are explicit scalar domain conditions.",
+      "lean": [
+        "normalization_mass_half_of_eta",
+        "preconditioned_normalization_masses_uniform_half_log",
+        "adjacency_nonprincipal_normalized_restoration",
+        "adjacency_nonprincipal_gaussian_error_from_actual_budgets",
+        "smallScoreRestorationConstant_pos",
+        "smallScoreRestorationConstant_lower",
+        "nonprincipalRestorationLog_small_score",
+        "smallScoreUniformLogConstant_pos",
+        "smallScoreUniformPermanentConstant_pos",
+        "small_score_budget_implies_quarter",
+        "preconditionedDeletedMarginalBudget_small_score",
+        "adjacency_nonprincipal_small_score_uniform"
+      ]
+    },
+    {
+      "section": "5.3 and 5.4",
+      "claim": "Unconditional actual large-score Hamiltonian-path exclusion, with genuine core-minor bound derived from the uniform nonprincipal theorem. Initial paired weight and score absorption estimates are proved; complete mass-defect absorption and global upper aggregation still await integration.",
+      "lean": [
+        "pairedPermanentErrorBudget_le_sqrt",
+        "exceptionalMinorError_tendsto_zero",
+        "pairedPermanentErrorBudget_deleted_log_le",
+        "exists_uniformExceptionalCoreMinorBound",
+        "actual_largeScore_eventually_lt_mean",
+        "score_error_young",
+        "exp_div_le_one_add_constant",
+        "score_error_exp_le",
+        "score_error_exp_le_one_add",
+        "score_error_exp_moment_le",
+        "pairedConvolutionWeight_bounds",
+        "pairedConvolutionWeight_excess"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "Actual factorial deletion lower bound and true short-convolution lower bound. Hadamard subset moments control all second-degree minor errors; the actual generating determinant loses only its genuine subset tail when truncated. These give the actual normalized path spectral lower bound from genuine short-minor and generating estimates, which remain explicit inputs to this intermediate finite bridge.",
+      "lean": [
+        "factorial_deletion_ratio_one_le",
+        "convolution_factorial_ratio_ge",
+        "shortConvolution_lower_from_minors",
+        "shortConvolution_le_pathCount",
+        "principalErrorMomentConstant_nonneg",
+        "shortPrincipalErrorMoment_le",
+        "principal_card_mass_le",
+        "short_add_long_principal_mass",
+        "longPrincipalMass_le_subsetTail",
+        "shortPrincipalMass_lower",
+        "pathCount_normalized_lower_from_small_minors",
+        "pathLowerPermanentFactor_bounds",
+        "pathCount_spectral_lower_from_actual_minors"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "The true generating determinant has a uniform actual small-score lower bound, and actual unit-score tournaments have the genuine simultaneous short principal-minor approximation and positivity budgets under one scalar threshold.",
+      "lean": [
+        "skew_inverse_quadratic_lower",
+        "det_one_add_skew_add_ones_lower",
+        "one_add_inv_pow_lower",
+        "multiset_sq_kernel_prod_difference_le",
+        "signMatrix_kernel_det_difference_le",
+        "signMatrix_kernel_det_successor_difference_le",
+        "one_add_inv_pow_upper",
+        "tournament_score_image_square_sum_le",
+        "tournament_generating_det_lower_small_scores",
+        "tournament_generating_det_lower_unit_scores",
+        "smallScoreUniformLogConstant_le_permanentConstant",
+        "logarithmic_unit_score_budget_tendsto_zero",
+        "unit_score_cutoff_budget_eventually_small",
+        "rectangularPermanent_principal_deleted",
+        "unit_score_principal_minors_uniform",
+        "tournament_generating_det_lower_unit_scores_absolute"
+      ]
     }
   ],
   "remaining_obligations": [
-    {
-      "id": "sharper-transitive-spectrum",
-      "section": "2.3",
-      "claim": "Verify the manuscript ancillary exact cotangent eigenvalue formula and sharper ||S|| <= cot(pi/(2n)). The universal 2n/pi cap and unconditional C_* spectral bound required for MainBound are already proved."
-    },
-    {
-      "id": "small-score-permanent",
-      "section": "4.5",
-      "claim": "Uniform two-sided approximation with (d+t+1)^2/n error."
-    },
-    {
-      "id": "exceptional-exclusion",
-      "section": "5.3",
-      "claim": "Combine the now unconditional uniform nonprincipal estimate with actual deleted dense-core budgets and the proved crude four-block exclusion. Uniform control of the resulting real scalar error remains to be integrated."
-    },
     {
       "id": "weighted-score-sum",
       "section": "5.4",
@@ -1367,5 +1459,9 @@
     "remote": "https://github.com/makerY666/tournament-hamiltonian-paths",
     "branch": "codex/verify-and-formalize",
     "policy": "Push each significant progress batch after its reproducible component build and axiom audit. Submit the upstream PR only after the full MainBound and manuscript equivalence checks pass."
-  }
+  },
+  "proof_implementation_notes": [
+    "The uniform permanent rate uses a proved geometric-second-moment factorial-recovery constant. It gives the manuscript K(C,q)/n theorem for the same actual objects and quantifiers; it does not assert the manuscript displayed derivative-based K_G constant verbatim.",
+    "The small-score two-sided restoration uses the genuine paired preconditioning and the same balancing witness, an alternative route to the same stated rate."
+  ]
 }

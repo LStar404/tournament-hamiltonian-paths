@@ -492,7 +492,7 @@
     },
     {
       "section": "4.1",
-      "claim": "The genuine mass-corrected centered kernel is doubly centered. The actual balanced gauge Hessian has the proved explicit four-block inverse; actual Gram positivity, intertwining, density estimates, row/column absolute inverse sums, infinity action and squared Euclidean action controls yield the manuscript inverse budget. Nonlinear scaling existence and capacity remain unproved.",
+      "claim": "The genuine mass-corrected centered kernel is doubly centered. The actual balanced gauge Hessian has the proved explicit four-block inverse; actual Gram positivity, intertwining, density estimates, row/column absolute inverse sums, infinity action and squared Euclidean action controls yield the manuscript inverse budget. Actual nonlinear scaling existence and capacity estimates are proved in the subsequent local scaling modules.",
       "lean": [
         "localCenteredKernel_doublyCentered",
         "localBalancedInverse_mul_hessian",
@@ -576,6 +576,125 @@
         "finite_eta_error_bound",
         "preconditioningDeletionEta_error_bound"
       ]
+    },
+    {
+      "section": "3.1 and 3.2",
+      "claim": "True bilinear Gaussian coefficient series has its actual Gram Gaussian sum throughout the operator-norm convergence disk; absolute and finite nonnegative weighted sums are bounded by that factor.",
+      "lean": [
+        "bilinearGaussianCoefficient_hasSum",
+        "bilinearGaussianCoefficient_tsum",
+        "bilinearGaussianCoefficient_finite_sum_le",
+        "bilinearGaussianCoefficient_abs_hasSum"
+      ]
+    },
+    {
+      "section": "3.2 and 3.3",
+      "claim": "Actual nonpairing singleton-free partition graphs have positive excess and an explicit fixed-degree O(1/n) coefficient remainder. This does not establish a bound uniform in a growing degree window.",
+      "lean": [
+        "nonPairing_graph_positive_excess",
+        "nonPairingCoordinateSum_centered",
+        "partitionContraction_abs_le",
+        "nonPairing_partitionContraction_abs_le",
+        "nonPairingCoordinateSum_abs_le"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Actual alternating B/B-transpose chains obey the operator norm and endpoint density estimates in either orientation, and all positive chain lengths have the convergent weighted absolute activity bound.",
+      "lean": [
+        "alternatingChain_peel_endpoints",
+        "alternatingChain_opNorm_le",
+        "alternatingChain_entry_abs_le",
+        "alternatingChain_weighted_summable",
+        "alternatingChain_weighted_tsum_le"
+      ]
+    },
+    {
+      "section": "4.1",
+      "claim": "The actual Banach balancing potentials have Euclidean displacement, Frobenius change and nonnegative capacity bounds; one complete witness records the density, centered gap, doubly stochastic marginals, gauge and support. Arbitrary positive mass is restored by an actual logarithmic shift, with exact permanent restoration and the mass-defect upper bound.",
+      "lean": [
+        "local_scaling_fixedPoint_euclidean_control",
+        "localScaledMatrix_frobenius_change_sq",
+        "localScalingCapacity_eq_integrand",
+        "localScalingCapacity_euclidean_bound",
+        "exists_local_scaling_displacement_capacity",
+        "massRestoredLocalPotentials_scaledMatrix",
+        "normalized_local_scaling_permanent_restoration",
+        "normalized_local_scaling_capacity_lower",
+        "normalized_local_scaling_permanent_upper",
+        "exists_local_scaling_witness",
+        "exists_normalized_local_scaling_witness"
+      ]
+    },
+    {
+      "section": "4.1 and 4.3",
+      "claim": "The actual local centered kernel equals Pi X Pi at unit total mass, and its entry density follows from actual matrix density and marginal errors.",
+      "lean": [
+        "localCenteredKernel_eq_centering",
+        "localCenteredKernel_density_bound"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "For any fixed logarithmic variance budget and score interval, actual preconditioned mass and marginal errors are uniformly small beyond one threshold; actual full mass is uniformly at least n/2. Deleted-mass and singular-gap thresholds remain separate.",
+      "lean": [
+        "preconditioned_mass_error_uniform_log",
+        "preconditioned_mass_uniform_lower_log",
+        "preconditioned_marginal_error_uniform_log"
+      ]
+    },
+    {
+      "section": "5.2",
+      "claim": "Actual factorial-mean discrete curvature and supporting-line estimates yield a uniform tournament permanent bound with explicit score-variance penalty and the half-integer Jensen correction. Stirling normalization and high-variance exclusion remain separate.",
+      "lean": [
+        "logFactorialMean_curvature_uniform",
+        "discreteConcave_supporting_line",
+        "rowDegree_sum",
+        "logFactorialMean_degree_variance",
+        "degreeVariance_eq_score_sum",
+        "adjacency_permanent_le_balanced_variance"
+      ]
+    },
+    {
+      "section": "4.1 and 4.3",
+      "claim": "Actual independent row and column Equiv relabellings preserve Euclidean operator norm, Frobenius norm and Gram Gaussian factor, and transport mass, normalization and both marginal errors.",
+      "lean": [
+        "matrix_l2_opNorm_submatrix_equiv",
+        "realFrobeniusNorm_submatrix_equiv",
+        "gramGaussian_submatrix_equiv",
+        "matrixEntryMass_submatrix_equiv",
+        "matrixRowError_submatrix_equiv",
+        "matrixColumnError_submatrix_equiv",
+        "massNormalizedMatrix_submatrix_equiv"
+      ]
+    },
+    {
+      "section": "5.2",
+      "claim": "Actual Bregman-Jensen-Stirling yields the exp(7)*sqrt(n+1)*n!/2^n bound for every order, and the additional exp(-degreeVariance/(8n^2)) factor for n>=3.",
+      "lean": [
+        "balancedLogFactorialMean_stirling_le",
+        "exp_balancedLogFactorialMean_le",
+        "adjacency_permanent_le_stirling_variance",
+        "adjacency_permanent_le_stirling_all"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Uniformly over actual tournaments with bounded score potentials, logarithmic variance and logarithmic equal-cardinality different deleted row/column sets, retained mass is at least (n-t)/2, all normalization masses are positive, and |eta-1|<=4(1+4t)/n and tends uniformly to zero.",
+      "lean": [
+        "preconditioned_retained_mass_uniform_log",
+        "scaledDeletedPreconditioned_mass",
+        "preconditioningDeletionEta_uniform_log_bound",
+        "preconditioningDeletionEta_uniform_eventually_small"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "The actual twice-centered normalized nonprincipal preconditioned kernel has Euclidean operator norm at most 9/10 uniformly in the logarithmic score-variance and deletion window.",
+      "lean": [
+        "shiftedSkewNormBudget_sqrt_le_three_quarters",
+        "normalizedDeletedPreconditioned_centered_gap_uniform_log"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -590,11 +709,6 @@
       "claim": "Verify the manuscript ancillary exact cotangent eigenvalue formula and sharper ||S|| <= cot(pi/(2n)). The universal 2n/pi cap and unconditional C_* spectral bound required for MainBound are already proved."
     },
     {
-      "id": "bregman",
-      "section": "2.2 and 5.2",
-      "claim": "Uniform balanced-degree/score-variance estimates and Stirling normalization from the complete proved actual Bregman bound."
-    },
-    {
       "id": "partition-expansion",
       "section": "3.2",
       "claim": "Prove finite formal core decomposition from the exact double partition expansion. General explicit signed-factorial Mobius weights and degree-one cancellation are already proved."
@@ -607,7 +721,7 @@
     {
       "id": "activity",
       "section": "3.3",
-      "claim": "Alternating contractions and full excess activity <= (710*W^3*j/n)^j, with the sharper first-excess bound."
+      "claim": "Full excess activity <= (710*W^3*j/n)^j, with the sharper first-excess bound. Actual alternating chain contractions and weighted summable chain activity are proved."
     },
     {
       "id": "finite-window",
@@ -617,7 +731,7 @@
     {
       "id": "gaussian-moments",
       "section": "3.4",
-      "claim": "Prove full Gaussian coefficient series identity and bound the Gaussian factorial-recovery contribution by K_G/n. Actual Gaussian integration, Wick pairing coefficients and all Taylor derivatives are already proved."
+      "claim": "Bound the Gaussian factorial-recovery contribution by K_G/n. The actual Gaussian coefficient series identity, integration, Wick pairing coefficients and all Taylor derivatives are proved."
     },
     {
       "id": "polarization",
@@ -640,14 +754,9 @@
       "claim": "Combine the full explicit budget into uniform absolute and relative O_C,q(1/n)."
     },
     {
-      "id": "capacity",
-      "section": "4.1",
-      "claim": "Euclidean displacement, Frobenius displacement, capacity and arbitrary-mass exact restoration."
-    },
-    {
       "id": "preconditioning",
       "section": "4.3",
-      "claim": "Prove uniform logarithmic-parameter thresholds for actual mass positivity, normalization/deletion budgets, centered singular gap and scaled Gaussian comparison. Exact centered eta transformation and its actual operator/Frobenius/retained-mass error budgets are already proved with explicit finite hypotheses."
+      "claim": "Prove uniform logarithmic-parameter thresholds for actual normalized/deleted marginal budgets and scaled Gaussian comparison. Actual full/deleted mass positivity, eta error and centered singular gap are uniform; finite operator/Frobenius/retained-mass budgets are proved."
     },
     {
       "id": "scaled-gap",
@@ -667,7 +776,7 @@
     {
       "id": "variance-exclusion",
       "section": "5.2",
-      "claim": "Discrete curvature, Jensen/Stirling, score deletion and uniform high-variance exclusion."
+      "claim": "Stirling normalization, score deletion and uniform high-variance exclusion; actual curvature, Jensen and finite score-variance permanent penalty are proved."
     },
     {
       "id": "four-block",
@@ -726,7 +835,7 @@
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",

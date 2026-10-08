@@ -1133,6 +1133,136 @@
         "actual_deleted_exceptional_cross_bounds",
         "largeScore_eventually_lt_mean_of_remaining_bound"
       ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Genuine finite encoded-core weighted counting, actual matrix core activities and finite Gaussian windows; all encoding, activity and window inputs are discharged by true matrix entry and operator bounds.",
+      "lean": [
+        "encodedCoreHalfEdges_card",
+        "encodedCorePaths_card",
+        "pairingProduct_eq_doubleFactorial",
+        "encodedCorePairings_card",
+        "encodedCoreLengthMass_finite_window_le",
+        "encodedCoreAssignment_sum_cancel",
+        "encodedCoreAssignment_sum_cancel_general",
+        "encodedCoreData_weight_sum_normalized_general",
+        "encodedCoreData_weight_sum_normalized",
+        "compressedDegreeCompensation_subtype_sum",
+        "encodedCoreData_finite_window_weight_le",
+        "actualCoreExcessCoefficient_finite_window_le",
+        "compressedActivityMajorant_mono",
+        "actualCoreExcessCoefficient_activity_le",
+        "actualCoreExcessCoefficient_one_window_le",
+        "actual_gaussian_window_error_from_matrix_bounds",
+        "actual_core_abs_window_from_matrix_bounds",
+        "actual_normalized_permanent_window_from_matrix_bounds",
+        "actualCoreActivities_of_matrix_bounds"
+      ]
+    },
+    {
+      "section": "3",
+      "claim": "Unconditional normalized permanent approximation for actual centered matrices, with dimension-independent K(C,q)/n error and no core-activity premise.",
+      "lean": [
+        "uniform_permanent_approximation_from_matrix_bounds"
+      ]
+    },
+    {
+      "section": "3 and 4",
+      "claim": "Actual rectangular permanent absolute and relative estimates, Gaussian positivity and same-witness scaling cost; these intermediate wrappers retain the explicit activity predicate, now discharged by actualCoreActivities_of_matrix_bounds.",
+      "lean": [
+        "uniform_permanent_approximation_of_activity_predicate",
+        "uniformPermanentActivityConstant_nonneg",
+        "rectangularPermanentKernel_doublyCentered",
+        "rectangularPermanentKernel_entry_bound",
+        "rectangularPermanent_approximation_of_activities",
+        "gramGaussian_one_le_of_gap",
+        "rectangularPermanent_upper_of_activities",
+        "relative_error_le_of_gaussian_one_le",
+        "rectangularPermanent_relative_of_activities",
+        "rectangularScaling_permanent_relative_of_activities",
+        "rectangularPermanent_lower_of_activities",
+        "positive_le_exp_log_difference",
+        "rectangularScaling_permanent_upper_of_activities",
+        "rectangularScaling_permanent_upper_from_log_cost"
+      ]
+    },
+    {
+      "section": "5.3 and 5.4",
+      "claim": "Actual selected-minor embeddings, ambient core-minor transfer, deleted four-block bounds and crude exceptional path exclusion; exclusion still has a genuine analytic core-minor input. Actual weighted principal determinant sums use Hadamard subset moments with dimension-independent error budgets.",
+      "lean": [
+        "selectedPermanent_submatrix_embedding",
+        "selectedPermanent_subtype_sets",
+        "subtype_compl_map",
+        "disjoint_subtype_compl_map",
+        "disjoint_subtype_card",
+        "deleted_permanent_fourBlock_normalized_le",
+        "short_deleted_permanent_fourBlock_eventually",
+        "coreVertexEmbedding_apply",
+        "coreIndexSet_map",
+        "coreIndexSet_card",
+        "coreVertexEmbedding_univ_map",
+        "coreIndexSet_compl_map",
+        "selectedPermanent_core_reindex",
+        "coreIndexSet_potential_prod",
+        "coreIndexSet_left_prod",
+        "coreIndexSet_right_prod",
+        "selectedPermanent_core_rectangular_reindex",
+        "ambient_core_minor_bound_of_rectangular",
+        "tournament_skew_kernel_det_le_exp_half",
+        "exp_half_lt_five_thirds",
+        "tournament_skew_kernel_det_lt_five_thirds",
+        "disjointShortConvolution_le_crude",
+        "exceptional_pathCount_lt_mean_of_crude_bound",
+        "lowVariance_exceptional_eventually_lt_mean_of_crude_bound",
+        "largeScore_eventually_lt_mean_of_crude_bound",
+        "exceptionalAssemblyError_tendsto_zero",
+        "exceptional_assembly_error_le",
+        "hasCrudeUniformExceptionalPermanentBound_of_core",
+        "largeScore_eventually_lt_mean_of_core_minor_bound",
+        "prod_excess_le_card_power",
+        "powersetCard_sum_vertex_weights",
+        "weighted_principal_card_excess_le",
+        "weightedPrincipalMoment_nonneg",
+        "weightedPrincipalMass_le",
+        "weightedPrincipalMass_le_kernel",
+        "weighted_principal_powerMoment_le"
+      ]
+    },
+    {
+      "section": "4.5",
+      "claim": "Actual small-score logarithmic product, full/retained mass and scaling capacity budgets; genuine restoration algebra and scalar exponential error control for the forthcoming two-sided minor approximation.",
+      "lean": [
+        "abs_log_le_twice_sub_one",
+        "abs_log_one_sub_add_self_le",
+        "pairedLeft_log_abs_le",
+        "pairedRight_log_abs_le",
+        "pairedScoreProduct_log_abs_le",
+        "baseline_mass_power_log_error",
+        "retained_mass_power_log_error",
+        "preconditioning_mass_power_log_error",
+        "tournamentScorePotential_le_score_budget",
+        "scoreVariance_le_score_budget",
+        "score_sqrt_le_score_budget",
+        "preconditionedDeletedMarginalBudget_le_small_score",
+        "rectangularScaling_capacity_le_marginal_bound",
+        "pairedScoreProduct_pos_small_score",
+        "pairedLeft_deleted_log_bound",
+        "pairedRight_deleted_log_bound",
+        "paired_restoration_score_log_bound",
+        "relative_gaussian_error_le",
+        "relative_exponential_product_error",
+        "gaussian_restoration_absolute_error",
+        "pairedMassErrorBudget_le_bounded_variance",
+        "preconditioned_mass_error_le_small_score",
+        "normalizedPreconditioned_marginal_small_score",
+        "retained_preconditioned_mass_error_small_score",
+        "preconditioning_mass_power_small_score",
+        "small_score_combined_log_budget",
+        "rectangularScaling_capacity_small_score",
+        "preconditioned_gaussian_cost_small_score",
+        "gaussian_restoration_log_identity",
+        "gaussian_restoration_log_error"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -1140,26 +1270,6 @@
       "id": "sharper-transitive-spectrum",
       "section": "2.3",
       "claim": "Verify the manuscript ancillary exact cotangent eigenvalue formula and sharper ||S|| <= cot(pi/(2n)). The universal 2n/pi cap and unconditional C_* spectral bound required for MainBound are already proved."
-    },
-    {
-      "id": "activity",
-      "section": "3.3",
-      "claim": "Complete the full finite encoded-core weighted count, then combine the proved actual encoding injection and weight preservation with the numerical U_jb compensation majorant. The actual signed coefficient is already bounded by the genuine decorated fiber mass."
-    },
-    {
-      "id": "finite-window",
-      "section": "3.4",
-      "claim": "Discharge the actual finite core-excess activity estimates by the remaining encoded count. Exact coefficient convolution, factorial recovery, finite window and permanent/Gaussian tails are all proved."
-    },
-    {
-      "id": "analytic-tail",
-      "section": "3.5",
-      "claim": "Analytic tails are proved and combined into the actual explicit approximation budget. Their use in the unconditional approximation awaits only discharge of the actual finite core-excess activity estimates."
-    },
-    {
-      "id": "uniform-permanent",
-      "section": "3",
-      "claim": "Discharge the actual core-excess activity premises of the proved genuine normalized permanent approximation. All remaining analytic constants are actual definitions and yield a dimension-independent K(C,q)/n error from the exact finite/tail budget."
     },
     {
       "id": "nonprincipal-restoration",
@@ -1174,12 +1284,12 @@
     {
       "id": "exceptional-exclusion",
       "section": "5.3",
-      "claim": "Discharge HasUniformExceptionalPermanentBound using actual analytic core-minor estimates. The global finite/eventual exceptional convolution and original-exceptional-set deletion budgets are proved, with this genuine remaining permanent input explicit."
+      "claim": "Discharge the genuine uniform exceptional core-minor input using unconditional analytic nonprincipal estimates. Actual minor embedding, four-block aggregation and crude eventual path exclusion are proved; no deleted Gaussian ratio input remains."
     },
     {
       "id": "weighted-score-sum",
       "section": "5.4",
-      "claim": "Retain Gamma while summing all short errors, then remove weights with trace-norm determinant control."
+      "claim": "Combine actual weighted principal generating bounds and short convolution moments with the nonprincipal analytic bound, retaining Gamma and absorbing the score errors."
     },
     {
       "id": "uniform-absorption",
@@ -1223,7 +1333,7 @@
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap Mathlib.Combinatorics.Enumerative.Composition Mathlib.Data.Fin.Tuple.NatAntidiagonal Mathlib.Analysis.SpecificLimits.Basic Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff Mathlib.Data.Matrix.ColumnRowPartitioned Mathlib.Data.Fin.Rev Mathlib.Algebra.Order.Floor.Semiring",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap Mathlib.Combinatorics.Enumerative.Composition Mathlib.Data.Fin.Tuple.NatAntidiagonal Mathlib.Analysis.SpecificLimits.Basic Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff Mathlib.Data.Matrix.ColumnRowPartitioned Mathlib.Data.Fin.Rev Mathlib.Algebra.Order.Floor.Semiring Mathlib.Analysis.Complex.Exponential",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",

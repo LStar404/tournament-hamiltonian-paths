@@ -1263,6 +1263,34 @@
         "gaussian_restoration_log_identity",
         "gaussian_restoration_log_error"
       ]
+    },
+    {
+      "section": "3 and 4.4",
+      "claim": "Unconditional actual rectangular permanent absolute and relative approximation; genuine same-witness Gaussian log cost. Actual retained/full mass errors combine with the complete score-variance error budget. Uniform actual adjacency nonprincipal permanent upper bound constructs all witnesses internally and has no analytic/activity/scaling premises.",
+      "lean": [
+        "rectangularPermanentKernel_actualCoreActivities",
+        "rectangularPermanent_approximation_from_matrix_bounds",
+        "rectangularPermanent_relative_from_matrix_bounds",
+        "rectangularScaling_actualCoreActivities",
+        "rectangularScaling_permanent_relative_from_matrix_bounds",
+        "rectangularScaling_permanent_upper_from_actual_log_cost",
+        "preconditioned_retained_mass_error_budget",
+        "pairedPermanentErrorBudget_nonneg",
+        "pairedPermanentErrorConstant_pos",
+        "positive_rate_budget_combine",
+        "paired_permanent_error_exponent_le",
+        "paired_restoration_factor_nonneg",
+        "adjacency_nonprincipal_gaussian_upper_of_activities",
+        "adjacency_nonprincipal_gaussian_uniform_log"
+      ]
+    },
+    {
+      "section": "5.4",
+      "claim": "Actual short Hamiltonian-path convolution upper bound from genuine principal-minor estimates, with factorial correction accumulated against the true second subset moment to retain absolute O(1/n) error.",
+      "lean": [
+        "exp_sub_one_le_self_mul_exp",
+        "shortConvolution_le_weighted_mass"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -1272,11 +1300,6 @@
       "claim": "Verify the manuscript ancillary exact cotangent eigenvalue formula and sharper ||S|| <= cot(pi/(2n)). The universal 2n/pi cap and unconditional C_* spectral bound required for MainBound are already proved."
     },
     {
-      "id": "nonprincipal-restoration",
-      "section": "4.4",
-      "claim": "Combine the actual uniform permanent approximation with the proved same-witness Gamma restoration, retained-mass power normalization and uniform logarithmic perturbation budgets to get the final actual nonprincipal permanent bound."
-    },
-    {
       "id": "small-score-permanent",
       "section": "4.5",
       "claim": "Uniform two-sided approximation with (d+t+1)^2/n error."
@@ -1284,7 +1307,7 @@
     {
       "id": "exceptional-exclusion",
       "section": "5.3",
-      "claim": "Discharge the genuine uniform exceptional core-minor input using unconditional analytic nonprincipal estimates. Actual minor embedding, four-block aggregation and crude eventual path exclusion are proved; no deleted Gaussian ratio input remains."
+      "claim": "Combine the now unconditional uniform nonprincipal estimate with actual deleted dense-core budgets and the proved crude four-block exclusion. Uniform control of the resulting real scalar error remains to be integrated."
     },
     {
       "id": "weighted-score-sum",

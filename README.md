@@ -66,13 +66,13 @@ This is the internally audited manuscript snapshot, not a dump of all explorator
 
 ## Lean formalization in progress / Lean 形式化进展
 
-The [Lean project](formalization/TournamentHamiltonian.lean) pins Lean and Mathlib 4.34.1. It formalizes the finite tournament/path definitions, random-orientation averaging, all-order strict positivity and the Hadamard bound for principal determinant weights, summability and explicit tail bounds for fixed weighted subset moments, the conditional finite spectral packing bound, the exact upper-constant enclosure, permanent scaling/restoration identities, and scalar score-penalty estimates. Its [proof ledger](formalization/proof-status.json) records the remaining all-order obligations. **The main asymptotic theorem is not yet formally proved or independently certified.**
+The [Lean project](formalization/TournamentHamiltonian.lean) pins Lean and Mathlib 4.34.1. Verified components include finite tournament/path definitions and averaging, positivity and the Hadamard bound for principal determinant weights, weighted subset moments and the logarithmic-cutoff scalar tail, the exact transitive determinant formula over real and complex parameters, conditional spectral packing, the upper-constant enclosure, permanent scaling/restoration, and scalar score-penalty estimates. Its [proof ledger](formalization/proof-status.json) records the remaining all-order obligations. **The main asymptotic theorem is not yet formally proved or independently certified.**
 
-Lean 工程已形式化上述有限计数和代数部分，以及任意阶主子矩阵权重的严格正性、Hadamard 上界、固定加权矩的收敛和明确尾界；完整渐近主定理仍未完成。编译成功不代表全文已得到形式化认证。以下提交检查必须等无条件的 `MainBound` 证明完成后才会通过：
+Lean 工程已形式化上述有限计数和代数部分，以及任意阶主子矩阵权重的正性与上界、固定加权矩收敛、对数截断的标量尾项、实数和复数参数的传递矩阵行列式公式；完整渐近主定理仍未完成。编译成功不代表全文已得到形式化认证。以下提交检查必须等无条件的 `MainBound` 证明完成后才会通过：
 
 ```text
 cd formalization
-lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling
+lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block
 python verify_lean.py --require-main
 ```
 

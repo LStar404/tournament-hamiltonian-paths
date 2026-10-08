@@ -8,3 +8,5 @@ import TournamentHamiltonian.ScalingIdentities
 import TournamentHamiltonian.PositiveDeterminant
 import TournamentHamiltonian.Hadamard
 import TournamentHamiltonian.SubsetWeights
+import TournamentHamiltonian.LongTail
+import TournamentHamiltonian.TransitiveDeterminant

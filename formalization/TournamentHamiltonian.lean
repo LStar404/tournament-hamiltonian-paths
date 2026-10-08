@@ -15,3 +15,7 @@ import TournamentHamiltonian.AlternatingTournament
 import TournamentHamiltonian.Carousel
 import TournamentHamiltonian.SkewSpectrum
 import TournamentHamiltonian.SkewOperatorNorm
+import TournamentHamiltonian.OperatorCap
+import TournamentHamiltonian.PermanentExpansion
+import TournamentHamiltonian.PathConvolution
+import TournamentHamiltonian.SkewGeometry

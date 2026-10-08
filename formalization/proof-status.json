@@ -13,65 +13,436 @@
     "A PR against LStar404/tournament-hamiltonian-paths, created only after the mathematical and formal checks succeed."
   ],
   "verified_declarations": [
-    {"section": "1", "claim": "Random orientation count, exact expectation and P(n) >= mu_n", "lean": ["total_pathCount", "path_completions_card", "meanPaths_eq_orientation_average", "meanPaths_le_maxPaths"]},
-    {"section": "2.1", "claim": "Adjacency/sign convention, skew symmetry, zero total score and squared Frobenius mass", "lean": ["twice_adjacency", "signMatrix_skew", "score_sum_zero", "signMatrix_total_sq"]},
-    {"section": "2.1", "claim": "Actual skew and Gram unitary diagonalizations, positive/negative frequency pairing with multiplicities, exact paired mass (n-1)/(2n), and the generic Euclidean operator-norm gap on both real and complex vectors", "lean": ["complexSignMatrix_unitary_diagonalization", "complexSignMatrix_gram_diagonalization", "skewFrequency_multiset_neg", "skewFrequency_multiset_decomposition", "skewFrequency_sum_sq", "pairedMasses_sum", "skewFrequency_normalized_sq_le_pairedSum", "normalizedSkewOpNorm_sq_le", "normalizedRealSkewOpNorm_sq_le"]},
-    {"section": "2.1 and 3", "claim": "The actual Gaussian Gram matrix is Hermitian and positive definite, with quadratic form at least half the squared Euclidean norm", "lean": ["skewGram_eq_identity_sub_normalized_gram", "skewGram_quadratic_eq", "skewGram_quadratic_lower_bound", "skewGram_isHermitian", "skewGram_quadraticPositive", "skewGram_posDef"]},
-    {"section": "2.1 and 2.3", "claim": "Paired determinant formulas for the actual matrices; positive Gram determinant; exact manuscript D_n and rho_n definitions, product identities and inverse imaginary determinant; uniform 0<D_n<2 and 0<rho_n<=3; actual rho_n satisfies the existing C_* packing bound conditional only on the stronger operator cap", "lean": ["complexSignMatrix_normalized_kernel_det", "signMatrix_normalized_kernel_det", "complexSignMatrix_imaginary_det_ne_zero", "skewGram_det", "skewGram_det_pos", "gaussianFactor_eq_rpow", "gaussianFactor_complex_eq_inverse_det", "spectralRatio_eq_paired_product", "determinantRatio_eq_spectralRatio", "gaussianFactor_bounds", "spectralRatio_bounds", "spectralRatio_le_upperConstant_of_cap"]},
-    {"section": "2.2", "claim": "All-order strict positivity of principal determinant weights, Hadamard row bound, exact total squared row mass, and manuscript h_k bound (including the empty subset)", "lean": ["det_pos_of_quadraticPositive", "principal_weight_pos", "hadamard", "prod_le_mean_pow", "principalWeightMatrix_total_sq", "principal_weight_le_rpow"]},
-    {"section": "2.2", "claim": "Exact w_k normalization, all fixed exponential/polynomial moments summable, explicit geometric cutoff and tail, factorial majorant and logarithmic superexponential bound", "lean": ["subsetWeight_eq", "subsetWeight_succ_sq_le", "subsetMoment_summable", "subsetMoment_succ_le_half", "subsetMoment_tail_le", "subsetWeight_sq_le_factorial", "subsetWeight_log_le", "subsetWeight_exp_tail_le"]},
-    {"section": "2.2 and 5.1", "claim": "The actual logarithmic cutoff including ceiling, eventual n^(-2+epsilon) scalar tail bound for every fixed c>0, and sqrt(n+1) times that tail is o(1/n)", "lean": ["cutoff_rounding_ratio_tendsto", "cutoff_mul_log_div_log_tendsto", "subsetTail_eventually_le_rpow", "scaled_subsetTail_isLittleO", "scaled_subsetTail_eventually_small"]},
-    {"section": "2.3", "claim": "All-order transitive determinant formula over any characteristic-zero field (including real and complex parameters), with the actual transitive tournament and the singular triangular parameter handled", "lean": ["transitiveKernel_det", "signMatrix_transitiveTournament", "transitiveTournament_det"]},
-    {"section": "6", "claim": "All-order complex exponential and binomial-mean approximation with O(1/n) error; the exact transitive determinant ratio has uniform C,n0 quantifiers and an eventually nonzero imaginary-parameter denominator", "lean": ["nat_log_one_add_error_isBigO", "one_add_div_pow_error_isBigO", "binomialMean_error_isBigO", "transitiveKernel_imaginary_det_eventually_ne_zero", "transitiveRatio_error_isBigO", "transitiveRatio_error_bound"]},
-    {"section": "6", "claim": "Actual odd carousel with the forward-residue arc definition, exact signed-transitive relabelling, and zero score; actual even carousel obtained by deleting exactly one vertex, with absolute score one; both actual determinant ratios have the same O(1/n) constants and eventually nonzero denominators", "lean": ["alternatingDiagonal_mul_self", "alternatingSkew_signed_conjugation", "carouselTournament_residue_arc", "carousel_relabel", "carouselTournament_score", "carouselDeletionMap_range", "evenCarouselTournament_eq_alternating", "evenCarouselTournament_score", "carouselTournament_kernel_det", "evenCarouselTournament_kernel_det", "carousel_determinantRatios_error_bound", "carousel_imaginary_determinants_eventually_ne_zero"]},
-    {"section": "6", "claim": "The actual real manuscript spectral factors rho_n of both carousel parities obey one common O(1/n) error bound around L (path-count approximation remains unproved)", "lean": ["carousel_spectralRatio_eq", "evenCarousel_spectralRatio_eq", "carousel_spectralRatios_error_bound"]},
-    {"section": "1 and 6", "claim": "Relabelling actual tournaments preserves the defined Hamiltonian path count and complex determinant ratio (no path-count invariance is asserted for diagonal sign switching)", "lean": ["pathCount_relabelTournament", "determinantRatio_relabelTournament"]},
-    {"section": "2.3", "claim": "Full finite convex packing conditional on the cap and paired mass", "lean": ["spectral_packing_at_mass", "spectral_packing", "spectral_product_le_upperConstant"]},
-    {"section": "2.3 and 7.1", "claim": "Cap interval, rational form of C_* and exact decimal enclosure", "lean": ["spectralCap_bounds", "upperConstant_eq_packed", "upperConstant_decimal_bounds"]},
-    {"section": "4.1 and 4.4", "claim": "Exact permanent row/column and exponential scaling/restoration, including nonprincipal factors", "lean": ["permanent_row_column_scaling", "permanent_exp_scaling", "permanent_exp_restoration", "permanent_submatrix_scaling", "paired_deleted_product"]},
-    {"section": "5.4", "claim": "Whole-score product penalty, Young inequality and scalar absorption conditional on the polynomial error bound", "lean": ["score_product_le_exp", "score_young", "score_penalty_absorption"]}
+    {
+      "section": "1",
+      "claim": "Random orientation count, exact expectation and P(n) >= mu_n",
+      "lean": [
+        "total_pathCount",
+        "path_completions_card",
+        "meanPaths_eq_orientation_average",
+        "meanPaths_le_maxPaths"
+      ]
+    },
+    {
+      "section": "2.1",
+      "claim": "Adjacency/sign convention, skew symmetry, zero total score and squared Frobenius mass",
+      "lean": [
+        "twice_adjacency",
+        "signMatrix_skew",
+        "score_sum_zero",
+        "signMatrix_total_sq"
+      ]
+    },
+    {
+      "section": "2.1",
+      "claim": "Actual skew and Gram unitary diagonalizations, positive/negative frequency pairing with multiplicities, exact paired mass (n-1)/(2n), and the generic Euclidean operator-norm gap on both real and complex vectors",
+      "lean": [
+        "complexSignMatrix_unitary_diagonalization",
+        "complexSignMatrix_gram_diagonalization",
+        "skewFrequency_multiset_neg",
+        "skewFrequency_multiset_decomposition",
+        "skewFrequency_sum_sq",
+        "pairedMasses_sum",
+        "skewFrequency_normalized_sq_le_pairedSum",
+        "normalizedSkewOpNorm_sq_le",
+        "normalizedRealSkewOpNorm_sq_le"
+      ]
+    },
+    {
+      "section": "2.1 and 3",
+      "claim": "The actual Gaussian Gram matrix is Hermitian and positive definite, with quadratic form at least half the squared Euclidean norm",
+      "lean": [
+        "skewGram_eq_identity_sub_normalized_gram",
+        "skewGram_quadratic_eq",
+        "skewGram_quadratic_lower_bound",
+        "skewGram_isHermitian",
+        "skewGram_quadraticPositive",
+        "skewGram_posDef"
+      ]
+    },
+    {
+      "section": "2.1 and 2.3",
+      "claim": "Paired determinant formulas for the actual matrices; positive Gram determinant; exact manuscript D_n and rho_n definitions, product identities and inverse imaginary determinant; uniform 0<D_n<2 and 0<rho_n<=3; actual rho_n satisfies the existing C_* packing bound conditional only on the stronger operator cap",
+      "lean": [
+        "complexSignMatrix_normalized_kernel_det",
+        "signMatrix_normalized_kernel_det",
+        "complexSignMatrix_imaginary_det_ne_zero",
+        "skewGram_det",
+        "skewGram_det_pos",
+        "gaussianFactor_eq_rpow",
+        "gaussianFactor_complex_eq_inverse_det",
+        "spectralRatio_eq_paired_product",
+        "determinantRatio_eq_spectralRatio",
+        "gaussianFactor_bounds",
+        "spectralRatio_bounds",
+        "spectralRatio_le_upperConstant_of_cap"
+      ]
+    },
+    {
+      "section": "2.2",
+      "claim": "All-order strict positivity of principal determinant weights, Hadamard row bound, exact total squared row mass, and manuscript h_k bound (including the empty subset)",
+      "lean": [
+        "det_pos_of_quadraticPositive",
+        "principal_weight_pos",
+        "hadamard",
+        "prod_le_mean_pow",
+        "principalWeightMatrix_total_sq",
+        "principal_weight_le_rpow"
+      ]
+    },
+    {
+      "section": "2.2",
+      "claim": "Exact w_k normalization, all fixed exponential/polynomial moments summable, explicit geometric cutoff and tail, factorial majorant and logarithmic superexponential bound",
+      "lean": [
+        "subsetWeight_eq",
+        "subsetWeight_succ_sq_le",
+        "subsetMoment_summable",
+        "subsetMoment_succ_le_half",
+        "subsetMoment_tail_le",
+        "subsetWeight_sq_le_factorial",
+        "subsetWeight_log_le",
+        "subsetWeight_exp_tail_le"
+      ]
+    },
+    {
+      "section": "2.2 and 5.1",
+      "claim": "The actual logarithmic cutoff including ceiling, eventual n^(-2+epsilon) scalar tail bound for every fixed c>0, and sqrt(n+1) times that tail is o(1/n)",
+      "lean": [
+        "cutoff_rounding_ratio_tendsto",
+        "cutoff_mul_log_div_log_tendsto",
+        "subsetTail_eventually_le_rpow",
+        "scaled_subsetTail_isLittleO",
+        "scaled_subsetTail_eventually_small"
+      ]
+    },
+    {
+      "section": "2.3",
+      "claim": "All-order transitive determinant formula over any characteristic-zero field (including real and complex parameters), with the actual transitive tournament and the singular triangular parameter handled",
+      "lean": [
+        "transitiveKernel_det",
+        "signMatrix_transitiveTournament",
+        "transitiveTournament_det"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "All-order complex exponential and binomial-mean approximation with O(1/n) error; the exact transitive determinant ratio has uniform C,n0 quantifiers and an eventually nonzero imaginary-parameter denominator",
+      "lean": [
+        "nat_log_one_add_error_isBigO",
+        "one_add_div_pow_error_isBigO",
+        "binomialMean_error_isBigO",
+        "transitiveKernel_imaginary_det_eventually_ne_zero",
+        "transitiveRatio_error_isBigO",
+        "transitiveRatio_error_bound"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "Actual odd carousel with the forward-residue arc definition, exact signed-transitive relabelling, and zero score; actual even carousel obtained by deleting exactly one vertex, with absolute score one; both actual determinant ratios have the same O(1/n) constants and eventually nonzero denominators",
+      "lean": [
+        "alternatingDiagonal_mul_self",
+        "alternatingSkew_signed_conjugation",
+        "carouselTournament_residue_arc",
+        "carousel_relabel",
+        "carouselTournament_score",
+        "carouselDeletionMap_range",
+        "evenCarouselTournament_eq_alternating",
+        "evenCarouselTournament_score",
+        "carouselTournament_kernel_det",
+        "evenCarouselTournament_kernel_det",
+        "carousel_determinantRatios_error_bound",
+        "carousel_imaginary_determinants_eventually_ne_zero"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "The actual real manuscript spectral factors rho_n of both carousel parities obey one common O(1/n) error bound around L (path-count approximation remains unproved)",
+      "lean": [
+        "carousel_spectralRatio_eq",
+        "evenCarousel_spectralRatio_eq",
+        "carousel_spectralRatios_error_bound"
+      ]
+    },
+    {
+      "section": "1 and 6",
+      "claim": "Relabelling actual tournaments preserves the defined Hamiltonian path count and complex determinant ratio (no path-count invariance is asserted for diagonal sign switching)",
+      "lean": [
+        "pathCount_relabelTournament",
+        "determinantRatio_relabelTournament"
+      ]
+    },
+    {
+      "section": "2.3",
+      "claim": "Full finite convex packing conditional on the cap and paired mass",
+      "lean": [
+        "spectral_packing_at_mass",
+        "spectral_packing",
+        "spectral_product_le_upperConstant"
+      ]
+    },
+    {
+      "section": "2.3 and 7.1",
+      "claim": "Cap interval, rational form of C_* and exact decimal enclosure",
+      "lean": [
+        "spectralCap_bounds",
+        "upperConstant_eq_packed",
+        "upperConstant_decimal_bounds"
+      ]
+    },
+    {
+      "section": "4.1 and 4.4",
+      "claim": "Exact permanent row/column and exponential scaling/restoration, including nonprincipal factors",
+      "lean": [
+        "permanent_row_column_scaling",
+        "permanent_exp_scaling",
+        "permanent_exp_restoration",
+        "permanent_submatrix_scaling",
+        "paired_deleted_product"
+      ]
+    },
+    {
+      "section": "5.4",
+      "claim": "Whole-score product penalty, Young inequality and scalar absorption conditional on the polynomial error bound",
+      "lean": [
+        "score_product_le_exp",
+        "score_young",
+        "score_penalty_absorption"
+      ]
+    },
+    {
+      "section": "2.2",
+      "claim": "The actual pathCount equals its adjacency-weighted permutation sum (including empty order); the correct loop-inclusive complement and rank-one walk determinant identity; nonnegative positive determinant/permanent convolution sum and exact cardinality grouping. Equality of pathCount with that convolution is still unproved.",
+      "lean": [
+        "pathCount_eq_sum_pathWeight",
+        "pathCount_eq_sum_consecutive_product",
+        "complementAdjacency_eq",
+        "complementAdjacency_principal_det",
+        "pathConvolutionSum_pos",
+        "pathConvolutionSum_by_card",
+        "walk_determinant_identity",
+        "tournament_walk_determinant_ratio"
+      ]
+    },
+    {
+      "section": "2.3",
+      "claim": "Signed upper-half representatives and actual finite phase ordering give general tournament Rayleigh comparison with the transitive matrix; the actual normalized real and complex operator norms are strictly below 2/pi, the true paired masses obey 4/pi^2, and actual rho_n <= C_* without a cap hypothesis. The sharper cotangent eigenvalue formula remains separate.",
+      "lean": [
+        "transitiveKernel_imaginary_det_re_pos",
+        "transitive_skewFrequency_lt",
+        "exists_phase_ordered_vector",
+        "skewHermitian_quadratic_le_transitive_norm",
+        "signMatrix_opNorm_le_transitive",
+        "signMatrix_complex_opNorm_lt",
+        "normalizedSkewOpNorm_lt_two_div_pi",
+        "normalizedRealSkewOpNorm_lt_two_div_pi",
+        "pairedMasses_le_spectralCap",
+        "spectralRatio_le_upperConstant"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "Exact expansion of the actual permanent per(J+zB) into genuine rectangular minor permanents with (n-k)! extension multiplicity; actual polynomial coefficients normalized by (n)_k, exact F_k rescaling, and ordered distinct-coordinate 1/k! multiplicity, including n=0, k=0 and k>n.",
+      "lean": [
+        "permanent_one_add_expansion",
+        "permanent_selected_extension_count",
+        "selectedPermanent_eq_permanent",
+        "permanent_one_add_minor_expansion",
+        "permanent_one_add_degree_expansion",
+        "permanentPolynomial_coeff",
+        "normalizedPermanentPolynomial_coeff",
+        "normalized_coeff_rescaling",
+        "distinctCoordinateSum_eq_factorial_minorSum",
+        "normalized_coeff_distinct_coordinates"
+      ]
+    },
+    {
+      "section": "4.2",
+      "claim": "For the actual Y=(S-I)/(n-1), exact full Gram, row/column square mass and score mass; generic squared operator budget with explicit gap and norm<1 for n>=4; positive semidefinite difference from S^T S/n^2 and its exact trace. Deletion/logarithmic loss estimates remain unproved.",
+      "lean": [
+        "shiftedSkewKernel_gram",
+        "shiftedSkewKernel_action_sq",
+        "shiftedSkewKernel_opNorm_sq_le",
+        "shiftedSkewNormBudget_gap",
+        "shiftedSkewKernel_opNorm_lt_one",
+        "shiftedSkewKernel_row_sq",
+        "shiftedSkewKernel_column_sq",
+        "shiftedSkewKernel_row_sum_sq",
+        "shiftedSkewKernel_column_sum_sq",
+        "shiftedSkewKernel_gram_difference",
+        "shiftedSkewKernel_gram_difference_posSemidef",
+        "shiftedSkewKernel_gram_difference_trace"
+      ]
+    }
   ],
   "remaining_obligations": [
-    {"id": "path-convolution", "section": "2.2", "claim": "Prove the exact determinant/permanent convolution for the defined permutation pathCount."},
-    {"id": "long-subset-convolution-tail", "section": "2.2 and 5.1", "claim": "Combine the verified logarithmic-cutoff scalar tail with the actual path convolution, subset cardinalities and Bregman to obtain the uniform o(1/n) long-subset path contribution."},
-    {"id": "bregman", "section": "2.2 and 5.2", "claim": "Bregman bound and the balanced-degree/Stirling normalization."},
-    {"id": "operator-cap", "section": "2.3", "claim": "Signed phase ordering, transitive eigenvalues, and ||S|| <= cot(pi/(2n)) < 2n/pi."},
-    {"id": "coefficient-normalization", "section": "3.2", "claim": "Expand the actual permanent into minors with the exact falling factorial normalization."},
-    {"id": "partition-expansion", "section": "3.2", "claim": "Partition-lattice Mobius expansion, degree-one cancellation, and finite formal core decomposition."},
-    {"id": "gaussian-pairings", "section": "3.2", "claim": "Wick pairings and Gaussian bilinear integral yield the determinant factor and nonnegative coefficients."},
-    {"id": "compressed-core", "section": "3.3", "claim": "Decoration/chain counting, including loops, reversals and disconnected cores; U_jb compensation."},
-    {"id": "activity", "section": "3.3", "claim": "Alternating contractions and full excess activity <= (710*W^3*j/n)^j, with the sharper first-excess bound."},
-    {"id": "finite-window", "section": "3.4", "claim": "Finite excess truncation, geometric bound, coefficient convolution and factorial recovery."},
-    {"id": "gaussian-moments", "section": "3.4", "claim": "Differentiate the Gaussian determinant and bound the factorial-recovery contribution by K_G/n."},
-    {"id": "polarization", "section": "3.5", "claim": "Permanent polarization for arbitrary complex, possibly singular and nonnormal matrices."},
-    {"id": "psd-permanent", "section": "3.5", "claim": "Complex Gaussian permanent identity and AM-GM give the n!/n^n complete-homogeneous bound."},
-    {"id": "analytic-tail", "section": "3.5", "claim": "Centered operator absolute values, circle bound, Cauchy coefficient bounds and exponentially small tails."},
-    {"id": "uniform-permanent", "section": "3", "claim": "Combine the full explicit budget into uniform absolute and relative O_C,q(1/n)."},
-    {"id": "local-scaling", "section": "4.1", "claim": "Gauge inverse bounds, perturbation, invariant gauge ball and contraction; nonnegative support preserved."},
-    {"id": "capacity", "section": "4.1", "claim": "Euclidean displacement, Frobenius displacement, capacity and arbitrary-mass exact restoration."},
-    {"id": "gram-deletion", "section": "4.2", "claim": "Gram monotonicity, nonprincipal deletion, centering and logarithmic Lipschitz inequalities with the stated constants."},
-    {"id": "preconditioning", "section": "4.3", "claim": "Exact paired mass and deletion marginal identities; uniform mass, norm and error estimates."},
-    {"id": "scaled-gap", "section": "4.3", "claim": "Verify density, centering and singular gap after each transformation and genuine scaling."},
-    {"id": "nonprincipal-restoration", "section": "4.4", "claim": "Actual permanent upper bound with Gamma and correctly assigned deleted row/column factors."},
-    {"id": "small-score-permanent", "section": "4.5", "claim": "Uniform two-sided approximation with (d+t+1)^2/n error."},
-    {"id": "variance-exclusion", "section": "5.2", "claim": "Discrete curvature, Jensen/Stirling, score deletion and uniform high-variance exclusion."},
-    {"id": "four-block", "section": "5.3", "claim": "Exact nonprincipal four-block permanent expansion and factorial/cross-factor normalization."},
-    {"id": "exceptional-exclusion", "section": "5.3", "claim": "Uniform exceptional degree estimates and generating determinant bound imply H/mu < 1."},
-    {"id": "weighted-score-sum", "section": "5.4", "claim": "Retain Gamma while summing all short errors, then remove weights with trace-norm determinant control."},
-    {"id": "uniform-absorption", "section": "5.4", "claim": "Prove the polynomial error <= tau/4 uniformly over tau <= A*log n, with one common threshold."},
-    {"id": "global-upper", "section": "5.5", "claim": "Cover all tournament classes and obtain P(n) <= (C_*+O(1/n))*mu_n."},
-    {"id": "small-score-paths", "section": "6", "claim": "Convolution and rank-one determinant produce H/mu = rho + O((d+1)^2/n)."},
-    {"id": "global-lower", "section": "6", "claim": "Use actual carousel path counts for P(n) >= (L-O(1/n))*mu_n."},
-    {"id": "main-bound", "section": "1 and 6", "claim": "Combine upper and lower estimates with the same absolute K and n0 and prove MainBound."}
+    {
+      "id": "path-convolution",
+      "section": "2.2",
+      "claim": "Prove the exact determinant/permanent convolution for the defined permutation pathCount."
+    },
+    {
+      "id": "long-subset-convolution-tail",
+      "section": "2.2 and 5.1",
+      "claim": "Combine the verified logarithmic-cutoff scalar tail with the actual path convolution, subset cardinalities and Bregman to obtain the uniform o(1/n) long-subset path contribution."
+    },
+    {
+      "id": "sharper-transitive-spectrum",
+      "section": "2.3",
+      "claim": "Verify the manuscript ancillary exact cotangent eigenvalue formula and sharper ||S|| <= cot(pi/(2n)). The universal 2n/pi cap and unconditional C_* spectral bound required for MainBound are already proved."
+    },
+    {
+      "id": "bregman",
+      "section": "2.2 and 5.2",
+      "claim": "Bregman bound and the balanced-degree/Stirling normalization."
+    },
+    {
+      "id": "partition-expansion",
+      "section": "3.2",
+      "claim": "Partition-lattice Mobius expansion, degree-one cancellation, and finite formal core decomposition."
+    },
+    {
+      "id": "gaussian-pairings",
+      "section": "3.2",
+      "claim": "Wick pairings and Gaussian bilinear integral yield the determinant factor and nonnegative coefficients."
+    },
+    {
+      "id": "compressed-core",
+      "section": "3.3",
+      "claim": "Decoration/chain counting, including loops, reversals and disconnected cores; U_jb compensation."
+    },
+    {
+      "id": "activity",
+      "section": "3.3",
+      "claim": "Alternating contractions and full excess activity <= (710*W^3*j/n)^j, with the sharper first-excess bound."
+    },
+    {
+      "id": "finite-window",
+      "section": "3.4",
+      "claim": "Finite excess truncation, geometric bound, coefficient convolution and factorial recovery."
+    },
+    {
+      "id": "gaussian-moments",
+      "section": "3.4",
+      "claim": "Differentiate the Gaussian determinant and bound the factorial-recovery contribution by K_G/n."
+    },
+    {
+      "id": "polarization",
+      "section": "3.5",
+      "claim": "Permanent polarization for arbitrary complex, possibly singular and nonnormal matrices."
+    },
+    {
+      "id": "psd-permanent",
+      "section": "3.5",
+      "claim": "Complex Gaussian permanent identity and AM-GM give the n!/n^n complete-homogeneous bound."
+    },
+    {
+      "id": "analytic-tail",
+      "section": "3.5",
+      "claim": "Centered operator absolute values, circle bound, Cauchy coefficient bounds and exponentially small tails."
+    },
+    {
+      "id": "uniform-permanent",
+      "section": "3",
+      "claim": "Combine the full explicit budget into uniform absolute and relative O_C,q(1/n)."
+    },
+    {
+      "id": "local-scaling",
+      "section": "4.1",
+      "claim": "Gauge inverse bounds, perturbation, invariant gauge ball and contraction; nonnegative support preserved."
+    },
+    {
+      "id": "capacity",
+      "section": "4.1",
+      "claim": "Euclidean displacement, Frobenius displacement, capacity and arbitrary-mass exact restoration."
+    },
+    {
+      "id": "gram-deletion",
+      "section": "4.2",
+      "claim": "Gram monotonicity, nonprincipal deletion, centering and logarithmic Lipschitz inequalities with the stated constants."
+    },
+    {
+      "id": "preconditioning",
+      "section": "4.3",
+      "claim": "Exact paired mass and deletion marginal identities; uniform mass, norm and error estimates."
+    },
+    {
+      "id": "scaled-gap",
+      "section": "4.3",
+      "claim": "Verify density, centering and singular gap after each transformation and genuine scaling."
+    },
+    {
+      "id": "nonprincipal-restoration",
+      "section": "4.4",
+      "claim": "Actual permanent upper bound with Gamma and correctly assigned deleted row/column factors."
+    },
+    {
+      "id": "small-score-permanent",
+      "section": "4.5",
+      "claim": "Uniform two-sided approximation with (d+t+1)^2/n error."
+    },
+    {
+      "id": "variance-exclusion",
+      "section": "5.2",
+      "claim": "Discrete curvature, Jensen/Stirling, score deletion and uniform high-variance exclusion."
+    },
+    {
+      "id": "four-block",
+      "section": "5.3",
+      "claim": "Exact nonprincipal four-block permanent expansion and factorial/cross-factor normalization."
+    },
+    {
+      "id": "exceptional-exclusion",
+      "section": "5.3",
+      "claim": "Uniform exceptional degree estimates and generating determinant bound imply H/mu < 1."
+    },
+    {
+      "id": "weighted-score-sum",
+      "section": "5.4",
+      "claim": "Retain Gamma while summing all short errors, then remove weights with trace-norm determinant control."
+    },
+    {
+      "id": "uniform-absorption",
+      "section": "5.4",
+      "claim": "Prove the polynomial error <= tau/4 uniformly over tau <= A*log n, with one common threshold."
+    },
+    {
+      "id": "global-upper",
+      "section": "5.5",
+      "claim": "Cover all tournament classes and obtain P(n) <= (C_*+O(1/n))*mu_n."
+    },
+    {
+      "id": "small-score-paths",
+      "section": "6",
+      "claim": "Convolution and rank-one determinant produce H/mu = rho + O((d+1)^2/n)."
+    },
+    {
+      "id": "global-lower",
+      "section": "6",
+      "claim": "Use actual carousel path counts for P(n) >= (L-O(1/n))*mu_n."
+    },
+    {
+      "id": "main-bound",
+      "section": "1 and 6",
+      "claim": "Combine upper and lower estimates with the same absolute K and n0 and prove MainBound."
+    }
   ],
   "external_sources_checked": [
-    {"url": "https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf", "item": "Lemma 2.1 and Corollary 2.3: Bregman and degree balancing."},
-    {"url": "https://arxiv.org/html/2408.09341v2", "item": "Lemmas 4.3-4.4: PSD Gaussian permanent/AM-GM ingredients; not the general nonnormal approximation."},
-    {"url": "https://www.combinatorics.org/ojs/index.php/eljc/article/download/v32i4p43/pdf/", "item": "Proposition 2: Hamilton path permanent/determinant convolution with complement adjacency convention."}
+    {
+      "url": "https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf",
+      "item": "Lemma 2.1 and Corollary 2.3: Bregman and degree balancing."
+    },
+    {
+      "url": "https://arxiv.org/html/2408.09341v2",
+      "item": "Lemmas 4.3-4.4: PSD Gaussian permanent/AM-GM ingredients; not the general nonnormal approximation."
+    },
+    {
+      "url": "https://www.combinatorics.org/ojs/index.php/eljc/article/download/v32i4p43/pdf/",
+      "item": "Proposition 2: Hamilton path permanent/determinant convolution with complement adjacency convention."
+    }
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",

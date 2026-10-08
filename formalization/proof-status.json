@@ -442,6 +442,77 @@
         "preconditionedDensityDifference_frobenius_bound",
         "preconditionedDensityDifference_opNorm_bound"
       ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Actual paired row and column marginal infinity errors are <=4/(1-a0)^2*sqrt(tau/n), and their concatenated squared Euclidean sum is <=32*tau/(1-a0)^4, under the fixed score interval. All bounds follow from genuine paired marginal identities and finite Cauchy bounds.",
+      "lean": [
+        "preconditioned_row_error_sq_bound",
+        "preconditioned_column_error_sq_bound",
+        "preconditioned_row_error_abs_bound",
+        "preconditioned_column_error_abs_bound",
+        "preconditioned_row_error_sum_sq_bound",
+        "preconditioned_column_error_sum_sq_bound",
+        "preconditioned_marginal_error_sum_sq_bound"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Exact rectangular mass-normalized row variance identity, equal-cardinality column counterpart, normalized density bounds and infinity errors. If actual mass is at least half the target, squared marginal sums grow by at most a factor four. Actual paired full normalization satisfies the corresponding finite bounds; mass lower bound follows from the proved mass budget when that budget <=n/2.",
+      "lean": [
+        "normalized_row_error_sum_sq",
+        "normalized_column_error_sum_sq",
+        "mass_normalization_factor_bounds",
+        "mass_normalization_factor_error",
+        "normalized_rect_column_error_sum_sq_le",
+        "normalized_entry_bounds",
+        "preconditioned_mass_lower_of_budget",
+        "normalizedPreconditionedDensity_mass",
+        "normalizedPreconditionedDensity_entry_bounds",
+        "normalizedPreconditionedDensity_row_error_abs_le",
+        "normalizedPreconditionedDensity_column_error_abs_le",
+        "normalizedPreconditionedDensity_row_error_sum_sq_le",
+        "normalizedPreconditionedDensity_column_error_sum_sq_le"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "For any actual nonnegative normalized matrix with entries <=K/n and independently deleted t-element row/column sets, 2t<=n, the exact deletion formulas imply |kappa|<=4t*eps+2(K+1)t^2/n, pointwise marginal and squared Euclidean bounds, and entries <=K/(n-t). If deleted mass is at least half the target, final rectangular mass normalization gives the factor-four squared marginal bounds and density <=2K/(n-t). These finite hypotheses remain explicit; their uniform logarithmic-parameter thresholds are not asserted.",
+      "lean": [
+        "scaled_deleted_mass_error_bound",
+        "scaled_deleted_row_error_abs_le",
+        "scaled_deleted_column_error_abs_le",
+        "scaled_deleted_row_error_sum_sq_le",
+        "scaled_deleted_column_error_sum_sq_le",
+        "scaled_deleted_entry_bounds",
+        "normalized_deleted_entry_bounds",
+        "normalized_deleted_row_error_sum_sq_le",
+        "normalized_deleted_column_error_sum_sq_le"
+      ]
+    },
+    {
+      "section": "4.1",
+      "claim": "The genuine mass-corrected centered kernel is doubly centered. The actual balanced gauge Hessian has the proved explicit four-block inverse; actual Gram positivity, intertwining, density estimates, row/column absolute inverse sums, infinity action and squared Euclidean action controls yield the manuscript inverse budget. Nonlinear scaling existence and capacity remain unproved.",
+      "lean": [
+        "localCenteredKernel_doublyCentered",
+        "localBalancedInverse_mul_hessian",
+        "localBalancedHessian_inverse",
+        "localGramLeft_opNorm_le",
+        "localGramRight_opNorm_le",
+        "localBalancedInverse_absolute_row_bound",
+        "localBalancedInverse_absolute_column_bound",
+        "localBalancedInverse_infinity_control",
+        "localBalancedInverse_euclidean_control_sq"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "The actual Setoid partitions into pairs are counted by double factorial for even cardinality and zero for odd cardinality. Actual pairings compatible with a coordinate kernel factor independently over its fibers, including empty sets and empty fibers. This is the finite combinatorial Wick ingredient, not yet the Gaussian determinant or permanent approximation.",
+      "lean": [
+        "pairingPartition_card",
+        "compatible_pairingPartition_card",
+        "compatible_pairingPartition_count"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -513,7 +584,7 @@
     {
       "id": "local-scaling",
       "section": "4.1",
-      "claim": "Gauge inverse bounds, perturbation, invariant gauge ball and contraction; nonnegative support preserved."
+      "claim": "Actual nonlinear perturbation, invariant gauge ball and Banach contraction yielding genuine doubly stochastic scaling. The explicit balanced gauge inverse and its density-derived infinity and Euclidean bounds are already proved."
     },
     {
       "id": "capacity",
@@ -523,7 +594,7 @@
     {
       "id": "preconditioning",
       "section": "4.3",
-      "claim": "Uniform paired marginal bounds, normalized deletion error estimates and final normalization. Exact mass/deletion/marginal formulas, finite uniform full-mass variance error, nonnegative density bounds and actual Frobenius/operator displacement are already proved."
+      "claim": "Prove uniform logarithmic-parameter thresholds for the actual paired normalization/deletion estimates, exact centered-kernel transformation and scaled Gaussian comparison. Finite actual density, full-mass, marginal and Frobenius/operator estimates and generic arbitrary-deletion/final-normalization budgets are already proved with explicit finite hypotheses."
     },
     {
       "id": "scaled-gap",

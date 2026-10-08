@@ -989,6 +989,56 @@
         "pairedLeft_total_displacement_le",
         "pairedRight_total_displacement_le"
       ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Actual original edges biject to compressed chain positions, and actual graph vertices biject to high vertices plus internal positions. Actual endpoint, internal incidence and alternating side identities hold. Genuine high decorations give degree sequences, colours and conjugated labelled pairings. Canonical labelled paths give a bijective original-edge assignment using reversal of existing positions, without extra direction choices; full encoding injectivity remains pending.",
+      "lean": [
+        "compressedPathEdgeEquiv",
+        "compressedGraphVertexEquiv",
+        "compressedPathArrival_departure_side",
+        "compressedPathArrival_previous_departure_vertex",
+        "decoratedCoreDegree_mem",
+        "decoratedCoreColor_choices",
+        "decoratedPathEdgeAssignment",
+        "decoratedPathLength_sum"
+      ]
+    },
+    {
+      "section": "3.4",
+      "claim": "The actual finite Gaussian/core coefficient convolution obeys a genuine absolute error estimate G(RB)*(T1/n+8D^2/n^2), conditional only on the stated actual core-excess window estimates, which still require the contraction/activity proof.",
+      "lean": [
+        "finite_nonnegative_convolution_sum_le",
+        "actual_finite_gaussian_core_error_le",
+        "actual_gaussian_finite_window_error_le"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "A genuine rectangular rank-one Gram factor and orthogonal polar identity discharge the circle spectral inputs. For an actual real doubly centered B with actual Euclidean operator norm <=q and Frobenius norm <=C, the actual permanent of P+zB is bounded by n!/n^n exp(|z| C sqrt(n)/(1-|z|q)); no assumed circle bound or Gaussian identity is used.",
+      "lean": [
+        "abs_projection_add_smul",
+        "rectangularGramPermanent_le_geometric",
+        "rankOne_projection_permanent_le_geometric",
+        "real_matrix_opNorm_eq_complexification",
+        "complex_posSemidef_eigenvalue_sq_sum",
+        "rankOne_projection_permanent_le_exponential",
+        "centered_complex_permanent_le_exponential",
+        "real_centered_permanent_le_exponential"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "The actual sum of core principal determinant weights equals the actual induced generating determinant and is <=2e times the core real skew determinant. Actual path counts split exactly into disjoint-short, meeting-short and long terms. Actual meeting-short contributions are uniformly negligible under low variance; the true deletion factorial normalization has exp(2k^2/n) control.",
+      "lean": [
+        "tournament_generating_det_le",
+        "matrix_principal_generating_det",
+        "core_principalWeight_generating_eq_induced",
+        "core_principalWeight_generating_le",
+        "exceptional_meeting_convolution_eventually_small",
+        "pathCount_eq_disjoint_meeting_long",
+        "convolution_factorial_ratio_le"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -1000,7 +1050,7 @@
     {
       "id": "compressed-core",
       "section": "3.3",
-      "claim": "Construct the genuine chain-position bijection and contraction/decorated encoding from actual partition cores. Actual terminal paths cover all half-edges, actual compressed pairs biject to path orbits, and actual decoration cardinality and Mobius compensation are proved."
+      "claim": "Complete the actual decorated encoding injectivity and tensor chain contraction. Actual original edges and all graph vertices biject to compressed chain positions, actual endpoint/parity identities hold, and labelled canonical path readings give an actual original-edge assignment with no extra direction bits."
     },
     {
       "id": "activity",
@@ -1010,12 +1060,12 @@
     {
       "id": "finite-window",
       "section": "3.4",
-      "claim": "Apply the actual core activities through the exact finite Gaussian/core convolution and factorial recovery. The true finite excess ratio and sum <=8D^2/n^2 and dimension-independent Gaussian factorial recovery are proved."
+      "claim": "Discharge the actual finite core-excess activity estimates and combine factorial recovery. The exact actual finite Gaussian/core convolution error is proved in terms of actual core-excess windows, including the 8D^2/n^2 finite higher-excess tail."
     },
     {
       "id": "analytic-tail",
       "section": "3.5",
-      "claim": "Discharge the actual circle matrix projection/polar spectral hypotheses and obtain the uniform Gaussian/permanent tail. Actual PSD homogeneous/geometric/exponential bounds and polar spectral envelope, Parseval coefficient extraction and finite-support permanent tail are proved."
+      "claim": "Apply the proved unconditional actual centered-matrix circle majorant to the normalized permanent coefficients, choose a common linear cutoff, and combine the permanent and actual Gaussian tails. No assumed circle spectral input remains."
     },
     {
       "id": "uniform-permanent",
@@ -1035,7 +1085,7 @@
     {
       "id": "exceptional-exclusion",
       "section": "5.3",
-      "claim": "Apply the proved actual four-block exceptional permanent bound using the actual analytic core minor estimates, then combine the generating determinant and common asymptotic threshold to imply H/mu < 1."
+      "claim": "Supply the actual analytic core-minor bounds in the proved four-block estimate and disjoint-short convolution, then obtain a common asymptotic exclusion threshold. Actual generating determinants, deletion factorial normalization and uniformly negligible meeting-short terms are proved."
     },
     {
       "id": "weighted-score-sum",
@@ -1084,11 +1134,16 @@
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap Mathlib.Combinatorics.Enumerative.Composition Mathlib.Data.Fin.Tuple.NatAntidiagonal Mathlib.Analysis.SpecificLimits.Basic",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap Mathlib.Combinatorics.Enumerative.Composition Mathlib.Data.Fin.Tuple.NatAntidiagonal Mathlib.Analysis.SpecificLimits.Basic Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff Mathlib.Data.Matrix.ColumnRowPartitioned Mathlib.Data.Fin.Rev",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",
     "python run_diagnostics.py"
   ],
-  "scope_note": "The verified declarations prove only the listed components. Passing finite diagnostics and compiling those components do not prove the remaining analytic claims or MainBound."
+  "scope_note": "The verified declarations prove only the listed components. Passing finite diagnostics and compiling those components do not prove the remaining analytic claims or MainBound.",
+  "progress_publication": {
+    "remote": "https://github.com/makerY666/tournament-hamiltonian-paths",
+    "branch": "codex/verify-and-formalize",
+    "policy": "Push each significant progress batch after its reproducible component build and axiom audit. Submit the upstream PR only after the full MainBound and manuscript equivalence checks pass."
+  }
 }

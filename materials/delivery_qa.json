@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-08",
+  "bilingual_display_equations": 189,
+  "canonical_display_match": true,
+  "pdf_checks": [
+    {
+      "language": "en",
+      "pages": 25,
+      "embedded_formula_images": 814,
+      "margin_outliers": 0,
+      "author_email_verified": true,
+      "sha256": "65331356a55e59ce45fe955e7c3f28040d37895faf21a6ba7ae46cf742b92839"
+    },
+    {
+      "language": "zh",
+      "pages": 22,
+      "embedded_formula_images": 806,
+      "margin_outliers": 0,
+      "author_email_verified": true,
+      "sha256": "6e98384db3d78067da351f376d30d3892cd85e0edd247616abaf5975de17c8c7"
+    }
+  ],
+  "proof_status": "Internal AI-assisted proof reconstruction; not external peer review",
+  "source_hashes": {
+    "verification/carousel_path_cover_recurrence.py": "7992aaf04b7f3d24c2b28cf4321efbf025c10a75489ee338c3385bc300eaca7c",
+    "verification/centered_permanent_coefficients.py": "c331267a4a23252f987eef3aed0fb209bcff9ac642b83b7d06e65c954527d1e4",
+    "verification/check_higher_coefficient_envelope.py": "9c7c4699c8bbb43f497641840ea796aa2a8cce55fb32d47443da5a5d531ebc90",
+    "verification/derive_centered_c6_symbolic.py": "51b16e2a3f7d76455ef66016ca3220d21133701151cb00273f380fd7dc2e0f66",
+    "verification/diagnose_paired_scaling_edit_bound.py": "21c6af9d475bc4b33008c0539703c9ef4bed0df1d5f9d51ce0a5590b90aa5956",
+    "verification/diagnose_score_adaptive_error.py": "f32576badf6043f4565966dbadd092cb050c62eea2ed336af4f6950eb832ac1b",
+    "verification/verify_carousel_repair_audit.py": "13f289eeb975cd628e163f5c4a16067a365c0ee08840f37f79e9b6979a78e8f9",
+    "verification/verify_extreme_cross_decomposition.py": "13b7e424a31918fe97824836cf6a16fb14caf05be2118ba9f18703a233739489",
+    "verification/verify_extreme_local_max.py": "93841e5e221a8e1a39ab3fe7776041cbd578ece011a20f4c5c40c054b1cd8484",
+    "verification/verify_first_kernel_correction.py": "196d60b1fff6ee513ae3b2c3730fa8e160ae5e03489acd89671798f02d8fc161",
+    "verification/verify_growing_degree_permanent_window.py": "1d85ee084c4371d97a261f64d55372d0f00bba4589c092df5668bc26c0e4c1ee",
+    "verification/verify_hamilton_witnesses.py": "0a4a31432ae007a123ce07ca29680708db3c68a65ef368e84d6a93e3f8c7a17c",
+    "verification/verify_inverse_n_spectral_bounds.py": "01a5c5fc09c0132d418d0cb9e3f635c943ea3c0b80aeba8b508c6f3f1ff46094",
+    "verification/verify_kernel_activity_window.py": "220bbb0ee2a26f8b090382b4fc6155be12ccb98e439fb5bd77c1680e27b75375",
+    "verification/verify_local_two_permanent_formula.py": "ec0e048c2a2e65ad75ab7101fcf7c193005d643982231405ff6d65abd25c2d81",
+    "verification/verify_nonprincipal_gaussian_deletion.py": "17615a1fb10e3d3222e231c6824a3ebdee35c5ad0593215e27ce3962e9ebcecd",
+    "verification/verify_operator_packing_path_constant.py": "8ecb96a3ce7c1d636aa16fa28b7db06bf1160801c7b58418c519157212a65d2c",
+    "verification/verify_polar_permanent_tail.py": "38b65c0d58fd191330146548948d6a169ad8e26aabc4fcff14823eefcc3cbe72",
+    "verification/verify_preconditioned_nonprincipal_scaling.py": "bdb5ca29aff3ee237655d099f2037078e73195e71adbdf57be0ed1500f4b982b",
+    "verification/verify_quantitative_carousel_repair.py": "ad596db906a03b26b5b2b6346eda2b44348d962883cb5c50d60f049f0766081f",
+    "verification/verify_regular_catalogue_results.py": "83a2832d0862ca55d89641598f312d278acf64e032c72235a2f978cbd394895c",
+    "verification/verify_spectral_core_window.py": "17bcedf16434be00796eaf34caa77952b14dd01171bc2eef64d1af6cf5c4bb5d",
+    "verification/verify_spectral_stability_bridge.py": "8d53f4c4654f8a13fc0a734e128344e62ccf94c0715797f7ea0a19b336fee42c",
+    "verification/verify_standalone_linear_energy_reduction.py": "07ea0f7a2ce42289bda217ce9da8b86e18091d91e212fc1917811ab73ada1ad3",
+    "verification/verify_uniform_permanent_zeroth_audit.py": "da1997b1defccbde93f99f5c7de296e4decd5bd37daf6fea2aa9c5244aba9186",
+    "verification/verify_word_minor_and_cube.py": "293a64a4d34e4249b940d410be2f5f87ab3c5e279976340bda70e98095bd7be5",
+    "manuscript_en.md": "699250f29b63d711b0a0f5af6729c7e86aea22ddb5e726eec9e9b8d642c420b2",
+    "manuscript_en.tex": "e62b21f698e263bd9cd5c4220cdb376ae9c3728209d41be38b361e46b681d06a",
+    "manuscript_zh.md": "bc5f1e6a1b83f34bf698340ae51e4ff5ce3e0d77d4dbf6954f9652bf7a86b61f",
+    "manuscript_zh.tex": "cb2ef940e78aba50cc52a25e217f542faa07797d111b3dc80a2178e94d8d4aa4"
+  },
+  "visual_review": {
+    "status": "completed",
+    "method": "All final page renders inspected in contact sheets; selected pages inspected at full size",
+    "pages_reviewed": {
+      "en": 25,
+      "zh": 22
+    },
+    "full_size_pages": {
+      "en": [
+        1,
+        7,
+        19
+      ],
+      "zh": [
+        1,
+        2,
+        10,
+        22
+      ]
+    },
+    "result": "No clipping, image overlap, or missing mathematical glyphs observed; Chinese line wrapping corrected"
+  },
+  "contact_sheets_note": "Page-image contact sheets were used for the recorded local visual review; temporary image files are not published.",
+  "public_copy_note": "Local absolute paths removed for publication; mathematical records and artifact hashes are unchanged."
+}

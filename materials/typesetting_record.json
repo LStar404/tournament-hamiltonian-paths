@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-08",
+  "formulas_preflight": 1620,
+  "renderer": "Offline mathematical glyph rendering and ReportLab",
+  "tex_compilation": "Sources exported for XeLaTeX; no local TeX engine available",
+  "outputs": [
+    {
+      "language": "en",
+      "pdf": "../papers/tournament_hamilton_paths_en.pdf",
+      "pages": 25,
+      "display_formulas": 189,
+      "minimum_display_font_pt": 12,
+      "bytes": 4061355
+    },
+    {
+      "language": "zh",
+      "pdf": "../papers/tournament_hamilton_paths_zh.pdf",
+      "pages": 22,
+      "display_formulas": 189,
+      "minimum_display_font_pt": 12,
+      "bytes": 4150101
+    }
+  ],
+  "public_copy_note": "Local absolute paths removed for publication; mathematical records and artifact hashes are unchanged."
+}

@@ -9,7 +9,7 @@
       "embedded_formula_images": 824,
       "margin_outliers": 0,
       "author_email_verified": true,
-      "sha256": "bbab7e2801553b6a6e5de85b2b0599aaba26912a34598646cd944362a41d9bda"
+      "sha256": "56d38503d934185af7b1e38c0e5b3e7fa7b2bb05ab4209ba9c3b292b21da3dee"
     },
     {
       "language": "zh",
@@ -17,7 +17,7 @@
       "embedded_formula_images": 816,
       "margin_outliers": 0,
       "author_email_verified": true,
-      "sha256": "0e1722e2ca7695875b93ea089ecc7e1c5c2871e45ae0ece7a47a9556e20ce36d"
+      "sha256": "784c292853f923fb04a21c4b5d643dc6341ed39d0c1711042931232bc2522a09"
     }
   ],
   "proof_status": "Companion Lean formalization reported in PR #1; no external human peer review reported",
@@ -48,10 +48,10 @@
     "verification/verify_standalone_linear_energy_reduction.py": "07ea0f7a2ce42289bda217ce9da8b86e18091d91e212fc1917811ab73ada1ad3",
     "verification/verify_uniform_permanent_zeroth_audit.py": "da1997b1defccbde93f99f5c7de296e4decd5bd37daf6fea2aa9c5244aba9186",
     "verification/verify_word_minor_and_cube.py": "293a64a4d34e4249b940d410be2f5f87ab3c5e279976340bda70e98095bd7be5",
-    "manuscript_en.md": "498b0572890e18b59babd3c17fde1ec06123dbf90e36112fc26306b84411287c",
-    "manuscript_en.tex": "71d4e6d0e3291c41b10e12b6a70ae160d4280ff9aab9e135912de2ace82fb010",
-    "manuscript_zh.md": "a17730c6a33980ad5472e57f35debcd2b4eb004073fd17987668c5f92e8c77ba",
-    "manuscript_zh.tex": "67b0a8d6019aa0d461959d13165b97cd3d6a31d099a4ac459be224a652baf7da"
+    "manuscript_en.md": "0424674b0e3fbcaf69d95e53ea2b66ccf6fe8b6a14d4259a49df26d67749f4d6",
+    "manuscript_en.tex": "83fdec99cda0402aa75fcfa0b21af19633224c22c23ec580b56c57ef395b14ce",
+    "manuscript_zh.md": "09e9078b4c323aeb7181238fc42208c8f5985b7200a60e63c05a50106b34a921",
+    "manuscript_zh.tex": "4ef212f8cbdf40a7823c083ffe8079a1de2f31aeb136e6fd370156d920485395"
   },
   "visual_review": {
     "status": "completed",

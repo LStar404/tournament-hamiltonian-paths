@@ -10,7 +10,7 @@
       "pages": 25,
       "display_formulas": 190,
       "minimum_display_font_pt": 12,
-      "bytes": 4079047
+      "bytes": 4079335
     },
     {
       "language": "zh",
@@ -18,7 +18,7 @@
       "pages": 23,
       "display_formulas": 190,
       "minimum_display_font_pt": 12,
-      "bytes": 4171043
+      "bytes": 4170800
     }
   ],
   "public_copy_note": "Local absolute paths removed for publication; mathematical records and artifact hashes are unchanged."

@@ -1,29 +1,29 @@
 # Zenodo deposit metadata / Zenodo 提交元数据
 
-Copy the following into a new Zenodo upload. This file deliberately describes
-the item as a preprint/research manuscript and preserves the existing
-limitations and AI-use disclosure.
+Use the following fields when creating a **new version of the existing Zenodo record**.
+This is a revised preprint/research manuscript, not an unrelated new deposit.
+The previous published version and its DOI should remain intact.
 
 ## Basic information
 
 - Resource type: **Publication → Preprint**
 - Upload type / access: **Open access**
 - License: **CC-BY-4.0** / Creative Commons Attribution 4.0 International
-- Publication date: **2026-10-08**
+- Publication date: **2026-10-09**
 - Title: **Constant-factor bounds for Hamiltonian paths in tournaments**
-- Version: **Research manuscript, 2026-10-08**
+- Version: **1.1 (revised manuscript, 2026-10-09)**
 - Language: **English** (the archive also contains a Chinese version)
-- Creator: **Liu, Xingchen**
-- Affiliation: **Independent Researcher**
-- ORCID: leave blank unless the author chooses to add a verified ORCID.
+- First creator: **Liu, Xingchen** — **Independent Researcher**
+- Second creator: **Ye, Xiangyu** — **Independent Researcher**
+- ORCID: leave blank unless an author provides a verified ORCID.
 
 ## Description
 
 This record archives a bilingual research manuscript on constant-factor bounds
 for the maximum number of directed Hamiltonian paths in an n-vertex tournament.
 It includes English and Chinese PDF manuscripts, editable Markdown and LaTeX
-sources, component proof-audit reports, exact finite diagnostic records, and
-the Python verification modules used by the diagnostics.
+sources, the companion Lean formalization, component proof-audit reports, exact
+finite diagnostic records, and Python verification modules.
 
 Let H(T) count vertex permutations forming a directed Hamiltonian path, let
 P(n) be its maximum over n-vertex tournaments, and put mu_n = n!/2^(n-1). The
@@ -39,15 +39,18 @@ constant L, effective numerical values of K or n_0, or an extremal
 classification.
 
 Research status: this is a research manuscript/preprint. It has undergone an
-AI-assisted internal proof reconstruction and cross-check, but it has not
-undergone external human peer review or formal proof-assistant verification.
-Finite computations in the archive are diagnostics, not replacements for the
-all-order proof.
+AI-assisted internal proof reconstruction and cross-check, and its main theorem
+has a companion Lean formalization contributed by second author Xiangyu Ye
+(GitHub: makerY666) through PR #1. The PR includes a recorded successful
+project build and transitive axiom audit; this manuscript revision did not
+independently rerun the complete Lean verification. External human peer review
+has not been reported. Finite computations are diagnostics, not replacements
+for the all-order proof.
 
 AI-use disclosure: AI assistants were used substantively for proof
 reconstruction and cross-checking, translation, typesetting, and finite
-diagnostic programming. The named author accepts responsibility for the
-record's contents. AI systems are not listed as authors or creators.
+diagnostic programming. The two named authors are credited for their respective
+contributions. AI systems are not listed as authors or creators.
 
 Repository and version control: https://github.com/LStar404/tournament-hamiltonian-paths
 
@@ -65,15 +68,16 @@ Gaussian determinant; preprint; graph theory; combinatorics
 
 ## Files to upload
 
-Upload `tournament_hamiltonian_paths_zenodo_2026-10-08.zip`. It is a checked
-snapshot of the public repository, including this metadata file.
+Upload `tournament_hamiltonian_paths_zenodo_2026-10-09_v1.1.zip`. It is a checked
+snapshot of the revised public repository, including both PDF manuscripts,
+editable sources, the Lean formalization, and this metadata file.
 
 ## Submission checklist
 
-1. Start a **New upload** on Zenodo, choose the resource type and fields above,
-   and upload the archive.
+1. Open the existing Zenodo record and select **New version**; do not start an
+   unrelated new upload. Replace the previous archive with the revised archive.
 2. Select **CC-BY-4.0** from Zenodo's license selector and Open access.
-3. Choose “no” for an existing DOI. Optionally reserve a new DOI before
-   publishing; a DOI is registered only when the record is published.
-4. Use Zenodo's Preview, then publish only after reviewing the visible title,
-   author, description, disclosure and files.
+3. Preserve Zenodo's version chain. The new version receives its own DOI while
+   the concept DOI continues to resolve to the latest version.
+4. Use Zenodo's Preview, then publish only after reviewing both creators in
+   order, the description, disclosure, version and replacement archive.

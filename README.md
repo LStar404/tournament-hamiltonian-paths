@@ -1,8 +1,10 @@
 # Hamiltonian paths in tournaments / 竞赛图中的 Hamilton 路径
 
-**Author / 作者:** Xingchen Liu / 刘星辰  
-**Affiliation / 单位:** Independent Researcher / 个人研究者  
-**Contact / 联系:** lxc-em5158@outlook.com  
+**Authors / 作者:** Xingchen Liu / 刘星辰; Xiangyu Ye / 叶祥宇
+
+**Affiliation / 单位:** Both authors are independent researchers / 两位作者均为个人研究者
+
+**Contact / 联系:** lxc-em5158@outlook.com
 **Manuscript snapshot / 稿件版本:** 2026-10-09 (revised / 修订)
 
 This repository contains a bilingual research manuscript on constant-factor bounds for the maximum number of directed Hamiltonian paths in an n-vertex tournament, together with proof-audit reports and reproducible finite diagnostics.
@@ -66,7 +68,7 @@ This is the internally audited manuscript snapshot, not a dump of all explorator
 
 ## Lean formalization / Lean 形式化证明
 
-The formalization was contributed in [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1) and merged as commit [`2983cd9`](https://github.com/LStar404/tournament-hamiltonian-paths/commit/2983cd984a2698a738a91093060d42f394e64a89). The manuscripts describe the contributor's verification record; this revision did not independently rerun the full Lean build.
+The formalization was contributed by second author Xiangyu Ye (GitHub: makerY666) in [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1) and merged as commit [`2983cd9`](https://github.com/LStar404/tournament-hamiltonian-paths/commit/2983cd984a2698a738a91093060d42f394e64a89). The manuscripts describe the submitted verification record; this revision did not independently rerun the full Lean build.
 
 The [Lean project](formalization/TournamentHamiltonian.lean) pins Lean and Mathlib 4.34.1. The unconditional theorem [`TournamentHamiltonian.mainBound`](formalization/TournamentHamiltonian/MainBound.lean) proves the displayed maximum-path bounds for the actual finite tournament and Hamiltonian-path definitions, with one absolute constant and one common threshold. It includes both carousel parities and an upper bound for every tournament.
 
@@ -103,6 +105,6 @@ LaTeX sources target XeLaTeX, using Times New Roman and, for Chinese, SimSun; su
 
 ## License / 授权
 
-This work is released under [CC BY 4.0 International](LICENSE). Reuse, modification, redistribution, and commercial use are permitted, provided that appropriate credit is given to Xingchen Liu / 刘星辰, a link to the license is provided, and changes are indicated.
+This work is released under [CC BY 4.0 International](LICENSE). Reuse, modification, redistribution, and commercial use are permitted, provided that appropriate credit is given to Xingchen Liu / 刘星辰 and Xiangyu Ye / 叶祥宇, a link to the license is provided, and changes are indicated.
 
-本成果采用 [CC BY 4.0 International](LICENSE) 发布；允许再利用、修改、再发布和商业使用，但必须对刘星辰作适当署名、附上许可证链接并说明改动。
+本成果采用 [CC BY 4.0 International](LICENSE) 发布；允许再利用、修改、再发布和商业使用，但必须对刘星辰与叶祥宇作适当署名、附上许可证链接并说明改动。

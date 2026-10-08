@@ -1,8 +1,8 @@
 # 论文与核验资料 / Manuscripts and audit materials
 
-作者 / Author: 刘星辰 / Xingchen Liu
+作者 / Authors: 刘星辰 / Xingchen Liu；叶祥宇 / Xiangyu Ye
 
-单位 / Affiliation: 个人研究者 / Independent Researcher
+单位 / Affiliation: 两位作者均为个人研究者 / Both authors are independent researchers
 
 Email: lxc-em5158@outlook.com
 
@@ -23,7 +23,7 @@ Date: 2026-10-09 (revised)
 ## 数学状态
 
 正文支持当前常数因子界，而非一般精确通式或尖锐首项常数等式。
-证明经过 AI 辅助内部重建和交叉复核。2026 年 10 月 9 日修订稿新增第 7.4 节，记录 GitHub PR #1 提交的 Lean 形式化证明及其核验结果；尚无外部人工同行评审记录。
+证明经过 AI 辅助内部重建和交叉复核。2026 年 10 月 9 日修订稿新增第 7.4 节，记录第二作者叶祥宇通过 GitHub PR #1 提交的 Lean 形式化证明及其核验结果；尚无外部人工同行评审记录。
 未知误差常数和有效起始阶数不能用于直接推断小阶数值。
 有限计算只作查错，不替代正文任意阶证明。
 
@@ -51,6 +51,6 @@ python verify_standalone_linear_energy_reduction.py
 
 ## English note
 
-The two manuscripts state and prove the current constant-factor result with identical mathematical content. They do not claim an exact finite formula, the sharp constant as a global upper bound, or an extremal classification. The 9 October revision records the companion Lean formalization contributed in GitHub PR #1. External human peer review has not been reported.
+The two manuscripts state and prove the current constant-factor result with identical mathematical content. They do not claim an exact finite formula, the sharp constant as a global upper bound, or an extremal classification. The 9 October revision records the companion Lean formalization contributed by the second author, Xiangyu Ye, in GitHub PR #1. External human peer review has not been reported.
 
 Editable Markdown and XeLaTeX sources, component audit reports, exact diagnostic records and verification modules are included. The XeLaTeX files have not been compiled locally; the delivered PDFs were independently typeset and visually checked. Their formulas are high-resolution rendered glyphs, so formula edits should be made in the editable sources.

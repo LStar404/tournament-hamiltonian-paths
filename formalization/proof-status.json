@@ -893,6 +893,49 @@
         "complex_vector_product_amgm",
         "complex_product_amgm_integral"
       ]
+    },
+    {
+      "section": "3.5",
+      "claim": "The actual rectangular Gram permanent equals the actual product-exponential integral of the finite phase average of squared linear-form products. Actual PSD spectral square-root factorization and pointwise AM-GM imply per(H).re <= n!/n^n times the genuine complete homogeneous polynomial of the actual PSD eigenvalues, with no assumed Gaussian identity or moment formula.",
+      "lean": [
+        "gramPermanent_eq_circular_moment",
+        "psdSpectralFactor_self_mul_star",
+        "psdSpectralFactor_star_mul_self",
+        "complex_posSemidef_permanent_le_homogeneous"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Actual partition-graph degree-two continuation is involutive. Finite half-edge paths induce a genuine terminal pairing, the compressed pairing quotient has cardinal b+j, and the real terminal pairing count is the odd double factorial. Full chain coverage, decoration compensation and contraction activity are still pending.",
+      "lean": [
+        "degreeTwoSplice_involutive",
+        "terminal_on_path_iff",
+        "actualCompressedPairPartition_pairing",
+        "actualCompressedPairPartition_card",
+        "partitionCoreTerminal_pairings_card"
+      ]
+    },
+    {
+      "section": "4.4",
+      "claim": "Actual nonprincipal adjacency permanents restore exactly through the paired Gamma product, independent deleted row/column factors and the same true scaling potentials. Actual witness capacity gives a finite upper bound; one common threshold supplies the same witness with this upper bound and the proved uniform Gaussian cost. The final uniform permanent approximation and retained-mass normalization remain pending.",
+      "lean": [
+        "pairedScoreProduct_le_exp",
+        "adjacency_nonprincipal_paired_restoration",
+        "adjacency_nonprincipal_true_scaling_restoration",
+        "adjacency_nonprincipal_true_scaling_upper",
+        "exists_paired_nonprincipal_restoration_uniform_log"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "Exact factorial and 2-power normalization of the four-block cross terms yields exp(4 f^2/N), with the true choose-squared/factorial bound. Paired cross products have the stated compensation for deleted exceptional endpoints. Actual exceptional vertex weighted cross profiles satisfy u,v<=2+2 beta and uv<=.19+4(f+1)/N+4 beta+4 beta^2 under actual core weight displacement budgets.",
+      "lean": [
+        "fourBlock_cross_normalization",
+        "fourBlock_factorial_normalization_le",
+        "choose_square_mul_factorial_le",
+        "retained_cross_product_le",
+        "exceptional_weighted_cross_pair"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -917,14 +960,9 @@
       "claim": "Finite excess truncation, geometric bound, coefficient convolution and factorial recovery."
     },
     {
-      "id": "psd-permanent",
-      "section": "3.5",
-      "claim": "Prove the actual Gram permanent identity and its connection to the spectral quadratic moment, then combine actual AM-GM and complete-homogeneous moments for the n!/n^n bound. The actual exponential product measure, primitive-root phase orthogonality, complex Wick tuple moments, and spectral radial moment are proved."
-    },
-    {
       "id": "analytic-tail",
       "section": "3.5",
-      "claim": "Centered operator absolute values and the PSD permanent bound must produce the actual circle-value majorant and exponentially small tail. Actual circle Parseval coefficient extraction and the complete finite-support permanent tail are proved under a genuine circle-value bound."
+      "claim": "Use the actual PSD permanent bound, centered absolute-value spectra and homogeneous geometric bound to produce the true circle-value majorant and exponentially small tail. The unconditional actual Gram permanent identity, PSD n!/n^n complete-homogeneous bound, circle Parseval coefficient extraction and complete finite-support tail under a circle-value bound are proved."
     },
     {
       "id": "uniform-permanent",
@@ -934,7 +972,7 @@
     {
       "id": "nonprincipal-restoration",
       "section": "4.4",
-      "claim": "Actual permanent upper bound with Gamma and correctly assigned deleted row/column factors."
+      "claim": "Combine the actual uniform permanent approximation with the proved actual same-witness paired Gamma restoration and capacity upper bound, and normalize the retained mass power into e^-1 times the logarithmic error budget."
     },
     {
       "id": "small-score-permanent",
@@ -944,7 +982,7 @@
     {
       "id": "four-block",
       "section": "5.3",
-      "claim": "Complete factorial/cross-factor normalization and its application to the actual four-block expansion. The actual nonprincipal permanent bridge, weighted cross-minor inequalities, and uniform actual dense exceptional core are proved."
+      "claim": "Apply the proved exact four-block expansion, factorial/cross normalization and actual weighted exceptional cross profiles to the total permanent bound. True exp(4 f^2/N) factorial normalization and paired cross-product suppression are proved."
     },
     {
       "id": "exceptional-exclusion",

@@ -64,6 +64,20 @@ This is the internally audited manuscript snapshot, not a dump of all explorator
 
 本次发布只包含已复核论文版本及必要的核验材料，不将早期探索稿或已被替代的结论作为已证结果上传。本机路径和临时渲染文件不公开，论文与 PDF 内容保持原样。
 
+## Lean formalization in progress / Lean 形式化进展
+
+The [Lean project](formalization/TournamentHamiltonian.lean) pins Lean and Mathlib 4.34.1. It formalizes the finite tournament/path definitions, random-orientation averaging, the conditional finite spectral packing bound, the exact upper-constant enclosure, permanent scaling/restoration identities, and scalar score-penalty estimates. Its [proof ledger](formalization/proof-status.json) records the remaining all-order obligations. **The main asymptotic theorem is not yet formally proved or independently certified.**
+
+Lean 工程已形式化上述有限计数和代数部分；完整渐近主定理仍未完成。编译成功不代表全文已得到形式化认证。以下提交检查必须等无条件的 `MainBound` 证明完成后才会通过：
+
+```text
+cd formalization
+lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent
+python verify_lean.py --require-main
+```
+
+For component verification during development, omit `--require-main`. The verifier builds the project, checks transitive axiom dependencies, records source hashes, and separately reports the main-theorem status. `python run_diagnostics.py` reruns the four published finite diagnostics and records their scope and raw output under `formalization/audit/`.
+
 ## Reproduce the finite diagnostics / 复现有限检查
 
 Use Python 3.11 or newer. From the repository root:

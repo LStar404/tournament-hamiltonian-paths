@@ -1,0 +1,55 @@
+{
+  "recorded_at_utc": "2026-10-08T09:57:52.066709+00:00",
+  "components_build_and_axiom_audit_pass": true,
+  "main_theorem_proved": false,
+  "require_main": true,
+  "source_sha256": {
+    "TournamentHamiltonian/Averaging.lean": "c91bfcd553fa5d120112af85b877fc2804190fdf0c19b3458407698c2d92a701",
+    "TournamentHamiltonian/Constants.lean": "73c607720472f9316171cb50619981a52a3f1da726568b10387c5b98971e6d35",
+    "TournamentHamiltonian/Definitions.lean": "27f18e9989758e93c7cf738b62a587cc8b12d1345233bd7c813ec0ce5fb31293",
+    "TournamentHamiltonian/Orientation.lean": "d819a9147d774aacd7403f48e5d2337eec77c41583bb991122869da397f9ea72",
+    "TournamentHamiltonian/Packing.lean": "5dbb12a36a9c199855f59c0ae2a658dfbc246add2d89fc459cb287daf17f4a32",
+    "TournamentHamiltonian/ScalingIdentities.lean": "25320ca4a86ef5065d2365452b6f825f937461b3b44839dc083d2079823b0167",
+    "TournamentHamiltonian/ScorePenalty.lean": "7cb038c07e3095fa94ea891d17aae1553c579e9913d0edb4ac487909733d02be",
+    "TournamentHamiltonian.lean": "009a7761d4f77ea965557da5040a87f183cfa86af931cebfbc07e8966cfd668b",
+    "Audit.lean": "aa9b0288d995937f7623c0f0c34ff6227f8571ddec18edd85c0c0ae691c09373",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.toml": "5083c544debdf655871d308de4940f45ca8fbb93ce7277d1416b152ace6805ce",
+    "lake-manifest.json": "17573a6a8e6047bc4047620e909b9ab6ebbaaa9abb83335c36bb73872dfa8ae9",
+    "verify_lean.py": "9f40b113c7173ae047b97d38857148534f596ebd400a929357c9c0d9062cc034"
+  },
+  "commands": [
+    {
+      "command": [
+        "lake",
+        "build"
+      ],
+      "returncode": 0,
+      "stdout": "Build completed successfully (3218 jobs).\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Audit.lean"
+      ],
+      "returncode": 0,
+      "stdout": "AUDIT TournamentHamiltonian.prod_compl_restoration: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.score_penalty_absorption: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.orientationAdjacency_isTournament: [propext]\nAUDIT TournamentHamiltonian.upperConstant_eq_packed._simp_1_7: [propext]\nAUDIT TournamentHamiltonian.upperConstant._proof_1: [propext]\nAUDIT TournamentHamiltonian.meanPaths_eq_orientation_average: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.prod_compl_restoration._simp_1_5: [propext]\nAUDIT TournamentHamiltonian.twice_adjacency: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.edgeOfPair._proof_1: [propext]\nAUDIT TournamentHamiltonian.consecutive_ne._proof_1_1: [propext, Quot.sound]\nAUDIT TournamentHamiltonian.meanPaths_le_maxPaths: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.factorial_le_pow_mul_maxPaths: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.pathCount_le_maxPaths: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.ratio.eq_1: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.fixedAssignmentsEquiv._proof_4: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.score_young._simp_1_7: [propext]\nAUDIT TournamentHamiltonian.ratio_nonneg: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.pathRequirement.eq_1: [Quot.sound]\nAUDIT TournamentHamiltonian.upperConstant_eq_packed._simp_1_2: [propext]\nAUDIT TournamentHamiltonian.prod_compl_restoration._simp_1_6: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.spectral_packing: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.fixedAssignmentsEquiv._proof_1: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.pathCount_le_factorial: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.score_young._simp_1_1: [propext]\nAUDIT TournamentHamiltonian.tournamentOfOrientation.eq_1: [propext]\nAUDIT TournamentHamiltonian.score_young._simp_1_3: [propext]\nAUDIT TournamentHamiltonian.upperConstant._proof_2: [propext]\nAUDIT TournamentHamiltonian.packed.eq_1: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.ratio_product_nonneg: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.pathEdge.eq_1: [propext, Quot.sound]\nAUDIT TournamentHamiltonian.isHamiltonian_iff_consecutive._proof_1_1: [propext, Quot.sound]\nAUDIT TournamentHamiltonian.upperConstant_eq_packed._simp_1_4: [propext]\nAUDIT TournamentHamiltonian.meanPaths_le_maxPaths._proof_1_1: [propext, Quot.sound]\nAUDIT TournamentHamiltonian.fixedAssignmentsEquiv._proof_3: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.score_young._simp_1_6: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.upperConstant_decimal_bounds: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.permanent_exp_scaling: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.spectral_product_le_upperConstant: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.fixedAssignmentsEquiv._proof_2: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.prod_compl_restoration._simp_1_7: [propext]\nAUDIT TournamentHamiltonian.adjacency.eq_1: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.score_young._simp_1_2: [propext]\nAUDIT TournamentHamiltonian.edgeOfPair.eq_1: [propext]\nAUDIT TournamentHamiltonian.score_young._simp_1_4: [propext]\nAUDIT TournamentHamiltonian.score_sum_zero: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.upperConstant_eq_packed._simp_1_3: [propext]\nAUDIT TournamentHamiltonian.isHamiltonian_iff_consecutive: [propext, Quot.sound]\nAUDIT TournamentHamiltonian.prod_compl_restoration._simp_1_3: [propext]\nAUDIT TournamentHamiltonian.upperConstant_bounds: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.spectralCap_bounds: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.fixedAssignments_card: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.permanent_exp_restoration: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.meanPaths._proof_1: [propext]\nAUDIT TournamentHamiltonian.orientationAdjacency.eq_1: []\nAUDIT TournamentHamiltonian.maxPaths_le_factorial: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.total_pathCount: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.instFintypeTournament._proof_1: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.pathEdge_injective: [propext, Quot.sound]\nAUDIT TournamentHamiltonian.prod_compl_restoration._simp_1_1: [propext]\nAUDIT TournamentHamiltonian.upperConstant_eq_packed: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.score_young: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.edgeOfPair_eq_cases: [propext]\nAUDIT TournamentHamiltonian.upperConstant_eq_packed._simp_1_1: [propext]\nAUDIT TournamentHamiltonian.permanent_row_column_scaling: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.ratio_transfer: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.score_product_le_exp: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.ratio_merge: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.signMatrix.eq_1: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.prod_compl_restoration._simp_1_4: [propext]\nAUDIT TournamentHamiltonian.pathEdges_card: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.prod_compl_restoration._simp_1_2: [propext]\nAUDIT TournamentHamiltonian.permanent_submatrix_scaling: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.ratio_mono: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.signMatrix_skew: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.path_completions_card: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.signMatrix_total_sq: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.score_young._simp_1_5: [propext]\nAUDIT TournamentHamiltonian.spectralCap._proof_1: [propext]\nAUDIT TournamentHamiltonian.signMatrix_sq: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.upperConstant_den_pos: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.spectral_packing_at_mass: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.upperConstant_eq_packed._simp_1_6: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.paired_deleted_product: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.meanPaths.eq_1: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.pathEdge_injective._proof_1_1: [propext, Quot.sound]\nAUDIT TournamentHamiltonian.isHamiltonian_iff_fixed_edges: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.path_completions_card._simp_1_1: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.path_step_iff._simp_1_1: [propext]\nAUDIT TournamentHamiltonian.consecutive_ne: [propext, Quot.sound]\nAUDIT TournamentHamiltonian.path_step_iff: [propext, Classical.choice, Quot.sound]\nAUDIT TournamentHamiltonian.upperConstant_eq_packed._simp_1_5: [propext]\nAudited 91 project theorems. MainBound is still an unproved proposition.\nTournamentHamiltonian.MainBound : Prop\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "<main-theorem-check>"
+      ],
+      "returncode": 1,
+      "stdout": "<main-theorem-check>:2:45: error(lean.unknownIdentifier): Unknown identifier `TournamentHamiltonian.mainBound`\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Only the checked declarations are certified. MainBound needs an unconditional proof and a passing axiom audit before submission."
+}

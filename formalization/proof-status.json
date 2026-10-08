@@ -513,6 +513,69 @@
         "compatible_pairingPartition_card",
         "compatible_pairingPartition_count"
       ]
+    },
+    {
+      "section": "4.1",
+      "claim": "Actual Banach contraction constructs finite exp diagonal balancing potentials with infinity norm <=4*L0*eps and the actual gauge; all rows and columns of the genuine scaled matrix sum to one, nonnegativity and zero support are preserved. Under the explicit second gap smallness condition, scaled entries <=2K/p and centered operator norm <=(1+q)/2. No scaling existence or contraction is assumed.",
+      "lean": [
+        "exists_local_scaling_fixedPoint",
+        "localScaling_fixedPoint_balances",
+        "exists_local_balancing_potentials",
+        "localScaledMatrix_eq_exp_scaling",
+        "localScaledMatrix_nonnegative",
+        "localScaledMatrix_zero_support",
+        "localScaledMatrix_change_opNorm",
+        "marginalBalancedMatrix_change_opNorm",
+        "exists_local_scaling"
+      ]
+    },
+    {
+      "section": "2.2 and 5.2",
+      "claim": "Complete Bregman permanent bound for every finite real zero-one matrix, with zero rows and empty order covered. Genuine supported-permutation counting, random greedy coding and exact row-rank averages prove the inequality, which is applied directly to actual tournament adjacency and all principal adjacency submatrices.",
+      "lean": [
+        "boolMatrix_permanent_le_bregman",
+        "boolMatrix_permanent_le_bregman_fintype",
+        "zeroOneMatrix_permanent_le_bregman",
+        "adjacency_permanent_le_bregman",
+        "adjacency_principal_permanent_le_bregman"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "True standard Gaussian moments are derived from mgf derivatives; arbitrary rectangular bilinear moments equal actual Setoid pairing contractions. True Gaussian conditional integration yields the real Gram determinant factor for every |t|*operatorNorm(Z)<1, allowing singular/nonnormal rectangular matrices. Every Gram determinant Taylor derivative equals the actual bilinear moment, coefficients are nonnegative with odd terms zero, and the actual normalized permanent coefficient splits exactly into Gaussian pairing and nonpairing terms for all degrees, including cancellation above dimension.",
+      "lean": [
+        "standardGaussianMoment_add_two",
+        "standardGaussianMoment_even",
+        "standardGaussianMoment_odd",
+        "standardGaussian_product_moment",
+        "gaussianBilinearMoment_pairing_expansion",
+        "hermitian_gaussian_quadratic_integral_posDef",
+        "gaussianBilinearMGF_eq_gramGaussian_smul",
+        "gaussianBilinear_exp_integrable",
+        "gramGaussian_iteratedDeriv_zero",
+        "bilinearGaussianCoefficient_eq_derivative",
+        "bilinearGaussianCoefficient_nonneg",
+        "distinctCoordinateSum_eq_gaussian_add_nonpairing",
+        "normalized_coeff_eq_gaussian_add_nonpairing",
+        "nonPairingCoordinateSum_above_dimension"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Exact actual centered-kernel transformation after paired preconditioning, full mass normalization and independent row/column deletion/final normalization. The actual eta=n^2/(mass(Cprime)*mass(X)) is retained, also equals (n-t)/mass(Cprime[R,T]), and has a finite retained-mass error bound. Finite true centered operator and Frobenius displacement budgets follow by actual orthogonal compression, scalar factors and entrywise norms; uniform thresholds remain separate.",
+      "lean": [
+        "centeringProjection_mul_ones",
+        "normalizedDeletedPreconditioned_eq",
+        "normalizedDeletedPreconditioned_centered_eq",
+        "normalizedDeletedPreconditioned_centered_opNorm_le",
+        "preconditioningDeletionEta_eq_retained_mass",
+        "realFrobeniusNorm_submatrix_le",
+        "centeredMatrix_frobenius_le",
+        "normalizedDeletedPreconditioned_centered_frobenius_displacement",
+        "retained_mass_error_bound",
+        "finite_eta_error_bound",
+        "preconditioningDeletionEta_error_bound"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -529,17 +592,12 @@
     {
       "id": "bregman",
       "section": "2.2 and 5.2",
-      "claim": "Bregman bound and the balanced-degree/Stirling normalization."
+      "claim": "Uniform balanced-degree/score-variance estimates and Stirling normalization from the complete proved actual Bregman bound."
     },
     {
       "id": "partition-expansion",
       "section": "3.2",
       "claim": "Prove finite formal core decomposition from the exact double partition expansion. General explicit signed-factorial Mobius weights and degree-one cancellation are already proved."
-    },
-    {
-      "id": "gaussian-pairings",
-      "section": "3.2",
-      "claim": "Wick pairings and Gaussian bilinear integral yield the determinant factor and nonnegative coefficients."
     },
     {
       "id": "compressed-core",
@@ -559,7 +617,7 @@
     {
       "id": "gaussian-moments",
       "section": "3.4",
-      "claim": "Differentiate the Gaussian determinant and bound the factorial-recovery contribution by K_G/n."
+      "claim": "Prove full Gaussian coefficient series identity and bound the Gaussian factorial-recovery contribution by K_G/n. Actual Gaussian integration, Wick pairing coefficients and all Taylor derivatives are already proved."
     },
     {
       "id": "polarization",
@@ -582,11 +640,6 @@
       "claim": "Combine the full explicit budget into uniform absolute and relative O_C,q(1/n)."
     },
     {
-      "id": "local-scaling",
-      "section": "4.1",
-      "claim": "Actual nonlinear perturbation, invariant gauge ball and Banach contraction yielding genuine doubly stochastic scaling. The explicit balanced gauge inverse and its density-derived infinity and Euclidean bounds are already proved."
-    },
-    {
       "id": "capacity",
       "section": "4.1",
       "claim": "Euclidean displacement, Frobenius displacement, capacity and arbitrary-mass exact restoration."
@@ -594,7 +647,7 @@
     {
       "id": "preconditioning",
       "section": "4.3",
-      "claim": "Prove uniform logarithmic-parameter thresholds for the actual paired normalization/deletion estimates, exact centered-kernel transformation and scaled Gaussian comparison. Finite actual density, full-mass, marginal and Frobenius/operator estimates and generic arbitrary-deletion/final-normalization budgets are already proved with explicit finite hypotheses."
+      "claim": "Prove uniform logarithmic-parameter thresholds for actual mass positivity, normalization/deletion budgets, centered singular gap and scaled Gaussian comparison. Exact centered eta transformation and its actual operator/Frobenius/retained-mass error budgets are already proved with explicit finite hypotheses."
     },
     {
       "id": "scaled-gap",
@@ -673,7 +726,7 @@
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",

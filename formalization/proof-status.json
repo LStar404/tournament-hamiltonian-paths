@@ -882,7 +882,7 @@
     },
     {
       "section": "3.5",
-      "claim": "Actual exponential radial probability measure has integrable power moments k!. Finite primitive-root phase averaging has exact complex mixed moments and permutation Wick moments. Actual product exponential spectral moments equal n! times the complete homogeneous polynomial. Pointwise complex product AM-GM and its integral inequality are proved; the actual Gram permanent identity and PSD permanent bound are still pending.",
+      "claim": "Actual exponential radial probability measure has integrable power moments k!. Finite primitive-root phase averaging has exact complex mixed moments and permutation Wick moments. Actual product exponential spectral moments equal n! times the complete homogeneous polynomial. Pointwise complex product AM-GM and its integral inequality are proved; the actual Gram permanent identity and PSD permanent bound are proved in the subsequent listed declarations.",
       "lean": [
         "radialExpMeasure_eq_expMeasure",
         "radialExpMeasure_pow_moment",
@@ -906,7 +906,7 @@
     },
     {
       "section": "3.3",
-      "claim": "Actual partition-graph degree-two continuation is involutive. Finite half-edge paths induce a genuine terminal pairing, the compressed pairing quotient has cardinal b+j, and the real terminal pairing count is the odd double factorial. Full chain coverage, decoration compensation and contraction activity are still pending.",
+      "claim": "Actual partition-graph degree-two continuation is involutive. Finite half-edge paths induce a genuine terminal pairing, the compressed pairing quotient has cardinal b+j, and the real terminal pairing count is the odd double factorial. Full chain coverage and decoration compensation are proved below; complete contraction activity is still pending.",
       "lean": [
         "degreeTwoSplice_involutive",
         "terminal_on_path_iff",
@@ -917,7 +917,7 @@
     },
     {
       "section": "4.4",
-      "claim": "Actual nonprincipal adjacency permanents restore exactly through the paired Gamma product, independent deleted row/column factors and the same true scaling potentials. Actual witness capacity gives a finite upper bound; one common threshold supplies the same witness with this upper bound and the proved uniform Gaussian cost. The final uniform permanent approximation and retained-mass normalization remain pending.",
+      "claim": "Actual nonprincipal adjacency permanents restore exactly through the paired Gamma product, independent deleted row/column factors and the same true scaling potentials. Actual witness capacity gives a finite upper bound; one common threshold supplies the same witness with this upper bound and the proved uniform Gaussian cost. Retained-mass normalization is proved below; the final uniform permanent approximation remains pending.",
       "lean": [
         "pairedScoreProduct_le_exp",
         "adjacency_nonprincipal_paired_restoration",
@@ -936,6 +936,59 @@
         "retained_cross_product_le",
         "exceptional_weighted_cross_pair"
       ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Every half-edge in an actual pure-free partition core lies on a terminal path orbit. Actual compressed pairs biject to all path orbits. Actual high-vertex decorations have cardinal b! product(d_i!) and the genuine Mobius weight/decoration quotient equals 1/(b! product d_i), with the true decoration average.",
+      "lean": [
+        "pureFreeCore_halfEdge_path_coverage",
+        "compressedPairCycleEquiv",
+        "pureFreeCore_path_orbit_card",
+        "highVertexDecorations_card_degrees",
+        "highVertexDecoration_mobius_ratio",
+        "highVertexDecoration_mobius_average"
+      ]
+    },
+    {
+      "section": "3.3 and 3.4",
+      "claim": "The actual finite degree-sequence compensation U_jb has its genuine factorial pairing count. A true injection into positive compositions gives <=4^j sequences and yields the full sum <=(710 W^3 j)^j for W>=1. The exact first-excess sum is 3/2 W^2+10/3 W^3. The actual finite excess window has ratio <=1/2 and sum over j=2..M <=8D^2/n^2 under 16DM<=n; no infinite core-series convergence is assumed.",
+      "lean": [
+        "compressedDegreeSequences_card_le",
+        "pairing_factorial_ratio_eq",
+        "compressedActivityMajorant_le",
+        "compressedActivityMajorant_one",
+        "excessWindowTerm_half_ratio",
+        "finite_excess_window_tail_le"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "Actual complete homogeneous moments with one unit eigenvalue are bounded by the genuine finite geometric product. The actual PSD permanent is then bounded by n!/n^n times that product and by the true exponential sum/squared-eigenvalue envelope. Actual polar spectra give the corresponding nonnormal permanent envelope under the stated genuine spectral bounds; discharge of those circle-matrix spectral inputs remains pending.",
+      "lean": [
+        "spectralHomogeneousPolynomial_le_geometric",
+        "complex_posSemidef_permanent_le_geometric",
+        "geometric_product_le_exp_sqrt",
+        "complex_posSemidef_permanent_le_exponential",
+        "complex_permanent_le_exponential_spectral"
+      ]
+    },
+    {
+      "section": "4.4",
+      "claim": "The actual retained-mass power in paired permanent restoration is bounded by exp(-1+t/n+|full mass error|+|retained scaled mass error|), with all actual eta and order normalizations preserved.",
+      "lean": [
+        "retained_mass_power_le",
+        "preconditioning_mass_power_le"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "The true four-block permanent normalized by n!/2^n is bounded by B c^f exp(4f^2/N+2L^2f^2/(c^2N)), where B is the actual analytic core-minor bound. Actual exceptional degree profiles discharge all weighted cross terms with c=.19+4(f+1)/N+4 beta+4 beta^2 and L=2+2 beta. Actual paired inverse weights have total displacement bounded by sqrt(N tau)/(1-a0). Core analytic estimates and final exceptional exclusion remain pending.",
+      "lean": [
+        "permanent_fourBlock_normalized_le",
+        "exceptional_permanent_normalized_le",
+        "pairedLeft_total_displacement_le",
+        "pairedRight_total_displacement_le"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -947,22 +1000,22 @@
     {
       "id": "compressed-core",
       "section": "3.3",
-      "claim": "Actual chain compression and decoration/chain counting, including loops, reversals and disconnected cores; U_jb compensation. Actual b<=2j and high-degree half-edge count=2(b+j) are proved."
+      "claim": "Construct the genuine chain-position bijection and contraction/decorated encoding from actual partition cores. Actual terminal paths cover all half-edges, actual compressed pairs biject to path orbits, and actual decoration cardinality and Mobius compensation are proved."
     },
     {
       "id": "activity",
       "section": "3.3",
-      "claim": "Full excess activity <= (710*W^3*j/n)^j, with the sharper first-excess bound. Actual alternating chain contractions and weighted summable chain activity are proved."
+      "claim": "Connect actual decorated graph chain contractions to the genuine numerical compensation majorant. Actual degree-sequence counting, factorial pairing ratio, total (710 W^3 j)^j compensation bound and exact j=1 compensation are proved."
     },
     {
       "id": "finite-window",
       "section": "3.4",
-      "claim": "Finite excess truncation, geometric bound, coefficient convolution and factorial recovery."
+      "claim": "Apply the actual core activities through the exact finite Gaussian/core convolution and factorial recovery. The true finite excess ratio and sum <=8D^2/n^2 and dimension-independent Gaussian factorial recovery are proved."
     },
     {
       "id": "analytic-tail",
       "section": "3.5",
-      "claim": "Use the actual PSD permanent bound, centered absolute-value spectra and homogeneous geometric bound to produce the true circle-value majorant and exponentially small tail. The unconditional actual Gram permanent identity, PSD n!/n^n complete-homogeneous bound, circle Parseval coefficient extraction and complete finite-support tail under a circle-value bound are proved."
+      "claim": "Discharge the actual circle matrix projection/polar spectral hypotheses and obtain the uniform Gaussian/permanent tail. Actual PSD homogeneous/geometric/exponential bounds and polar spectral envelope, Parseval coefficient extraction and finite-support permanent tail are proved."
     },
     {
       "id": "uniform-permanent",
@@ -972,7 +1025,7 @@
     {
       "id": "nonprincipal-restoration",
       "section": "4.4",
-      "claim": "Combine the actual uniform permanent approximation with the proved actual same-witness paired Gamma restoration and capacity upper bound, and normalize the retained mass power into e^-1 times the logarithmic error budget."
+      "claim": "Combine the actual uniform permanent approximation with the proved same-witness Gamma restoration, retained-mass power normalization and uniform logarithmic perturbation budgets to get the final actual nonprincipal permanent bound."
     },
     {
       "id": "small-score-permanent",
@@ -980,14 +1033,9 @@
       "claim": "Uniform two-sided approximation with (d+t+1)^2/n error."
     },
     {
-      "id": "four-block",
-      "section": "5.3",
-      "claim": "Apply the proved exact four-block expansion, factorial/cross normalization and actual weighted exceptional cross profiles to the total permanent bound. True exp(4 f^2/N) factorial normalization and paired cross-product suppression are proved."
-    },
-    {
       "id": "exceptional-exclusion",
       "section": "5.3",
-      "claim": "Combine actual dense exceptional-core and weighted cross-minor bounds with the generating determinant estimate to imply H/mu < 1."
+      "claim": "Apply the proved actual four-block exceptional permanent bound using the actual analytic core minor estimates, then combine the generating determinant and common asymptotic threshold to imply H/mu < 1."
     },
     {
       "id": "weighted-score-sum",
@@ -1036,7 +1084,7 @@
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap Mathlib.Combinatorics.Enumerative.Composition Mathlib.Data.Fin.Tuple.NatAntidiagonal Mathlib.Analysis.SpecificLimits.Basic",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",

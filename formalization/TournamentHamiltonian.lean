@@ -25,3 +25,6 @@ import TournamentHamiltonian.PartitionExpansion
 import TournamentHamiltonian.PairedPreconditioning
 import TournamentHamiltonian.GramCentering
 import TournamentHamiltonian.PathConvolutionCoefficients
+import TournamentHamiltonian.GramLipschitz
+import TournamentHamiltonian.GramPadding
+import TournamentHamiltonian.PreconditioningBounds

@@ -365,6 +365,33 @@
         "centeringProjection_eq",
         "gramGaussian_centering_bound"
       ]
+    },
+    {
+      "section": "4.2",
+      "claim": "Actual same-dimension two-kernel Gaussian logarithmic Lipschitz estimate with the manuscript Frobenius constant, proved via the positive-definite logdet supporting-plane inequality and finite Frobenius Cauchy bounds; zero-row/zero-column padding leaves the actual Gaussian factor unchanged.",
+      "lean": [
+        "posDef_logdet_difference_le_trace",
+        "trace_transpose_mul_abs_le_frobenius",
+        "gram_trace_difference_bound",
+        "gramGaussian_log_difference_le",
+        "gramGaussian_log_lipschitz"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Actual score variance and exact normalization; positive W, |V|<=W, explicit W and squared-v bounds by variance, l1-v Cauchy bound, actual skew bilinear bound, and finite paired full-mass error <= [4/(1-a0^2)^2]*[(tau+tau^2)/n + tau*sqrt(tau/n)] under the stated fixed score interval, uniformly for every n>1.",
+      "lean": [
+        "scoreVariance_nonneg",
+        "scoreVariance_eq_score_sq",
+        "tournamentScorePotential_sum",
+        "preconditioned_V_abs_le_W",
+        "preconditioned_W_le_variance",
+        "preconditioned_v_sq_le_variance",
+        "preconditioned_v_l1_le_variance",
+        "nonneg_skew_bilinear_abs_le",
+        "preconditioned_mass_abs_le_variance",
+        "preconditioned_mass_error_bound"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -451,12 +478,12 @@
     {
       "id": "gram-deletion",
       "section": "4.2",
-      "claim": "Same-dimension two-kernel logarithmic Lipschitz comparison and the actual finite (24t+18tau+11)/n centered-tournament loss. General actual rectangular deletion, PSD logdet increment and centering inequalities are already proved."
+      "claim": "Assemble the actual finite (24t+18tau+11)/n centered-tournament loss with arbitrary different deleted row/column sets. All general rectangular deletion, PSD logdet increment, centering and same-dimension Frobenius logarithmic Lipschitz estimates are already proved."
     },
     {
       "id": "preconditioning",
       "section": "4.3",
-      "claim": "Uniform paired preconditioning mass, density, marginal, norm and error estimates. Exact paired full-mass identity, paired marginal corrections, general normalized deletion identities and actual tournament marginals are already proved."
+      "claim": "Uniform paired preconditioning density, marginal, Frobenius/operator displacement and normalized deletion error estimates. Exact full-mass/deletion/marginal formulas and the finite uniform full-mass variance error are already proved."
     },
     {
       "id": "scaled-gap",

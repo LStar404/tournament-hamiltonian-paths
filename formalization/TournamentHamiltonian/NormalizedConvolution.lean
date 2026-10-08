@@ -216,5 +216,3 @@ theorem sum_convolution_card_le_of_permanent_bound {n : ℕ} (T : Tournament n)
   exact h.trans_eq he
 
 end TournamentHamiltonian
-
-

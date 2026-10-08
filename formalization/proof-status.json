@@ -774,6 +774,26 @@
         "rectangular_unit_marginals_centering",
         "rectangularScaling_gaussian_finite_comparison"
       ]
+    },
+    {
+      "section": "3.5",
+      "claim": "Unconditional actual permanent polarization for every complex matrix, including singular and nonnormal cases, proved from the genuine positive polar block, finite Hadamard-product and permanent Gram matrices, and the positive-semidefinite 2x2 Cauchy bound. The positive diagonal permanent factors are real and nonnegative.",
+      "lean": [
+        "permanent_polarization_block_posSemidef",
+        "complex_permanent_block_cauchy",
+        "complex_posSemidef_permanent_nonnegative",
+        "permanent_polarization"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Every actual complete rectangular scaling witness has Frobenius displacement at most 16*K*L times the genuine marginal infinity budget. For logarithmic variance and deletion windows this displacement is uniformly arbitrarily small. One uniform threshold produces the same actual scaling witness together with its Gaussian logarithmic comparison to D_n, including both genuine scaling and preconditioning errors.",
+      "lean": [
+        "rectangularMarginalVector_euclidean_le",
+        "rectangularScaling_frobenius_le_marginal_bound",
+        "preconditioned_scaling_displacement_uniform_eventually_small",
+        "exists_preconditioned_scaling_gaussian_uniform_log"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -808,11 +828,6 @@
       "claim": "Bound the Gaussian factorial-recovery contribution by K_G/n. The actual Gaussian coefficient series identity, integration, Wick pairing coefficients and all Taylor derivatives are proved."
     },
     {
-      "id": "polarization",
-      "section": "3.5",
-      "claim": "Permanent polarization for arbitrary complex, possibly singular and nonnormal matrices."
-    },
-    {
       "id": "psd-permanent",
       "section": "3.5",
       "claim": "Complex Gaussian permanent identity and AM-GM give the n!/n^n complete-homogeneous bound."
@@ -830,12 +845,7 @@
     {
       "id": "preconditioning",
       "section": "4.3",
-      "claim": "Compare the actual Gaussian factor after genuine scaling and simplify its uniform logarithmic error budget. Actual normalized-deleted mass/density/marginal/gap thresholds and genuine same-witness nonprincipal scalings are proved, as is the Gaussian comparison before genuine scaling."
-    },
-    {
-      "id": "scaled-gap",
-      "section": "4.3",
-      "claim": "Obtain the sharper eventual centered singular gap and Gaussian comparison after genuine scaling. A uniform gap <=19/20 follows already from the complete genuine scaling witness."
+      "claim": "Simplify the genuine scaled Gaussian error budget into a common constant times sqrt(tau/n)+(t+1)/n. The actual Gaussian comparison for the same genuine witness, all normalized/deleted mass/density/marginal/gap thresholds, and uniform scaling Frobenius displacement are proved."
     },
     {
       "id": "nonprincipal-restoration",

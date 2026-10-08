@@ -69,3 +69,6 @@ import TournamentHamiltonian.HighVariance
 import TournamentHamiltonian.GaussianCoreExcess
 import TournamentHamiltonian.PartitionComponentSplit
 import TournamentHamiltonian.ScaledGaussianComparison
+import TournamentHamiltonian.UniformScalingDisplacement
+import TournamentHamiltonian.UniformScaledGaussian
+import TournamentHamiltonian.PermanentPolarization

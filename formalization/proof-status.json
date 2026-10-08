@@ -211,7 +211,7 @@
     },
     {
       "section": "2.2",
-      "claim": "The actual pathCount equals its adjacency-weighted permutation sum (including empty order); the correct loop-inclusive complement and rank-one walk determinant identity; nonnegative positive determinant/permanent convolution sum and exact cardinality grouping. Equality of pathCount with that convolution is still unproved.",
+      "claim": "The actual pathCount equals its adjacency-weighted permutation sum (including empty order); the correct loop-inclusive complement and rank-one walk determinant identity; nonnegative positive determinant/permanent convolution sum and exact cardinality grouping. Equality with the original pathCount is proved in PathConvolutionGenerating for every order, including zero.",
       "lean": [
         "pathCount_eq_sum_pathWeight",
         "pathCount_eq_sum_consecutive_product",
@@ -257,7 +257,7 @@
     },
     {
       "section": "4.2",
-      "claim": "For the actual Y=(S-I)/(n-1), exact full Gram, row/column square mass and score mass; generic squared operator budget with explicit gap and norm<1 for n>=4; positive semidefinite difference from S^T S/n^2 and its exact trace. Deletion/logarithmic loss estimates remain unproved.",
+      "claim": "For the actual Y=(S-I)/(n-1), exact full Gram, row/column square mass and score mass; generic squared operator budget with explicit gap and norm<1 for n>=4; positive semidefinite difference from S^T S/n^2 and its exact trace. The full arbitrary-deletion logarithmic loss is proved in TournamentGaussianLoss.",
       "lean": [
         "shiftedSkewKernel_gram",
         "shiftedSkewKernel_action_sq",
@@ -293,7 +293,7 @@
     },
     {
       "section": "3.2",
-      "claim": "Exact double partition-lattice expansion of actual distinct-coordinate sums using the recursively defined and inverted incidence-algebra Mobius coefficient; genuine quotient-label contractions, singleton cancellation under row/column centering, restriction to singleton-free partitions with degree at least two, and direct actual normalized permanent coefficient bridge. Empty degree and k>n are handled; the explicit block-factorial Mobius weight remains unproved.",
+      "claim": "Exact double partition-lattice expansion of actual distinct-coordinate sums using the recursively defined and inverted incidence-algebra Mobius coefficient; genuine quotient-label contractions, singleton cancellation under row/column centering, restriction to singleton-free partitions with degree at least two, and direct actual normalized permanent coefficient bridge. Empty degree and k>n are handled; the explicit block-factorial Mobius weight is proved in PartitionChromatic.",
       "lean": [
         "moebius_fiber_bottom",
         "partitionContraction_eq_constrained_sum",
@@ -342,7 +342,7 @@
     },
     {
       "section": "2.2",
-      "claim": "All-order actual finite determinant/permanent inverse convolution over every real square matrix, including self-loops and empty order. Complementary subpermutations are reindexed to invariant whole permutations, restriction cycles and signs are identified, and all independent cycle colors cancel. This is the squarefree reciprocal-determinant ingredient; equality of actual pathCount with the positive convolution remains unproved.",
+      "claim": "All-order actual finite determinant/permanent inverse convolution over every real square matrix, including self-loops and empty order. Complementary subpermutations are reindexed to invariant whole permutations, restriction cycles and signs are identified, and all independent cycle colors cancel. This is the squarefree reciprocal-determinant ingredient; equality of actual pathCount with the positive convolution is proved in PathConvolutionGenerating.",
       "lean": [
         "colorClass_product_eq_cover_product",
         "restriction_determinant_weight_eq_colors",
@@ -355,7 +355,7 @@
     },
     {
       "section": "4.2",
-      "claim": "Actual arbitrary rectangular Gaussian loss under left/right unit-vector orthogonal rank-one projection, both-sided projection and the actual all-one centering Pi=I-J/card, with nonnegative loss bounded by the corresponding squared marginal actions divided by 2(1-q^2). The same-dimension two-kernel Lipschitz estimate remains unproved.",
+      "claim": "Actual arbitrary rectangular Gaussian loss under left/right unit-vector orthogonal rank-one projection, both-sided projection and the actual all-one centering Pi=I-J/card, with nonnegative loss bounded by the corresponding squared marginal actions divided by 2(1-q^2). The same-dimension two-kernel Lipschitz estimate is proved in GramLipschitz.",
       "lean": [
         "rankOneComplement_left_opNorm_le",
         "gramGaussian_left_projection_bound",
@@ -392,14 +392,59 @@
         "preconditioned_mass_abs_le_variance",
         "preconditioned_mass_error_bound"
       ]
+    },
+    {
+      "section": "2.2",
+      "claim": "Exact positive determinant/permanent convolution of the original permutation pathCount for every n, including n=0, via actual full-cycle ordering equivalence and marked-cycle cancellation; actual pathCount dominates every principal weight and is positive.",
+      "lean": [
+        "pathCount_eq_pathConvolutionSum",
+        "pathCount_eq_positive_convolution",
+        "principal_weight_le_pathCount",
+        "pathCount_pos_from_convolution"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "The actual partition interval is a product of independent block partition lattices. Genuine Mobius weights are the product of signed block factorials over any CommRing, derived by injective coloring and the falling-factorial polynomial. The formula connects directly to actual permanent coefficients, including empty degree.",
+      "lean": [
+        "partitionIntervalOrderIso",
+        "partition_mu_eq_product_blocks",
+        "pair_partition_mu_product",
+        "partitionChromaticPolynomial_eq_descPochhammer",
+        "setoid_mu_top_factorial",
+        "partition_mu_block_weights",
+        "partition_mu_degree_weights",
+        "distinctCoordinateSum_factorial_partition_expansion",
+        "distinctCoordinateSum_centered_factorial_expansion",
+        "normalized_coeff_factorial_partition_expansion"
+      ]
+    },
+    {
+      "section": "4.2",
+      "claim": "For the actual tournament kernel Y=(S-I)/(n-1), actual independent deleted row and column sets I,J with card t and 2t<=n, n>=4, the centered deletion Z satisfies |log G(Z)-log D_n(S)| <= (24t+18tau+11)/n. Exact operator compression, deleted marginal estimates and explicit finite constants are proved.",
+      "lean": [
+        "submatrix_opNorm_le",
+        "shiftedSkewKernel_deletion_centering_finite_bound",
+        "shiftedSkewKernel_full_gram_loss",
+        "tournament_gaussian_deletion_loss"
+      ]
+    },
+    {
+      "section": "4.3",
+      "claim": "Under the stated fixed score interval, actual paired preconditioned adjacency is nonnegative with entries <=4/((1-a0)^2*n). The actual difference F=Cprime-C has Frobenius and real Euclidean operator norms <=16/(1-a0)^2*sqrt(tau/n), derived directly from entrywise and squared-mass bounds.",
+      "lean": [
+        "paired_scale_difference_abs_le",
+        "real_opNorm_le_frobenius",
+        "tournamentDensity_entry_bounds",
+        "preconditionedTournamentDensity_entry_bounds",
+        "preconditionedDensityDifference_entry_bound",
+        "preconditionedDensityDifference_frobenius_sq_bound",
+        "preconditionedDensityDifference_frobenius_bound",
+        "preconditionedDensityDifference_opNorm_bound"
+      ]
     }
   ],
   "remaining_obligations": [
-    {
-      "id": "path-convolution",
-      "section": "2.2",
-      "claim": "Connect the proved exact all-order det/per inverse convolution and finite walk determinant identity to the original permutation pathCount, and prove the positive convolution identity."
-    },
     {
       "id": "long-subset-convolution-tail",
       "section": "2.2 and 5.1",
@@ -418,7 +463,7 @@
     {
       "id": "partition-expansion",
       "section": "3.2",
-      "claim": "Identify the proved recursive partition Mobius coefficient with its explicit block signed-factorial weight and prove finite formal core decomposition. Exact actual partition expansion and degree-one cancellation are already proved."
+      "claim": "Prove finite formal core decomposition from the exact double partition expansion. General explicit signed-factorial Mobius weights and degree-one cancellation are already proved."
     },
     {
       "id": "gaussian-pairings",
@@ -476,14 +521,9 @@
       "claim": "Euclidean displacement, Frobenius displacement, capacity and arbitrary-mass exact restoration."
     },
     {
-      "id": "gram-deletion",
-      "section": "4.2",
-      "claim": "Assemble the actual finite (24t+18tau+11)/n centered-tournament loss with arbitrary different deleted row/column sets. All general rectangular deletion, PSD logdet increment, centering and same-dimension Frobenius logarithmic Lipschitz estimates are already proved."
-    },
-    {
       "id": "preconditioning",
       "section": "4.3",
-      "claim": "Uniform paired preconditioning density, marginal, Frobenius/operator displacement and normalized deletion error estimates. Exact full-mass/deletion/marginal formulas and the finite uniform full-mass variance error are already proved."
+      "claim": "Uniform paired marginal bounds, normalized deletion error estimates and final normalization. Exact mass/deletion/marginal formulas, finite uniform full-mass variance error, nonnegative density bounds and actual Frobenius/operator displacement are already proved."
     },
     {
       "id": "scaled-gap",

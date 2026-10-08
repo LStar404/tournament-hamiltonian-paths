@@ -8,8 +8,8 @@ import Mathlib.Algebra.BigOperators.Pi
 cancellation. Both nontrivial cycles and fixed-point cycles are included.
 The conversion from complementary-class permutations to independently
 colored whole cycles and the determinant parity bridge are proved here.
-The final Hamiltonian path convolution remains a separate coefficient
-identification beyond this inverse-convolution lemma. -/
+The final Hamiltonian path convolution is proved in
+`PathConvolutionGenerating` using this inverse-convolution lemma. -/
 
 namespace TournamentHamiltonian
 

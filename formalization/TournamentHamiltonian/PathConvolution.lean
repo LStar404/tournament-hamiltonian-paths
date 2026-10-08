@@ -7,7 +7,7 @@ import Mathlib.Algebra.BigOperators.Group.Finset.Powerset
 
 The weighted permutation formula below refers to the original `pathCount`.
 The determinant/permanent sum is separately defined; its equality with that
-path count still requires the squarefree determinant-inverse identity.
+path count is proved in `PathConvolutionGenerating` using cycle cancellation.
 -/
 
 namespace TournamentHamiltonian

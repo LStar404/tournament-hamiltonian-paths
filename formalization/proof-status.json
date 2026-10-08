@@ -15,6 +15,7 @@
   "verified_declarations": [
     {"section": "1", "claim": "Random orientation count, exact expectation and P(n) >= mu_n", "lean": ["total_pathCount", "path_completions_card", "meanPaths_eq_orientation_average", "meanPaths_le_maxPaths"]},
     {"section": "2.1", "claim": "Adjacency/sign convention, skew symmetry, zero total score and squared Frobenius mass", "lean": ["twice_adjacency", "signMatrix_skew", "score_sum_zero", "signMatrix_total_sq"]},
+    {"section": "2.2", "claim": "All-order strict positivity of principal determinant weights, Hadamard row bound, exact total squared row mass, and manuscript h_k bound (including the empty subset)", "lean": ["det_pos_of_quadraticPositive", "principal_weight_pos", "hadamard", "prod_le_mean_pow", "principalWeightMatrix_total_sq", "principal_weight_le_rpow"]},
     {"section": "2.3", "claim": "Full finite convex packing conditional on the cap and paired mass", "lean": ["spectral_packing_at_mass", "spectral_packing", "spectral_product_le_upperConstant"]},
     {"section": "2.3 and 7.1", "claim": "Cap interval, rational form of C_* and exact decimal enclosure", "lean": ["spectralCap_bounds", "upperConstant_eq_packed", "upperConstant_decimal_bounds"]},
     {"section": "4.1 and 4.4", "claim": "Exact permanent row/column and exponential scaling/restoration, including nonprincipal factors", "lean": ["permanent_row_column_scaling", "permanent_exp_scaling", "permanent_exp_restoration", "permanent_submatrix_scaling", "paired_deleted_product"]},
@@ -23,7 +24,6 @@
   "remaining_obligations": [
     {"id": "spectral-pairing", "section": "2.1", "claim": "Pair skew singular values; determinant formulas for D_n and rho_n and paired mass (n-1)/(2n)."},
     {"id": "path-convolution", "section": "2.2", "claim": "Prove the exact determinant/permanent convolution for the defined permutation pathCount."},
-    {"id": "positive-minors", "section": "2.2", "claim": "Positivity of det(I+A[U]) and Hadamard/degree bound h_k."},
     {"id": "subset-moments-tail", "section": "2.2 and 5.1", "claim": "Summability of all fixed weighted moments of w_k and uniform o(1/n) long-subset tail."},
     {"id": "bregman", "section": "2.2 and 5.2", "claim": "Bregman bound and the balanced-degree/Stirling normalization."},
     {"id": "operator-cap", "section": "2.3", "claim": "Signed phase ordering, transitive eigenvalues, and ||S|| <= cot(pi/(2n)) < 2n/pi."},
@@ -65,7 +65,7 @@
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",

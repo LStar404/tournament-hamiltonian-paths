@@ -5,3 +5,5 @@ import TournamentHamiltonian.Constants
 import TournamentHamiltonian.Orientation
 import TournamentHamiltonian.Averaging
 import TournamentHamiltonian.ScalingIdentities
+import TournamentHamiltonian.PositiveDeterminant
+import TournamentHamiltonian.Hadamard

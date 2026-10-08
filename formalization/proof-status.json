@@ -794,6 +794,61 @@
         "preconditioned_scaling_displacement_uniform_eventually_small",
         "exists_preconditioned_scaling_gaussian_uniform_log"
       ]
+    },
+    {
+      "section": "3.2",
+      "claim": "Actual canonical edge-subset assembly is a bijection between all two-partition graphs and pure Wick pairings together with pure-component-free cores; genuine graph weights factor. Wick contractions hold for arbitrary finite edge types, and actual normalized permanent coefficients have the exact Gaussian/core subset expansion, including empty cases.",
+      "lean": [
+        "assemble_extractPureCore",
+        "assemblePureCore_injective",
+        "assemblePureCore_surjective",
+        "assemblePureCore_weight",
+        "partitionGraphSum_pure_core_decomposition",
+        "gaussianBilinearMoment_pairing_expansion_finite",
+        "partitionGraphSum_gaussian_core_subset_sum",
+        "normalized_coeff_gaussian_core_subset_sum"
+      ]
+    },
+    {
+      "section": "3.4",
+      "claim": "The actual factorial recovery ratio n^k/(n)_k is positive and >=1. For 2k<=n its log is <=k^2/n; k/n<=log(sigma) gives r_k<=sigma^k and r_k-1<=k^2*sigma^k/n. Actual Gaussian coefficients have a weighted second moment bounded by a geometric second moment times the true Gaussian factor. A genuine Gram/Frobenius estimate yields a dimension-independent explicit K_G(C,q,sigma,R)/n recovery error for every finite window, without assuming a Gaussian series or norm bound beyond the stated actual budgets.",
+      "lean": [
+        "factorialRecoveryRatio_log_le",
+        "factorialRecoveryRatio_le_pow",
+        "factorialRecoveryRatio_sub_one_bound",
+        "bilinearGaussianCoefficient_weighted_second_moment_le",
+        "gramGaussian_le_exp_frobenius_budget",
+        "gaussian_factorial_recovery_le"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "Actual complex polynomial circle values yield coefficient bounds through Parseval, and the entire finite-support tail obeys R/(R-1)*A/R^M. This is applied to the genuine normalized permanent polynomial; the input circle-value majorant remains an explicit hypothesis.",
+      "lean": [
+        "polynomial_circle_coefficient_bound",
+        "polynomial_circle_tail_bound",
+        "normalized_permanent_circle_tail_bound"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "Exact actual rectangular selected-permanent Laplace expansion and full nonprincipal four-block permanent expansion grouped by the internal edge count, over every commutative semiring and finite matrix.",
+      "lean": [
+        "selectedPermanent_laplace",
+        "permanent_four_blocks",
+        "permanent_four_blocks_by_size"
+      ]
+    },
+    {
+      "section": "3.2",
+      "claim": "Genuine core edge relabelling preserves block degrees, Mobius weights, contractions and pure-component predicates. Thus the actual core sum depends only on edge cardinality. Exact binomial/factorial compensation turns the actual subset decomposition into the all-degree standard coefficient identity F_k=sum_j g_j*c_(k-j), with actual core constant coefficient one. No convergence of the full core series is assumed.",
+      "lean": [
+        "coreCoordinateSum_edge_relabel",
+        "coreCoordinateSum_eq_card",
+        "distinctCoordinateSum_div_gaussian_core_convolution",
+        "normalized_coeff_gaussian_core_convolution",
+        "actualCoreCoefficient_zero"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -801,11 +856,6 @@
       "id": "sharper-transitive-spectrum",
       "section": "2.3",
       "claim": "Verify the manuscript ancillary exact cotangent eigenvalue formula and sharper ||S|| <= cot(pi/(2n)). The universal 2n/pi cap and unconditional C_* spectral bound required for MainBound are already proved."
-    },
-    {
-      "id": "partition-expansion",
-      "section": "3.2",
-      "claim": "Complete labeled canonical pure/core decomposition and Gaussian/core coefficient convolution from the actual partition expansion. Actual component extraction, positive excess, and exact invariant-subset factorization of Mobius weights and contractions are proved."
     },
     {
       "id": "compressed-core",
@@ -823,11 +873,6 @@
       "claim": "Finite excess truncation, geometric bound, coefficient convolution and factorial recovery."
     },
     {
-      "id": "gaussian-moments",
-      "section": "3.4",
-      "claim": "Bound the Gaussian factorial-recovery contribution by K_G/n. The actual Gaussian coefficient series identity, integration, Wick pairing coefficients and all Taylor derivatives are proved."
-    },
-    {
       "id": "psd-permanent",
       "section": "3.5",
       "claim": "Complex Gaussian permanent identity and AM-GM give the n!/n^n complete-homogeneous bound."
@@ -835,7 +880,7 @@
     {
       "id": "analytic-tail",
       "section": "3.5",
-      "claim": "Centered operator absolute values, circle bound, Cauchy coefficient bounds and exponentially small tails."
+      "claim": "Centered operator absolute values and the PSD permanent bound must produce the actual circle-value majorant and exponentially small tail. Actual circle Parseval coefficient extraction and the complete finite-support permanent tail are proved under a genuine circle-value bound."
     },
     {
       "id": "uniform-permanent",
@@ -860,7 +905,7 @@
     {
       "id": "four-block",
       "section": "5.3",
-      "claim": "Exact nonprincipal four-block permanent expansion and factorial/cross-factor normalization."
+      "claim": "Factorial/cross-factor normalization and uniform exceptional-set estimates. The actual nonprincipal rectangular Laplace and four-block permanent expansion, grouped by internal edge count, are proved."
     },
     {
       "id": "exceptional-exclusion",
@@ -914,7 +959,7 @@
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",

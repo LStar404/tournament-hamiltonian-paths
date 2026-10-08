@@ -13,3 +13,5 @@ import TournamentHamiltonian.TransitiveDeterminant
 import TournamentHamiltonian.PowerApproximation
 import TournamentHamiltonian.AlternatingTournament
 import TournamentHamiltonian.Carousel
+import TournamentHamiltonian.SkewSpectrum
+import TournamentHamiltonian.SkewOperatorNorm

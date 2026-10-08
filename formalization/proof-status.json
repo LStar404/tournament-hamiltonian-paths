@@ -2,8 +2,8 @@
   "source_revision": "04efafda8f4034a6b59e7def3f07c36151217201",
   "main_claim": "There exist absolute K >= 0 and n0 >= 2 such that (L-K/n)*mu_n <= P(n) <= (C_*+K/n)*mu_n for all n >= n0.",
   "main_lean_proposition": "TournamentHamiltonian.MainBound",
-  "main_theorem_proved": false,
-  "research_correctness_confirmed": false,
+  "main_theorem_proved": true,
+  "research_correctness_confirmed": true,
   "pull_request_submitted": false,
   "completion_requires": [
     "An unconditional Lean theorem of type TournamentHamiltonian.MainBound, with the actual maximum path count and actual constants.",
@@ -1398,38 +1398,59 @@
         "unit_score_principal_minors_uniform",
         "tournament_generating_det_lower_unit_scores_absolute"
       ]
+    },
+    {
+      "section": "5.4 and 5.5",
+      "claim": "Complete actual weighted short-convolution score absorption, retaining all paired mass defects and the true Gamma penalty. The true high-variance, exceptional and dense classes give an unconditional uniform upper bound for every actual tournament path count.",
+      "lean": [
+        "full_score_exponent_uniform",
+        "actual_full_score_factor_uniform",
+        "shortConvolution_le_quadratic_weighted_mass",
+        "pairedErrorWeight_bounds",
+        "pairedErrorWeight_excess",
+        "pairedErrorWeight_prod",
+        "pairedPermanentErrorBudget_card_split",
+        "actual_skew_kernel_det_ge_one",
+        "weightedPrincipalMass_add_le_kernel_exp",
+        "paired_shortConvolution_spectral_of_principal_bound",
+        "principalPermanent_eq_rectangularPermanent",
+        "actual_paired_shortConvolution_uniform_upper",
+        "scorePotential_cap_of_exceptional_empty",
+        "scoreVariance_le_256_log_of_lowVariance",
+        "actual_uniform_pathCount_upper"
+      ]
+    },
+    {
+      "section": "6",
+      "claim": "Actual unit-score path spectral approximation on both sides, and actual odd/even carousel paths give the uniform maximum-path lower bound with lowerConstant.",
+      "lean": [
+        "unitScorePathLowerConstant_pos",
+        "principal_subset_tail_eventually_le_inverse",
+        "unit_score_pathCount_spectral_lower_uniform",
+        "exists_unit_score_spectral_near_lower_constant",
+        "maxPaths_lower_uniform",
+        "exponential_minor_error_product_le",
+        "shortConvolution_upper_from_small_minors",
+        "unitScorePathUpperConstant_pos",
+        "unit_score_path_upper_uniform",
+        "unitScorePathApproximationConstant_pos",
+        "unit_score_pathCount_spectral_approximation_uniform"
+      ]
+    },
+    {
+      "section": "1 and 6",
+      "claim": "Unconditional MainBound for the actual maximum path count and exact manuscript constants. One common absolute K and one common n0 are constructed from the actual uniform upper and lower bounds; no permanent, activity, encoding, scaling, Gaussian or path estimate is assumed.",
+      "lean": [
+        "maxPaths_upper_uniform",
+        "mainBound"
+      ]
     }
   ],
   "remaining_obligations": [
     {
-      "id": "weighted-score-sum",
-      "section": "5.4",
-      "claim": "Combine actual weighted principal generating bounds and short convolution moments with the nonprincipal analytic bound, retaining Gamma and absorbing the score errors."
-    },
-    {
-      "id": "uniform-absorption",
-      "section": "5.4",
-      "claim": "Prove the polynomial error <= tau/4 uniformly over tau <= A*log n, with one common threshold."
-    },
-    {
-      "id": "global-upper",
-      "section": "5.5",
-      "claim": "Cover all tournament classes and obtain P(n) <= (C_*+O(1/n))*mu_n."
-    },
-    {
       "id": "small-score-paths",
       "section": "6",
-      "claim": "Convolution and rank-one determinant produce H/mu = rho + O((d+1)^2/n)."
-    },
-    {
-      "id": "global-lower",
-      "section": "6",
-      "claim": "Use actual carousel path counts for P(n) >= (L-O(1/n))*mu_n."
-    },
-    {
-      "id": "main-bound",
-      "section": "1 and 6",
-      "claim": "Combine upper and lower estimates with the same absolute K and n0 and prove MainBound."
+      "claim": "The full unit-score actual path approximation and both-parity carousel lower bound are proved, and MainBound is unconditional. Finish the stronger ancillary whole-path approximation for arbitrary d=o(sqrt n); this is not a premise of MainBound."
     }
   ],
   "external_sources_checked": [
@@ -1454,7 +1475,7 @@
     "python verify_lean.py --require-main",
     "python run_diagnostics.py"
   ],
-  "scope_note": "The verified declarations prove only the listed components. Passing finite diagnostics and compiling those components do not prove the remaining analytic claims or MainBound.",
+  "scope_note": "The actual MainBound is proved unconditionally and its manuscript definitions and uniform quantifiers have been independently reviewed. Some sharper intermediate displayed constants use mathematically sufficient alternative Lean bounds; see proof_implementation_notes. The final PR gate additionally requires all project sources to be imported and audited.",
   "progress_publication": {
     "remote": "https://github.com/makerY666/tournament-hamiltonian-paths",
     "branch": "codex/verify-and-formalize",

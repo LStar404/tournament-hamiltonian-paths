@@ -1039,6 +1039,52 @@
         "pathCount_eq_disjoint_meeting_long",
         "convolution_factorial_ratio_le"
       ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Actual partition contraction equals the sum over actual high-vertex labels of products of actual alternating matrix chains. Actual absolute contraction and decorated Mobius weights are bounded by genuine positive scalar path weights divided by n^actualExcess and b! product(degrees). Finite positive-length sums obey the true product of geometric activity bounds; counting actual encoding fibers remains pending.",
+      "lean": [
+        "alternatingChainWord_sum",
+        "partitionContraction_alternating_chains",
+        "positiveChainWeight_finite_length_sum_le",
+        "partitionContraction_weighted_path_le",
+        "partitionContraction_decoration_weighted_path_le"
+      ]
+    },
+    {
+      "section": "3.3",
+      "claim": "Labelled canonical readings agree with the actual original-edge bijection even when the terminal direction reverses. The corresponding internal/high vertex coordinates form a genuine vertex bijection and both canonical endpoint addresses reproduce actual incidence.",
+      "lean": [
+        "terminal_path_reverse_arrival",
+        "decoratedPathEdgeAssignment_reading",
+        "decoratedGraphVertexEquiv",
+        "decoratedDepartureAddress_vertex",
+        "decoratedArrivalAddress_vertex"
+      ]
+    },
+    {
+      "section": "3.5",
+      "claim": "The actual normalized permanent polynomial has the genuine centered-matrix circle majorant, coefficient bound and absolute tail. At the exact floor(alpha n) cutoff its tail is <=R/(R-1)*exp(beta sqrt(n)-alpha n log R). The actual convergent Gaussian Wick series tail is bounded by its true weighted Gaussian factor and by the explicit Frobenius/gap exponential budget. No circle or coefficient bound is assumed.",
+      "lean": [
+        "actual_normalized_permanent_circle_bound",
+        "actual_normalized_permanent_coefficient_bound",
+        "actual_normalized_permanent_tail_bound",
+        "actual_normalized_permanent_floor_tail_bound",
+        "bilinearGaussianCoefficient_tail_bound",
+        "bilinearGaussianCoefficient_floor_tail_bound",
+        "bilinearGaussianCoefficient_floor_tail_exp_budget"
+      ]
+    },
+    {
+      "section": "5.3",
+      "claim": "Actual disjoint-short convolution obeys the core spectral bound. A genuine finite criterion with actual remaining permanent bounds implies actual pathCount<meanPaths. Arbitrary further deletions preserve the original exceptional cross-profile estimate; true tournament paired-weight displacement and explicit uniform cross-error budgets are proved. The final uniform analytic input remains pending.",
+      "lean": [
+        "disjointShortConvolution_le_spectral",
+        "exceptional_pathCount_lt_mean_of_core_bound",
+        "deleted_exceptional_weighted_cross_pair",
+        "tournament_paired_weight_displacements",
+        "exceptional_core_weight_displacements_eventually"
+      ]
     }
   ],
   "remaining_obligations": [
@@ -1050,12 +1096,12 @@
     {
       "id": "compressed-core",
       "section": "3.3",
-      "claim": "Complete the actual decorated encoding injectivity and tensor chain contraction. Actual original edges and all graph vertices biject to compressed chain positions, actual endpoint/parity identities hold, and labelled canonical path readings give an actual original-edge assignment with no extra direction bits."
+      "claim": "Complete the actual decorated encoding injectivity. Actual tensor contractions are now exactly the high-label sum of alternating chains. Canonical labelled readings have actual bijective edge/vertex coordinates and true incidence identities."
     },
     {
       "id": "activity",
       "section": "3.3",
-      "claim": "Connect actual decorated graph chain contractions to the genuine numerical compensation majorant. Actual degree-sequence counting, factorial pairing ratio, total (710 W^3 j)^j compensation bound and exact j=1 compensation are proved."
+      "claim": "Count actual decorated core encodings and connect their finite fiber sum to the genuine numerical U_jb compensation majorant. Actual contraction/path-weight and decorated Mobius weight inequalities, independent positive-length sums and total numerical majorant are proved."
     },
     {
       "id": "finite-window",
@@ -1065,7 +1111,7 @@
     {
       "id": "analytic-tail",
       "section": "3.5",
-      "claim": "Apply the proved unconditional actual centered-matrix circle majorant to the normalized permanent coefficients, choose a common linear cutoff, and combine the permanent and actual Gaussian tails. No assumed circle spectral input remains."
+      "claim": "Combine the proved actual permanent and Gaussian analytic tails with the finite core window and factorial recovery into the uniform permanent approximation. Actual circle, coefficient, exact floor cutoff and Gaussian exponential budget bounds are now proved unconditionally from their actual matrix norm hypotheses."
     },
     {
       "id": "uniform-permanent",
@@ -1085,7 +1131,7 @@
     {
       "id": "exceptional-exclusion",
       "section": "5.3",
-      "claim": "Supply the actual analytic core-minor bounds in the proved four-block estimate and disjoint-short convolution, then obtain a common asymptotic exclusion threshold. Actual generating determinants, deletion factorial normalization and uniformly negligible meeting-short terms are proved."
+      "claim": "Discharge the actual uniform analytic permanent input in the finite exceptional exclusion criterion. Actual disjoint/meeting/long convolution, fixed original exceptional profiles, paired displacement and uniformly small cross-error budgets are proved."
     },
     {
       "id": "weighted-score-sum",
@@ -1134,7 +1180,7 @@
   ],
   "commands": [
     "cd formalization",
-    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap Mathlib.Combinatorics.Enumerative.Composition Mathlib.Data.Fin.Tuple.NatAntidiagonal Mathlib.Analysis.SpecificLimits.Basic Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff Mathlib.Data.Matrix.ColumnRowPartitioned Mathlib.Data.Fin.Rev",
+    "lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap Mathlib.Combinatorics.Enumerative.Composition Mathlib.Data.Fin.Tuple.NatAntidiagonal Mathlib.Analysis.SpecificLimits.Basic Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff Mathlib.Data.Matrix.ColumnRowPartitioned Mathlib.Data.Fin.Rev Mathlib.Algebra.Order.Floor.Semiring",
     "lake build",
     "lake env lean Audit.lean",
     "python verify_lean.py --require-main",

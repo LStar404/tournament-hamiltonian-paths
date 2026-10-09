@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this research manuscript, please cite this revised version."
+message: "Please cite the archived manuscript using the preferred citation below."
 title: "Constant-factor bounds for Hamiltonian paths in tournaments"
 type: software
 authors:
@@ -7,7 +7,7 @@ authors:
     given-names: Xingchen
   - family-names: Ye
     given-names: Xiangyu
-version: "1.1"
+version: "1.1.1"
 date-released: 2026-10-09
 license: CC-BY-4.0
 url: https://github.com/LStar404/tournament-hamiltonian-paths
@@ -20,4 +20,9 @@ preferred-citation:
     - family-names: Ye
       given-names: Xiangyu
   year: 2026
-  url: https://github.com/LStar404/tournament-hamiltonian-paths/blob/main/papers/tournament_hamilton_paths_en.pdf
+  version: "1.1"
+  date-published: 2026-10-09
+  doi: 10.5281/zenodo.23249802
+  url: https://zenodo.org/records/23249802
+  publisher:
+    name: Zenodo

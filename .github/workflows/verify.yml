@@ -1,0 +1,38 @@
+name: Verify proofs
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      LEAN_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install diagnostic dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Set up Lean and Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formalization
+          auto-config: false
+      - name: Build and audit the complete proof
+        working-directory: formalization
+        run: python verify_lean.py --require-main
+      - name: Run finite diagnostics
+        run: python formalization/run_diagnostics.py
+      - name: Save verification records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-records
+          path: formalization/audit/

@@ -1,56 +1,81 @@
-# 论文与核验资料 / Manuscripts and audit materials
+# Manuscripts and supporting materials
 
-作者 / Authors: 刘星辰 / Xingchen Liu；叶祥宇 / Xiangyu Ye
+[English](#english) · [中文](#中文)
 
-单位 / Affiliation: 两位作者均为个人研究者 / Both authors are independent researchers
+## English
 
-Email: lxc-em5158@outlook.com
+The manuscript authors are Xingchen Liu and Xiangyu Ye, both independent researchers. Contact: [lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com). The current manuscript is the revision of 9 October 2026, archived as [version 1.1 on Zenodo](https://doi.org/10.5281/zenodo.23249802).
 
-Date: 2026-10-09 (revised)
+### Sources and editing
 
-## 交付内容
+- [`manuscript_en.md`](manuscript_en.md) and [`manuscript_zh.md`](manuscript_zh.md) are the complete editable masters.
+- [`sections/`](sections/) contains the same text divided into opening, permanent, scaling, global and closing sections. When editing a master, update the corresponding section as well.
+- [`manuscript_en.tex`](manuscript_en.tex) and [`manuscript_zh.tex`](manuscript_zh.tex) are XeLaTeX exports.
+- [`../papers/`](../papers/) contains the English and Chinese reading PDFs.
 
-- manuscript_en.md：完整英文可编辑主稿。
-- manuscript_zh.md：完整中文可编辑主稿；与英文使用同一组显示公式。
-- manuscript_en.tex、manuscript_zh.tex：可编辑 LaTeX 源文件。
-- 两份 PDF 单独交付；为避免重复体积，源文件包不再包含 PDF。
-- audit_summary_zh.md：核验结论、补写细节与未证明事项。
-- audit_permanent.md、audit_scaling.md、audit_global.md：组成部分的审查记录。
-- audit_computations.json：四组既有检查的本轮重跑原始记录。
-- delivery_qa.json：两版公式对照、PDF 页数、署名与范围检查、源文件哈希。
-- verification/：源文件包中的检查程序及其本地 Python 依赖模块。
+The LaTeX files use Times New Roman and, in Chinese, SimSun. With these fonts and XeLaTeX installed, run from this directory:
 
-## 数学状态
+```sh
+xelatex manuscript_en.tex
+xelatex manuscript_en.tex
+xelatex manuscript_zh.tex
+xelatex manuscript_zh.tex
+```
 
-正文支持当前常数因子界，而非一般精确通式或尖锐首项常数等式。
-证明经过 AI 辅助内部重建和交叉复核。2026 年 10 月 9 日修订稿新增第 7.4 节，记录第二作者叶祥宇通过 GitHub PR #1 提交的 Lean 形式化证明及其核验结果；尚无外部人工同行评审记录。
-未知误差常数和有效起始阶数不能用于直接推断小阶数值。
-有限计算只作查错，不替代正文任意阶证明。
+On other systems, replace the font settings with available fonts. The archived PDFs were typeset separately with ReportLab and rendered mathematical images, rather than compiled from these LaTeX files. The source files were successfully compiled with Tectonic 0.17.0, using its XeTeX engine, during the 9 October repository review. Long links and Lean identifiers were reformatted to remove text overflow; the mathematical content is unchanged. This build also produced 25 English and 23 Chinese pages, with different page breaks from the archived copies. Use the Markdown or LaTeX sources to copy or edit mathematical notation.
 
-## 编辑与复现
+### Audits and diagnostics
 
-Markdown 是排版输入和当前可编辑主稿，数学使用标准 LaTeX 记法。
-两份 LaTeX 源文件由主稿作机械格式转换，建议使用 XeLaTeX 编译两遍。
-默认使用 Times New Roman；中文另用 SimSun，可在其他系统替换为已安装的相应字体。
-本环境没有 TeX 编译器，因此没有声称已本机编译验证 LaTeX 源文件。
-所交付 PDF 使用本地数学字形和嵌入中文字体独立排版，并另作完整页面渲染检查。
-PDF 中的公式以高分辨率字形图像呈现；需修改公式时请使用 Markdown 或 LaTeX 源稿。
+The reports [`audit_summary_zh.md`](audit_summary_zh.md), [`audit_permanent.md`](audit_permanent.md), [`audit_scaling.md`](audit_scaling.md) and [`audit_global.md`](audit_global.md) record the internal mathematical review of 8 October, before the Lean formalization was merged. For the formal proof and its relationship to the manuscript, use [`../formalization/VERIFICATION.md`](../formalization/VERIFICATION.md). The [repository review](repository_review_zh.md) records the later consistency and reproduction checks.
 
-检查程序建议 Python 3.11 或更新版本，部分模块需 NumPy。
-在源文件包的 verification/ 目录分别运行四个入口：
+[`audit_computations.json`](audit_computations.json) contains earlier diagnostic output. [`delivery_qa.json`](delivery_qa.json) and [`typesetting_record.json`](typesetting_record.json) record the archived manuscripts' source hashes, page counts and typesetting checks. The later source formatting, bibliographic corrections and compilation checks are recorded in [`repository-review.json`](repository-review.json); the archived PDF hashes remain unchanged.
 
-~~~text
+The four supported diagnostic entry points are:
+
+```sh
 python verify_operator_packing_path_constant.py
 python verify_uniform_permanent_zeroth_audit.py
 python verify_nonprincipal_gaussian_deletion.py
 python verify_standalone_linear_energy_reduction.py
-~~~
+```
 
-程序输出包含 RECORD 的 JSON 行；结果范围在各记录中明确注明。
-它们不执行一般极值搜索，不提供全阶误差常数证书。
+Run them in `verification/` after installing the root `requirements.txt`, or run `python formalization/run_diagnostics.py` from the repository root to save all four results. Each entry point prints a `RECORD` JSON line. The remaining Python files supply supporting calculations; some standalone routines also expect external catalogue data, as described in their source. The finite checks cover the cases in their output records; the asymptotic proof is in the manuscript and Lean project.
 
-## English note
+## 中文
 
-The two manuscripts state and prove the current constant-factor result with identical mathematical content. They do not claim an exact finite formula, the sharp constant as a global upper bound, or an extremal classification. The 9 October revision records the companion Lean formalization contributed by the second author, Xiangyu Ye, in GitHub PR #1. External human peer review has not been reported.
+论文作者为刘星辰、叶祥宇，两位作者均为个人研究者。联系邮箱：[lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com)。当前论文为 2026 年 10 月 9 日修订稿，已在 [Zenodo 以 v1.1 归档](https://doi.org/10.5281/zenodo.23249802)。
 
-Editable Markdown and XeLaTeX sources, component audit reports, exact diagnostic records and verification modules are included. The XeLaTeX files have not been compiled locally; the delivered PDFs were independently typeset and visually checked. Their formulas are high-resolution rendered glyphs, so formula edits should be made in the editable sources.
+### 源文件与编辑
+
+- [`manuscript_en.md`](manuscript_en.md) 与 [`manuscript_zh.md`](manuscript_zh.md) 是完整的可编辑主稿。
+- [`sections/`](sections/) 按开篇、永久式、缩放、全图归约和结尾拆分相同正文。修改主稿时，请同步相应分节文件。
+- [`manuscript_en.tex`](manuscript_en.tex) 与 [`manuscript_zh.tex`](manuscript_zh.tex) 是 XeLaTeX 导出稿。
+- [`../papers/`](../papers/) 收录中英文阅读版 PDF。
+
+LaTeX 文件使用 Times New Roman，中文另用 SimSun。安装这些字体及 XeLaTeX 后，在本目录运行：
+
+```sh
+xelatex manuscript_en.tex
+xelatex manuscript_en.tex
+xelatex manuscript_zh.tex
+xelatex manuscript_zh.tex
+```
+
+其他系统可将字体设置替换为已安装字体。已归档 PDF 使用 ReportLab 与数学公式图像单独排版，并非由这些 LaTeX 文件编译生成。10 月 9 日仓库审阅中，两份源文件已通过 Tectonic 0.17.0 的 XeTeX 引擎编译；长链接及 Lean 标识的排版已修正，消除了文本溢出，数学内容保持相同。此次编译同样生成英文 25 页、中文 23 页，但分页位置与归档稿不同。复制或编辑数学记号时，请使用 Markdown 或 LaTeX 源稿。
+
+### 审查与计算核验
+
+[`audit_summary_zh.md`](audit_summary_zh.md)、[`audit_permanent.md`](audit_permanent.md)、[`audit_scaling.md`](audit_scaling.md) 和 [`audit_global.md`](audit_global.md) 保存 10 月 8 日的内部数学审查，早于 Lean 形式化证明的合并。形式化证明及其与论文的对应关系见 [`../formalization/VERIFICATION.md`](../formalization/VERIFICATION.md)；后续版本一致性和复现检查见[仓库审阅记录](repository_review_zh.md)。
+
+[`audit_computations.json`](audit_computations.json) 保存此前计算输出；[`delivery_qa.json`](delivery_qa.json) 与 [`typesetting_record.json`](typesetting_record.json) 记录归档论文的源码哈希、页数和排版检查。后续源码排版、书目信息修订与编译检查另记于 [`repository-review.json`](repository-review.json)，归档 PDF 的哈希保持相同。
+
+本仓库支持的四个计算核验入口为：
+
+```sh
+python verify_operator_packing_path_constant.py
+python verify_uniform_permanent_zeroth_audit.py
+python verify_nonprincipal_gaussian_deletion.py
+python verify_standalone_linear_energy_reduction.py
+```
+
+安装仓库根目录 `requirements.txt` 中的依赖后，在 `verification/` 中分别运行；也可在仓库根目录执行 `python formalization/run_diagnostics.py`，统一保存四项结果。每个入口输出一行 `RECORD` JSON。其余 Python 文件提供辅助计算，部分独立例程还需要源码中说明的外部图目录数据。有限检查覆盖输出记录中的案例，渐近证明见论文及 Lean 工程。

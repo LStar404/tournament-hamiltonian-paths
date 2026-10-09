@@ -1515,7 +1515,7 @@ This formalization concerns the stated asymptotic inequalities. It does not supp
 
 [1] John Irving and Mohamed Omar. Revisiting the Rédei-Berge Symmetric Functions via Matrix Algebra. The Electronic Journal of Combinatorics 32(4) (2025), P4.43. DOI: 10.37236/13841. [Original article](https://www.combinatorics.org/ojs/index.php/eljc/article/download/v32i4p43/pdf/).
 
-[2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. [Author's manuscript](https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf). In particular, Lemma 2.1 supplies the Brégman permanent bound used here.
+[2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Combinatorica 10(4) (1990), 319-324. DOI: 10.1007/BF02128667. [Author's manuscript](https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf). In particular, Lemma 2.1 supplies the Brégman permanent bound used here.
 
 [3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. arXiv:2408.09341. [Version 2, including Lemmas 4.3-4.4](https://arxiv.org/html/2408.09341v2). Cited as a comparison for Gaussian and positive-semidefinite permanent tools, not as a black-box formula for arbitrary nonsymmetric matrices.
 

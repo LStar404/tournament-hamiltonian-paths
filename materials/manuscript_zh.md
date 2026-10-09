@@ -1514,7 +1514,7 @@ $$
 
 [1] John Irving and Mohamed Omar. Revisiting the Rédei-Berge Symmetric Functions via Matrix Algebra. The Electronic Journal of Combinatorics 32(4) (2025), P4.43. DOI: 10.37236/13841. [原始论文](https://www.combinatorics.org/ojs/index.php/eljc/article/download/v32i4p43/pdf/).
 
-[2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. [作者手稿](https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf). 本文使用的 Brégman 永久式界见其中 Lemma 2.1。
+[2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Combinatorica 10(4) (1990), 319-324. DOI: 10.1007/BF02128667. [作者手稿](https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf). 本文使用的 Brégman 永久式界见其中 Lemma 2.1。
 
 [3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. arXiv:2408.09341. [第 2 版，含 Lemmas 4.3-4.4](https://arxiv.org/html/2408.09341v2). 此文用于 Gaussian 与半正定永久式工具的对照，不作为任意非对称矩阵近似的黑箱输入。
 

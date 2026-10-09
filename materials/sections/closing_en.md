@@ -119,13 +119,27 @@ The $O(n^{-1})$ path approximation does not identify the coefficient of the firs
 
 ### 7.3 Research and authorship disclosure
 
-This manuscript was prepared with AI assistance for proof reconstruction, cross-checking, translation and exact-arithmetic diagnostics. The component audits were independent reconstructions within that AI-assisted workflow, not external human peer review or a formal proof-assistant certification. Author review and independent specialist review are recommended before submission. Existing results are attributed below; no claim of novelty follows merely from the internal audit.
+This manuscript was prepared with AI assistance for proof reconstruction, cross-checking, translation and exact-arithmetic diagnostics. The component audits were independent reconstructions within that AI-assisted workflow. A subsequent companion Lean formalization by the second author is described in Section 7.4. External human peer review has not been reported. Independent specialist review is recommended before submission. Existing results are attributed below; no claim of novelty follows merely from the internal audit or the formalization.
+
+### 7.4 Companion Lean formalization
+
+The [companion Lean project](https://github.com/LStar404/tournament-hamiltonian-paths/tree/2983cd9/formalization), contributed by the second author Xiangyu Ye as GitHub user [makerY666 in pull request #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1), pins Lean and Mathlib 4.34.1. Its definitions represent a tournament as a loopless orientation of every pair of distinct labelled vertices. A Hamiltonian path is a vertex permutation whose consecutive arcs point forward; $P(n)$ is the maximum of that count over all such tournaments. The exact constants $L$ and $C_*$ agree with those in the main theorem.
+
+The project contains the declaration `TournamentHamiltonian.mainBound : TournamentHamiltonian.MainBound`. The proposition states that one real $K\ge0$ and one integer $n_0\ge2$ exist such that, for every $n\ge n_0$,
+
+$$
+(L-K/n)\mu_n\le P(n)\le(C_*+K/n)\mu_n.
+$$
+
+According to the submitted [verification record](https://github.com/LStar404/tournament-hamiltonian-paths/blob/2983cd9/formalization/VERIFICATION.md), `python verify_lean.py --require-main` completed with exit code zero: the project built, the actual `MainBound` type was checked, every project source was imported for the audit, and the transitive axiom audit of 3674 project theorems reported only `propext`, `Classical.choice`, and `Quot.sound`. The Lean proof uses some intermediate constants different from the paper's displayed estimates while proving the same final bound. The present revision incorporates that submitted record; it does not report a fresh independent rerun of the full build.
+
+This formalization concerns the stated asymptotic inequalities. It does not supply an effective numerical value of $K$ or $n_0$, an exact formula for finite $P(n)$, a sharp global leading constant, or an extremal classification. Xiangyu Ye is included as second author of this revision in recognition of his formalization contribution. Both named authors are independent researchers.
 
 ## References
 
 [1] John Irving and Mohamed Omar. Revisiting the Rédei-Berge Symmetric Functions via Matrix Algebra. The Electronic Journal of Combinatorics 32(4) (2025), P4.43. DOI: 10.37236/13841. [Original article](https://www.combinatorics.org/ojs/index.php/eljc/article/download/v32i4p43/pdf/).
 
-[2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. [Author's manuscript](https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf). In particular, Lemma 2.1 supplies the Brégman permanent bound used here.
+[2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Combinatorica 10(4) (1990), 319-324. DOI: 10.1007/BF02128667. [Author's manuscript](https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf). In particular, Lemma 2.1 supplies the Brégman permanent bound used here.
 
 [3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. arXiv:2408.09341. [Version 2, including Lemmas 4.3-4.4](https://arxiv.org/html/2408.09341v2). Cited as a comparison for Gaussian and positive-semidefinite permanent tools, not as a black-box formula for arbitrary nonsymmetric matrices.
 

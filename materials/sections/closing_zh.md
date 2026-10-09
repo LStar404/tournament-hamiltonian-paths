@@ -119,13 +119,27 @@ $O(n^{-1})$ 路径近似不能确定首个修正项的系数，有限诊断样�
 
 ### 7.3 研究与作者说明
 
-本稿在证明重建、交叉检查、翻译与精确算术诊断方面使用了 AI 辅助。组成部分的审计是在该辅助工作流程内进行的独立重建，不是外部人工同行评审，也不是形式化证明助手认证。投稿前建议作者复核并邀请独立专业审查。已有结果均在下面注明来源；内部复核本身不产生新颖性声明。
+本稿在证明重建、交叉检查、翻译与精确算术诊断方面使用了 AI 辅助。组成部分的审计是在该辅助工作流程内进行的独立重建。第二作者完成的配套 Lean 形式化证明见第 7.4 节。当前没有外部人工同行评审记录。投稿前建议邀请独立专业审查。已有结果均在下面注明来源；内部复核或形式化证明本身不产生新颖性声明。
+
+### 7.4 配套 Lean 形式化证明
+
+[配套 Lean 工程](https://github.com/LStar404/tournament-hamiltonian-paths/tree/2983cd9/formalization)由第二作者叶祥宇以 GitHub 用户 [makerY666 的身份通过 PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1) 提交，固定使用 Lean 和 Mathlib 4.34.1。工程把竞赛图定义为不同顶点间每对恰有一个方向、无自环的有标号图；Hamilton 路径是所有相邻边均顺向的顶点排列；$P(n)$ 是这类图的路径数最大值。精确常数 $L$ 与 $C_*$ 对应本文主要定理。
+
+工程包含声明 `TournamentHamiltonian.mainBound : TournamentHamiltonian.MainBound`。该命题断言存在同一个实数 $K\ge0$ 和同一个整数 $n_0\ge2$，使得对所有 $n\ge n_0$ 都有
+
+$$
+(L-K/n)\mu_n\le P(n)\le(C_*+K/n)\mu_n.
+$$
+
+据提交的[核验记录](https://github.com/LStar404/tournament-hamiltonian-paths/blob/2983cd9/formalization/VERIFICATION.md)，运行 `python verify_lean.py --require-main` 的退出码为零：工程构建通过，实际 `MainBound` 类型得到检查，所有工程源码均纳入审计，3674 个工程定理的传递公理审查仅报告 `propext`、`Classical.choice` 和 `Quot.sound`。Lean 证明的部分中间常数与本文展示的估计不同，但结论是同一个最终界。本次修订采纳该 PR 提交的核验记录；本文不声称另行重跑了完整构建。
+
+形式化对象是上述渐近不等式。它没有给出 $K$ 或 $n_0$ 的有效数值，没有求出有限阶 $P(n)$ 的精确公式，也没有证明尖锐全局首项常数或极值图分类。为认可形式化证明的贡献，本修订版将叶祥宇列为第二作者；两位署名作者均为个人研究者。
 
 ## 参考文献
 
 [1] John Irving and Mohamed Omar. Revisiting the Rédei-Berge Symmetric Functions via Matrix Algebra. The Electronic Journal of Combinatorics 32(4) (2025), P4.43. DOI: 10.37236/13841. [原始论文](https://www.combinatorics.org/ojs/index.php/eljc/article/download/v32i4p43/pdf/).
 
-[2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. [作者手稿](https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf). 本文使用的 Brégman 永久式界见其中 Lemma 2.1。
+[2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Combinatorica 10(4) (1990), 319-324. DOI: 10.1007/BF02128667. [作者手稿](https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf). 本文使用的 Brégman 永久式界见其中 Lemma 2.1。
 
 [3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. arXiv:2408.09341. [第 2 版，含 Lemmas 4.3-4.4](https://arxiv.org/html/2408.09341v2). 此文用于 Gaussian 与半正定永久式工具的对照，不作为任意非对称矩阵近似的黑箱输入。
 

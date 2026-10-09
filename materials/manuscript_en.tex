@@ -1276,30 +1276,34 @@ The $O(n^{-1})$ path approximation does not identify the coefficient of the firs
 This manuscript was prepared with AI assistance for proof reconstruction, cross-checking, translation and exact-arithmetic diagnostics. The component audits were independent reconstructions within that AI-assisted workflow. A subsequent companion Lean formalization by the second author is described in Section 7.4. External human peer review has not been reported. Independent specialist review is recommended before submission. Existing results are attributed below; no claim of novelty follows merely from the internal audit or the formalization.
 
 \subsection*{7.4 Companion Lean formalization}
-The companion Lean project (https://github.com/LStar404/tournament-hamiltonian-paths/tree/2983cd9/formalization), contributed by the second author Xiangyu Ye as GitHub user makerY666 in pull request \#1 (https://github.com/LStar404/tournament-hamiltonian-paths/pull/1), pins Lean and Mathlib 4.34.1. Its definitions represent a tournament as a loopless orientation of every pair of distinct labelled vertices. A Hamiltonian path is a vertex permutation whose consecutive arcs point forward; $P(n)$ is the maximum of that count over all such tournaments. The exact constants $L$ and $C_*$ agree with those in the main theorem.
+The \href{https://github.com/LStar404/tournament-hamiltonian-paths/tree/2983cd9/formalization}{companion Lean project}, contributed by the second author Xiangyu Ye as GitHub user \href{https://github.com/LStar404/tournament-hamiltonian-paths/pull/1}{makerY666 in pull request \#1}, pins Lean and Mathlib 4.34.1. Its definitions represent a tournament as a loopless orientation of every pair of distinct labelled vertices. A Hamiltonian path is a vertex permutation whose consecutive arcs point forward; $P(n)$ is the maximum of that count over all such tournaments. The exact constants $L$ and $C_*$ agree with those in the main theorem.
 
-The project contains the declaration `TournamentHamiltonian.mainBound : TournamentHamiltonian.MainBound`. The proposition states that one real $K\ge0$ and one integer $n_0\ge2$ exist such that, for every $n\ge n_0$,
+The project contains the declaration:
+\begin{quote}\small\ttfamily
+TournamentHamiltonian.mainBound : TournamentHamiltonian.MainBound
+\end{quote}
+The proposition states that one real $K\ge0$ and one integer $n_0\ge2$ exist such that, for every $n\ge n_0$,
 
 \[
 (L-K/n)\mu_n\le P(n)\le(C_*+K/n)\mu_n.
 \]
-According to the submitted verification record (https://github.com/LStar404/tournament-hamiltonian-paths/blob/2983cd9/formalization/VERIFICATION.md), `python verify\_lean.py --require-main` completed with exit code zero: the project built, the actual `MainBound` type was checked, every project source was imported for the audit, and the transitive axiom audit of 3674 project theorems reported only `propext`, `Classical.choice`, and `Quot.sound`. The Lean proof uses some intermediate constants different from the paper's displayed estimates while proving the same final bound. The present revision incorporates that submitted record; it does not report a fresh independent rerun of the full build.
+According to the submitted \href{https://github.com/LStar404/tournament-hamiltonian-paths/blob/2983cd9/formalization/VERIFICATION.md}{verification record}, \texttt{python verify\_lean.py --require-main} completed with exit code zero: the project built, the actual \texttt{MainBound} type was checked, every project source was imported for the audit, and the transitive axiom audit of 3674 project theorems reported only \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}. The Lean proof uses some intermediate constants different from the paper's displayed estimates while proving the same final bound. The present revision incorporates that submitted record; it does not report a fresh independent rerun of the full build.
 
 This formalization concerns the stated asymptotic inequalities. It does not supply an effective numerical value of $K$ or $n_0$, an exact formula for finite $P(n)$, a sharp global leading constant, or an extremal classification. Xiangyu Ye is included as second author of this revision in recognition of his formalization contribution. Both named authors are independent researchers.
 
 \section*{References}
-[1] John Irving and Mohamed Omar. Revisiting the Rédei-Berge Symmetric Functions via Matrix Algebra. The Electronic Journal of Combinatorics 32(4) (2025), P4.43. DOI: 10.37236/13841. Original article (https://www.combinatorics.org/ojs/index.php/eljc/article/download/v32i4p43/pdf/).
+[1] John Irving and Mohamed Omar. Revisiting the Rédei-Berge Symmetric Functions via Matrix Algebra. The Electronic Journal of Combinatorics 32(4) (2025), P4.43. DOI: 10.37236/13841. \href{https://www.combinatorics.org/ojs/index.php/eljc/article/download/v32i4p43/pdf/}{Original article}.
 
-[2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Author's manuscript (https://web.math.princeton.edu/\textasciitilde{}nalon/PDFS/hamilton.pdf). In particular, Lemma 2.1 supplies the Brégman permanent bound used here.
+[2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Combinatorica 10(4) (1990), 319-324. DOI: 10.1007/BF02128667. \href{https://web.math.princeton.edu/~nalon/PDFS/hamilton.pdf}{Author's manuscript}. In particular, Lemma 2.1 supplies the Brégman permanent bound used here.
 
-[3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. arXiv:2408.09341. Version 2, including Lemmas 4.3-4.4 (https://arxiv.org/html/2408.09341v2). Cited as a comparison for Gaussian and positive-semidefinite permanent tools, not as a black-box formula for arbitrary nonsymmetric matrices.
+[3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. arXiv:2408.09341. \href{https://arxiv.org/html/2408.09341v2}{Version 2, including Lemmas 4.3-4.4}. Cited as a comparison for Gaussian and positive-semidefinite permanent tools, not as a black-box formula for arbitrary nonsymmetric matrices.
 
-[4] Bo Deng, Xueliang Li, Bryan Shader and Wasin So. On the Maximum Skew Spectral Radius and Minimum Skew Energy of Tournaments. Author manuscript (https://cfc.nankai.edu.cn/\_upload/article/files/09/3a/890a6a5c4660ae2350ac183d2dfa/cb663bb2-4ff4-476f-8047-50514a7780a5.pdf). DOI: 10.1080/03081087.2017.1357676.
+[4] Bo Deng, Xueliang Li, Bryan Shader and Wasin So. On the Maximum Skew Spectral Radius and Minimum Skew Energy of Tournaments. \href{https://cfc.nankai.edu.cn/_upload/article/files/09/3a/890a6a5c4660ae2350ac183d2dfa/cb663bb2-4ff4-476f-8047-50514a7780a5.pdf}{Author manuscript}. DOI: 10.1080/03081087.2017.1357676.
 
-[5] Peter McCullagh. An asymptotic approximation for the permanent of a doubly stochastic matrix. Journal of Statistical Computation and Simulation 84(2) (2014), 404-414. DOI: 10.1080/00949655.2012.712122. arXiv:1205.5723 (https://arxiv.org/abs/1205.5723).
+[5] Peter McCullagh. An asymptotic approximation for the permanent of a doubly stochastic matrix. Journal of Statistical Computation and Simulation 84(2) (2014), 404-414. DOI: 10.1080/00949655.2012.712122. \href{https://arxiv.org/abs/1205.5723}{arXiv:1205.5723}.
 
-[6] N. C. Wormald. Tournaments with many Hamilton cycles. Author's preprint (https://users.monash.edu.au/\textasciitilde{}nwormald/papers/hamtourn.pdf).
+[6] N. C. Wormald. Tournaments with many Hamilton cycles. \href{https://users.monash.edu.au/~nwormald/papers/hamtourn.pdf}{Author's preprint}.
 
-[7] Ehud Friedgut and Jeff Kahn. On the Number of Hamiltonian Cycles in a Tournament. Combinatorics, Probability and Computing 14(5-6) (2005), 769-781. DOI: 10.1017/S0963548305006863 (https://doi.org/10.1017/S0963548305006863).
+[7] Ehud Friedgut and Jeff Kahn. On the Number of Hamiltonian Cycles in a Tournament. Combinatorics, Probability and Computing 14(5-6) (2005), 769-781. \href{https://doi.org/10.1017/S0963548305006863}{DOI: 10.1017/S0963548305006863}.
 
 \end{document}

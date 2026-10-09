@@ -1,6 +1,8 @@
 # 数学与形式化核验记录
 
-核验对象为原始稿件提交 `04efafda8f4034a6b59e7def3f07c36151217201`。论文与 PDF 未因形式化而改写。
+本记录对应原始稿件提交 `04efafda8f4034a6b59e7def3f07c36151217201` 与最终形式化证明提交 `1b22101c3404aad3d749ad52ac5853b3ba4eb2d5`。形式化证明已在提交 `2983cd9` 合并。其后，2026 年 10 月 9 日的双语主稿与 PDF 增补了第 7.4 节及双作者署名，数学主结论保持相同。原始稿件哈希用于记录证明所依据的版本；归档修订稿哈希见 `../materials/delivery_qa.json`，本轮源码排版与书目修订另见 `../materials/repository-review.json`。
+
+English reading guide: the [main definitions](TournamentHamiltonian/Definitions.lean) specify the finite objects and quantifiers; [MainBound.lean](TournamentHamiltonian/MainBound.lean) assembles the final theorem. The [proof ledger](proof-status.json) maps manuscript sections to declarations and records differences in intermediate constants. This document describes the verification of proof commit `1b22101`; the later manuscript revision adds the formalization account and both authors. The [repository review](../materials/repository_review_zh.md) records a fresh complete build, axiom audit, main-theorem check and diagnostic runs on 9 October, all passing with unchanged Lean sources.
 
 ## 已证明的主结论
 
@@ -41,8 +43,7 @@
 工程固定 Lean 与 Mathlib 4.34.1。进入 `formalization` 后运行：
 
 ```text
-lake build
-lake env lean Audit.lean
+lake exe cache get
 python verify_lean.py --require-main
 python run_diagnostics.py
 ```
@@ -51,6 +52,10 @@ python run_diagnostics.py
 
 `audit/lean-verification.json` 保存真实构建、公理审查与主定理检查输出；四个有限诊断记录保存在同一目录。`proof-status.json` 保存可在 Lean 中逐项查到的证明台账和准确的覆盖范围。最终提交需全部项目源码都在审查范围内，不能仅凭局部构建成功。
 
-本次最终 `--require-main` 检查退出码为零：完整构建、3674 个项目定理的传递公理审查、实际 `MainBound` 类型检查和全部项目源码覆盖均通过。原始英文稿件的 SHA-256 保存在 `audit/manuscript-source-hashes.json`；四项有限诊断均通过。
+核验程序会更新 `audit/` 下的记录。仓库的 [GitHub Actions 工作流](../.github/workflows/verify.yml) 执行相同入口，并将运行记录作为附件保存。Mathlib 与依赖包的具体提交已固定在 `lake-manifest.json`，复现时使用该清单。
+
+原形式化提交的最终 `--require-main` 检查退出码为零：完整构建、3674 个项目定理的传递公理审查、实际 `MainBound` 类型检查和全部项目源码覆盖均通过。原始英文稿件的 SHA-256 保存在 `audit/manuscript-source-hashes.json`；四项有限诊断均通过。
 
 最终证明与审计对应提交 `1b22101c3404aad3d749ad52ac5853b3ba4eb2d5`，已提交至上游 [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1)。后续仅补记提交状态与链接，不改变已审计的 Lean 源码。
+
+2026 年 10 月 9 日的仓库审阅使用官方 Windows Lean 4.34.1 工具链，以 `LEAN_NUM_THREADS=2` 重新运行完整 `--require-main` 入口。构建、3674 个定理的传递公理审查、主定理类型检查和源码覆盖均通过，退出码为零；四项计算入口也已重跑通过。`audit/lean-verification.json` 现保存本轮输出，Lean 源码及配置的 246 项哈希与原记录一致。本轮的稿件与复现检查见 [仓库审阅记录](../materials/repository_review_zh.md)。

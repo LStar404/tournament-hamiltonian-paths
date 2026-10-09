@@ -1,5 +1,16 @@
 # Zenodo deposit metadata / Zenodo 提交元数据
 
+Version 1.1 is archived at [Zenodo record 23249802](https://zenodo.org/records/23249802),
+with version DOI [10.5281/zenodo.23249802](https://doi.org/10.5281/zenodo.23249802)
+and concept DOI [10.5281/zenodo.23233165](https://doi.org/10.5281/zenodo.23233165).
+The fields below preserve the deposit description and upload instructions for
+that version. Later repository edits are not part of the existing archive.
+
+The public record's structured creator field, checked on 9 October 2026, spells
+the first creator as `Liu, Xingxhen`. It should read `Liu, Xingchen`, as in the
+manuscript and citation metadata. Correct this field in the existing record;
+the title and description already use the intended author name.
+
 Use the following fields when creating a **new version of the existing Zenodo record**.
 This is a revised preprint/research manuscript, not an unrelated new deposit.
 The previous published version and its DOI should remain intact.

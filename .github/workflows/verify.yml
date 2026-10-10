@@ -30,6 +30,8 @@ jobs:
         run: python verify_lean.py --require-main
       - name: Run finite diagnostics
         run: python formalization/run_diagnostics.py
+      - name: Check signed compressed-core examples
+        run: python -m unittest discover -s tools/tests -p test_core_examples.py -v
       - name: Save verification records
         if: always()
         uses: actions/upload-artifact@v4

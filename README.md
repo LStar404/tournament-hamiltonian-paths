@@ -10,10 +10,10 @@ Contact: [lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com)
 
 This repository contains the English and Chinese manuscripts, a Lean formalization, and computational checks for bounds on the maximum number of directed Hamiltonian paths in a tournament.
 
-**Read the paper:** [English PDF](papers/tournament_hamilton_paths_en.pdf) (28 pages) · [Chinese PDF](papers/tournament_hamilton_paths_zh.pdf) (26 pages)
+**Read the paper:** [English PDF](papers/tournament_hamilton_paths_en.pdf) (31 pages) · [Chinese PDF](papers/tournament_hamilton_paths_zh.pdf) (27 pages)
 **Archived manuscript:** [Version 1.1, 9 October 2026, on Zenodo](https://zenodo.org/records/23249802) · DOI: [10.5281/zenodo.23249802](https://doi.org/10.5281/zenodo.23249802)
 
-Latest tagged release: **1.1.1**; this branch contains the bilingual editorial revision of **11 October 2026** · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
+Latest tagged release: **1.1.1**; this branch contains the second-round bilingual revision of **11 October 2026** · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
 
 ### Main result
 
@@ -42,6 +42,8 @@ For the formal proof, read the [finite definitions](formalization/TournamentHami
 The manuscript is a preprint awaiting external expert review. AI assistance was used for proof reconstruction, internal cross-checks, translation, typesetting and computational diagnostics; the Lean formalization was contributed by Xiangyu Ye in [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1).
 
 The [11 October revision record](materials/revision_20261011.md) describes the bilingual text review, unchanged formal-source checks, fresh finite diagnostics and full-page PDF inspection.
+
+The [second-round revision record](materials/revision_round2_20261011.md) adds the lower-bound literature, expanded combinatorial/scaling details, baseline-specific remote CI evidence, signed-core regression tests and refreshed reading PDFs. It preserves all earlier verification receipts.
 
 ### Reproduce the checks
 
@@ -86,10 +88,10 @@ Machine-readable citation metadata is in [`CITATION.cff`](CITATION.cff). The ver
 
 本仓库收录关于竞赛图中有向 Hamilton 路径最大数量的中英文论文、Lean 形式化证明和计算核验程序。
 
-**阅读论文：**[中文 PDF](papers/tournament_hamilton_paths_zh.pdf)（26 页）· [英文 PDF](papers/tournament_hamilton_paths_en.pdf)（28 页）
+**阅读论文：**[中文 PDF](papers/tournament_hamilton_paths_zh.pdf)（27 页）· [英文 PDF](papers/tournament_hamilton_paths_en.pdf)（31 页）
 **论文归档：**[Zenodo v1.1，2026 年 10 月 9 日](https://zenodo.org/records/23249802) · DOI：[10.5281/zenodo.23249802](https://doi.org/10.5281/zenodo.23249802)
 
-最近的已发布标签：**1.1.1**；本分支包含 **2026 年 10 月 11 日**的双语文字修订 · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
+最近的已发布标签：**1.1.1**；本分支包含 **2026 年 10 月 11 日**的第二轮双语修订 · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
 
 ### 主要结果
 
@@ -118,6 +120,8 @@ $$
 论文目前为预印本，等待外部专家审阅。证明重建、内部交叉检查、翻译、排版和计算诊断使用了 AI 辅助；Lean 形式化证明由叶祥宇通过 [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1) 提交。
 
 [10 月 11 日修订记录](materials/revision_20261011.md)汇总双语全文审阅、形式化源码未变核对、新运行的有限诊断及逐页 PDF 检查。
+
+[第二轮修订记录](materials/revision_round2_20261011.md)记载下界文献补充、组合计数及缩放细节扩写、精确基线的远端 CI 证据、带符号核心回归测试与阅读版 PDF 更新；此前核验记录均原样保留。
 
 ### 复现核验
 

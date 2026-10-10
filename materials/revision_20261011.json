@@ -1,0 +1,26 @@
+{
+  "revision_date_beijing": "2026-10-11",
+  "base_commit": "8ea3fcffcc12b6a06294ba7559885b439eda3cac",
+  "source_sha256": {
+    "materials/manuscript_en.md": "0ac5bc8046d1069ebd09ed0c482c41b70fec4c727962735cc980179bd10fb52a",
+    "materials/manuscript_zh.md": "04070785cfdce42455b890c6ab1b723f7b844b03f0bc77909178d44cef4a7d4d",
+    "materials/manuscript_en.tex": "72de7ef3bd590b1d28ea7b0ebcc60802cec271769c985c8f908dc69c9cbe938e",
+    "materials/manuscript_zh.tex": "9451ecbd3a942117ba72a9519816b7da811c92932a65e12b152f25074c6a77d0",
+    "papers/tournament_hamilton_paths_en.pdf": "fbbabc145a7c12a3bd83dec1a32bf0791a27f10000d5d79c508ed4fcf95336ea",
+    "papers/tournament_hamilton_paths_zh.pdf": "e3539efdb752b560ec49cc87a2e6623cfc96b3d7a57f91ef4905d65723a5b248",
+    "materials/typesetting_revision_20261011.json": "6c4bf30d1851dd7e3469924023c12cd9b285b5b83297d8684164ad3d14f2e75e",
+    "materials/verification/manuscript_alignment_20261011.md": "215154c16f47fe08fbcfe0af26bd16ac80aa6612831df206f66ac61d5d7fad87",
+    "materials/verification/diagnostics_20261011.json": "dbd5b51bc9faa3ecdbb09c0fba86cff652abaf8203de0edc1aca9ef354f03fdc"
+  },
+  "pages": {
+    "en": 28,
+    "zh": 26
+  },
+  "matched_display_formulas": 187,
+  "matched_numbered_results": 16,
+  "local_lean_kernel_build": false,
+  "formal_source_hashes_unchanged": 246,
+  "fresh_finite_diagnostics_passed": 4,
+  "external_human_peer_review": false,
+  "remote_publication_status": "This file records local artifact verification; remote commit and CI status are established separately."
+}

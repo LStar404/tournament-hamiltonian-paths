@@ -1,12 +1,20 @@
-## 4. Scaling and nonprincipal deletion
+## 6. Scaling and nonprincipal permanent estimates
 
-This section proves the analytic interfaces needed to apply the uniform permanent theorem of Section 3 to tournament matrices and to their nonprincipal submatrices. All constants in an estimate with fixed parameters are uniform over the matrices and deleted sets in question. No theorem about the support of an arbitrary nonnegative matrix is used to infer the existence of a scaling.
+Theorem 5.1 applies to a matrix with equal row and column sums after a scalar normalization. A tournament matrix generally has unequal margins: for $C=2A/(n-1)$,
 
-Write $\mathbf 1_p$ for the all-one vector, $P_p=\mathbf 1_p\mathbf 1_p^{\mathsf T}/p$, and $\Pi_p=I-P_p$. For a matrix $X$, its total mass is $\mathfrak m(X)=\sum_{i,j}X_{ij}$. Matrix norms without a subscript are not used: $\|\cdot\|_{\rm op}$, $\|\cdot\|_F$, and the induced one- and infinity-norms have their usual meanings.
+$$
+C\mathbf1=\mathbf1+a,\qquad C^{\mathsf T}\mathbf1=\mathbf1-a.
+$$
 
-### 4.1. A dimension-uniform local scaling lemma
+We must correct these margins while controlling the change in the permanent and in its Gaussian factor. We first construct a local diagonal scaling and bound its total logarithmic cost. A Gram-matrix comparison then controls the effect of deleting rows and columns. Finally, paired score corrections put the tournament submatrices in the domain of the local theorem and yield Lemma 3.1.
 
-**Lemma (Local scaling).** Let $X$ be a real $p\times p$ matrix of mass $p$. Put
+Write $\mathbf1_p$ for the all-ones vector, $P_p=\mathbf1_p\mathbf1_p^{\mathsf T}/p$, and $\Pi_p=I-P_p$. The total mass of a matrix is $\mathfrak m(X)=\sum_{i,j}X_{ij}$. We use $\|\cdot\|_{\rm op}$ for the Euclidean operator norm, $\|\cdot\|_F$ for the Frobenius norm, and $\|\cdot\|_*$ for the trace norm. Constants in this section are uniform once the stated density and gap parameters are fixed.
+
+### 6.1 Local scaling and its cost
+
+We seek $B_{ij}=X_{ij}e^{x_i+y_j}$ with all margins equal to one. Replacing $(x,y)$ by $(x+c\mathbf1,y-c\mathbf1)$ leaves $B$ unchanged; the condition $\sum x_i=\sum y_j$ removes this one-dimensional freedom. The singular-value gap controls the linearized balancing equations on the remaining subspace. The entry bound upgrades that control to an infinity-norm estimate independent of the dimension, allowing a contraction argument.
+
+**Lemma 6.1 (Local scaling).** Let $p\ge1$ and let $X$ be a real $p\times p$ matrix of mass $p$. Put
 
 $$
 \alpha=X\mathbf 1_p-\mathbf 1_p,\qquad \beta=X^{\mathsf T}\mathbf 1_p-\mathbf 1_p,\qquad \varepsilon=\max(\|\alpha\|_\infty,\|\beta\|_\infty).
@@ -94,7 +102,9 @@ $$
 
 Since $\|X-X_0\|_{\rm op}\le2\varepsilon$, the second condition in $\varepsilon_0$ proves the centered gap. Positive diagonal factors retain both nonnegativity and the zero support. This proves the lemma.
 
-**Lemma (Euclidean displacement and capacity).** Under the preceding assumptions, suppose in addition that $X\ge0$. Write $\theta_X=\sum_i x_i+\sum_j y_j$ for the total scaling potential. With constants depending only on the fixed density and gap parameters,
+The balance point alone is insufficient for the permanent estimate: restoring the diagonal factors multiplies the permanent by $\exp(-\sum x_i-\sum y_j)$. The next lemma bounds this total cost and also gives the Frobenius displacement needed to compare Gaussian factors.
+
+**Lemma 6.2 (Displacement and capacity).** Under the preceding assumptions, suppose in addition that $X\ge0$. Write $\theta_X=\sum_i x_i+\sum_j y_j$ for the total scaling potential. With constants depending only on the fixed density and gap parameters,
 
 $$
 \|(x,y)\|_2\le K\|(\alpha,\beta)\|_2,\qquad \|B-X\|_F\le\frac K{\sqrt p}\|(\alpha,\beta)\|_2,
@@ -104,7 +114,7 @@ $$
 0\le\theta_X\le K\|(\alpha,\beta)\|_2^2.
 $$
 
-For a nonnegative matrix $X$ of arbitrary positive mass, normalize $\widetilde X=pX/\mathfrak m(X)$ and apply these conclusions to $\widetilde X$. If $B$ is its scaling, the exact identities are
+For a nonnegative matrix $X$ of arbitrary positive mass, suppose that $\widetilde X=pX/\mathfrak m(X)$ satisfies Lemma 6.1. Apply the preceding conclusions to $\widetilde X$. If $B$ is its scaling, the exact identities are
 
 $$
 \theta_X=\theta_{\widetilde X}+p\log\frac p{\mathfrak m(X)},\qquad \operatorname{per}X=e^{-\theta_X}\operatorname{per}B.
@@ -122,7 +132,9 @@ Its gradient at the origin is $g=(\alpha,\beta)$, and the balancing point is a m
 
 Since $\Phi_X(0)=p$ and $\Phi_X(z)=p-\theta_X$, convexity gives $\theta_X\ge0$. Strong convexity gives $\theta_X\le\|g\|_2^2/(2\lambda)$. The nonunit-mass identity follows by absorbing the scalar $p/\mathfrak m(X)$ into the two diagonal potentials. Finally, $p\log(\mathfrak m(X)/p)\le\kappa$ proves the permanent upper bound.
 
-### 4.2. Gaussian deletion and centering
+### 6.2 Gaussian deletion and centering
+
+Deleting $t$ rows from a dense normalized matrix removes a total squared row norm of order $t/n$. Applying the log-determinant derivative to the corresponding Gram-matrix loss preserves this order. We then delete columns using the other Gram matrix. This gives a linear deletion error even when the retained matrix is nonprincipal.
 
 For a real matrix $Z$ with $\|Z\|_{\rm op}<1$, define
 
@@ -132,13 +144,13 @@ $$
 
 The same value is obtained with $ZZ^{\mathsf T}$; padding by zero rows or columns leaves it unchanged.
 
-**Lemma (Gram deletion).** Suppose $\|Z\|_{\rm op}\le q_*<1$. Delete row set $I$ and column set $J$, with remaining sets $R,T$. Then
+**Lemma 6.3 (Gram deletion and stability).** Suppose $\|Z\|_{\rm op}\le q_*<1$. Delete row set $I$ and column set $J$, with remaining sets $R,T$. Then
 
 $$
 0\le\log\mathcal G(Z)-\log\mathcal G(Z[R,T])\le\frac{\sum_{i\in I}\|Z_{i,\cdot}\|_2^2+\sum_{j\in J}\|Z_{\cdot,j}\|_2^2}{2(1-q_*^2)}.
 $$
 
-For a square remaining matrix $W$ of order $m$, put $u=\mathbf 1_m/\sqrt m$. Then
+For a square remaining matrix $W$ of order $m\ge1$, put $u=\mathbf 1_m/\sqrt m$. Then
 
 $$
 0\le\log\mathcal G(W)-\log\mathcal G(\Pi_mW\Pi_m)\le\frac{\|W^{\mathsf T}u\|_2^2+\|Wu\|_2^2}{2(1-q_*^2)}.
@@ -150,7 +162,7 @@ $$
 |\log\mathcal G(U)-\log\mathcal G(V)|\le\frac{\|U\|_F+\|V\|_F}{2(1-q_*^2)}\|U-V\|_F.
 $$
 
-**Proof.** Deleting rows decreases the column Gram matrix by the positive semidefinite matrix $Z^{\mathsf T}(I-P_R)Z$, whose trace is the sum of the deleted row norms squared. For $F(H)=-\tfrac12\log\det(I-H)$ and a positive semidefinite direction $D$,
+**Proof.** Let $P_R$ be the diagonal coordinate projection onto the retained rows. Deleting rows decreases the column Gram matrix by the positive semidefinite matrix $Z^{\mathsf T}(I-P_R)Z$, whose trace is the sum of the deleted row norms squared. For $F(H)=-\tfrac12\log\det(I-H)$ and a positive semidefinite direction $D$,
 
 $$
 DF(H)[D]=\tfrac12\operatorname{tr}((I-H)^{-1}D)\le\frac{\operatorname{tr}D}{2(1-q_*^2)}.
@@ -204,11 +216,13 @@ $$
 |\log\mathcal G(Z)-\log D_n(S)|\le\frac{24t+18\tau+11}{n}.
 $$
 
-For completeness, $1-q_Y^2=n(n-3)/(2(n-1)^2)$. Substitution proves the stated constants directly, using $t\le n/2$. This estimate is finite-dimensional, permits $I\ne J$, and does not assert that the remaining matrix is skew symmetric.
+For completeness, $1-q_Y^2=n(n-3)/(2(n-1)^2)$. Substitution proves the stated constants directly, using $t\le n/2$. The estimate applies to independent row and column sets $I,J$; skew symmetry is used only for the original full matrix $S$.
 
-### 4.3. Paired preconditioning and genuine scaling
+### 6.3 Preparing the tournament submatrices
 
-Fix $a_0<1$ and finite positive parameters $A_0,B_0$. In this subsection suppose
+The row and column errors of $C=2A/(n-1)$ have opposite signs. Multiplying row $i$ by $(1+a_i)^{-1}$ corrects its original row sum, while multiplying column $i$ by $(1-a_i)^{-1}$ corrects its original column sum. Applying both corrections leaves a residual marginal error, estimated below. Their main advantage is that the total mass has no first-order change and their restored product is the score penalty $\Gamma$.
+
+Fix $0\le a_0<1$ and finite positive parameters $A_0,B_0$. In this subsection suppose
 
 $$
 a_i=\frac{s_i}{n-1},\qquad \max_i|a_i|\le a_0,\qquad \tau=\sum_i a_i^2\le A_0\log n,\qquad t\le B_0\log n.
@@ -248,7 +262,7 @@ $$
 \|F\|_F\le K\sqrt{\tau/n}.
 $$
 
-Normalize $\widehat C=nC'/\mathfrak m(C')$. Write its row and column errors as $e_i,f_j$, so $\sum e_i=\sum f_j=0$. For arbitrary deleted sets $I,J$ of size $t$, let
+Normalize $\widehat C=nC'/\mathfrak m(C')$. Write its row and column errors as $e_i,f_j$, so $\sum e_i=\sum f_j=0$. For arbitrary deleted sets $I,J$ of size $t$, write $R=[n]\setminus I$, $T=[n]\setminus J$ and $m=n-t$. Let
 
 $$
 X=\frac n m\widehat C[R,T],\qquad \kappa=\mathfrak m(X)-m,\qquad \widetilde X=\frac m{\mathfrak m(X)}X.
@@ -278,7 +292,7 @@ $$
 
 Here $g(\widetilde X)$ is the concatenated row and column marginal error, not the vertex weight $g_i$. All entries of $\widetilde X$ are nonnegative and at most $K/m$.
 
-The centered kernel needed by the local scaling lemma is obtained exactly, rather than inferred from a second-singular-value statement. With
+To apply Lemma 6.1, we now check the centered kernel of $\widetilde X$. With
 
 $$
 \eta=\frac{n^2}{\mathfrak m(C')\mathfrak m(X)}=1+O((t+1)/n),
@@ -290,7 +304,7 @@ $$
 \Pi_m\widetilde X\Pi_m=\eta\left[Z+\Pi_mF[R,T]\Pi_m\right].
 $$
 
-The leading value of $\eta$ is $n/m$ when $t>0$; it has not been discarded. Compression preserves the operator norm bound for $Y$, and the displayed Frobenius estimate controls the second term. Thus the centered operator norm is at most $1/\sqrt2+o(1)$, uniformly under the fixed parameters. Its entries are $O(1/m)$, and the marginal infinity error tends to zero. The local scaling lemma applies for all sufficiently large $n$ and constructs a genuine doubly stochastic matrix $B_X$.
+Since $\mathfrak m(C')=n+o(1)$ and $\mathfrak m(X)=m+o(1)$, the leading value of $\eta$ is $n/m$. Compression preserves the operator norm bound for $Y$, and the displayed Frobenius estimate controls the second term. Thus the centered operator norm is at most $1/\sqrt2+o(1)$, uniformly under the fixed parameters. Its entries are $O(1/m)$, and the marginal infinity error tends to zero. The local scaling lemma applies for all sufficiently large $n$ and constructs a genuine doubly stochastic matrix $B_X$.
 
 The Euclidean displacement lemma yields
 
@@ -306,25 +320,13 @@ $$
 |\log\mathcal G(B_X-P_m)-\log D_n(S)|\le K\left[\sqrt{\tau/n}+(t+1)/n\right].
 $$
 
-The term $\tau/n$ from centering is absorbed by $\sqrt{\tau/n}$. In particular, distinct deleted row and column sets require no square-root deletion loss.
+The term $\tau/n$ from centering is absorbed by $\sqrt{\tau/n}$. The deletion part of this estimate is linear in $t/n$, as needed when it is summed against the subset weights.
 
-### 4.4. Permanent restoration for nonprincipal submatrices
+### 6.4 Proof of the nonprincipal permanent bound
 
-**Lemma (Paired nonprincipal permanent bound).** Under the fixed-parameter assumptions of Section 4.3, define $\Gamma=\prod_i(1-a_i^2)\le e^{-\tau}$. For all sufficiently large $n$ and all deleted sets $I,J$ of size $t$, with $m=n-t$,
+We prove Lemma 3.1, using $n$ for the full core order $N$ and $a_0=b$. The preceding construction provides the scaling matrix $B_X$. It remains to restore every diagonal and scalar factor and compare the resulting Gaussian determinant with $D_n(S)$.
 
-$$
-\operatorname{per}A[R,T]\le e^{-1}D_n(S)\Gamma\left(\prod_{i\in I}\ell_i\right)\left(\prod_{j\in J}r_j\right)\frac{m!}{2^m}\exp(K\mathcal R_{\tau,t}),
-$$
-
-where
-
-$$
-\mathcal R_{\tau,t}=\mathcal M_\tau+\sqrt{\tau/n}+(t+1)/n+t\sqrt{\tau/n}+t^2/n.
-$$
-
-The constant depends only on $a_0,A_0,B_0$ and the constants in the uniform permanent theorem.
-
-**Proof.** The true scaling just constructed satisfies its density and centered-gap hypotheses, so the theorem of Section 3 gives
+**Proof.** The true scaling just constructed satisfies its density and centered-gap hypotheses, so Theorem 5.1 gives
 
 $$
 \operatorname{per}B_X=\frac{m!}{m^m}\mathcal G(B_X-P_m)(1+O(1/m)).
@@ -336,7 +338,7 @@ $$
 \prod_{i\in R}(1+a_i)\prod_{j\in T}(1-a_j)=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j.
 $$
 
-Deleting rows restores the $\ell$ factors, and deleting columns restores the $r$ factors; these are not interchangeable. The complete scalar identity is
+Thus deleted rows restore $\ell$ factors and deleted columns restore $r$ factors. The complete scalar identity is
 
 $$
 \operatorname{per}A[R,T]=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j\left[\frac{m(n-1)\mathfrak m(C')}{2n^2}\right]^m e^{-\theta_X}\operatorname{per}B_X.
@@ -348,19 +350,21 @@ $$
 \frac{m!}{2^m}(1-1/n)^m\left[\frac{\mathfrak m(C')}{n}\right]^m.
 $$
 
-Its logarithm differs from that of $e^{-1}m!/2^m$ by $O((t+1)/n+|\nu|)$. The capacity bound gives $e^{-\theta_X}\le e^\kappa$. Substituting the mass, Gaussian, and zero-order errors proves the claimed exponent. Every comparison is uniform over $I,J$, and none requires $I=J$.
+Its logarithm differs from that of $e^{-1}m!/2^m$ by $O((t+1)/n+|\nu|)$. The capacity bound gives $e^{-\theta_X}\le e^\kappa$. Substituting the mass, Gaussian, and zero-order errors proves the claimed exponent. All constants are uniform over the tournament and the two deletion sets, proving Lemma 3.1. $\square$
 
-### 4.5. The small-score two-sided approximation
+### 6.5 The small-score two-sided estimate
 
-**Lemma (Small-score permanent approximation).** Let $d=\|S\mathbf 1_n\|_\infty=o(\sqrt n)$. Fix $B_0<\infty$, delete any $t\le B_0\log n$ rows and any $t$ columns, and put $m=n-t$. Uniformly over these choices,
+When every score is $o(\sqrt n)$, the original margins are already close enough to one for direct local scaling. The capacity estimate then controls the restoration on both sides, giving the approximation used in Theorem 4.1.
+
+**Lemma 6.4 (Small-score permanent approximation).** Let $d=\|S\mathbf 1_n\|_\infty=o(\sqrt n)$. Fix $0<B_0<\infty$, delete any $t\le B_0\log n$ rows and any $t$ columns, and put $m=n-t$. Uniformly over these choices,
 
 $$
 \operatorname{per}A[R,T]=e^{-1}D_n(S)\frac{m!}{2^m}\left[1+O_{B_0}\left(\frac{(d+t+1)^2}{n}\right)\right].
 $$
 
-This is an asymptotic statement, not a finite-order guarantee for every small matrix. The constants are uniform whenever $(d+t+1)^2/n$ is in a fixed sufficiently small range; in the stated regime this quantity tends to zero.
+For fixed $B_0$, the implied constant is uniform once $(d+t+1)^2/n$ is sufficiently small. In the stated regime this quantity tends to zero.
 
-**Proof.** No paired preconditioning is needed. Set $C=2A/(n-1)$ and $X=(n/m)C[R,T]$. Its full row and column errors are $s_i/(n-1)$ and $-s_i/(n-1)$. The exact mass and marginal formulas from Section 4.3 therefore give
+**Proof.** No paired preconditioning is needed. Set $C=2A/(n-1)$ and $X=(n/m)C[R,T]$. The row and column errors of the full matrix $C$ are $s_i/(n-1)$ and $-s_i/(n-1)$, respectively. The exact mass and marginal formulas from Section 6.3 therefore give
 
 $$
 |\kappa|=O(t(d+t)/n),\qquad \varepsilon(X)=O((d+t)/n),\qquad \|g(X)\|_2=O((d+t)/\sqrt n).
@@ -384,4 +388,5 @@ $$
 \operatorname{per}A[R,T]=\left[\frac{m(n-1)}{2n}\right]^m e^{-\theta_X}\operatorname{per}B_X.
 $$
 
-Apply the uniform permanent theorem and use $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$. All logarithmic errors are $O((d+t+1)^2/n)=o(1)$, so exponentiating them proves the stated relative approximation. The resulting short-minor estimate is the input used in Section 6 to obtain the actual Hamilton-path approximation; neither spectral switching nor matrix scaling is being asserted to preserve path counts.
+Apply the uniform permanent theorem and use $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$. All logarithmic errors are $O((d+t+1)^2/n)=o(1)$, so exponentiating them proves the stated relative approximation. This proves the uniform short-minor approximation used in Theorem 4.1. $\square$
+

@@ -1,24 +1,23 @@
-## 5. The global reduction
+## 3. The upper bound for all tournaments
 
-We prove the upper bound uniformly over all tournaments, without assuming regularity or balance. Throughout this section $K$ denotes a positive constant which may increase from one occurrence to the next. All constants become absolute after fixing the degree thresholds below.
-
-For an $n$-vertex tournament write $A$ for its adjacency matrix, $S=A-A^{\mathsf T}$, $s=S\mathbf 1$, and
+Write
 
 $$
-\mathcal E=\|s\|_2^2,\qquad V=\mathcal E/4,\qquad
-\tau=\mathcal E/(n-1)^2,\qquad
-\mu_n=n!/2^{n-1}.
+V(T)=\sum_i\left(d_i^+-\frac{n-1}{2}\right)^2
+=\frac14\|S\mathbf1\|_2^2,
+\qquad
+\tau=\frac{4V(T)}{(n-1)^2}.
 $$
 
-We use $D_n(S)$ and $\rho_n(S)=D_n(S)\det(I+S/n)$ as defined previously. The spectral cap lemma gives
+We divide the proof into three cases. If $V(T)\ge16n^2\log n$, the variance penalty in Brégman's inequality makes the path count negligible. Otherwise only $O(\log n)$ vertices can have degree outside $[(n-1)/20,19(n-1)/20]$. If any such vertices occur, we separate them from the rest and obtain a path count below the random expectation. The remaining tournaments have all normalized scores bounded away from $\pm1$ and $\tau=O(\log n)$. For them, the permanent estimate below retains the factor $e^{-\tau}$ needed to obtain an $O(n^{-1})$ final error.
 
-$$
-1\le \rho_n(S)\le C_*.
-$$
+Throughout this section, $K$ may increase from one occurrence to the next. Its value is absolute once the displayed degree thresholds are fixed. The long terms have already been bounded by $o(n^{-1})\mu_n$ in Section 2.2, so we estimate only the short terms $|U|\le k_n$.
 
-### 5.1. The precise analytic interface and the long-subset tail
+### 3.1 The permanent estimate used in the reduction
 
-We first record the particular conclusion of the paired nonprincipal permanent bound that is needed here. Fix $b<1$ and constants $A_0,B_0$. For a tournament core of order $N$, put $a=S\mathbf 1/(N-1)$ and $\tau=\sum_i a_i^2$. Suppose
+The following lemma is the analytic input to the counting argument. Its proof, including existence of the required diagonal scaling, is given in Section 6.4. Row and column deletions are allowed to differ because a cycle cover may use different core vertices to enter and leave the exceptional set.
+
+**Lemma 3.1 (Nonprincipal permanent bound).** Fix $0\le b<1$ and positive constants $A_0,B_0$. For a tournament core of order $N$, put $a=S\mathbf 1/(N-1)$ and $\tau=\sum_i a_i^2$. Suppose
 
 $$
 \max_i|a_i|\le b,\qquad
@@ -49,52 +48,20 @@ $$
 +t\sqrt{\tau/N}+\frac{t^2}{N}\right].
 $$
 
-The constants are uniform over the core and over different row and column deletion sets. This is a statement about the actual permanent: the local scaling lemma and the uniform zeroth-order permanent lemma have already been applied. In particular, no unproved scaling assertion or additional permanent asymptotic will be used in this section.
+For all sufficiently large $N$, the estimate holds simultaneously for every such tournament and every pair $I,J$. The constant $K$ and the threshold depend only on $b,A_0,B_0$.
 
-Use the positive convolution from Section 2, based on [1], and its determinant and generic permanent bounds:
+The factor $\Gamma$ records the cost of the degree imbalance. In a principal deletion $I=J=U$, the restored vertex weight is $\ell_i r_i=(1-a_i^2)^{-1}$. For different deletions, the row and column factors remain separate. The error includes terms of order $\sqrt{\tau/N}$, so retaining $\Gamma\le e^{-\tau}$ is essential in the last case of the proof.
 
-$$
-H(T)=\sum_{U\subseteq[n]}\det(I+A[U])\operatorname{per}A[U^c],
-$$
+### 3.2 High score variance
 
-$$
-\det(I+A[U])\le h_k,\qquad
-\operatorname{per}A[U^c]\le K\sqrt{n-k+1}\frac{(n-k)!}{2^{n-k}},
-\qquad k=|U|.
-$$
-
-Recall $w_k=2^kh_k/k!$. Set
-
-$$
-k_n=\left\lceil\frac{4\log n}{\log\log n}\right\rceil.
-$$
-
-For every fixed $c>0$ and nonnegative integer $j$, $\sum_k c^k k^j w_k$ converges. Indeed,
-
-$$
-\log(c^kw_k)=-\frac{k}{2}\log k+O_c(k).
-$$
-
-Consequently $\sum_{k>k_n}c^kw_k=n^{-2+o(1)}$. Summing the generic permanent bound over subsets yields the uniform estimate
-
-$$
-\frac{1}{\mu_n}
-\sum_{|U|>k_n}\det(I+A[U])\operatorname{per}A[U^c]
-\le K\sqrt{n+1}\sum_{k>k_n}w_k=o(1/n).
-$$
-
-We call the terms with $|U|\le k_n$ short terms. All following estimates concern these terms unless specified otherwise.
-
-### 5.2. Exclusion of high score variance
-
-We require a quantitative form of the Brégman bound [2]. Let $Q$ be a tournament of order $m$, with outdegrees $d_i$ and degree variance $V(Q)=\sum_i(d_i-(m-1)/2)^2$. Then
+**Lemma 3.2 (Variance-sensitive permanent bound).** There is an absolute constant $K$ such that every tournament $Q$ of order $m\ge1$, with outdegrees $d_i$ and degree variance $V(Q)=\sum_i(d_i-(m-1)/2)^2$, satisfies
 
 $$
 \operatorname{per}A_Q\le
 K\sqrt{m+1}\frac{m!}{2^m}\exp\left(-\frac{V(Q)}{8m^2}\right).
 $$
 
-Here and below the zero-order matrix is handled by its permanent being one. If any $d_i=0$, the asserted bound for positive order is immediate. Otherwise put $f(k)=\log(k!)/k$ for positive integers. A direct calculation gives, for $k\ge2$,
+**Proof.** We refine the Brégman bound [2] by using the concavity of its row-degree factor. If any $d_i=0$, the asserted bound for positive order is immediate. Otherwise put $f(k)=\log(k!)/k$ for positive integers. A direct calculation gives, for $k\ge2$,
 
 $$
 2f(k)-f(k-1)-f(k+1)
@@ -114,7 +81,9 @@ $$
 \exp(m\widetilde f(\eta))\le K\sqrt{m+1}\frac{m!}{2^m}.
 $$
 
-Brégman's row-degree bound now proves the variance estimate.
+Brégman's row-degree bound now proves the variance estimate. $\square$
+
+We apply this bound to each short deleted tournament. The variance must remain large after the deletion, which is why the following comparison is needed.
 
 For a deletion set $U$ of size $k$, each surviving centered degree changes by at most $k/2$. The removed squared deviations sum to at most $kn^2/4$. Applying Cauchy–Schwarz to the cross term therefore gives
 
@@ -137,7 +106,7 @@ $$
 
 uniformly over this class.
 
-### 5.3. Exclusion of extreme degrees by nonprincipal block expansion
+### 3.3 Exceptional vertices
 
 Suppose henceforth that $V(T)<16n^2\log n$. Define the exceptional set
 
@@ -153,9 +122,9 @@ $$
 \tau_M=O(\log n).
 $$
 
-The same bounds, with the same fixed constants, hold after deleting any further short subset of core vertices.
+For the squared-score bound, use $\|S_M\mathbf1\|_2\le\|S\mathbf1\|_2+f\sqrt N$ and divide by $N-1$. The same argument applies after any further short core deletion. Throughout those deletions we keep the original exceptional set $F$, so the constants are uniform.
 
-We first bound $\operatorname{per}A_T$. Use the paired core weights $\ell,r$ in Section 5.1. Their total displacement satisfies
+We first bound $\operatorname{per}A_T$ by the number of ways a cycle cover can pass between $F$ and the core $M$. An exceptional vertex has few neighbors in one of the two directions. A cycle cover must use both directions unless it matches that vertex inside $F$, and the latter choice will cost a factor of order $1/N$. Use the paired core weights $\ell,r$ of Lemma 3.1. Their total displacement satisfies
 
 $$
 \sum_{i\in M}|\ell_i-1|+\sum_{i\in M}|r_i-1|
@@ -202,7 +171,7 @@ $$
 =\left(\frac2N\right)^s\exp(O(f^2/N)).
 $$
 
-This factor includes the contributions from the two cross directions and the core order; none are omitted.
+Here $N+f-(N-t)=f+t=2f-s$, so the factorial ratio supplies $N^{-(2f-s)}\exp(O(f^2/N))$. Multiplication by $N^{2t}$ leaves exactly $N^{-s}$.
 
 If $h=|R\cap C|$, the paired product satisfies
 
@@ -213,7 +182,7 @@ $$
 \le c_n^{f-2s}L_n^{2s}.
 $$
 
-The first inequality follows by counting the vertices carrying both factors, one factor, or no factor. It remains valid when $f-2s$ is negative. The permanent error from Section 5.1 is $o(1)$ uniformly over $t\le f=O(\log n)$; we can discard its factor $\Gamma\le1$. Since $\binom fs^2s!\le f^{2s}/s!$, the complete sum gives
+The first inequality follows by counting the vertices carrying both factors, one factor, or no factor. It remains valid when $f-2s$ is negative. The error in Lemma 3.1 is $o(1)$ uniformly over $t\le f=O(\log n)$; we can discard its factor $\Gamma\le1$. Since $\binom fs^2s!\le f^{2s}/s!$, the complete sum gives
 
 $$
 \frac{\operatorname{per}A_T}{n!/2^n}
@@ -247,9 +216,9 @@ $$
 \le C_*/4+o(1)<1,\qquad f\ge1.
 $$
 
-The long tail was already $o(1/n)$. Thus tournaments with exceptional vertices cannot maximize $H(T)$ for all sufficiently large $n$, since averaging over random tournaments gives $P(n)\ge\mu_n$. Only a uniform $o(1)$ error is needed for this exclusion; no $O(1/n)$ estimate for this class is asserted.
+Since $P(n)\ge\mu_n$, the fixed gap below one excludes these tournaments from the maximum for all sufficiently large $n$. This case requires only an $o(1)$ error.
 
-### 5.4. Retaining the full score penalty in the remaining class
+### 3.4 The score penalty in the remaining class
 
 We are left with tournaments satisfying
 
@@ -258,22 +227,15 @@ $$
 a=s/(n-1),\qquad \tau=\sum_i a_i^2\le K\log n.
 $$
 
-Their paired product obeys
+Here and below, fix one absolute constant $K_0$ with $\tau\le K_0\log n$. Their paired product obeys
 
 $$
 \Gamma=\prod_i(1-a_i^2)\le e^{-\tau}.
 $$
 
-For completeness, put $\omega_i=a_i^2/(1-a_i^2)$ and $v_i=a_i/(1-a_i^2)$. The paired preconditioned matrix $C'=\operatorname{diag}(\ell)\,(2A/(n-1))\,\operatorname{diag}(r)$ has total mass $n+\nu$, with the exact identity
+We now use Lemma 3.1 on the whole tournament. The score product is common to every short term; keeping it outside the sum will absorb errors that are larger than $1/n$ individually.
 
-$$
-\nu=\frac{(\sum_i\omega_i)^2-(\sum_iv_i)^2+\sum_i\omega_i+
-2\omega^{\mathsf T}Sv}{n-1}.
-$$
-
-Using $\sum_i a_i=0$, the fixed bound on $|a_i|$, and row Euclidean norms $\sqrt{n-1}$ of $S$, this gives $|\nu|\le K\mathcal M_\tau$. These are the scores of the whole graph, not a newly selected core.
-
-For a principal deletion set $U$ of size $k\le k_n$, Section 5.1 gives
+For a principal deletion set $U$ of size $k\le k_n$, Lemma 3.1 gives
 
 $$
 \operatorname{per}A[U^c]\le
@@ -303,7 +265,7 @@ $$
 \log\frac{n^k}{(n)_k}=O(k^2/n),\qquad k\le k_n.
 $$
 
-Put $\delta_n=\sqrt{\tau/n}+1/n$ and $r_k=R_{\tau,k}+\log(n^k/(n)_k)$. Uniformly over $\tau\le K\log n$, we have $0\le r_k\le K\delta_n(k+k^2)$ and $\max_{k\le k_n}r_k=o(1)$, taking the upper error budgets nonnegative. Thus
+Put $\delta_n=\sqrt{\tau/n}+1/n$ and $r_k=R_{\tau,k}+\log(n^k/(n)_k)$. Uniformly over $\tau\le K_0\log n$, we have $0\le r_k\le K\delta_n(k+k^2)$ and $\max_{k\le k_n}r_k=o(1)$, taking the upper error budgets nonnegative. Thus
 
 $$
 \sum_{k\le k_n}c_ke^{r_k}
@@ -320,9 +282,9 @@ e^{R_\tau+K\delta_n}
 \det\left(I+\frac2n\operatorname{diag}(g)(I+A)\right).
 $$
 
-This is a relative error estimate with $\Gamma$ outside the complete sum.
+The finite moments of $G^kw_k$ control the summed error, rather than the largest deletion size $k_n$. This is what prevents an extra logarithmic factor in the final bound.
 
-We now remove the weights without losing the score penalty. Let $W=I+(2/n)(I+A)$ and $\Delta=(2/n)\operatorname{diag}(g-1)(I+A)$. The symmetric part of $W$ is at least $I$, so $\|W^{-1}\|_{\rm op}\le1$. Since every row of $I+A$ has Euclidean norm at most $\sqrt n$ and $\sum_i(g_i-1)\le K\tau$, decomposition into rank-one row matrices gives the nuclear-norm estimate
+We now remove the weights without losing the score penalty. Let $W=I+(2/n)(I+A)$ and $\Delta=(2/n)\operatorname{diag}(g-1)(I+A)$. The symmetric part of $W$ is at least $I$, so $\|W^{-1}\|_{\rm op}\le1$. Since every row of $I+A$ has Euclidean norm at most $\sqrt n$ and $\sum_i(g_i-1)\le K\tau$, the trace norm (the sum of singular values) can be estimated by decomposing $\Delta$ into rank-one row matrices. Since $\|uv^{\mathsf T}\|_*=\|u\|_2\|v\|_2$, this gives
 
 $$
 \|\Delta\|_*\le K\tau/\sqrt n.
@@ -334,7 +296,7 @@ $$
 \det(W+\Delta)\le\det(W)e^{K\tau/\sqrt n}.
 $$
 
-Both determinants are positive: $W$ has positive-definite symmetric part, and the weighted determinant has a principal-minor expansion with positive coefficients. The unweighted rank-one bound from Section 5.3, now with $N=n$, is $\det(W)\le2e\det(I+S/n)$.
+Both determinants are positive: $W$ has positive-definite symmetric part, and the weighted determinant has a principal-minor expansion with positive coefficients. The unweighted rank-one bound from Section 3.3, now with $N=n$, is $\det(W)\le2e\det(I+S/n)$.
 
 Combining these inequalities and adding only the long-subset tail gives the uniform score-sensitive bound
 
@@ -346,7 +308,7 @@ K\left[\frac{1+\tau+\tau^2}{n}
 +o(1/n).
 $$
 
-For $\tau\le K\log n$, all polynomial terms except the constant $1/n$ can consume at most $\tau/4$ for sufficiently large $n$. The remaining square-root term is bounded by Young's inequality:
+For $\tau\le K_0\log n$, all polynomial terms except the constant $1/n$ can consume at most $\tau/4$ for sufficiently large $n$. The remaining square-root term is bounded by Young's inequality:
 
 $$
 K\sqrt{\tau/n}\le\tau/4+K^2/n.
@@ -358,7 +320,7 @@ $$
 H(T)/\mu_n\le C_*e^{K/n}+o(1/n)=C_*+O(1/n).
 $$
 
-### 5.5. Completion of the uniform upper bound
+### 3.5 Completion of the upper bound
 
 The three classes cover every tournament. High-variance tournaments have normalized path count $o(1/n)$; the low-variance tournaments with exceptional vertices have count strictly below one; all remaining tournaments satisfy the preceding $C_*+O(1/n)$ bound. It follows that
 
@@ -366,4 +328,5 @@ $$
 \boxed{P(n)\le\bigl(C_*+O(1/n)\bigr)\mu_n.}
 $$
 
-The proof uses no regularity assumption on an extremizer and no claim about the attainability of the relaxed packed spectrum. All estimates are uniform for sufficiently large $n$; they do not specify an effective starting order.
+The thresholds in the three cases are independent of the tournament, so one common threshold gives the upper half of Theorem 1.1.
+

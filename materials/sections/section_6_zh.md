@@ -1,12 +1,20 @@
-## 4. 缩放与非主删除
+## 6. 缩放与非主永久式估计
 
-本节证明将第 3 节统一永久式定理用于竞赛矩阵及其非主子矩阵时所需的解析接口。含固定参数的估计，其常数对有关矩阵和删集一致。缩放的存在性不通过猜测零支撑，或调用任意非负矩阵的支撑定理来推断。
+定理 5.1 适用于经标量归一化后行列和相等的矩阵。竞赛图矩阵通常具有不同的行列和：若 $C=2A/(n-1)$，则
 
-以 $\mathbf 1_p$ 表示全一向量，记 $P_p=\mathbf 1_p\mathbf 1_p^{\mathsf T}/p$、$\Pi_p=I-P_p$。矩阵 $X$ 的总质量为 $\mathfrak m(X)=\sum_{i,j}X_{ij}$。矩阵范数均注明下标；$\|\cdot\|_{\rm op}$、$\|\cdot\|_F$ 以及诱导一范数和无穷范数采用通常定义。
+$$
+C\mathbf1=\mathbf1+a,\qquad C^{\mathsf T}\mathbf1=\mathbf1-a.
+$$
 
-### 4.1. 关于维数一致的局部缩放引理
+因此，需要在修正边际的同时，控制永久式及其 Gaussian 因子的变化。先构造局部对角缩放，估计其总对数代价；再用 Gram 矩阵比较控制删行、删列的影响；最后，通过成对比分修正，使竞赛图子矩阵满足局部定理的条件，从而证明引理 3.1。
 
-**引理（局部缩放）。** 设 $X$ 为总质量等于 $p$ 的实 $p\times p$ 矩阵。记
+记 $\mathbf1_p$ 为全一向量，$P_p=\mathbf1_p\mathbf1_p^{\mathsf T}/p$，$\Pi_p=I-P_p$。矩阵的总质量为 $\mathfrak m(X)=\sum_{i,j}X_{ij}$。以 $\|\cdot\|_{\rm op}$ 表示 Euclidean 算子范数，$\|\cdot\|_F$ 表示 Frobenius 范数，$\|\cdot\|_*$ 表示迹范数。本节常数在给定稠密度与谱隙参数后统一。
+
+### 6.1 局部缩放及其代价
+
+我们寻找形如 $B_{ij}=X_{ij}e^{x_i+y_j}$、行列和均为一的矩阵。将 $(x,y)$ 换为 $(x+c\mathbf1,y-c\mathbf1)$ 不改变 $B$；条件 $\sum x_i=\sum y_j$ 消去这一维自由度。奇异值谱隙控制其余子空间上的线性化平衡方程，而元素界进一步给出不依赖维数的无穷范数控制，从而可以使用压缩映射论证。
+
+**引理 6.1（局部缩放）。** 设 $p\ge1$，$X$ 为总质量等于 $p$ 的实 $p\times p$ 矩阵。记
 
 $$
 \alpha=X\mathbf 1_p-\mathbf 1_p,\qquad \beta=X^{\mathsf T}\mathbf 1_p-\mathbf 1_p,\qquad \varepsilon=\max(\|\alpha\|_\infty,\|\beta\|_\infty).
@@ -94,7 +102,9 @@ $$
 
 又有 $\|X-X_0\|_{\rm op}\le2\varepsilon$，故 $\varepsilon_0$ 中的第二个条件证明中心核谱隙。正对角因子同时保留非负性与零支撑。引理得证。
 
-**引理（二范数位移与容量）。** 在上述假设下，再设 $X\ge0$。以 $\theta_X=\sum_i x_i+\sum_j y_j$ 表示总缩放势。存在仅依赖固定稠密度与谱隙参数的常数，使
+仅找到平衡点还不足以估计永久式：恢复对角因子时，需要将永久式乘以 $\exp(-\sum x_i-\sum y_j)$。下面的引理既控制这一总代价，也给出比较 Gaussian 因子所需的 Frobenius 位移界。
+
+**引理 6.2（位移与容量）。** 在上述假设下，再设 $X\ge0$。以 $\theta_X=\sum_i x_i+\sum_j y_j$ 表示总缩放势。存在仅依赖固定稠密度与谱隙参数的常数，使
 
 $$
 \|(x,y)\|_2\le K\|(\alpha,\beta)\|_2,\qquad \|B-X\|_F\le\frac K{\sqrt p}\|(\alpha,\beta)\|_2,
@@ -104,7 +114,7 @@ $$
 0\le\theta_X\le K\|(\alpha,\beta)\|_2^2.
 $$
 
-对于总质量为任意正数的非负矩阵 $X$，先归一化为 $\widetilde X=pX/\mathfrak m(X)$，再对 $\widetilde X$ 应用以上结论。若 $B$ 为其缩放，则有精确恒等式
+对于总质量为任意正数的非负矩阵 $X$，假设 $\widetilde X=pX/\mathfrak m(X)$ 满足引理 6.1 的条件，再对 $\widetilde X$ 应用以上结论。若 $B$ 为其缩放，则有精确恒等式
 
 $$
 \theta_X=\theta_{\widetilde X}+p\log\frac p{\mathfrak m(X)},\qquad \operatorname{per}X=e^{-\theta_X}\operatorname{per}B.
@@ -122,7 +132,9 @@ $$
 
 由于 $\Phi_X(0)=p$、$\Phi_X(z)=p-\theta_X$，凸性给出 $\theta_X\ge0$。强凸性给出 $\theta_X\le\|g\|_2^2/(2\lambda)$。非单位质量恒等式由将标量 $p/\mathfrak m(X)$ 吸收入两个对角势中得到。最后，利用 $p\log(\mathfrak m(X)/p)\le\kappa$ 得到永久式上界。
 
-### 4.2. Gaussian 删除与中心化
+### 6.2 Gaussian 删除与中心化
+
+从稠密归一化矩阵中删除 $t$ 行，删去的行平方范数总量为 $t/n$ 量级。将对数行列式导数用于对应的 Gram 矩阵损失，可以保留这个量级。随后改用另一侧 Gram 矩阵处理删列。这样，即使保留的是非主子矩阵，也能得到线性的删除误差。
 
 对满足 $\|Z\|_{\rm op}<1$ 的实矩阵 $Z$，定义
 
@@ -132,13 +144,13 @@ $$
 
 改用 $ZZ^{\mathsf T}$ 得到相同数值；补零行或零列也不改变此值。
 
-**引理（Gram 删除）。** 设 $\|Z\|_{\rm op}\le q_*<1$。删除行集 $I$ 和列集 $J$，剩余集合为 $R,T$，则
+**引理 6.3（Gram 删除与稳定性）。** 设 $\|Z\|_{\rm op}\le q_*<1$。删除行集 $I$ 和列集 $J$，剩余集合为 $R,T$，则
 
 $$
 0\le\log\mathcal G(Z)-\log\mathcal G(Z[R,T])\le\frac{\sum_{i\in I}\|Z_{i,\cdot}\|_2^2+\sum_{j\in J}\|Z_{\cdot,j}\|_2^2}{2(1-q_*^2)}.
 $$
 
-对阶数为 $m$ 的方形余矩阵 $W$，置 $u=\mathbf 1_m/\sqrt m$，则
+对阶数为 $m\ge1$ 的方形余矩阵 $W$，置 $u=\mathbf 1_m/\sqrt m$，则
 
 $$
 0\le\log\mathcal G(W)-\log\mathcal G(\Pi_mW\Pi_m)\le\frac{\|W^{\mathsf T}u\|_2^2+\|Wu\|_2^2}{2(1-q_*^2)}.
@@ -150,7 +162,7 @@ $$
 |\log\mathcal G(U)-\log\mathcal G(V)|\le\frac{\|U\|_F+\|V\|_F}{2(1-q_*^2)}\|U-V\|_F.
 $$
 
-**证明。** 删除行使列侧 Gram 矩阵减少半正定矩阵 $Z^{\mathsf T}(I-P_R)Z$，其迹等于被删行的平方范数之和。对 $F(H)=-\tfrac12\log\det(I-H)$ 和半正定方向 $D$，
+**证明。** 令 $P_R$ 为投影到保留行坐标的对角投影矩阵。删除行使列侧 Gram 矩阵减少半正定矩阵 $Z^{\mathsf T}(I-P_R)Z$，其迹等于被删行的平方范数之和。对 $F(H)=-\tfrac12\log\det(I-H)$ 和半正定方向 $D$，
 
 $$
 DF(H)[D]=\tfrac12\operatorname{tr}((I-H)^{-1}D)\le\frac{\operatorname{tr}D}{2(1-q_*^2)}.
@@ -204,11 +216,13 @@ $$
 |\log\mathcal G(Z)-\log D_n(S)|\le\frac{24t+18\tau+11}{n}.
 $$
 
-为明确常数，注意 $1-q_Y^2=n(n-3)/(2(n-1)^2)$。代入并利用 $t\le n/2$ 即可直接验证上述常数。此估计是有限维结论，允许 $I\ne J$，不将非主余矩阵假定为反对称矩阵。
+为明确常数，注意 $1-q_Y^2=n(n-3)/(2(n-1)^2)$。代入并利用 $t\le n/2$ 即可直接验证上述常数。此估计适用于独立选择的行、列删集 $I,J$；反对称性仅用于原全矩阵 $S$。
 
-### 4.3. 成对预缩放与真实缩放
+### 6.3 竞赛图子矩阵的预处理
 
-固定 $a_0<1$ 和有限正参数 $A_0,B_0$。本小节假设
+矩阵 $C=2A/(n-1)$ 的行、列误差符号相反。将第 $i$ 行乘以 $(1+a_i)^{-1}$ 可修正原行和，将第 $i$ 列乘以 $(1-a_i)^{-1}$ 可修正原列和。同时实施两种修正后仍有边际残差，下面将对此估计。其主要作用是使总质量的一阶变化消失，并在恢复乘积中产生比分罚项 $\Gamma$。
+
+固定 $0\le a_0<1$ 和有限正参数 $A_0,B_0$。本小节假设
 
 $$
 a_i=\frac{s_i}{n-1},\qquad \max_i|a_i|\le a_0,\qquad \tau=\sum_i a_i^2\le A_0\log n,\qquad t\le B_0\log n.
@@ -248,7 +262,7 @@ $$
 \|F\|_F\le K\sqrt{\tau/n}.
 $$
 
-归一化 $\widehat C=nC'/\mathfrak m(C')$。以 $e_i,f_j$ 表示其行、列误差，故 $\sum e_i=\sum f_j=0$。对大小均为 $t$ 的任意删集 $I,J$，令
+归一化 $\widehat C=nC'/\mathfrak m(C')$。以 $e_i,f_j$ 表示其行、列误差，故 $\sum e_i=\sum f_j=0$。对大小均为 $t$ 的任意删集 $I,J$，记 $R=[n]\setminus I$、$T=[n]\setminus J$、$m=n-t$，并令
 
 $$
 X=\frac n m\widehat C[R,T],\qquad \kappa=\mathfrak m(X)-m,\qquad \widetilde X=\frac m{\mathfrak m(X)}X.
@@ -278,7 +292,7 @@ $$
 
 这里 $g(\widetilde X)$ 是行列边际误差拼接向量，不是顶点权重 $g_i$。$\widetilde X$ 的所有元素非负且至多为 $K/m$。
 
-局部缩放引理所需的中心核通过精确恒等式得到，而不是从第二奇异值的表述推断。记
+为应用引理 6.1，下面验证 $\widetilde X$ 的中心核条件。记
 
 $$
 \eta=\frac{n^2}{\mathfrak m(C')\mathfrak m(X)}=1+O((t+1)/n),
@@ -290,7 +304,7 @@ $$
 \Pi_m\widetilde X\Pi_m=\eta\left[Z+\Pi_mF[R,T]\Pi_m\right].
 $$
 
-当 $t>0$ 时，$\eta$ 的主值为 $n/m$，没有被遗漏。压缩不增大 $Y$ 的算子范数，第二项由已得 Frobenius 界控制。因此，在固定参数下，中心核的算子范数一致至多为 $1/\sqrt2+o(1)$。其元素为 $O(1/m)$，无穷范数边际误差趋于零。对所有充分大的 $n$，局部缩放引理适用，并构造真实的双随机矩阵 $B_X$。
+由于 $\mathfrak m(C')=n+o(1)$、$\mathfrak m(X)=m+o(1)$，$\eta$ 的主值为 $n/m$。压缩不增大 $Y$ 的算子范数，第二项由已得 Frobenius 界控制。因此，在固定参数下，中心核的算子范数一致至多为 $1/\sqrt2+o(1)$。其元素为 $O(1/m)$，无穷范数边际误差趋于零。对所有充分大的 $n$，局部缩放引理适用，并构造真实的双随机矩阵 $B_X$。
 
 二范数位移引理给出
 
@@ -306,25 +320,13 @@ $$
 |\log\mathcal G(B_X-P_m)-\log D_n(S)|\le K\left[\sqrt{\tau/n}+(t+1)/n\right].
 $$
 
-中心化产生的 $\tau/n$ 项已吸收入 $\sqrt{\tau/n}$。特别地，不同行、列删集不会带来平方根量级的删除损失。
+中心化产生的 $\tau/n$ 项已吸收入 $\sqrt{\tau/n}$。其中由删除产生的误差与 $t/n$ 成线性关系，正适合对后续子集权重求和。
 
-### 4.4. 非主子矩阵的永久式恢复
+### 6.4 非主永久式界的证明
 
-**引理（成对非主永久式界）。** 在第 4.3 节固定参数假设下，定义 $\Gamma=\prod_i(1-a_i^2)\le e^{-\tau}$。对所有充分大的 $n$，以及大小均为 $t$ 的任意删集 $I,J$，记 $m=n-t$，则
+下面证明引理 3.1，以 $n$ 表示全核心阶数 $N$，并取 $a_0=b$。前面的构造已给出缩放矩阵 $B_X$。剩下的工作是恢复全部对角因子和标量因子，再将所得 Gaussian 行列式与 $D_n(S)$ 比较。
 
-$$
-\operatorname{per}A[R,T]\le e^{-1}D_n(S)\Gamma\left(\prod_{i\in I}\ell_i\right)\left(\prod_{j\in J}r_j\right)\frac{m!}{2^m}\exp(K\mathcal R_{\tau,t}),
-$$
-
-其中
-
-$$
-\mathcal R_{\tau,t}=\mathcal M_\tau+\sqrt{\tau/n}+(t+1)/n+t\sqrt{\tau/n}+t^2/n.
-$$
-
-常数仅依赖 $a_0,A_0,B_0$ 和统一永久式定理中的常数。
-
-**证明。** 已构造的真实缩放满足稠密度与中心核谱隙假设，因此第 3 节定理给出
+**证明。** 已构造的真实缩放满足稠密度与中心核谱隙假设，因此定理 5.1 给出
 
 $$
 \operatorname{per}B_X=\frac{m!}{m^m}\mathcal G(B_X-P_m)(1+O(1/m)).
@@ -336,7 +338,7 @@ $$
 \prod_{i\in R}(1+a_i)\prod_{j\in T}(1-a_j)=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j.
 $$
 
-删除行对应恢复 $\ell$ 因子，删除列对应恢复 $r$ 因子，二者不能交换。完整的标量恒等式为
+因此，删除行恢复 $\ell$ 因子，删除列恢复 $r$ 因子。完整的标量恒等式为
 
 $$
 \operatorname{per}A[R,T]=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j\left[\frac{m(n-1)\mathfrak m(C')}{2n^2}\right]^m e^{-\theta_X}\operatorname{per}B_X.
@@ -348,19 +350,21 @@ $$
 \frac{m!}{2^m}(1-1/n)^m\left[\frac{\mathfrak m(C')}{n}\right]^m.
 $$
 
-其对数与 $e^{-1}m!/2^m$ 的对数之差为 $O((t+1)/n+|\nu|)$。容量界给出 $e^{-\theta_X}\le e^\kappa$。代入质量、Gaussian 和零阶永久式误差，即得到所需指数预算。所有比较对 $I,J$ 一致，均不要求 $I=J$。
+其对数与 $e^{-1}m!/2^m$ 的对数之差为 $O((t+1)/n+|\nu|)$。容量界给出 $e^{-\theta_X}\le e^\kappa$。代入质量、Gaussian 和零阶永久式误差，即得到所需指数预算。所有常数对竞赛图及两个删集一致，引理 3.1 得证。$\square$
 
-### 4.5. 小比分时的双侧近似
+### 6.5 小比分时的双侧估计
 
-**引理（小比分永久式近似）。** 设 $d=\|S\mathbf 1_n\|_\infty=o(\sqrt n)$。固定 $B_0<\infty$，任删 $t\le B_0\log n$ 行与 $t$ 列，记 $m=n-t$。对这些选择一致地有
+当每个比分均为 $o(\sqrt n)$ 时，原始边际已足够接近一，可以直接使用局部缩放。容量界随后从两侧控制恢复因子，得到定理 4.1 所需的近似。
+
+**引理 6.4（小比分永久式近似）。** 设 $d=\|S\mathbf 1_n\|_\infty=o(\sqrt n)$。固定 $0<B_0<\infty$，任删 $t\le B_0\log n$ 行与 $t$ 列，记 $m=n-t$。对这些选择一致地有
 
 $$
 \operatorname{per}A[R,T]=e^{-1}D_n(S)\frac{m!}{2^m}\left[1+O_{B_0}\left(\frac{(d+t+1)^2}{n}\right)\right].
 $$
 
-这是渐近结论，不是对每个小阶矩阵的有限阶保证。当 $(d+t+1)^2/n$ 位于某个固定、充分小的范围内时，常数一致；在所述渐近范围中此量趋于零。
+固定 $B_0$ 后，只要 $(d+t+1)^2/n$ 足够小，隐含常数就是一致的；在所述渐近范围中此量趋于零。
 
-**证明。** 此处不需要成对预缩放。令 $C=2A/(n-1)$、$X=(n/m)C[R,T]$。全矩阵的行列误差分别为 $s_i/(n-1)$、$-s_i/(n-1)$。因此，第 4.3 节的精确质量与边际恒等式给出
+**证明。** 此处不需要成对预缩放。令 $C=2A/(n-1)$、$X=(n/m)C[R,T]$。全矩阵 $C$ 的行列误差分别为 $s_i/(n-1)$、$-s_i/(n-1)$。因此，第 6.3 节的精确质量与边际恒等式给出
 
 $$
 |\kappa|=O(t(d+t)/n),\qquad \varepsilon(X)=O((d+t)/n),\qquad \|g(X)\|_2=O((d+t)/\sqrt n).
@@ -384,4 +388,5 @@ $$
 \operatorname{per}A[R,T]=\left[\frac{m(n-1)}{2n}\right]^m e^{-\theta_X}\operatorname{per}B_X.
 $$
 
-应用统一永久式定理，并使用 $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$。所有对数误差均为 $O((d+t+1)^2/n)=o(1)$，对其取指数即得到所述相对近似。此短余矩阵估计是第 6 节实际 Hamilton 路径近似的输入；这里没有宣称谱切换或矩阵缩放保持路径数。
+应用统一永久式定理，并使用 $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$。所有对数误差均为 $O((d+t+1)^2/n)=o(1)$，对其取指数即得到所述相对近似。这就证明了定理 4.1 所用的一致短余矩阵近似。$\square$
+

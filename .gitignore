@@ -11,3 +11,6 @@ venv/
 Thumbs.db
 .env
 .lake/
+
+# Reproducible typesetting intermediates and full-page QA renders
+/build/

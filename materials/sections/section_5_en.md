@@ -1,18 +1,14 @@
-## 3. A uniform zeroth-order permanent theorem
+## 5. A uniform permanent approximation
 
-This section proves a permanent approximation for general real matrices. Normality, skew-symmetry, and entrywise nonnegativity are not assumptions. The spectral hypothesis concerns singular values, not eigenvalue moduli. The result will therefore remain applicable after a tournament matrix undergoes unequal row and column deletions and subsequent diagonal scaling.
+We now prove the permanent estimate underlying the reduction. After a matrix has been scaled to have all row and column sums equal to one, it has the form $(J_n+E)/n$ with $E$ centered on both sides. The theorem below approximates its permanent by a Gaussian determinant. It uses a bound on the entries and a fixed singular-value gap, which Section 6 verifies for the scaled tournament submatrices.
 
-Write $J_n$ for the all-ones matrix, $P_n=J_n/n$, and $\mathbf 1$ for the all-ones vector. The operator norm is the Euclidean operator norm. For a complex matrix $Z$, the notation $Z^*$ means conjugate transpose, and
+McCullagh [5] obtained the determinantal leading term under moderate-deviation conditions. We give a self-contained version with fixed entry bound $C$, singular-value gap $q$, and an error uniform over the matrix class for each fixed $C,q$. The coefficient and tail estimates are kept separate so that the conclusion can be applied uniformly to the deletions and scalings in Section 6. A related recent approximation by Li [8, Theorem 2.1] assumes that the maximum absolute row or column sum of the centered perturbation is $o(n)$; that hypothesis does not cover dense kernels with such sums of order $n$.
 
-$$
-|Z|=(Z^*Z)^{1/2}.
-$$
+Write $P_n=J_n/n$. The operator norm is the Euclidean operator norm. For a complex matrix $Z$, write $Z^*$ for its conjugate transpose and $|Z|=(Z^*Z)^{1/2}$ for its operator absolute value.
 
-Thus $|Z|$ is an operator absolute value, not the matrix of entrywise absolute values.
+### 5.1 Statement and proof plan
 
-### 3.1. Statement and an explicit error budget
-
-**Theorem (uniform zeroth-order permanent approximation).** Fix $0\le C<\infty$ and $0\le q<1$. Suppose that $E\in\mathbb R^{n\times n}$ satisfies
+**Theorem 5.1 (Uniform permanent approximation).** Fix $0\le C<\infty$ and $0\le q<1$. For $n\ge1$, suppose that $E\in\mathbb R^{n\times n}$ satisfies
 
 $$
 E\mathbf1=E^{\mathsf T}\mathbf1=0,\qquad
@@ -31,62 +27,31 @@ The same statement holds with a relative factor $1+O_{C,q}(n^{-1})$ multiplying 
 
 Here and below the determinant square root is the positive square root on the real interval under consideration. The assumptions imply $\|B\|_{\mathrm F}^2\le C^2$. Consequently, the determinant factor is bounded above by a constant depending only on $C,q$, and it is at least one.
 
-We prove the theorem with an explicit, though deliberately conservative, error budget. Define
+The leading term comes from pairings. Inclusion–exclusion on repeated row and column indices turns each permanent coefficient into a sum of bipartite multigraphs. Centering removes degree-one vertices, and the degree-two components sum to the Gaussian determinant. The remaining components are smaller by powers of $n^{-1}$, measured by their edge excess. This proves the approximation through a linear range of degrees. A separate complex-analytic bound then controls the rest of the actual permanent polynomial.
+
+For the proof, set
 
 $$
 f(t)=\frac{\operatorname{per}(J_n+tE)}{n!},
 \qquad G(t)=\det(I-t^2BB^{\mathsf T})^{-1/2}.
 $$
 
-Choose $1<\sigma<R<1/q$, omitting the last restriction when $q=0$. For example, one can use
+Choose $1<\sigma<R<1/q$, with no upper restriction when $q=0$; for example,
 
 $$
 R=\frac{3+q}{2(1+q)},\qquad \sigma=\frac{1+R}{2}.
 $$
 
-Put
+We use the envelope
 
 $$
-W=\max\left\{1,CR+\frac{C^2R^2}{1-Rq}\right\},
-\qquad D=710W^3,\qquad
-T_1=\frac32W^2+\frac{10}{3}W^3,
-$$
-
-$$
-\alpha=\min\left\{\frac14,\frac1{16D},\frac{\log\sigma}{2}\right\},
-\qquad
 \Gamma(r)=\exp\left(\frac{C^2r^2}{2(1-q^2r^2)}\right),
-\qquad
-\beta=\frac{RC}{1-Rq}.
+\qquad r\ge0,\ rq<1.
 $$
 
-For the Gaussian coefficient recovery, let
+Throughout this section, upper restrictions involving $1/q$ are omitted when $q=0$. All constants depend only on $C,q$ and the chosen radii. Section 5.6 collects them into an explicit error bound.
 
-$$
-u_\sigma=\frac{\sigma^2C^2}{1-\sigma^2q^2},
-\qquad
-v_\sigma=\frac{\sigma^2C^2(1+\sigma^2q^2)}
-{(1-\sigma^2q^2)^2},
-$$
-
-$$
-K_G=\frac{\Gamma(\sigma)}{2(1-\alpha)}
-\left(u_\sigma^2+v_\sigma\right).
-$$
-
-**Explicit error budget.** For every integer $n\ge4/\alpha$,
-
-$$
-|f(1)-G(1)|
-\le \frac{\Gamma(R)T_1+K_G}{n}
-+\frac{8\Gamma(R)D^2}{n^2}
-+\frac{R}{R-1}\exp\!\left(\beta\sqrt n-\alpha n\log R\right)
-+\sigma\Gamma(\sigma)\exp\!\left(-\alpha n\log\sigma\right).
-$$
-
-All parameters on the right depend only on $C,q$ and the chosen radii. The two exponential terms are $o(n^{-1})$. This proves the asserted uniform error once the budget has been established.
-
-### 3.2. Exact coefficient normalization and the centered expansion
+### 5.2 Coefficients and Gaussian pairings
 
 Write $f(t)=\sum_{k=0}^n a_kt^k$. Expansion of the permanent by the entries from $E$ gives
 
@@ -110,9 +75,20 @@ $$
 
 The right-hand sum also makes sense for $k>n$, when it is empty and equals zero. This convention is useful for the formal identities below.
 
-Let $\Pi_k$ be the lattice of set partitions of $[k]$. The indicator that $k$ coordinates are distinct has the standard partition-lattice inclusion-exclusion expansion. The Möbius weight of a block of size $d$ is $(-1)^{d-1}(d-1)!$. Apply this expansion independently to the row and column coordinates in $F_k$. A pair of partitions becomes a bipartite multigraph: its edges carry labels $1,\ldots,k$, its row and column vertices are the partition blocks, and each block of size $d$ has the above weight.
+Let $\Pi_k$ be the lattice of set partitions of $[k]$. The indicator that $k$ coordinates are distinct has the standard partition-lattice inclusion–exclusion expansion. Paired partition expansions also underlie the permanent calculations in [5, Section 4]. The Möbius weight of a block of size $d$ is $(-1)^{d-1}(d-1)!$. Apply this expansion independently to the row and column coordinates in $F_k$. A pair of partitions becomes a bipartite multigraph: its edges carry labels $1,\ldots,k$, its row and column vertices are the partition blocks, and each block of size $d$ has the above weight.
 
 The numerical label of each vertex is summed independently over $[n]$; numerical labels of different vertices are allowed to coincide. If a row vertex has degree one, summing its label gives a column sum of $B$, which is zero. A degree-one column vertex similarly gives a zero row sum. Hence only graphs with all vertex degrees at least two survive.
+
+For example, in degrees two and three the only surviving row and column partitions each consist of one block. Their paired Möbius weights are $1$ and $4$, respectively; dividing by $k!$ gives
+
+$$
+F_2=\frac12\sum_{i,j}B_{ij}^2,
+\qquad
+F_3=\frac23\sum_{i,j}B_{ij}^3,
+\qquad |F_3|\le\frac{2C^3}{3n}.
+$$
+
+The quadratic term belongs to the Gaussian factor below. The cubic term is the first possible core correction, and its $n^{-1}$ bound illustrates the excess estimate.
 
 The connected components in which every vertex has degree two are the pure two-degree components. Their total exponential generating function is $G(t)$. One direct verification uses two independent standard real Gaussian vectors $X,Y$. Wick's formula shows that the coefficient of $t^k$ in
 
@@ -131,7 +107,7 @@ $$
 The analytic identity holds for $|t|\|B\|_{\mathrm{op}}<1$ and identifies all its formal coefficients. In particular, $G$ has nonnegative coefficients, and
 
 $$
-G(r)\le\Gamma(r)\qquad(0\le r<1/q),
+G(r)\le\Gamma(r)\qquad(r\ge0,\ rq<1),
 $$
 
 because $-\log(1-x)\le x/(1-x)$ and $\sum_i s_i^2=\|B\|_{\mathrm F}^2\le C^2$, where $s_i$ are the singular values of $B$.
@@ -144,9 +120,17 @@ $$
 
 where $C_j$ is the generating series of cores of excess $j$, retaining all Möbius signs and matrix contractions. This is a formal identity. In a fixed degree $k$, only finitely many excesses occur; in fact, a nonempty core contributing to degree $k$ has $j<k$. We never assume that the infinite sum over $j$ converges at a nonzero value of $t$. Above degree $n$, its coefficients cancel to zero because the distinct-coordinate definition of $F_k$ is zero.
 
-### 3.3. Compression and the full excess activity bound
+### 5.3 Bounding the non-Gaussian cores
 
-**Lemma (compressed-core activity).** With the notation above,
+A long chain of degree-two vertices can be summed using the operator gap. Compressing these chains leaves at most $2j$ vertices at excess $j$, so the remaining counting problem depends on $j$ rather than on the original degree. Set
+
+$$
+W=\max\left\{1,CR+\frac{C^2R^2}{1-Rq}\right\},
+\qquad D=710W^3,\qquad
+T_1=\frac32W^2+\frac{10}{3}W^3.
+$$
+
+**Lemma 5.2 (Compressed-core activity).** With the notation above,
 
 $$
 \|C_j\|_R\le(Dj/n)^j\qquad(j\ge1),
@@ -168,7 +152,7 @@ e=b+j,\qquad
 1\le b\le2j,\qquad e\le3j.
 $$
 
-We spell out the counting compensation to avoid hidden symmetry factors. Temporarily label the $b$ high-degree vertices and the $d_i$ half-edges at each vertex. Use these labels to select one reading direction for every chain. A given original edge-labeled core has $b!\prod_i d_i!$ such decorations. Conversely, a decorated half-edge pairing and a list of positive chain lengths determine all chain positions. The original $h$ edge labels can be assigned to these positions in $h!$ ways. Subject to the bipartite parity condition, the internal vertices and their colors are then determined.
+The following decorated count determines the symmetry factors. Temporarily label the $b$ high-degree vertices and the $d_i$ half-edges at each vertex. Use these labels to select one reading direction for every chain. A given original edge-labeled core has $b!\prod_i d_i!$ such decorations. Conversely, a decorated half-edge pairing and a list of positive chain lengths determine all chain positions. The original $h$ edge labels can be assigned to these positions in $h!$ ways. Subject to the bipartite parity condition, the internal vertices and their colors are then determined.
 
 After division by the original exponential generating-function factor $h!$ and removal of the decorations, multiplication by the absolute Möbius weights $\prod_i(d_i-1)!$ leaves
 
@@ -227,15 +211,16 @@ $$
 
 Their chain bounds give $\|C_1\|_R\le T_1/n$. $\square$
 
-### 3.4. A finite linear window and factorial recovery
+### 5.4 A linear coefficient window and factorial recovery
 
-Use the truncation parameter
+The bound in Lemma 5.2 is useful while $j/n$ is small. Choose
 
 $$
-M=\lfloor\alpha n\rfloor.
+\alpha=\min\left\{\frac14,\frac1{16D},\frac{\log\sigma}{2}\right\},
+\qquad M=\lfloor\alpha n\rfloor.
 $$
 
-It is unrelated to the main Hamilton-path constant $L$. Put $v_j=(Dj/n)^j$. Whenever $j+1\le M$,
+Put $v_j=(Dj/n)^j$. Whenever $j+1\le M$,
 
 $$
 \frac{v_{j+1}}{v_j}
@@ -299,7 +284,21 @@ $$
 +\sum_i\frac{a_i(1+a_i)}{(1-a_i)^2}.
 $$
 
-The two sums are bounded by $u_\sigma^2$ and $v_\sigma$, respectively. Consequently,
+Define
+
+$$
+u_\sigma=\frac{\sigma^2C^2}{1-\sigma^2q^2},
+\qquad
+v_\sigma=\frac{\sigma^2C^2(1+\sigma^2q^2)}
+{(1-\sigma^2q^2)^2},
+$$
+
+$$
+K_G=\frac{\Gamma(\sigma)}{2(1-\alpha)}
+\left(u_\sigma^2+v_\sigma\right).
+$$
+
+The two terms in the derivative formula are bounded by $u_\sigma^2$ and $v_\sigma$, respectively. Consequently,
 
 $$
 \sum_{k=0}^{M}(r_k-1)g_k\le K_G/n.
@@ -307,11 +306,11 @@ $$
 
 Combining the two recovered contributions gives the first two terms of the explicit error budget.
 
-### 3.5. Polarization and the analytic tail
+### 5.5 Controlling the remaining coefficients
 
-The remaining task is to control the tail of the actual permanent polynomial. A bound that loses the factor $n!/n^n$ would not suffice.
+We have controlled the coefficients through degree $M$, where $M$ is proportional to $n$. To estimate the higher coefficients by Cauchy's inequality, it is enough to bound $f$ on the fixed circle $|t|=R>1$ by $\exp(O(\sqrt n))$. The next two lemmas give that bound with the normalization $n!/n^n$ intact.
 
-**Lemma (permanent polarization).** For every complex square matrix $Z$,
+**Lemma 5.3 (Permanent polarization).** For every complex square matrix $Z$,
 
 $$
 |\operatorname{per}Z|
@@ -339,7 +338,7 @@ $$
 
 The two factors are $\operatorname{per}(U|Z|U^*)=\operatorname{per}|Z^*|$ and $\operatorname{per}|Z|$. Both are nonnegative because they are diagonal matrix elements of positive semidefinite tensor powers. $\square$
 
-**Lemma (positive semidefinite permanent bound).** If $H$ is Hermitian positive semidefinite with eigenvalues $\lambda_1,\ldots,\lambda_n$, then
+**Lemma 5.4 (Positive semidefinite permanent bound).** If $H$ is Hermitian positive semidefinite with eigenvalues $\lambda_1,\ldots,\lambda_n$, then
 
 $$
 \operatorname{per}H\le\frac{n!}{n^n}h_n(\lambda_1,\ldots,\lambda_n),
@@ -363,9 +362,9 @@ $$
 
 Finally, $h_n(1,\lambda_2,\ldots,\lambda_n)$ is the sum of all monomials in $\lambda_2,\ldots,\lambda_n$ of total degree at most $n$, and is at most the product of their infinite geometric sums. $\square$
 
-For real positive semidefinite inputs, the Gaussian identity and AM–GM comparison above coincide with the ingredients of Han–Niles-Weed [3, Lemmas 4.3–4.4]. The extension to an arbitrary nonnormal permanent in this proof comes from the preceding polarization lemma; we do not use a positive semidefinite theorem directly on a nonnormal matrix.
+The Gaussian identity and AM–GM comparison in Lemma 5.4 are the tools used in Han–Niles-Weed [3, Lemmas 4.3–4.4] for positive semidefinite inputs. Lemma 5.3 connects them to the general matrix required here.
 
-The centering assumptions give $P_nB=BP_n=0$. On $|t|=R$ they imply
+Put $\beta=RC/(1-Rq)$. The centering assumptions give $P_nB=BP_n=0$. On $|t|=R$ they imply
 
 $$
 |P_n+tB|=P_n+R(B^{\mathsf T}B)^{1/2},
@@ -398,10 +397,19 @@ $$
 \le\sigma\Gamma(\sigma)\exp\!\left(-\alpha n\log\sigma\right).
 $$
 
-Together with the finite-window estimate, these are exactly the remaining terms of the explicit error budget. The uniform theorem follows. $\square$
+The two tails are exponentially small in $n$. Combined with the $O(n^{-1})$ finite-window estimate, they prove Theorem 5.1. $\square$
 
-### 3.6. Scope of the theorem
+### 5.6 The combined error bound
 
-The proof is analytic and combinatorial for arbitrary dimension; its conclusion is not an extrapolation from finite permanent computations. It also does not assert an exact finite-dimensional determinant formula: higher-degree cores generally contribute nonzero corrections.
+**Proposition 5.5 (Explicit error bound).** For every integer $n\ge4/\alpha$,
 
-The hypotheses must be checked after every matrix transformation. In particular, a tournament adjacency matrix need not be doubly centered. Existence of a scaling, uniform entry bounds after scaling, and a fixed singular-value gap are separate requirements. This theorem supplies the permanent approximation once those requirements have been established; it does not, by itself, prove the global Hamilton-path extremal theorem or identify a finite extremal tournament.
+$$
+|f(1)-G(1)|
+\le \frac{\Gamma(R)T_1+K_G}{n}
++\frac{8\Gamma(R)D^2}{n^2}
++\frac{R}{R-1}\exp\!\left(\beta\sqrt n-\alpha n\log R\right)
++\sigma\Gamma(\sigma)\exp\!\left(-\alpha n\log\sigma\right).
+$$
+
+The first two terms are the coefficient-window and factorial-recovery errors from Section 5.4; the last two are the tails from Section 5.5. The exponential terms are $o(n^{-1})$, proving the uniform rate in Theorem 5.1.
+

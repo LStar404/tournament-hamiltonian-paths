@@ -37,9 +37,11 @@ $$
 P(n)=\max_{|V(T)|=n}H(T),\qquad \mu_n=\frac{n!}{2^{n-1}}.
 $$
 
-Each ordering forms a directed path in a uniformly random tournament with probability $2^{-(n-1)}$. Thus $\mathbb E H(T)=\mu_n$ and $P(n)\ge\mu_n$. The question is how much a suitable orientation can improve on this expectation.
+Each ordering forms a directed path in a uniformly random tournament with probability $2^{-(n-1)}$. Thus $\mathbb E H(T)=\mu_n$ and $P(n)\ge\mu_n$, the classical lower bound of Szele [10]. The question is how much a suitable orientation can improve on this expectation.
 
-Alon [2] proved $P(n)=O(n^{3/2})\mu_n$ using permanents. Friedgut and Kahn's Hamiltonian-cycle bound [7], combined with the path-to-cycle construction in [2, Proposition 2.5], gives $P(n)=O(n^{3/2-\xi})\mu_n$, where $\xi\approx0.2507$. Wormald [6, Theorem 5] obtained $P(n)>2.85588\mu_n$ for infinitely many $n$ and conjectured a limiting ratio approximately $2.855958$. Our result places the maximum path count between two close constant multiples of $\mu_n$.
+Adler, Alon and Ross [9, Theorem 1] improved the lower bound to $P(n)\ge(e-o(1))\mu_n$ and asked whether $P(n)=\Theta(\mu_n)$ [9, Remark 3]. Wormald [6, Theorem 5] obtained $P(n)>2.85588\mu_n$ for infinitely many $n$ and conjectured a limiting ratio approximately $2.855958$.
+
+For upper bounds, Alon [2] proved $P(n)=O(n^{3/2})\mu_n$ using permanents. Friedgut and Kahn's Hamiltonian-cycle bound [7], combined with the path-to-cycle construction in [2, Proposition 2.5], gives $P(n)=O(n^{3/2-\xi})\mu_n$, where $\xi\approx0.2507$. Theorem 1.1 below gives a constant-factor upper bound for every tournament and hence establishes $P(n)=\Theta(\mu_n)$. Its lower bound applies through all orders, with an explicit leading constant and an $O(n^{-1})$ error; the main advance is the uniform constant-factor upper bound, rather than only an improvement of the lower constant.
 
 **Theorem 1.1 (Main result).** There are absolute constants $K\ge0$ and $n_0\ge2$ such that, for every integer $n\ge n_0$,
 

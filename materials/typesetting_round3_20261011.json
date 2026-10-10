@@ -1,0 +1,843 @@
+{
+  "recorded_at_utc": "2026-10-10T18:27:18.325048+00:00",
+  "scope": "Third-round native-math bilingual export, exact section synchronization, compiler and all-page visual checks. Historical receipts are retained unchanged.",
+  "builds": [
+    {
+      "language": "en",
+      "display_math_blocks": 194,
+      "master_sha256": "74081734ef8f8dc4a1c6736c927c7466f76ac81d314fcd9547673b5244b5da88",
+      "tex_sha256": "1ca516a24e78be32b0105c83bafaada2ab0ba9b6f7465a99a88fee7910660a27",
+      "pdf_sha256": "5f2e55b8259bfcfd0a41fe0c9d8cb1c9fbe8f50aa3eb1c01f30ccffbe6646bcd",
+      "pages": 31,
+      "crossrefs": {
+        "sections": 32,
+        "statements": 16,
+        "references": 10,
+        "equations": 8
+      },
+      "compiler_problems": [],
+      "compiler_notes": [
+        "Underfull \\hbox (badness 2856) in paragraph at lines 852--853",
+        "Underfull \\hbox (badness 10000) in paragraph at lines 1082--1083"
+      ],
+      "toolchain": {
+        "pandoc": "pandoc 3.1.11.1",
+        "xelatex": "XeTeX 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian)"
+      },
+      "source_date_epoch": "1791590400",
+      "label_values": {
+        "sec-1": "1",
+        "sec-2": "2",
+        "sec-2.1": "2.1",
+        "sec-2.2": "2.2",
+        "sec-2.3": "2.3",
+        "sec-2.4": "2.4",
+        "sec-3": "3",
+        "sec-3.1": "3.1",
+        "sec-3.2": "3.2",
+        "sec-3.3": "3.3",
+        "sec-3.4": "3.4",
+        "sec-3.5": "3.5",
+        "sec-4": "4",
+        "sec-4.1": "4.1",
+        "sec-4.2": "4.2",
+        "sec-5": "5",
+        "sec-5.1": "5.1",
+        "sec-5.2": "5.2",
+        "sec-5.3": "5.3",
+        "sec-5.4": "5.4",
+        "sec-5.5": "5.5",
+        "sec-5.6": "5.6",
+        "sec-6": "6",
+        "sec-6.1": "6.1",
+        "sec-6.2": "6.2",
+        "sec-6.3": "6.3",
+        "sec-6.4": "6.4",
+        "sec-6.5": "6.5",
+        "sec-7": "7",
+        "sec-A": "A",
+        "sec-A.1": "A.1",
+        "sec-A.2": "A.2",
+        "thm-1.1": "1.1",
+        "thm-2.1": "2.1",
+        "thm-2.2": "2.2",
+        "thm-3.1": "3.1",
+        "thm-3.2": "3.2",
+        "thm-4.1": "4.1",
+        "thm-4.2": "4.2",
+        "thm-5.1": "5.1",
+        "thm-5.2": "5.2",
+        "thm-5.3": "5.3",
+        "thm-5.4": "5.4",
+        "thm-5.5": "5.5",
+        "thm-6.1": "6.1",
+        "thm-6.2": "6.2",
+        "thm-6.3": "6.3",
+        "thm-6.4": "6.4",
+        "eq-path-convolution": "2.1",
+        "eq-exceptional-bound": "3.1",
+        "eq-score-penalty": "3.2",
+        "eq-uniform-permanent": "5.1",
+        "eq-core-activity": "5.2",
+        "eq-deletion-mass": "6.1",
+        "eq-exact-restoration": "6.2",
+        "eq-small-score-permanent": "6.3"
+      },
+      "rendered": true,
+      "visual_review": "See final_visual_review for exact scope and hash-bound results",
+      "compiled_at": "2026-10-10T18:22:29.240902+00:00",
+      "pdf_structure": {
+        "pages": 31,
+        "text_characters": 70822,
+        "raster_images": 0,
+        "bookmarks": 34,
+        "links": 112
+      }
+    },
+    {
+      "language": "zh",
+      "display_math_blocks": 194,
+      "master_sha256": "444ca45eaff3f30904d6ee11f4330b4794700f37851c14afff3e22d792825687",
+      "tex_sha256": "0dbdb496e94f9c727071f1babec90ff5fb31aba1d861ba81de256504c4358115",
+      "pdf_sha256": "c729d9d8481ecd5b44a2f8fadbec6c88751ac06a1cfd1db89b666dacadb510c9",
+      "pages": 27,
+      "crossrefs": {
+        "sections": 32,
+        "statements": 16,
+        "references": 10,
+        "equations": 8
+      },
+      "compiler_problems": [],
+      "compiler_notes": [
+        "Underfull \\hbox (badness 1629) in paragraph at lines 1090--1091"
+      ],
+      "toolchain": {
+        "pandoc": "pandoc 3.1.11.1",
+        "xelatex": "XeTeX 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian)"
+      },
+      "source_date_epoch": "1791590400",
+      "label_values": {
+        "sec-1": "1",
+        "sec-2": "2",
+        "sec-2.1": "2.1",
+        "sec-2.2": "2.2",
+        "sec-2.3": "2.3",
+        "sec-2.4": "2.4",
+        "sec-3": "3",
+        "sec-3.1": "3.1",
+        "sec-3.2": "3.2",
+        "sec-3.3": "3.3",
+        "sec-3.4": "3.4",
+        "sec-3.5": "3.5",
+        "sec-4": "4",
+        "sec-4.1": "4.1",
+        "sec-4.2": "4.2",
+        "sec-5": "5",
+        "sec-5.1": "5.1",
+        "sec-5.2": "5.2",
+        "sec-5.3": "5.3",
+        "sec-5.4": "5.4",
+        "sec-5.5": "5.5",
+        "sec-5.6": "5.6",
+        "sec-6": "6",
+        "sec-6.1": "6.1",
+        "sec-6.2": "6.2",
+        "sec-6.3": "6.3",
+        "sec-6.4": "6.4",
+        "sec-6.5": "6.5",
+        "sec-7": "7",
+        "sec-A": "A",
+        "sec-A.1": "A.1",
+        "sec-A.2": "A.2",
+        "thm-1.1": "1.1",
+        "thm-2.1": "2.1",
+        "thm-2.2": "2.2",
+        "thm-3.1": "3.1",
+        "thm-3.2": "3.2",
+        "thm-4.1": "4.1",
+        "thm-4.2": "4.2",
+        "thm-5.1": "5.1",
+        "thm-5.2": "5.2",
+        "thm-5.3": "5.3",
+        "thm-5.4": "5.4",
+        "thm-5.5": "5.5",
+        "thm-6.1": "6.1",
+        "thm-6.2": "6.2",
+        "thm-6.3": "6.3",
+        "thm-6.4": "6.4",
+        "eq-path-convolution": "2.1",
+        "eq-exceptional-bound": "3.1",
+        "eq-score-penalty": "3.2",
+        "eq-uniform-permanent": "5.1",
+        "eq-core-activity": "5.2",
+        "eq-deletion-mass": "6.1",
+        "eq-exact-restoration": "6.2",
+        "eq-small-score-permanent": "6.3"
+      },
+      "rendered": true,
+      "visual_review": "See final_visual_review for exact scope and hash-bound results",
+      "compiled_at": "2026-10-10T18:22:53.520178+00:00",
+      "pdf_structure": {
+        "pages": 27,
+        "text_characters": 33454,
+        "raster_images": 0,
+        "bookmarks": 34,
+        "links": 108
+      }
+    }
+  ],
+  "final_visual_review": {
+    "status": "passed",
+    "reviewed_at_utc": "2026-10-10T18:27:12.252807+00:00",
+    "scope": "Independent final rendered-page layout, bilingual mathematical-display consistency, equation-number and PDF cross-reference review. This is not an independent proof verification or external-link availability check.",
+    "review_method": "All 58 pages were inspected individually at native 910 by 1287 pixel, 110-dpi render size. The actual final PDFs were independently parsed to check every internal link destination, equation tag location, text bounds, page footers, and replacement glyphs. Source equation-reference text was matched to declared labels, auxiliary destinations, and actual displayed PDF equation tags.",
+    "pdfs": {
+      "en": {
+        "file": "build/papers/en/manuscript_en.pdf",
+        "reading_copy": "papers/tournament_hamilton_paths_en.pdf",
+        "sha256": "5f2e55b8259bfcfd0a41fe0c9d8cb1c9fbe8f50aa3eb1c01f30ccffbe6646bcd",
+        "source_sha256": "74081734ef8f8dc4a1c6736c927c7466f76ac81d314fcd9547673b5244b5da88",
+        "reading_copy_identical": true,
+        "pages": 31,
+        "pages_individually_inspected": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "native_render_pixels": [
+          910,
+          1287
+        ],
+        "render_dpi": 110,
+        "render_directory": "build/papers/en/pages",
+        "render_files": [
+          {
+            "page": 1,
+            "file": "build/papers/en/pages/page-01.png",
+            "sha256": "07ccd5e871b9b3a449513d332c8cac97eae10300184c01877c4bc7adccd6197f"
+          },
+          {
+            "page": 2,
+            "file": "build/papers/en/pages/page-02.png",
+            "sha256": "9c9bb03d89f26bb1e40201eeb9e26e262e48618a3e80a2b9d3c1861cfcfa228f"
+          },
+          {
+            "page": 3,
+            "file": "build/papers/en/pages/page-03.png",
+            "sha256": "3faffa6e219ad640525ec2b4d219cb33043034d910b587ce2ad39948627c49ef"
+          },
+          {
+            "page": 4,
+            "file": "build/papers/en/pages/page-04.png",
+            "sha256": "2495b047d5cd22d1d8c58017e6491e1e50a8d3a72f58698797208a6b94990448"
+          },
+          {
+            "page": 5,
+            "file": "build/papers/en/pages/page-05.png",
+            "sha256": "a56b4797d6a6d8e12d29f6858f91d040cea0a5c27a8aa9be71f42ef4ba0c7c7a"
+          },
+          {
+            "page": 6,
+            "file": "build/papers/en/pages/page-06.png",
+            "sha256": "bf0fbfe0d7fce43c879d8f2986e57c87e5e4a5925a779685dc4295cd86c0e6a0"
+          },
+          {
+            "page": 7,
+            "file": "build/papers/en/pages/page-07.png",
+            "sha256": "43b795efd452429dae69de8575cc0e17252f665e24cd5efa69c302bd811b1a30"
+          },
+          {
+            "page": 8,
+            "file": "build/papers/en/pages/page-08.png",
+            "sha256": "882d0250526ef552f4d2ed03f2a4165c6932a013d0a8612d652683850038cf9a"
+          },
+          {
+            "page": 9,
+            "file": "build/papers/en/pages/page-09.png",
+            "sha256": "470d17ec05453d2c90053ec5453ba52d4e5ff64495450b53f4f2f19af4de6f64"
+          },
+          {
+            "page": 10,
+            "file": "build/papers/en/pages/page-10.png",
+            "sha256": "8b298bfac455ad5eeb3e906a49056fead941b0d024dd5c6c41fdcad4a64a7960"
+          },
+          {
+            "page": 11,
+            "file": "build/papers/en/pages/page-11.png",
+            "sha256": "7470bc7d6271921682fe7512b19298e935f9520a8301a0a6cf9fb87e6a181187"
+          },
+          {
+            "page": 12,
+            "file": "build/papers/en/pages/page-12.png",
+            "sha256": "a555152f493476ef21a4fa9964184b76561c304ccd17c81e0f0e846c75e1c178"
+          },
+          {
+            "page": 13,
+            "file": "build/papers/en/pages/page-13.png",
+            "sha256": "1936caf00bca436f89727279ecdb9fd71e96780cff8c818cd5efb78f2ed45339"
+          },
+          {
+            "page": 14,
+            "file": "build/papers/en/pages/page-14.png",
+            "sha256": "fd3bcd9c8915e6d628a3b256721464e79827e7498b73c716a5539ea9e2c4358a"
+          },
+          {
+            "page": 15,
+            "file": "build/papers/en/pages/page-15.png",
+            "sha256": "44d9117eab48d267d440f3f398da256ec66791a211d1cab120c2207a5d836467"
+          },
+          {
+            "page": 16,
+            "file": "build/papers/en/pages/page-16.png",
+            "sha256": "1fd6097aa7082d9819664d3092876ed41ddab62b1442b3097c12ec47a8ab7484"
+          },
+          {
+            "page": 17,
+            "file": "build/papers/en/pages/page-17.png",
+            "sha256": "09bc68296b7688b2324dd8f5d301d8edf109f97c35664c0f641304b825eb355d"
+          },
+          {
+            "page": 18,
+            "file": "build/papers/en/pages/page-18.png",
+            "sha256": "c3becc2079024c166b5efa803ab9f061974332ece9be5d0ce3482a0e4b40f7a0"
+          },
+          {
+            "page": 19,
+            "file": "build/papers/en/pages/page-19.png",
+            "sha256": "e12bcdb18cc1b6eae6bd3d7be3b224c24aa341f65e458aca8f65caf07c38ba62"
+          },
+          {
+            "page": 20,
+            "file": "build/papers/en/pages/page-20.png",
+            "sha256": "e49d48a467f132a6ed994ae7b8056dd1a18388f7c651ca7243a7b5fbe9a1330c"
+          },
+          {
+            "page": 21,
+            "file": "build/papers/en/pages/page-21.png",
+            "sha256": "5a101c0e0ce2e3f7629302111772302fb35512bb5d5fb2c0fbe312b8b7c5c2db"
+          },
+          {
+            "page": 22,
+            "file": "build/papers/en/pages/page-22.png",
+            "sha256": "3d635ba2f7514caed81041f06748dbe06ee04946100855ebc0c3b2059e5e257f"
+          },
+          {
+            "page": 23,
+            "file": "build/papers/en/pages/page-23.png",
+            "sha256": "0cc8a17ac5af1e6b2de0a7952ad19d3441fe13843b65820fe7332f76c6077e35"
+          },
+          {
+            "page": 24,
+            "file": "build/papers/en/pages/page-24.png",
+            "sha256": "3aad30cad354c2c89a3571e454d58b805a4ffe8cd4fe43602a0e4f2f90e2a854"
+          },
+          {
+            "page": 25,
+            "file": "build/papers/en/pages/page-25.png",
+            "sha256": "ec54532dec4096670224ae0422f47bcd7c198cf62c122414897b1950c55ab245"
+          },
+          {
+            "page": 26,
+            "file": "build/papers/en/pages/page-26.png",
+            "sha256": "c03982b77082b2c79654608ab7d6c539186030aa956826b01539b00e7ea63008"
+          },
+          {
+            "page": 27,
+            "file": "build/papers/en/pages/page-27.png",
+            "sha256": "c4d195bc05d42d32f72d8630513c6683a7cd53a41714cb5b64df76ebae8126c9"
+          },
+          {
+            "page": 28,
+            "file": "build/papers/en/pages/page-28.png",
+            "sha256": "14e37877ea09c2d798f9d002e261d8445179dd23519abdbbc5df04e60b77c806"
+          },
+          {
+            "page": 29,
+            "file": "build/papers/en/pages/page-29.png",
+            "sha256": "26ca61845fcd5966a6efc992ccbef1078a52941a4d6bcd3bb6b75ff7db55b963"
+          },
+          {
+            "page": 30,
+            "file": "build/papers/en/pages/page-30.png",
+            "sha256": "4a5ecf420e4d154b2042df11aa237b46d0ccaa893cabe1e18b9b481596fdea1f"
+          },
+          {
+            "page": 31,
+            "file": "build/papers/en/pages/page-31.png",
+            "sha256": "22222129850c8ea58ec095da2c547e108b662d4e0ae00b8c660c3b28e0b9b707"
+          }
+        ],
+        "display_math_blocks": 194,
+        "crossref_counts": {
+          "sections": 32,
+          "statements": 16,
+          "references": 10,
+          "equations": 8
+        },
+        "equations": {
+          "eq-path-convolution": {
+            "number": "2.1",
+            "pdf_page": 3,
+            "named_destination": "AMS.5",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 5.436
+          },
+          "eq-exceptional-bound": {
+            "number": "3.1",
+            "pdf_page": 10,
+            "named_destination": "AMS.9",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 5.438
+          },
+          "eq-score-penalty": {
+            "number": "3.2",
+            "pdf_page": 12,
+            "named_destination": "AMS.10",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 5.432
+          },
+          "eq-uniform-permanent": {
+            "number": "5.1",
+            "pdf_page": 14,
+            "named_destination": "AMS.14",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 5.435
+          },
+          "eq-core-activity": {
+            "number": "5.2",
+            "pdf_page": 16,
+            "named_destination": "AMS.16",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 5.429
+          },
+          "eq-deletion-mass": {
+            "number": "6.1",
+            "pdf_page": 26,
+            "named_destination": "AMS.23",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 5.429
+          },
+          "eq-exact-restoration": {
+            "number": "6.2",
+            "pdf_page": 28,
+            "named_destination": "AMS.24",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 5.438
+          },
+          "eq-small-score-permanent": {
+            "number": "6.3",
+            "pdf_page": 28,
+            "named_destination": "AMS.26",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 5.435
+          }
+        },
+        "source_equation_references_checked": 9,
+        "pdf_link_annotations": 112,
+        "internal_named_or_page_links": 94,
+        "external_link_annotations": 18,
+        "equation_link_annotations": 11,
+        "invalid_internal_destinations": 0,
+        "raster_images": 0,
+        "bookmarks": 34,
+        "out_of_page_text_spans": 0,
+        "replacement_characters": 0,
+        "compiler_problems": [],
+        "compiler_notes": [
+          "Underfull \\hbox (badness 2856) in paragraph at lines 852--853",
+          "Underfull \\hbox (badness 10000) in paragraph at lines 1082--1083"
+        ],
+        "visual_checks": {
+          "clipping": false,
+          "overlap": false,
+          "missing_glyphs": false,
+          "blank_pages": false,
+          "detached_headings": false,
+          "qed_only_lines_or_pages": false,
+          "page_numbering_consistent": true,
+          "equation_tags_correctly_placed": true,
+          "multiline_formulas_legible": true,
+          "formula_rendering_legible": true,
+          "bibliography_legible": true,
+          "lemma_6_4_quantifiers_and_proof_legible": true,
+          "additive_remainder_and_191_over_200_budget_legible": true
+        }
+      },
+      "zh": {
+        "file": "build/papers/zh/manuscript_zh.pdf",
+        "reading_copy": "papers/tournament_hamilton_paths_zh.pdf",
+        "sha256": "c729d9d8481ecd5b44a2f8fadbec6c88751ac06a1cfd1db89b666dacadb510c9",
+        "source_sha256": "444ca45eaff3f30904d6ee11f4330b4794700f37851c14afff3e22d792825687",
+        "reading_copy_identical": true,
+        "pages": 27,
+        "pages_individually_inspected": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ],
+        "native_render_pixels": [
+          910,
+          1287
+        ],
+        "render_dpi": 110,
+        "render_directory": "build/papers/zh/pages",
+        "render_files": [
+          {
+            "page": 1,
+            "file": "build/papers/zh/pages/page-01.png",
+            "sha256": "c9cca4993f14e8ce2691ed915fca730daf8eb61e2a06196658ceba7755f0a00f"
+          },
+          {
+            "page": 2,
+            "file": "build/papers/zh/pages/page-02.png",
+            "sha256": "379a0500a69dfab3132c54c08b12a1aae391a800ff8590efec2649e920fd33b7"
+          },
+          {
+            "page": 3,
+            "file": "build/papers/zh/pages/page-03.png",
+            "sha256": "0586b4dea49f92f6e4c4ffda57f8e9809074246153f4b0ca86be3e85eb0f8a8a"
+          },
+          {
+            "page": 4,
+            "file": "build/papers/zh/pages/page-04.png",
+            "sha256": "5c4238f18af0b30a4deb5b28b62107ffbba600685c0b39eb17ae910cc0a0c455"
+          },
+          {
+            "page": 5,
+            "file": "build/papers/zh/pages/page-05.png",
+            "sha256": "c3aaa7d4c0b3a0f50df52ae3419b825b3b33467b79508faa809c895e00c3197c"
+          },
+          {
+            "page": 6,
+            "file": "build/papers/zh/pages/page-06.png",
+            "sha256": "12baa862f1b27ee474a1c2f061c1b481560db96c274892bebb9dfcd0a828cb48"
+          },
+          {
+            "page": 7,
+            "file": "build/papers/zh/pages/page-07.png",
+            "sha256": "24c1163e458b0d5c5a44b2998d9c95faf2ec7e9ba2b1e56151f3dc38ea014927"
+          },
+          {
+            "page": 8,
+            "file": "build/papers/zh/pages/page-08.png",
+            "sha256": "3eaf0596d4b3a7e5889ee43c74c8106f1f3ef70f598fc3d609d2300abe14208d"
+          },
+          {
+            "page": 9,
+            "file": "build/papers/zh/pages/page-09.png",
+            "sha256": "5fffe40d4f0c98c919af02516737322f514be852318cac155c0c5becc848ec67"
+          },
+          {
+            "page": 10,
+            "file": "build/papers/zh/pages/page-10.png",
+            "sha256": "34c36940d102166bbdc120e72f6c96f0817bca58187885ba4a20f876ffd8b82c"
+          },
+          {
+            "page": 11,
+            "file": "build/papers/zh/pages/page-11.png",
+            "sha256": "7bd9102ed12a034ba7fe45641fa70c4219c51c79faf476ee9b6e9377370f7682"
+          },
+          {
+            "page": 12,
+            "file": "build/papers/zh/pages/page-12.png",
+            "sha256": "c5c3266cd212712f8a5c21bf7f673d9c8ed1e4654fff9406083fd71470e73e73"
+          },
+          {
+            "page": 13,
+            "file": "build/papers/zh/pages/page-13.png",
+            "sha256": "6216583a802cb8a27ce42d4b8ca7268a595dd1a40b46ebad1c4001a7b8156de4"
+          },
+          {
+            "page": 14,
+            "file": "build/papers/zh/pages/page-14.png",
+            "sha256": "a96ea60226c69bdb94e377c199a4b9b7a23a4df4991cbcdd600c74e2ccd65a31"
+          },
+          {
+            "page": 15,
+            "file": "build/papers/zh/pages/page-15.png",
+            "sha256": "0fe10fd56314a99e915f00f30952ec50e88d991b66e17d5c0931fb96586b1b8b"
+          },
+          {
+            "page": 16,
+            "file": "build/papers/zh/pages/page-16.png",
+            "sha256": "1250b69ae0b7e2b06d1eca0427e739cd4ca962a85578dbb3c06f9a50afddea31"
+          },
+          {
+            "page": 17,
+            "file": "build/papers/zh/pages/page-17.png",
+            "sha256": "2b4c4f447225e8040f62938fdf302dc548ce114c9955437bbb64d31eb0336723"
+          },
+          {
+            "page": 18,
+            "file": "build/papers/zh/pages/page-18.png",
+            "sha256": "e7ca14f40388f49d6cdee6f62fa8d2e53791e7e15b151a488209b491c4737ed0"
+          },
+          {
+            "page": 19,
+            "file": "build/papers/zh/pages/page-19.png",
+            "sha256": "2ba1aa6d4fdacfcd14474d03d4ddc5258d0c0f8e3ffe57a145dbf98b44ca3af8"
+          },
+          {
+            "page": 20,
+            "file": "build/papers/zh/pages/page-20.png",
+            "sha256": "a2235e9fdefc5723ac129c2708b241adc4953d3ea808082d04a9084aea8ed3ab"
+          },
+          {
+            "page": 21,
+            "file": "build/papers/zh/pages/page-21.png",
+            "sha256": "800bd7bfad5cfa0fc27e69f9ef4fb18fe7eb5672ce2266186184db09354f762a"
+          },
+          {
+            "page": 22,
+            "file": "build/papers/zh/pages/page-22.png",
+            "sha256": "4ee7f97434c821df545d63900432cce1571d44314c86036922fe7491cdeb8096"
+          },
+          {
+            "page": 23,
+            "file": "build/papers/zh/pages/page-23.png",
+            "sha256": "100c6e3bed88266e08c1e950c5cbbb333121d470a276637e4c1893b784c0f861"
+          },
+          {
+            "page": 24,
+            "file": "build/papers/zh/pages/page-24.png",
+            "sha256": "ab2287118f28d58ff7f6e7d5493c191d85808f06dbc56e4120882b4a76e3d08b"
+          },
+          {
+            "page": 25,
+            "file": "build/papers/zh/pages/page-25.png",
+            "sha256": "7480df0b35aceb640d91974154504273644eaa976ffedad02b37fffdfeabc985"
+          },
+          {
+            "page": 26,
+            "file": "build/papers/zh/pages/page-26.png",
+            "sha256": "906644d7a74b6da2d90707d68644c66f15f0bba024730419c9b1be062018ca17"
+          },
+          {
+            "page": 27,
+            "file": "build/papers/zh/pages/page-27.png",
+            "sha256": "4b7ca0f4992a3f05026bd9149777df405d1967bacab29c55fd505d1fd7e1d462"
+          }
+        ],
+        "display_math_blocks": 194,
+        "crossref_counts": {
+          "sections": 32,
+          "statements": 16,
+          "references": 10,
+          "equations": 8
+        },
+        "equations": {
+          "eq-path-convolution": {
+            "number": "2.1",
+            "pdf_page": 3,
+            "named_destination": "AMS.5",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 4.63
+          },
+          "eq-exceptional-bound": {
+            "number": "3.1",
+            "pdf_page": 9,
+            "named_destination": "AMS.9",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 4.628
+          },
+          "eq-score-penalty": {
+            "number": "3.2",
+            "pdf_page": 10,
+            "named_destination": "AMS.10",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 4.631
+          },
+          "eq-uniform-permanent": {
+            "number": "5.1",
+            "pdf_page": 13,
+            "named_destination": "AMS.14",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 4.627
+          },
+          "eq-core-activity": {
+            "number": "5.2",
+            "pdf_page": 14,
+            "named_destination": "AMS.16",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 4.63
+          },
+          "eq-deletion-mass": {
+            "number": "6.1",
+            "pdf_page": 23,
+            "named_destination": "AMS.23",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 4.624
+          },
+          "eq-exact-restoration": {
+            "number": "6.2",
+            "pdf_page": 25,
+            "named_destination": "AMS.24",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 4.628
+          },
+          "eq-small-score-permanent": {
+            "number": "6.3",
+            "pdf_page": 25,
+            "named_destination": "AMS.26",
+            "aux_number_matches": true,
+            "single_displayed_tag": true,
+            "destination_resolves_to_formula": true,
+            "anchor_to_tag_vertical_offset_points": 4.624
+          }
+        },
+        "source_equation_references_checked": 9,
+        "pdf_link_annotations": 108,
+        "internal_named_or_page_links": 90,
+        "external_link_annotations": 18,
+        "equation_link_annotations": 9,
+        "invalid_internal_destinations": 0,
+        "raster_images": 0,
+        "bookmarks": 34,
+        "out_of_page_text_spans": 0,
+        "replacement_characters": 0,
+        "compiler_problems": [],
+        "compiler_notes": [
+          "Underfull \\hbox (badness 1629) in paragraph at lines 1090--1091"
+        ],
+        "visual_checks": {
+          "clipping": false,
+          "overlap": false,
+          "missing_glyphs": false,
+          "blank_pages": false,
+          "detached_headings": false,
+          "qed_only_lines_or_pages": false,
+          "page_numbering_consistent": true,
+          "equation_tags_correctly_placed": true,
+          "multiline_formulas_legible": true,
+          "formula_rendering_legible": true,
+          "bibliography_legible": true,
+          "lemma_6_4_quantifiers_and_proof_legible": true,
+          "additive_remainder_and_191_over_200_budget_legible": true
+        }
+      }
+    },
+    "blocking_issues": [],
+    "accepted_minor_notes": [
+      {
+        "language": "zh",
+        "page": 11,
+        "note": "The proof-final line is short (d followed by punctuation and QED), but stays with its proof paragraph and is not a QED-only line or isolated page."
+      },
+      {
+        "language": "zh",
+        "page": 12,
+        "note": "The proof-final line is short (1.1 followed by punctuation and QED), but stays with its proof paragraph and is not a QED-only line or isolated page."
+      }
+    ],
+    "bilingual_consistency": {
+      "display_math_blocks_each": 194,
+      "display_math_substantive_differences": 0,
+      "non_whitespace_raw_display_differences": [
+        19,
+        20,
+        26,
+        42,
+        56
+      ],
+      "raw_difference_explanation": "Blocks 19, 20, and 42 differ only in punctuation; block 26 translates when to 当; block 56 has equivalent single-token TeX bracing. Whitespace differences are immaterial.",
+      "equation_label_number_maps_equal": true,
+      "numbered_equations_each": 8,
+      "equation_source_reference_occurrences_each": 9,
+      "numbered_sections_each": 32,
+      "numbered_results_each": 16,
+      "references_each": 10,
+      "external_target_sets_equal": true
+    }
+  },
+  "section_slices_exact": true,
+  "bilingual_structure": {
+    "display_math_blocks_per_language": 194,
+    "numbered_results_per_language": 16,
+    "numbered_sections_per_language": 32,
+    "references_per_language": 10,
+    "numbered_equations_per_language": 8
+  },
+  "historical_records_preserved": true
+}

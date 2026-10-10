@@ -1,0 +1,73 @@
+{
+  "revision_date_utc_plus_8": "2026-10-11",
+  "recorded_at_utc": "2026-10-10T18:27:18.325048+00:00",
+  "fork_repository": "makerY666/tournament-hamiltonian-paths",
+  "fork_base_commit": "42ee0a1572e9e0cdf88bfc17811c7559b3b2e03c",
+  "fork_base_tree": "77713366e6d7759389e72e9dc65bc03e592fe07e",
+  "source_sha256": {
+    ".github/workflows/verify.yml": "cd251bbd8039eba87586b1479fd6e807e7726da201cbe9fbf605010cf2e074f9",
+    "README.md": "9551e9a8e2223eb3604cb174956575735119071013b3ebf292ee57b7609d407c",
+    "materials/README.md": "acac0981e9ab57587421af047c862142868e9ca8149efa7a612bfec189754214",
+    "materials/manuscript_en.md": "74081734ef8f8dc4a1c6736c927c7466f76ac81d314fcd9547673b5244b5da88",
+    "materials/manuscript_en.tex": "1ca516a24e78be32b0105c83bafaada2ab0ba9b6f7465a99a88fee7910660a27",
+    "materials/manuscript_zh.md": "444ca45eaff3f30904d6ee11f4330b4794700f37851c14afff3e22d792825687",
+    "materials/manuscript_zh.tex": "0dbdb496e94f9c727071f1babec90ff5fb31aba1d861ba81de256504c4358115",
+    "materials/revision_round3_20261011.md": "3bceca1acbd7328551b6fed61fdf7d06cc7895484d3f16b421950b671ed5392a",
+    "materials/sections/section_2_en.md": "5c4fbfff2a17edf15fcad84b6151c60d090c5b9807e56be3e064494f8c4d3248",
+    "materials/sections/section_2_zh.md": "16b2771c5077dcb6c11bd3ec68570ddae19b4179ab80463b5a7d032d29981802",
+    "materials/sections/section_3_en.md": "909d312733ce29f9df1d12d0d60dee35607ce5b06fbcf798654e2e9a142fbdb1",
+    "materials/sections/section_3_zh.md": "aca2c06d9b1886d9de8116b3c3de292819f124962668ce53f80a2f62f8dddf12",
+    "materials/sections/section_5_en.md": "8d856bc7a6aab390077200f0c951b941b926402b6375a2fba6af50410cfab062",
+    "materials/sections/section_5_zh.md": "9d558dbff192c6fc493959f96d653ceec12349b253814c48e90a470d253d656b",
+    "materials/sections/section_6_en.md": "12ee54f7a333785c024707c2399b4e6d2ef52da200eac1f7c36b378579d84e11",
+    "materials/sections/section_6_zh.md": "b58099719ca3c0ce2c8c15193303d51e64691dc31b81cbacb4039c2555e1aa30",
+    "materials/sections/section_a_en.md": "b2ab0ef4487e7eaebd6de7bcae0e66ac099c5e26192537ddc4de40d2d8ee59ff",
+    "materials/sections/section_a_zh.md": "a9cf4ac8c11f3d06fa8bf2ec8db2825805a6a622a08a78c28df53d17b0d05264",
+    "materials/typesetting_round3_20261011.json": "dd67338b3ea14b480767f94428a121688cab0064de38ee00e97842d329a417f7",
+    "materials/verification/diagnostics_round3_20261011.json": "73a5e5f68b687288676de1efd89b40c25e181cbef2ccf61e7fda62e0d8909af6",
+    "materials/verification/manuscript_alignment_20261011.md": "8f05d5b8819567b8fb1fa0939307638d3b7a5947f72e8ad10e18c7f0dd42351e",
+    "papers/tournament_hamilton_paths_en.pdf": "5f2e55b8259bfcfd0a41fe0c9d8cb1c9fbe8f50aa3eb1c01f30ccffbe6646bcd",
+    "papers/tournament_hamilton_paths_zh.pdf": "c729d9d8481ecd5b44a2f8fadbec6c88751ac06a1cfd1db89b666dacadb510c9",
+    "tools/build_papers.py": "8f321b1a27d299611a7249757724d8c33ec9ee27d656a442ed6aa0623cf61424",
+    "tools/tests/test_build_papers.py": "046967383431154f669090371767cd77bddfaa5ee864b2b648b4419c07648563",
+    "tools/tests/test_editorial_precision.py": "fecff2411170e2f1b8ec1f705f16041e14ed4d90221d8f8081b073251f6798ab",
+    "tools/typesetting/README.md": "6dd4db970770832287342c8ccd1af4341f3d8b1a48881308272df1ba3815f8dd"
+  },
+  "pages": {
+    "en": 31,
+    "zh": 27
+  },
+  "display_math_blocks_per_language": 194,
+  "numbered_equations_per_language": 8,
+  "numbered_results": 16,
+  "references": 10,
+  "local_tests_passed": 41,
+  "fresh_finite_diagnostics_passed": 4,
+  "formal_source_hashes_unchanged": 246,
+  "historical_receipts_compared_byte_identical": 16,
+  "local_lean_kernel_build": false,
+  "external_human_peer_review": false,
+  "targeted_mathematical_review": {
+    "status": "passed",
+    "scope": "Exceptional three-part bound, finite Lemma 6.4 quantifier domain, unchanged prior displays and synchronized current-facing copies.",
+    "preexisting_display_formulas_preserved_per_language": 192,
+    "added_display_formulas_per_language": 2,
+    "exact_exceptional_budget": "191/200",
+    "deletion_window_unchanged": true
+  },
+  "baseline_remote_ci": {
+    "repository": "makerY666/tournament-hamiltonian-paths",
+    "id": 38073718040,
+    "head_sha": "42ee0a1572e9e0cdf88bfc17811c7559b3b2e03c",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/makerY666/tournament-hamiltonian-paths/actions/runs/38073718040"
+  },
+  "new_revision_remote_ci": "Established after publication in the pull request; this record makes no prospective CI success claim.",
+  "limitations": [
+    "Targeted source review and finite checks are not a new external human peer review.",
+    "No local Lean kernel build was run; archived formal-source hashes match, with exact baseline remote CI evidence recorded separately.",
+    "The external review attachment’s independent arithmetic counts and sandbox links were not treated as results run here.",
+    "No upstream merge, release, DOI/archive metadata change or journal submission is included."
+  ]
+}

@@ -155,7 +155,31 @@ $$
 \operatorname{per}A[M\setminus I,M\setminus J].
 $$
 
-每个有贡献的排列被唯一分类。核心永久式界中，删除行产生 $\ell_i$，删除列产生 $r_j$。将这些因子接入对应跨边匹配，再去掉互异性限制，两个跨边求和的乘积至多为
+每个有贡献的排列被唯一分类。先对核心永久式使用引理 3.1 的一致上界，再分离两个跨边求和。删除核心行产生 $\ell_i$，删除核心列产生 $r_j$。固定 $R,C$，向外跨边求和精确等于
+
+$$
+\begin{aligned}
+&\sum_{\substack{J\subseteq M\\|J|=t}}
+\operatorname{per}A[F\setminus R,J]\prod_{j\in J}r_j\\
+&=\sum_{\phi:F\setminus R\hookrightarrow M}
+\prod_{x\in F\setminus R}A_{x,\phi(x)}r_{\phi(x)}
+\le\prod_{x\in F\setminus R}\sum_{j\in M}A_{xj}r_j.
+\end{aligned}
+$$
+
+独立地，向内跨边求和为
+
+$$
+\begin{aligned}
+&\sum_{\substack{I\subseteq M\\|I|=t}}
+\operatorname{per}A[I,F\setminus C]\prod_{i\in I}\ell_i\\
+&=\sum_{\psi:F\setminus C\hookrightarrow M}
+\prod_{y\in F\setminus C}A_{\psi(y),y}\ell_{\psi(y)}
+\le\prod_{y\in F\setminus C}\sum_{i\in M}A_{iy}\ell_i.
+\end{aligned}
+$$
+
+其中 $\hookrightarrow$ 表示单射。每个单射由其像集及相应永久式项恰好计数一次，没有额外的 $t!$ 因子。像集 $I,J$ 不必相等，也不必不交，因为它们分别属于核心的行、列副本。所有因子非负，故可去掉单射限制。两个上界的乘积为
 
 $$
 N^{2t}2^{-2t}
@@ -190,7 +214,13 @@ $$
 \exp\left(\frac{2L_n^2f^2}{c_n^2N}\right).
 $$
 
-其中额外指数均为 $o(1)$。进一步删除短核心子集 $U$ 后，上述估计仍统一成立。此时核心 Gaussian 因子改变为原来的 $\exp(O(|U|/n))$ 倍：对 $S_M/N$ 使用 Gaussian 删行列引理，对数损失为 $O(|U|/n)$；将归一化尺度从 $N$ 改为 $N-|U|$ 也有同阶成本。
+其中额外指数均为 $o(1)$。具体地，删除短核心子集 $U$ 后，核心阶数为 $N'=n-f-|U|\sim n$，异常集合仍取原来的 $F$。核心的归一化比分最终仍不超过 $0.95$，平方比分和为 $O(\log n)$，而跨边删集大小为 $t\le f=O(\log n)$。因此引理 3.1 中的误差指数为
+
+$$
+O\!\left(\frac{(\log n)^{3/2}}{\sqrt n}+\frac{(\log n)^2}{n}\right)=o(1),
+$$
+
+其中常数与 $U,I,J$ 无关。跨边邻点比例相较于原始全图仅改变 $O((f+|U|)/n)$，权重的一范数位移仍为 $O(\sqrt{n\log n})$，故前述跨边求和估计也一致成立。此时核心 Gaussian 因子改变为原来的 $\exp(O(|U|/n))$ 倍：对 $S_M/N$ 使用 Gaussian 删行列引理，对数损失为 $O(|U|/n)$；将归一化尺度从 $N$ 改为 $N-|U|$ 也有同阶成本。
 
 在路径卷积中，大小为 $k$ 且与 $F$ 相交的子集占比至多为 $fk/n$。通用永久式界因而使其全部归一化短项贡献至多为
 
@@ -215,7 +245,24 @@ $$
 \le C_*/4+o(1)<1,\qquad f\ge1.
 $$
 
-由于 $P(n)\ge\mu_n$，这个严格小于一的固定间隙说明：对所有充分大的阶数，这类竞赛图不能达到最大值。此处只需 $o(1)$ 误差。
+由于 $P(n)\ge\mu_n$，这个严格小于一的固定间隙说明：对所有充分大的阶数，这类竞赛图不能达到最大值。此处只需 $o(1)$ 误差。此处保留成对谱因子，以显示它与后续归约的联系。对于删除集与 $F$ 不相交的短卷积项，Lean 证明使用较弱但足够的界 $(10/3)4^{-f}(1+\varepsilon_n)$。与 $F$ 相交的短项及长项另贡献 $\delta_n$，因此完整上界为
+
+<a id="eq-exceptional-bound"></a>
+
+$$
+\frac{H(T)}{\mu_n}\le\frac{10}{3}4^{-f}(1+\varepsilon_n)+\delta_n,
+\qquad \varepsilon_n,\delta_n\longrightarrow0.
+\tag{3.1}
+$$
+
+两个误差在所讨论的低方差图类上一致成立。由于 $f$ 可以随 $n$ 增长，二者不能混同。形式化证明最终取 $1+\varepsilon_n\le21/20$，另外两部分各不超过 $1/25$。于是当 $f\ge1$ 时，[式 (3.1)](#eq-exceptional-bound)给出明确预算
+
+$$
+\frac{10}{3}\cdot\frac14\cdot\frac{21}{20}+\frac1{25}+\frac1{25}
+=\frac{191}{200}<1.
+$$
+
+两种选择均不影响最终上界常数。
 
 ### 3.4 剩余图类中的比分罚项
 
@@ -299,12 +346,15 @@ $$
 
 合并上述各因子，最后仅加入长删集尾项，得到统一的比分敏感上界
 
+<a id="eq-score-penalty"></a>
+
 $$
 \frac{H(T)}{\mu_n}\le
 \rho_n(S)\exp\left\{-\tau+
 K\left[\frac{1+\tau+\tau^2}{n}
 +\frac{\tau^{3/2}+\tau}{\sqrt n}+\sqrt{\tau/n}\right]\right\}
 +o(1/n).
+\tag{3.2}
 $$
 
 当 $\tau\le K_0\log n$ 时，除常数 $1/n$ 外的多项式误差项，在充分大阶数总共至多消耗 $\tau/4$。剩余平方根项由 Young 不等式控制：
@@ -313,7 +363,7 @@ $$
 K\sqrt{\tau/n}\le\tau/4+K^2/n.
 $$
 
-因此总指数至多为 $-\tau/2+K/n$。再使用谱上限，得到
+[式 (3.2)](#eq-score-penalty)中的总指数因此至多为 $-\tau/2+K/n$。再使用谱上限，得到
 
 $$
 H(T)/\mu_n\le C_*e^{K/n}+o(1/n)=C_*+O(1/n).

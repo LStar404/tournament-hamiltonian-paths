@@ -1,0 +1,77 @@
+{
+  "revision_date_utc_plus_8": "2026-10-11",
+  "recorded_at_utc": "2026-10-10T17:46:20.800948+00:00",
+  "fork_base_commit": "18f6ecd70cdd1217d382e980168ae8ae055663f2",
+  "upstream_base_commit": "e07175db8b9b1df17a2434355953d3a05fbc625b",
+  "common_base_tree": "d595883f17a550d82c66bad56ac52c55bb69d5fc",
+  "source_sha256": {
+    ".github/workflows/verify.yml": "96154fb2487e7522172723295d2d11b7176213d5eb17abcff3c9fb2c26198052",
+    "README.md": "57c117e0fcd47bbded91686bae4abee088dd4ad2e81f11d916cce34fb281cedb",
+    "materials/README.md": "81496e8e2cf06aca71b17b842cf4deb7ae805165844e0a58671b7d783fadd1eb",
+    "materials/manuscript_en.md": "604d1f31450e22fd87ab60fe5863c5d073a9560723821966ba0f774b649e2e46",
+    "materials/manuscript_en.tex": "39f6b3a8c71d99089fa36c1adc74a795b59fe1e13a7f448d2aed006a24442a70",
+    "materials/manuscript_zh.md": "a69975a814093bd697c262250f2797362a7e81b15233317f805f28a3468ed561",
+    "materials/manuscript_zh.tex": "159d23c69a89f3dcfbd5eb886d03f8ee0cc78eaa8aea28aa0bb287e1156e9b74",
+    "materials/revision_round2_20261011.md": "fb67328fcf1293536337194ce45cbed6b31a101cbf5c2ac8ceee0996fcf19cc7",
+    "materials/sections/section_1_en.md": "7144a4a087880acbf89c7a29d4c8d24576dc6d1960cd7005c2fb45d4fdde0797",
+    "materials/sections/section_1_zh.md": "a1f75afb9054e40f4c587585ed77fcb3be550b7613163c69894b303eb354630d",
+    "materials/sections/section_3_en.md": "74b63ab091f872bb6f338973afaccf250fac1dd84be63a846519dbf51716de25",
+    "materials/sections/section_3_zh.md": "3615a730fd2b76073aec35edfabc7e665d9a1938e24f501e94919aba51f6dc79",
+    "materials/sections/section_5_en.md": "72daaf0de78bd8cf20ab405263988a58f0de84daefe4cb5b3e7e5321a9663ae6",
+    "materials/sections/section_5_zh.md": "8199f0fb010cd9d87e51b79c2cb0f67a0847736a0c61473305484f35b4d17fcb",
+    "materials/sections/section_6_en.md": "4269d3e2145a7b1e0e49719bc665456abcd415d44ba76145fc88428a1355e137",
+    "materials/sections/section_6_zh.md": "07235b5111201552bb81a15067b4d222258c6f9bd486b5af1366d5ef1654b411",
+    "materials/sections/section_a_en.md": "0a1b4e83cb6d08e5c31013d9dd227d7887edfd1b248edd387ee0b5d9ba44125e",
+    "materials/sections/section_a_zh.md": "caa8c77dca35391931e33f4498fdf4d0630f2c133fa43025d6f3d765c8a9a1b5",
+    "materials/typesetting_round2_20261011.json": "9af8cf2d09b92e804feee570e50ffac74badfde5fe8ae378dab12485c275683d",
+    "materials/verification/diagnostics_round2_20261011.json": "b27ba0236d148aaa76d1d04a50a6afc685897cc5653eb5e0a6893a5a33f836ad",
+    "papers/tournament_hamilton_paths_en.pdf": "2eceaf6044fabe48ff40848d8197a7b4a21e36af9deb185a8cf0b4109137e809",
+    "papers/tournament_hamilton_paths_zh.pdf": "f33da863f8fae675db462b82dd2cde5650818b0834a846f48a7a1c88cbbd649d",
+    "tools/build_papers.py": "d4983ce702582971dd0d48f9f45f406a7f907d0b3bd9e15a78f7662fd7d89693",
+    "tools/tests/test_build_papers.py": "417bc95aec373207c8c24398a49d52cb32b0c36b4b3a368af0b03c3a1ef13995",
+    "tools/tests/test_core_examples.py": "1fcb531e73aba5f4c938ca9531c4c517f8c83afe8e327b1ce3487b519b6514dd",
+    "tools/typesetting/README.md": "d84b4c261004245f906fc5e02e57be59a6354cb8fb106b13ed7dd9af56f59e99"
+  },
+  "pages": {
+    "en": 31,
+    "zh": 27
+  },
+  "display_math_blocks_per_language": 192,
+  "numbered_results": 16,
+  "references": 10,
+  "local_tests_passed": 10,
+  "fresh_finite_diagnostics_passed": 4,
+  "formal_source_hashes_unchanged": 246,
+  "local_lean_kernel_build": false,
+  "external_human_peer_review": false,
+  "baseline_remote_ci": [
+    {
+      "repository": "LStar404/tournament-hamiltonian-paths",
+      "id": 38070905246,
+      "head_sha": "e07175db8b9b1df17a2434355953d3a05fbc625b",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-10T17:14:13Z",
+      "updated_at": "2026-10-10T17:24:24Z",
+      "html_url": "https://github.com/LStar404/tournament-hamiltonian-paths/actions/runs/38070905246"
+    },
+    {
+      "repository": "makerY666/tournament-hamiltonian-paths",
+      "id": 38070678338,
+      "head_sha": "18f6ecd70cdd1217d382e980168ae8ae055663f2",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-10T17:10:49Z",
+      "updated_at": "2026-10-10T17:21:38Z",
+      "html_url": "https://github.com/makerY666/tournament-hamiltonian-paths/actions/runs/38070678338"
+    }
+  ],
+  "new_revision_remote_ci": "Established after publication in the pull request; this record makes no prospective CI success claim.",
+  "limitations": [
+    "Targeted proof review and finite checks are not a new external peer review.",
+    "Han–Niles-Weed final publisher volume/issue/pages were not primary-verified; author-listed journal status and arXiv v2 lemma numbering retained.",
+    "No new release, archive metadata or journal-specific author/classification fields were changed."
+  ]
+}

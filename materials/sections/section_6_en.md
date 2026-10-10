@@ -10,6 +10,16 @@ We must correct these margins while controlling the change in the permanent and 
 
 Write $\mathbf1_p$ for the all-ones vector, $P_p=\mathbf1_p\mathbf1_p^{\mathsf T}/p$, and $\Pi_p=I-P_p$. The total mass of a matrix is $\mathfrak m(X)=\sum_{i,j}X_{ij}$. We use $\|\cdot\|_{\rm op}$ for the Euclidean operator norm, $\|\cdot\|_F$ for the Frobenius norm, and $\|\cdot\|_*$ for the trace norm. Constants in this section are uniform once the stated density and gap parameters are fixed.
 
+For the application below, the dimensions and normalizations are as follows. The full tournament order is $n$, the retained order is $m=n-t$, and $p$ is the generic order in Lemmas 6.1–6.2; we set $p=m$ only when applying them. The matrices $C,C',\widehat C$ have order $n$, whereas $X,\widetilde X,B_X,Z$ have order $m$. Their masses, in that order where relevant, are
+
+$$
+\mathfrak m(C')=n+\nu,\quad \mathfrak m(\widehat C)=n,\quad
+\mathfrak m(X)=m+\kappa,\quad
+\mathfrak m(\widetilde X)=\mathfrak m(B_X)=m.
+$$
+
+Here $Z=\Pi_m[(S-I)/(n-1)][R,T]\Pi_m$ is the centered, unscaled retained kernel, not a doubly stochastic matrix. The letter $B_X$ denotes the final stochastic matrix; its perturbation in Theorem 5.1 is $mB_X-J_m$, whose normalization is $B_X-P_m$. This distinguishes the full-order normalization $n-1$ from the retained-order normalization $m$.
+
 ### 6.1 Local scaling and its cost
 
 We seek $B_{ij}=X_{ij}e^{x_i+y_j}$ with all margins equal to one. Replacing $(x,y)$ by $(x+c\mathbf1,y-c\mathbf1)$ leaves $B$ unchanged; the condition $\sum x_i=\sum y_j$ removes this one-dimensional freedom. The singular-value gap controls the linearized balancing equations on the remaining subspace. The entry bound upgrades that control to an infinity-norm estimate independent of the dimension, allowing a contraction argument.
@@ -270,8 +280,11 @@ $$
 
 The exact deletion mass identity is
 
+<a id="eq-deletion-mass"></a>
+
 $$
 \kappa=\frac n m\left[-\sum_{i\in I}e_i-\sum_{j\in J}f_j+\sum_{i\in I,j\in J}\widehat C_{ij}-\frac{t^2}{n}\right].
+\tag{6.1}
 $$
 
 For each remaining row, the exact marginal error before the last normalization is
@@ -304,7 +317,7 @@ $$
 \Pi_m\widetilde X\Pi_m=\eta\left[Z+\Pi_mF[R,T]\Pi_m\right].
 $$
 
-Since $\mathfrak m(C')=n+o(1)$ and $\mathfrak m(X)=m+o(1)$, the leading value of $\eta$ is $n/m$. Compression preserves the operator norm bound for $Y$, and the displayed Frobenius estimate controls the second term. Thus the centered operator norm is at most $1/\sqrt2+o(1)$, uniformly under the fixed parameters. Its entries are $O(1/m)$, and the marginal infinity error tends to zero. The local scaling lemma applies for all sufficiently large $n$ and constructs a genuine doubly stochastic matrix $B_X$.
+Since $\mathfrak m(C')=n+o(1)$ and $\mathfrak m(X)=m+o(1)$, the leading value of $\eta$ is $n/m$. Compression preserves the operator norm bound for $Y$, and the displayed Frobenius estimate controls the second term. Thus the centered operator norm is at most $1/\sqrt2+o(1)$, uniformly under the fixed parameters. Its entries are $O(1/m)$, and the marginal infinity error tends to zero. In the notation of Lemma 6.1, $E=\Pi_m\widetilde X\Pi_m$, because $\widetilde X$ has mass $m$. We may therefore fix $q=3/4$ and fixed density bounds $C,C_0$ once and for all. The threshold $\varepsilon_0$ and inverse bound $L_0$ then depend only on $a_0,A_0,B_0$, not on $n$, the tournament, or the deletion sets. The local scaling lemma applies for all sufficiently large $n$ and constructs a genuine doubly stochastic matrix $B_X$; its immediate gap bound is $7/8$.
 
 The Euclidean displacement lemma yields
 
@@ -321,6 +334,8 @@ $$
 $$
 
 The term $\tau/n$ from centering is absorbed by $\sqrt{\tau/n}$. The deletion part of this estimate is linear in $t/n$, as needed when it is summed against the subset weights.
+
+The error budget can now be read without changing dimensions. All constants and eventual thresholds depend only on the fixed $a_0,A_0,B_0$. The full-order mass error costs $O(|\nu|)\le K\mathcal M_\tau$ in the restored logarithm; deletion changes mass by at most $K[t\sqrt{\tau/n}+t^2/n]$; and the Gaussian logarithm costs $K[\sqrt{\tau/n}+(t+1)/n]$. Applying Theorem 5.1 at order $m\ge n/2$ adds $O(1/m)=O(1/n)$. The final scalar restoration contributes $e^{-1}\exp(O((t+1)/n))$. For $X$ of mass $m+\kappa$, capacity is used only as $e^{-\theta_X}\le e^\kappa$; no nonnegativity of $\theta_X$ is asserted at this nonunit mass. Section 6.4 restores these factors exactly, giving the exponent in Lemma 3.1.
 
 ### 6.4 Proof of the nonprincipal permanent bound
 
@@ -340,11 +355,14 @@ $$
 
 Thus deleted rows restore $\ell$ factors and deleted columns restore $r$ factors. The complete scalar identity is
 
+<a id="eq-exact-restoration"></a>
+
 $$
 \operatorname{per}A[R,T]=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j\left[\frac{m(n-1)\mathfrak m(C')}{2n^2}\right]^m e^{-\theta_X}\operatorname{per}B_X.
+\tag{6.2}
 $$
 
-After restoring $m!/m^m$, the remaining scalar is
+After inserting $m!/m^m$ into [Equation (6.2)](#eq-exact-restoration), the remaining scalar is
 
 $$
 \frac{m!}{2^m}(1-1/n)^m\left[\frac{\mathfrak m(C')}{n}\right]^m.
@@ -358,19 +376,22 @@ When every score is $o(\sqrt n)$, the original margins are already close enough 
 
 **Lemma 6.4 (Small-score permanent approximation).** Let $d=\|S\mathbf 1_n\|_\infty=o(\sqrt n)$. Fix $0<B_0<\infty$, delete any $t\le B_0\log n$ rows and any $t$ columns, and put $m=n-t$. Uniformly over these choices,
 
+<a id="eq-small-score-permanent"></a>
+
 $$
 \operatorname{per}A[R,T]=e^{-1}D_n(S)\frac{m!}{2^m}\left[1+O_{B_0}\left(\frac{(d+t+1)^2}{n}\right)\right].
+\tag{6.3}
 $$
 
-For fixed $B_0$, the implied constant is uniform once $(d+t+1)^2/n$ is sufficiently small. In the stated regime this quantity tends to zero.
+More explicitly, for every fixed $B_0>0$ there are constants $C_{\mathrm{err}},\delta>0$ and an integer $N_0\ge4$, depending only on $B_0$, such that for every $n\ge N_0$, every tournament sign matrix $S$, and every pair of deletion sets $I,J\subseteq[n]$ with $|I|=|J|=t\le B_0\log n$, the following holds: if $d=\|S\mathbf1_n\|_\infty$ and $\eta=(d+t+1)^2/n\le\delta$, then the absolute relative error in [Equation (6.3)](#eq-small-score-permanent) is at most $C_{\mathrm{err}}\eta$. Here $R=[n]\setminus I$, $T=[n]\setminus J$, and $m=n-t$; the sets $I,J$ are independent. The constants are chosen before the dimension, tournament and deletion sets. In the stated asymptotic regime, $\eta\to0$.
 
-**Proof.** No paired preconditioning is needed. Set $C=2A/(n-1)$ and $X=(n/m)C[R,T]$. The row and column errors of the full matrix $C$ are $s_i/(n-1)$ and $-s_i/(n-1)$, respectively. The exact mass and marginal formulas from Section 6.3 therefore give
+**Proof.** Enlarge $N_0$ so that $2t\le n$ throughout the logarithmic deletion window; hence $m\ge n/2>0$. No paired preconditioning is needed. Set $C=2A/(n-1)$ and $X=(n/m)C[R,T]$. The row and column errors of the full matrix $C$ are $s_i/(n-1)$ and $-s_i/(n-1)$, respectively. The exact mass identity [Equation (6.1)](#eq-deletion-mass) and the marginal formulas from Section 6.3 therefore give
 
 $$
 |\kappa|=O(t(d+t)/n),\qquad \varepsilon(X)=O((d+t)/n),\qquad \|g(X)\|_2=O((d+t)/\sqrt n).
 $$
 
-Normalize $\widetilde X=mX/\mathfrak m(X)$. Its density and centered gap are fixed, and the local scaling lemma applies. The Euclidean displacement and capacity estimates give
+The mass error satisfies $|\kappa|\le K\eta$. By reducing $\delta$ if necessary, $\mathfrak m(X)=m+\kappa>0$ uniformly. Normalize $\widetilde X=mX/\mathfrak m(X)$. Its density and centered gap are fixed, and the local scaling lemma applies. The Euclidean displacement and capacity estimates give
 
 $$
 \|B_X-\widetilde X\|_F=O((d+t)/n),\qquad 0\le\theta_{\widetilde X}=O((d+t)^2/n).
@@ -388,5 +409,5 @@ $$
 \operatorname{per}A[R,T]=\left[\frac{m(n-1)}{2n}\right]^m e^{-\theta_X}\operatorname{per}B_X.
 $$
 
-Apply the uniform permanent theorem and use $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$. All logarithmic errors are $O((d+t+1)^2/n)=o(1)$, so exponentiating them proves the stated relative approximation. This proves the uniform short-minor approximation used in Theorem 4.1. $\square$
+Apply the uniform permanent theorem and use $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$. All logarithmic errors are bounded by a fixed multiple of $\eta=(d+t+1)^2/n$. Choose $\delta$ sufficiently small; exponentiating these bounds gives an absolute relative error at most $C_{\mathrm{err}}\eta$, uniformly in the finite domain stated above. In the asymptotic regime $d=o(\sqrt n)$ and $t\le B_0\log n$, we have $\eta\to0$. This proves the uniform short-minor approximation used in Theorem 4.1. $\square$
 

@@ -37,9 +37,11 @@ $$
 P(n)=\max_{|V(T)|=n}H(T),\qquad \mu_n=\frac{n!}{2^{n-1}}.
 $$
 
-Each ordering forms a directed path in a uniformly random tournament with probability $2^{-(n-1)}$. Thus $\mathbb E H(T)=\mu_n$ and $P(n)\ge\mu_n$. The question is how much a suitable orientation can improve on this expectation.
+Each ordering forms a directed path in a uniformly random tournament with probability $2^{-(n-1)}$. Thus $\mathbb E H(T)=\mu_n$ and $P(n)\ge\mu_n$, the classical lower bound of Szele [10]. The question is how much a suitable orientation can improve on this expectation.
 
-Alon [2] proved $P(n)=O(n^{3/2})\mu_n$ using permanents. Friedgut and Kahn's Hamiltonian-cycle bound [7], combined with the path-to-cycle construction in [2, Proposition 2.5], gives $P(n)=O(n^{3/2-\xi})\mu_n$, where $\xi\approx0.2507$. Wormald [6, Theorem 5] obtained $P(n)>2.85588\mu_n$ for infinitely many $n$ and conjectured a limiting ratio approximately $2.855958$. Our result places the maximum path count between two close constant multiples of $\mu_n$.
+Adler, Alon and Ross [9, Theorem 1] improved the lower bound to $P(n)\ge(e-o(1))\mu_n$ and asked whether $P(n)=\Theta(\mu_n)$ [9, Remark 3]. Wormald [6, Theorem 5] obtained $P(n)>2.85588\mu_n$ for infinitely many $n$ and conjectured a limiting ratio approximately $2.855958$.
+
+For upper bounds, Alon [2] proved $P(n)=O(n^{3/2})\mu_n$ using permanents. Friedgut and Kahn's Hamiltonian-cycle bound [7], combined with the path-to-cycle construction in [2, Proposition 2.5], gives $P(n)=O(n^{3/2-\xi})\mu_n$, where $\xi\approx0.2507$. Theorem 1.1 below gives a constant-factor upper bound for every tournament and hence establishes $P(n)=\Theta(\mu_n)$. Its lower bound applies through all orders, with an explicit leading constant and an $O(n^{-1})$ error; the main advance is the uniform constant-factor upper bound, rather than only an improvement of the lower constant.
 
 **Theorem 1.1 (Main result).** There are absolute constants $K\ge0$ and $n_0\ge2$ such that, for every integer $n\ge n_0$,
 
@@ -115,11 +117,14 @@ $$
 
 **Lemma 2.1 (Path convolution).** For every tournament,
 
+<a id="eq-path-convolution"></a>
+
 $$
 H(T)=\sum_{U\subseteq V(T)}\det(I+A[U])\operatorname{per}A[U^c].
+\tag{2.1}
 $$
 
-The permanent of an adjacency matrix counts directed cycle covers. This identity converts those counts on complementary vertex sets into a path count. It is the tournament specialization of Irving and Omar's Proposition 2 [1], with complement adjacency matrix $\overline A=J-A=I+A^{\mathsf T}$; the complement includes its diagonal entries.
+The permanent of an adjacency matrix counts directed cycle covers. The convolution [Equation (2.1)](#eq-path-convolution) converts those counts on complementary vertex sets into a path count. It is the tournament specialization of Irving and Omar's Proposition 2 [1], with complement adjacency matrix $\overline A=J-A=I+A^{\mathsf T}$; the complement includes its diagonal entries.
 
 Here is also a generating-function verification. Put $X=\operatorname{diag}(z_1,\ldots,z_n)$. The generating series of all walks, with each vertex occurrence carrying its variable, is
 
@@ -409,7 +414,31 @@ $$
 \operatorname{per}A[M\setminus I,M\setminus J].
 $$
 
-Every contributing permutation is classified exactly once. In the core bound, a deleted row supplies $\ell_i$, and a deleted column supplies $r_j$. Absorbing these factors into the corresponding cross matchings and dropping the distinctness restrictions bounds the two cross sums by
+Every contributing permutation is classified exactly once. Apply the uniform core bound of Lemma 3.1 before separating the cross sums. A deleted core row supplies $\ell_i$, and a deleted core column supplies $r_j$. For fixed $R,C$, the outgoing cross sum is exactly
+
+$$
+\begin{aligned}
+&\sum_{\substack{J\subseteq M\\|J|=t}}
+\operatorname{per}A[F\setminus R,J]\prod_{j\in J}r_j\\
+&=\sum_{\phi:F\setminus R\hookrightarrow M}
+\prod_{x\in F\setminus R}A_{x,\phi(x)}r_{\phi(x)}
+\le\prod_{x\in F\setminus R}\sum_{j\in M}A_{xj}r_j.
+\end{aligned}
+$$
+
+Independently, the incoming cross sum is
+
+$$
+\begin{aligned}
+&\sum_{\substack{I\subseteq M\\|I|=t}}
+\operatorname{per}A[I,F\setminus C]\prod_{i\in I}\ell_i\\
+&=\sum_{\psi:F\setminus C\hookrightarrow M}
+\prod_{y\in F\setminus C}A_{\psi(y),y}\ell_{\psi(y)}
+\le\prod_{y\in F\setminus C}\sum_{i\in M}A_{iy}\ell_i.
+\end{aligned}
+$$
+
+Here $\hookrightarrow$ denotes an injection. Each injection is counted once, by its image and the corresponding permanent term; there is no additional factor $t!$. The images $I,J$ need be neither equal nor disjoint, because they refer to separate row and column copies of the core. Removing injectivity is legitimate because all factors are nonnegative. The product of the two upper bounds is
 
 $$
 N^{2t}2^{-2t}
@@ -444,7 +473,13 @@ $$
 \exp\left(\frac{2L_n^2f^2}{c_n^2N}\right).
 $$
 
-The displayed extra exponents are $o(1)$. All these statements remain uniform after a short core subset $U$ is deleted. The core Gaussian factor then changes by $\exp(O(|U|/n))$: deleting rows and columns of $S_M/N$ costs $O(|U|/n)$ in logarithm by the Gaussian deletion lemma, and changing normalization from $N$ to $N-|U|$ has the same cost.
+The displayed extra exponents are $o(1)$. To make the uniformity explicit, after deleting a short core subset $U$ the core order is $N'=n-f-|U|\sim n$, while the exceptional set remains the original $F$. The normalized core score cap is still $0.95$ eventually, its squared-score sum is $O(\log n)$, and the cross deletion size is $t\le f=O(\log n)$. The exponent in Lemma 3.1 is consequently
+
+$$
+O\!\left(\frac{(\log n)^{3/2}}{\sqrt n}+\frac{(\log n)^2}{n}\right)=o(1),
+$$
+
+with constants independent of $U,I,J$. The cross-neighbor fractions change by only $O((f+|U|)/n)$ from the original full-tournament fractions, and the weight displacement remains $O(\sqrt{n\log n})$. Thus all the preceding cross-sum estimates are uniform as well. The core Gaussian factor then changes by $\exp(O(|U|/n))$: deleting rows and columns of $S_M/N$ costs $O(|U|/n)$ in logarithm by the Gaussian deletion lemma, and changing normalization from $N$ to $N-|U|$ has the same cost.
 
 In the path convolution, the fraction of $k$-subsets meeting $F$ is at most $fk/n$. The generic permanent bound therefore makes their entire normalized short contribution at most
 
@@ -469,7 +504,24 @@ $$
 \le C_*/4+o(1)<1,\qquad f\ge1.
 $$
 
-Since $P(n)\ge\mu_n$, the fixed gap below one excludes these tournaments from the maximum for all sufficiently large $n$. This case requires only an $o(1)$ error.
+Since $P(n)\ge\mu_n$, the fixed gap below one excludes these tournaments from the maximum for all sufficiently large $n$. This case requires only an $o(1)$ error. We keep the paired spectral factor here to make its connection with the later reduction visible. For the short convolution terms whose deletion sets are disjoint from $F$, the Lean proof uses the weaker sufficient bound $(10/3)4^{-f}(1+\varepsilon_n)$. The short terms meeting $F$ and the long terms contribute an additional $\delta_n$, giving
+
+<a id="eq-exceptional-bound"></a>
+
+$$
+\frac{H(T)}{\mu_n}\le\frac{10}{3}4^{-f}(1+\varepsilon_n)+\delta_n,
+\qquad \varepsilon_n,\delta_n\longrightarrow0.
+\tag{3.1}
+$$
+
+Both errors are uniform over the low-variance class under discussion. They are kept separate because $f$ may grow with $n$. In the formal proof, $1+\varepsilon_n\le21/20$ and each of the other two contributions is at most $1/25$ eventually. Thus, for $f\ge1$, [Equation (3.1)](#eq-exceptional-bound) gives the explicit budget
+
+$$
+\frac{10}{3}\cdot\frac14\cdot\frac{21}{20}+\frac1{25}+\frac1{25}
+=\frac{191}{200}<1.
+$$
+
+Neither choice affects the final upper constant.
 
 ### 3.4 The score penalty in the remaining class
 
@@ -553,12 +605,15 @@ Both determinants are positive: $W$ has positive-definite symmetric part, and th
 
 Combining these inequalities and adding only the long-subset tail gives the uniform score-sensitive bound
 
+<a id="eq-score-penalty"></a>
+
 $$
 \frac{H(T)}{\mu_n}\le
 \rho_n(S)\exp\left\{-\tau+
 K\left[\frac{1+\tau+\tau^2}{n}
 +\frac{\tau^{3/2}+\tau}{\sqrt n}+\sqrt{\tau/n}\right]\right\}
 +o(1/n).
+\tag{3.2}
 $$
 
 For $\tau\le K_0\log n$, all polynomial terms except the constant $1/n$ can consume at most $\tau/4$ for sufficiently large $n$. The remaining square-root term is bounded by Young's inequality:
@@ -567,7 +622,7 @@ $$
 K\sqrt{\tau/n}\le\tau/4+K^2/n.
 $$
 
-The entire exponent is consequently at most $-\tau/2+K/n$. The spectral cap now gives
+The exponent in [Equation (3.2)](#eq-score-penalty) is consequently at most $-\tau/2+K/n$. The spectral cap now gives
 
 $$
 H(T)/\mu_n\le C_*e^{K/n}+o(1/n)=C_*+O(1/n).
@@ -699,12 +754,15 @@ $$
 
 Set $B=E/n$. Uniformly over all such matrices,
 
+<a id="eq-uniform-permanent"></a>
+
 $$
 \frac{\operatorname{per}(J_n+E)}{n!}
 =\det(I-BB^{\mathsf T})^{-1/2}+O_{C,q}(n^{-1}).
+\tag{5.1}
 $$
 
-The same statement holds with a relative factor $1+O_{C,q}(n^{-1})$ multiplying the determinant factor.
+The approximation [Equation (5.1)](#eq-uniform-permanent) also holds with a relative factor $1+O_{C,q}(n^{-1})$ multiplying the determinant factor.
 
 Here and below the determinant square root is the positive square root on the real interval under consideration. The assumptions imply $\|B\|_{\mathrm F}^2\le C^2$. Consequently, the determinant factor is bounded above by a constant depending only on $C,q$, and it is at least one.
 
@@ -813,8 +871,11 @@ $$
 
 **Lemma 5.2 (Compressed-core activity).** With the notation above,
 
+<a id="eq-core-activity"></a>
+
 $$
 \|C_j\|_R\le(Dj/n)^j\qquad(j\ge1),
+\tag{5.2}
 $$
 
 and the first excess satisfies the sharper bound
@@ -833,7 +894,9 @@ e=b+j,\qquad
 1\le b\le2j,\qquad e\le3j.
 $$
 
-The following decorated count determines the symmetry factors. Temporarily label the $b$ high-degree vertices and the $d_i$ half-edges at each vertex. Use these labels to select one reading direction for every chain. A given original edge-labeled core has $b!\prod_i d_i!$ such decorations. Conversely, a decorated half-edge pairing and a list of positive chain lengths determine all chain positions. The original $h$ edge labels can be assigned to these positions in $h!$ ways. Subject to the bipartite parity condition, the internal vertices and their colors are then determined.
+**Decorated-count identity.** For fixed excess and number of original edges, sum over every ordered degree sequence $(d_1,\ldots,d_b)$, every assignment of the two vertex colors, every pairing of the labeled half-edges, and every positive chain length compatible with those colors. After removal of the temporary labels, the absolute Möbius compensation is $1/(b!\prod_i d_i)$. The chain contractions retain their signs until their internal numerical indices have been summed.
+
+To prove the identity, distinguish structural vertices (the blocks of the two edge-label partitions) from their numerical indices in $[n]$. Different structural vertices may receive the same numerical index; this does not identify their blocks. The original distinctness constraints have already been treated by Möbius inversion. Thus the present count is a count of partition pairs, not of simple graphs obtained by identifying equal numerical indices. Temporarily label the $b$ high-degree vertices and the $d_i$ half-edges at each vertex. Use these labels to select one reading direction for every chain. Over all ordered degree sequences, a given original edge-labeled core has $b!\prod_i d_i!$ such decorations. For one fixed degree sequence only the compatible vertex labelings occur; summing all sequences supplies exactly the full factor $b!$. Each structural vertex is identifiable from its color and incident original edge labels, and each incident half-edge from its original edge label, so no automorphism stabilizer remains. Conversely, a decorated half-edge pairing and a list of positive chain lengths determine all chain positions. The original $h$ edge labels can be assigned to these positions in $h!$ ways. Subject to the bipartite parity condition, the internal vertices and their colors are then determined.
 
 After division by the original exponential generating-function factor $h!$ and removal of the decorations, multiplication by the absolute Möbius weights $\prod_i(d_i-1)!$ leaves
 
@@ -841,7 +904,15 @@ $$
 \frac1{b!\prod_i d_i}.
 $$
 
-This argument includes loops and chain reversals: their two half-edges are already labeled, so no extra direction factor is introduced. Internal degree-two vertices have absolute Möbius weight one. There is no additional chain-length factorial.
+This argument includes loops and chain reversals: order each pair of distinct labeled half-edges and read the chain from the smaller one. Reversal changes the list of original edge labels occupying those positions, rather than supplying an additional free factor of two. This convention also applies to the two stubs of a loop. Internal degree-two vertices have absolute Möbius weight one. There is no additional chain-length factorial. A chain has odd length between opposite colors and even length between equal colors; in particular, a loop has even length at least two. These restrictions apply to the exact identity.
+
+For example, take one row-colored degree-four vertex and two length-two loops, each passing through a separate column-colored degree-two vertex. Here $j=b=1$ and $h=4$. There are three partitions of the four original edge labels into two pairs; the degree-four Möbius weight is $(-1)^3 3!=-6$, while the two degree-two weights multiply to $+1$. After division by $4!$, their signed contribution is
+
+$$
+-\frac34\sum_i\left(\sum_k B_{ik}^2\right)^2.
+$$
+
+The two structural column vertices remain distinct even in summands where their numerical indices agree. The color-dual configuration contributes $-\tfrac34\sum_k(\sum_i B_{ik}^2)^2$. Their magnitudes enter the absolute compensation bound. For parallel edges, three length-one chains between one row vertex and one column vertex give $\tfrac{(2!)^2}{3!}\sum_{i,k}B_{ik}^3=\tfrac23\sum_{i,k}B_{ik}^3$, exactly the cubic term above. These examples exhibit the loop, parallel-edge and reversal conventions without introducing non-bipartite original graphs.
 
 Ignore the color restrictions only when taking an upper bound. For fixed $j,b$, the resulting total compensation is
 
@@ -853,7 +924,7 @@ U_{j,b}=
 \qquad e=b+j.
 $$
 
-For a chain of length one the matrix entry is bounded by $C/n$. For a chain of length $\ell\ge2$, first sum its internal labels. Its contraction is an entry of an alternating product of $B$ and $B^{\mathsf T}$. Each endpoint row or column has norm at most $C/\sqrt n$, and all intermediate factors have operator norm at most $q$. Thus the absolute contraction is at most
+The next estimate is applied after summing the internal numerical indices of each chain, before taking absolute values; replacing $B$ entrywise by $|B|$ would not preserve the operator-gap argument. For a chain of length one the matrix entry is bounded by $C/n$. For a chain of length $\ell\ge2$, first sum its internal labels. Its contraction is an entry of an alternating product of $B$ and $B^{\mathsf T}$. Each endpoint row or column has norm at most $C/\sqrt n$, and all intermediate factors have operator norm at most $q$. Thus the absolute contraction is at most
 
 $$
 \frac{C^2}{n}q^{\ell-2}.
@@ -894,7 +965,7 @@ Their chain bounds give $\|C_1\|_R\le T_1/n$. $\square$
 
 ### 5.4 A linear coefficient window and factorial recovery
 
-The bound in Lemma 5.2 is useful while $j/n$ is small. Choose
+The activity bound [Equation (5.2)](#eq-core-activity) is useful while $j/n$ is small. Choose
 
 $$
 \alpha=\min\left\{\frac14,\frac1{16D},\frac{\log\sigma}{2}\right\},
@@ -1043,7 +1114,7 @@ $$
 
 Finally, $h_n(1,\lambda_2,\ldots,\lambda_n)$ is the sum of all monomials in $\lambda_2,\ldots,\lambda_n$ of total degree at most $n$, and is at most the product of their infinite geometric sums. $\square$
 
-The Gaussian identity and AM–GM comparison in Lemma 5.4 are the tools used in Han–Niles-Weed [3, Lemmas 4.3–4.4] for positive semidefinite inputs. Lemma 5.3 connects them to the general matrix required here.
+The Gaussian identity and AM–GM comparison in Lemma 5.4 are the tools used in Han–Niles-Weed [3, arXiv v2, Lemmas 4.3–4.4] for positive semidefinite inputs. Lemma 5.3 connects them to the general matrix required here.
 
 Put $\beta=RC/(1-Rq)$. The centering assumptions give $P_nB=BP_n=0$. On $|t|=R$ they imply
 
@@ -1092,7 +1163,7 @@ $$
 +\sigma\Gamma(\sigma)\exp\!\left(-\alpha n\log\sigma\right).
 $$
 
-The first two terms are the coefficient-window and factorial-recovery errors from Section 5.4; the last two are the tails from Section 5.5. The exponential terms are $o(n^{-1})$, proving the uniform rate in Theorem 5.1.
+The first two terms are the coefficient-window and factorial-recovery errors from Section 5.4; the last two are the tails from Section 5.5. The exponential terms are $o(n^{-1})$, proving the uniform rate in Theorem 5.1. The Lean development proves a sufficient alternative factorial-recovery estimate by geometric coefficient moments; it does not formalize this particular displayed constant $K_G$ verbatim (see Appendix A.1).
 
 ## 6. Scaling and nonprincipal permanent estimates
 
@@ -1105,6 +1176,16 @@ $$
 We must correct these margins while controlling the change in the permanent and in its Gaussian factor. We first construct a local diagonal scaling and bound its total logarithmic cost. A Gram-matrix comparison then controls the effect of deleting rows and columns. Finally, paired score corrections put the tournament submatrices in the domain of the local theorem and yield Lemma 3.1.
 
 Write $\mathbf1_p$ for the all-ones vector, $P_p=\mathbf1_p\mathbf1_p^{\mathsf T}/p$, and $\Pi_p=I-P_p$. The total mass of a matrix is $\mathfrak m(X)=\sum_{i,j}X_{ij}$. We use $\|\cdot\|_{\rm op}$ for the Euclidean operator norm, $\|\cdot\|_F$ for the Frobenius norm, and $\|\cdot\|_*$ for the trace norm. Constants in this section are uniform once the stated density and gap parameters are fixed.
+
+For the application below, the dimensions and normalizations are as follows. The full tournament order is $n$, the retained order is $m=n-t$, and $p$ is the generic order in Lemmas 6.1–6.2; we set $p=m$ only when applying them. The matrices $C,C',\widehat C$ have order $n$, whereas $X,\widetilde X,B_X,Z$ have order $m$. Their masses, in that order where relevant, are
+
+$$
+\mathfrak m(C')=n+\nu,\quad \mathfrak m(\widehat C)=n,\quad
+\mathfrak m(X)=m+\kappa,\quad
+\mathfrak m(\widetilde X)=\mathfrak m(B_X)=m.
+$$
+
+Here $Z=\Pi_m[(S-I)/(n-1)][R,T]\Pi_m$ is the centered, unscaled retained kernel, not a doubly stochastic matrix. The letter $B_X$ denotes the final stochastic matrix; its perturbation in Theorem 5.1 is $mB_X-J_m$, whose normalization is $B_X-P_m$. This distinguishes the full-order normalization $n-1$ from the retained-order normalization $m$.
 
 ### 6.1 Local scaling and its cost
 
@@ -1366,8 +1447,11 @@ $$
 
 The exact deletion mass identity is
 
+<a id="eq-deletion-mass"></a>
+
 $$
 \kappa=\frac n m\left[-\sum_{i\in I}e_i-\sum_{j\in J}f_j+\sum_{i\in I,j\in J}\widehat C_{ij}-\frac{t^2}{n}\right].
+\tag{6.1}
 $$
 
 For each remaining row, the exact marginal error before the last normalization is
@@ -1400,7 +1484,7 @@ $$
 \Pi_m\widetilde X\Pi_m=\eta\left[Z+\Pi_mF[R,T]\Pi_m\right].
 $$
 
-Since $\mathfrak m(C')=n+o(1)$ and $\mathfrak m(X)=m+o(1)$, the leading value of $\eta$ is $n/m$. Compression preserves the operator norm bound for $Y$, and the displayed Frobenius estimate controls the second term. Thus the centered operator norm is at most $1/\sqrt2+o(1)$, uniformly under the fixed parameters. Its entries are $O(1/m)$, and the marginal infinity error tends to zero. The local scaling lemma applies for all sufficiently large $n$ and constructs a genuine doubly stochastic matrix $B_X$.
+Since $\mathfrak m(C')=n+o(1)$ and $\mathfrak m(X)=m+o(1)$, the leading value of $\eta$ is $n/m$. Compression preserves the operator norm bound for $Y$, and the displayed Frobenius estimate controls the second term. Thus the centered operator norm is at most $1/\sqrt2+o(1)$, uniformly under the fixed parameters. Its entries are $O(1/m)$, and the marginal infinity error tends to zero. In the notation of Lemma 6.1, $E=\Pi_m\widetilde X\Pi_m$, because $\widetilde X$ has mass $m$. We may therefore fix $q=3/4$ and fixed density bounds $C,C_0$ once and for all. The threshold $\varepsilon_0$ and inverse bound $L_0$ then depend only on $a_0,A_0,B_0$, not on $n$, the tournament, or the deletion sets. The local scaling lemma applies for all sufficiently large $n$ and constructs a genuine doubly stochastic matrix $B_X$; its immediate gap bound is $7/8$.
 
 The Euclidean displacement lemma yields
 
@@ -1417,6 +1501,8 @@ $$
 $$
 
 The term $\tau/n$ from centering is absorbed by $\sqrt{\tau/n}$. The deletion part of this estimate is linear in $t/n$, as needed when it is summed against the subset weights.
+
+The error budget can now be read without changing dimensions. All constants and eventual thresholds depend only on the fixed $a_0,A_0,B_0$. The full-order mass error costs $O(|\nu|)\le K\mathcal M_\tau$ in the restored logarithm; deletion changes mass by at most $K[t\sqrt{\tau/n}+t^2/n]$; and the Gaussian logarithm costs $K[\sqrt{\tau/n}+(t+1)/n]$. Applying Theorem 5.1 at order $m\ge n/2$ adds $O(1/m)=O(1/n)$. The final scalar restoration contributes $e^{-1}\exp(O((t+1)/n))$. For $X$ of mass $m+\kappa$, capacity is used only as $e^{-\theta_X}\le e^\kappa$; no nonnegativity of $\theta_X$ is asserted at this nonunit mass. Section 6.4 restores these factors exactly, giving the exponent in Lemma 3.1.
 
 ### 6.4 Proof of the nonprincipal permanent bound
 
@@ -1436,11 +1522,14 @@ $$
 
 Thus deleted rows restore $\ell$ factors and deleted columns restore $r$ factors. The complete scalar identity is
 
+<a id="eq-exact-restoration"></a>
+
 $$
 \operatorname{per}A[R,T]=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j\left[\frac{m(n-1)\mathfrak m(C')}{2n^2}\right]^m e^{-\theta_X}\operatorname{per}B_X.
+\tag{6.2}
 $$
 
-After restoring $m!/m^m$, the remaining scalar is
+After inserting $m!/m^m$ into [Equation (6.2)](#eq-exact-restoration), the remaining scalar is
 
 $$
 \frac{m!}{2^m}(1-1/n)^m\left[\frac{\mathfrak m(C')}{n}\right]^m.
@@ -1454,19 +1543,22 @@ When every score is $o(\sqrt n)$, the original margins are already close enough 
 
 **Lemma 6.4 (Small-score permanent approximation).** Let $d=\|S\mathbf 1_n\|_\infty=o(\sqrt n)$. Fix $0<B_0<\infty$, delete any $t\le B_0\log n$ rows and any $t$ columns, and put $m=n-t$. Uniformly over these choices,
 
+<a id="eq-small-score-permanent"></a>
+
 $$
 \operatorname{per}A[R,T]=e^{-1}D_n(S)\frac{m!}{2^m}\left[1+O_{B_0}\left(\frac{(d+t+1)^2}{n}\right)\right].
+\tag{6.3}
 $$
 
-For fixed $B_0$, the implied constant is uniform once $(d+t+1)^2/n$ is sufficiently small. In the stated regime this quantity tends to zero.
+More explicitly, for every fixed $B_0>0$ there are constants $C_{\mathrm{err}},\delta>0$ and an integer $N_0\ge4$, depending only on $B_0$, such that for every $n\ge N_0$, every tournament sign matrix $S$, and every pair of deletion sets $I,J\subseteq[n]$ with $|I|=|J|=t\le B_0\log n$, the following holds: if $d=\|S\mathbf1_n\|_\infty$ and $\eta=(d+t+1)^2/n\le\delta$, then the absolute relative error in [Equation (6.3)](#eq-small-score-permanent) is at most $C_{\mathrm{err}}\eta$. Here $R=[n]\setminus I$, $T=[n]\setminus J$, and $m=n-t$; the sets $I,J$ are independent. The constants are chosen before the dimension, tournament and deletion sets. In the stated asymptotic regime, $\eta\to0$.
 
-**Proof.** No paired preconditioning is needed. Set $C=2A/(n-1)$ and $X=(n/m)C[R,T]$. The row and column errors of the full matrix $C$ are $s_i/(n-1)$ and $-s_i/(n-1)$, respectively. The exact mass and marginal formulas from Section 6.3 therefore give
+**Proof.** Enlarge $N_0$ so that $2t\le n$ throughout the logarithmic deletion window; hence $m\ge n/2>0$. No paired preconditioning is needed. Set $C=2A/(n-1)$ and $X=(n/m)C[R,T]$. The row and column errors of the full matrix $C$ are $s_i/(n-1)$ and $-s_i/(n-1)$, respectively. The exact mass identity [Equation (6.1)](#eq-deletion-mass) and the marginal formulas from Section 6.3 therefore give
 
 $$
 |\kappa|=O(t(d+t)/n),\qquad \varepsilon(X)=O((d+t)/n),\qquad \|g(X)\|_2=O((d+t)/\sqrt n).
 $$
 
-Normalize $\widetilde X=mX/\mathfrak m(X)$. Its density and centered gap are fixed, and the local scaling lemma applies. The Euclidean displacement and capacity estimates give
+The mass error satisfies $|\kappa|\le K\eta$. By reducing $\delta$ if necessary, $\mathfrak m(X)=m+\kappa>0$ uniformly. Normalize $\widetilde X=mX/\mathfrak m(X)$. Its density and centered gap are fixed, and the local scaling lemma applies. The Euclidean displacement and capacity estimates give
 
 $$
 \|B_X-\widetilde X\|_F=O((d+t)/n),\qquad 0\le\theta_{\widetilde X}=O((d+t)^2/n).
@@ -1484,7 +1576,7 @@ $$
 \operatorname{per}A[R,T]=\left[\frac{m(n-1)}{2n}\right]^m e^{-\theta_X}\operatorname{per}B_X.
 $$
 
-Apply the uniform permanent theorem and use $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$. All logarithmic errors are $O((d+t+1)^2/n)=o(1)$, so exponentiating them proves the stated relative approximation. This proves the uniform short-minor approximation used in Theorem 4.1. $\square$
+Apply the uniform permanent theorem and use $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$. All logarithmic errors are bounded by a fixed multiple of $\eta=(d+t+1)^2/n$. Choose $\delta$ sufficiently small; exponentiating these bounds gives an absolute relative error at most $C_{\mathrm{err}}\eta$, uniformly in the finite domain stated above. In the asymptotic regime $d=o(\sqrt n)$ and $t\le B_0\log n$, we have $\eta\to0$. This proves the uniform short-minor approximation used in Theorem 4.1. $\square$
 
 ## 7. Further questions
 
@@ -1500,11 +1592,13 @@ The [companion Lean project](https://github.com/LStar404/tournament-hamiltonian-
 
 The declaration `TournamentHamiltonian.mainBound : TournamentHamiltonian.MainBound` proves Theorem 1.1 with the exact constants $L$ and $C_*$. Its conclusion chooses one $K\ge0$ and one $n_0\ge2$ before quantifying over all $n\ge n_0$. The final theorem has no unproved permanent, scaling, activity or path-count premise. The separate declaration `small_score_pathCount_spectral_approximation_eventually` proves Theorem 4.1: its absolute error constant is independent of the score envelope $d(n)$, while its eventual threshold may depend on that envelope.
 
-The formal development proves the principal analytic inputs as well as these conclusions. Some intermediate arguments differ from the presentation above. The permanent proof uses a geometric coefficient-moment bound in place of the displayed derivative constant $K_G$. The high-variance and exceptional-vertex cases use weaker sufficient estimates; for the latter the formal bound is $(10/3)4^{-f}(1+o(1))<1$ when $f\ge1$. The weighted determinant comparison uses positive principal-minor moments. Small-score restoration reuses paired preconditioning, and local scaling uses equivalent contraction estimates with a different fixed gap. The formal short-subset convention differs by one boundary layer, and the polarization and Gaussian-moment tools have finite-dimensional implementations. These choices prove the same stated rates and final bounds. The accompanying [result-by-result correspondence](verification/manuscript_alignment_20261011.md) records the intermediate differences.
+The formal development proves the principal analytic inputs as well as these conclusions. Some intermediate arguments differ from the presentation above. The permanent proof uses a geometric coefficient-moment bound in place of the displayed derivative constant $K_G$. The high-variance and exceptional-vertex cases use weaker sufficient estimates. In the latter, the bound $(10/3)4^{-f}(1+o(1))$ applies only to the short terms whose deletion sets are disjoint from $F$; the remaining terms contribute a separate uniform additive $o(1)$. The full bound is [Equation (3.1)](#eq-exceptional-bound), and the three-part budget is at most $191/200<1$ eventually when $f\ge1$. The weighted determinant comparison uses positive principal-minor moments. Small-score restoration reuses paired preconditioning, and local scaling uses equivalent contraction estimates with a different fixed gap. The formal short-subset convention differs by one boundary layer, and the polarization and Gaussian-moment tools have finite-dimensional implementations. These choices prove the same stated rates and final bounds. The accompanying [result-by-result correspondence](verification/manuscript_alignment_20261011.md) records the intermediate differences.
 
 ### A.2 Verification records and auxiliary computations
 
 The repository's [verification record](https://github.com/LStar404/tournament-hamiltonian-paths/blob/8ea3fcffcc12b6a06294ba7559885b439eda3cac/formalization/VERIFICATION.md) reports a successful complete run on 9 October 2026. The command `python verify_lean.py --require-main` builds the project, checks the actual `MainBound` declaration, checks project-source import coverage, and audits transitive theorem axioms against `propext`, `Classical.choice` and `Quot.sound`. The recorded audit contains 3674 theorem constants, including generated lemmas. All 246 stored Lean-source and configuration hashes match the sources inspected for this revision. These are the recorded build results and a source-correspondence check, rather than a new Lean build performed for the editorial revision.
+
+A later remote CI run verifies the merged second-round baseline in the working fork, commit `42ee0a1572e9e0cdf88bfc17811c7559b3b2e03c`: [Verify proofs, run 38073718040](https://github.com/makerY666/tournament-hamiltonian-paths/actions/runs/38073718040) completed successfully on 10 October 2026. Its Lean build-and-audit, four finite diagnostics and signed-core example tests succeeded. This is remote evidence for that exact baseline, not a local rebuild or a claim that later editorial commits have already passed CI. The proof sources are unchanged in the present third-round revision; its own commit-specific CI result is recorded with its pull request. Successful compilation and finite checks do not replace a human audit of every displayed proof step.
 
 Exact finite computations check normalizations, coefficient identities, deletion factors and the four-block expansion. They are separate from the all-order proof. The archived rational calculations give
 
@@ -1526,7 +1620,7 @@ Xiangyu Ye contributed the companion formalization, submitted in [pull request 1
 
 [2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Combinatorica 10(4) (1990), 319–324. [DOI: 10.1007/BF02128667](https://doi.org/10.1007/BF02128667).
 
-[3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. [arXiv:2408.09341v2](https://arxiv.org/html/2408.09341v2) (2024).
+[3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. The Annals of Statistics, to appear ([author publication list](https://yanjunhan2021.github.io/publication.html)). [arXiv:2408.09341v2](https://arxiv.org/html/2408.09341v2) (9 September 2024); this is the version used for the lemma numbering cited here.
 
 [4] Bo Deng, Xueliang Li, Bryan Shader and Wasin So. On the Maximum Skew Spectral Radius and Minimum Skew Energy of Tournaments. Linear and Multilinear Algebra 66(7) (2018), 1434–1441. [DOI: 10.1080/03081087.2017.1357676](https://doi.org/10.1080/03081087.2017.1357676).
 
@@ -1537,3 +1631,7 @@ Xiangyu Ye contributed the companion formalization, submitted in [pull request 1
 [7] Ehud Friedgut and Jeff Kahn. On the Number of Hamiltonian Cycles in a Tournament. Combinatorics, Probability and Computing 14(5–6) (2005), 769–781. [DOI: 10.1017/S0963548305006863](https://doi.org/10.1017/S0963548305006863).
 
 [8] Eric Li. The Godsil–McKay Asymptotic for Latin Rectangles in the Sublinear Range of Erdős Problem 725. [arXiv:2608.01671v1](https://arxiv.org/html/2608.01671v1) (2026).
+
+[9] Ilan Adler, Noga Alon and Sheldon M. Ross. On the Maximum Number of Hamiltonian Paths in Tournaments. Random Structures & Algorithms 18(3) (2001), 291–296. [DOI: 10.1002/rsa.1010](https://doi.org/10.1002/rsa.1010).
+
+[10] Tibor Szele. Kombinatorikai vizsgálatok az irányított teljes gráffal kapcsolatban. Matematikai és Fizikai Lapok 50 (1943), 223–256. [Original volume archive](https://real-j.mtak.hu/7300/).

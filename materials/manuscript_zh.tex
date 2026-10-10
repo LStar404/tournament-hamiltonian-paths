@@ -70,9 +70,11 @@ C_*=\frac{3\pi^4+4\pi^2-32}{\pi^4+4\pi^2-32}
 一个竞赛图最多能包含多少条有向 Hamilton 路径？对 \(n\) 阶竞赛图 \(T\)，记 \(H(T)\) 为满足全部相邻关系 \(v_j\to v_{j+1}\) 的顶点排列 \((v_1,\ldots,v_n)\) 的数量。路径按有向顶点序列计数。定义
 \[P(n)=\max_{|V(T)|=n}H(T),\qquad \mu_n=\frac{n!}{2^{n-1}}.\]
 
-在均匀随机竞赛图中，每个顶点排列成为有向路径的概率为 \(2^{-(n-1)}\)。因此，\(\mathbb E H(T)=\mu_n\)，从而 \(P(n)\ge\mu_n\)。问题在于：通过选择合适的定向，路径数能比这一期望大多少？
+每个排列在均匀随机竞赛图中形成有向路径的概率为 \(2^{-(n-1)}\)。因此 \(\mathbb E H(T)=\mu_n\) 且 \(P(n)\ge\mu_n\)，即 Szele \paperref{bib-10}{[10]} 的经典下界。问题是如何通过选择方向，使路径数比这一期望大得更多。
 
-Alon \paperref{bib-2}{[2]} 用永久式证明了 \(P(n)=O(n^{3/2})\mu_n\)。将 Friedgut 与 Kahn \paperref{bib-7}{[7]} 的 Hamilton 圈上界与 \paperref{bib-2}{[2, Proposition 2.5]} 的路径到圈构造结合，可得 \(P(n)=O(n^{3/2-\xi})\mu_n\)，其中 \(\xi\approx0.2507\)。Wormald \paperref{bib-6}{[6, Theorem 5]} 对无穷多个 \(n\) 证明了 \(P(n)>2.85588\mu_n\)，并猜想极限比值约为 \(2.855958\)。本文将最大路径数夹在 \(\mu_n\) 的两个相近常数倍之间。
+Adler、Alon 和 Ross \paperref{bib-9}{[9，定理 1]} 将下界改进为 \(P(n)\ge(e-o(1))\mu_n\)，并提出 \(P(n)=\Theta(\mu_n)\) 是否成立的问题 \paperref{bib-9}{[9，备注 3]}。Wormald \paperref{bib-6}{[6, Theorem 5]} 对无穷多个 \(n\) 证明了 \(P(n)>2.85588\mu_n\)，并猜想极限比值约为 \(2.855958\)。
+
+上界方面，Alon \paperref{bib-2}{[2]} 用永久式证明了 \(P(n)=O(n^{3/2})\mu_n\)。将 Friedgut 与 Kahn \paperref{bib-7}{[7]} 的 Hamilton 圈上界与 \paperref{bib-2}{[2, Proposition 2.5]} 的路径到圈构造结合，可得 \(P(n)=O(n^{3/2-\xi})\mu_n\)，其中 \(\xi\approx0.2507\)。下面的\paperref{thm-1.1}{定理 1.1} 对任意竞赛图给出常数因子上界，从而确立 \(P(n)=\Theta(\mu_n)\)。其下界适用于所有充分大的阶数，给出显式首项常数和 \(O(n^{-1})\) 误差；主要进展在于统一的常数因子上界，而不只是改进下界常数。
 
 \Needspace{12\baselineskip}\paperstatement{定理 1.1（主要结果）。}{1.1}{thm-1.1} 存在绝对常数 \(K\ge0\) 及 \(n_0\ge2\)，使得对每个整数 \(n\ge n_0\)，
 \[(L-K/n)\mu_n\le P(n)\le(C_*+K/n)\mu_n,\]
@@ -123,9 +125,12 @@ D_n(S)=\det(I-S^{\mathsf T}S/n^2)^{-1/2},\]
 \subsection{正路径卷积}\label{sec-2.2}
 
 \paperstatement{引理 2.1（路径卷积）。}{2.1}{thm-2.1} 对任意竞赛图，
-\[H(T)=\sum_{U\subseteq V(T)}\det(I+A[U])\operatorname{per}A[U^c].\]
+\begin{equation}
+H(T)=\sum_{U\subseteq V(T)}\det(I+A[U])\operatorname{per}A[U^c].
+\tag{2.1}\label{eq-path-convolution}
+\end{equation}
 
-邻接矩阵的永久式计算有向圈覆盖数。该恒等式将互补顶点集上的圈覆盖计数转化为路径数。它是 Irving 与 Omar 的 Proposition 2 \paperref{bib-1}{[1]} 在竞赛图上的特化，其中补邻接矩阵为 \(\overline A=J-A=I+A^{\mathsf T}\)，包含对角元。
+邻接矩阵的永久式计算有向圈覆盖数。卷积\paperref{eq-path-convolution}{式 (2.1)}把互补顶点集上的圈覆盖数转换成路径数。它是 Irving 与 Omar 的 Proposition 2 \paperref{bib-1}{[1]} 在竞赛图上的特化，其中补邻接矩阵为 \(\overline A=J-A=I+A^{\mathsf T}\)，包含对角元。
 
 也可用生成函数直接核对。令 \(X=\operatorname{diag}(z_1,\ldots,z_n)\)，每次访问一个顶点即乘上对应变量，则全部游走的生成函数为
 \[1+\mathbf1^{\mathsf T}(I-XA)^{-1}X\mathbf1
@@ -267,7 +272,7 @@ K\sqrt{m+1}\frac{m!}{2^m}\exp\left(-\frac{V(Q)}{8m^2}\right).\]
 其中 \(\widetilde f\) 为线性插值。最后一项处理半整数均值；整数均值时可省去。Stirling 公式给出
 \[\exp(m\widetilde f(\eta))\le K\sqrt{m+1}\frac{m!}{2^m}.\]
 
-再接入 Brégman 的行度数上界，即得上述方差估计。\(\square\)
+再接入 Brégman 的行度数上界，即得上述方差估计。\nobreak\hspace{.5em}\mbox{$\square$}
 
 下面将此界用于每个短删集对应的竞赛图。为此，需要确认删点后方差仍然足够大。
 
@@ -317,7 +322,25 @@ u_x,v_x\le L_n=2+o(1).\]
 \operatorname{per}A[M\setminus I,M\setminus J].
 \end{aligned}\]
 
-每个有贡献的排列被唯一分类。核心永久式界中，删除行产生 \(\ell_i\)，删除列产生 \(r_j\)。将这些因子接入对应跨边匹配，再去掉互异性限制，两个跨边求和的乘积至多为
+每个有贡献的排列被唯一分类。先对核心永久式使用\paperref{thm-3.1}{引理 3.1} 的一致上界，再分离两个跨边求和。删除核心行产生 \(\ell_i\)，删除核心列产生 \(r_j\)。固定 \(R,C\)，向外跨边求和精确等于
+\[\begin{aligned}
+&\sum_{\substack{J\subseteq M\\|J|=t}}
+\operatorname{per}A[F\setminus R,J]\prod_{j\in J}r_j\\
+&=\sum_{\phi:F\setminus R\hookrightarrow M}
+\prod_{x\in F\setminus R}A_{x,\phi(x)}r_{\phi(x)}
+\le\prod_{x\in F\setminus R}\sum_{j\in M}A_{xj}r_j.
+\end{aligned}\]
+
+独立地，向内跨边求和为
+\[\begin{aligned}
+&\sum_{\substack{I\subseteq M\\|I|=t}}
+\operatorname{per}A[I,F\setminus C]\prod_{i\in I}\ell_i\\
+&=\sum_{\psi:F\setminus C\hookrightarrow M}
+\prod_{y\in F\setminus C}A_{\psi(y),y}\ell_{\psi(y)}
+\le\prod_{y\in F\setminus C}\sum_{i\in M}A_{iy}\ell_i.
+\end{aligned}\]
+
+其中 \(\hookrightarrow\) 表示单射。每个单射由其像集及相应永久式项恰好计数一次，没有额外的 \(t!\) 因子。像集 \(I,J\) 不必相等，也不必不交，因为它们分别属于核心的行、列副本。所有因子非负，故可去掉单射限制。两个上界的乘积为
 \[N^{2t}2^{-2t}
 \left(\prod_{x\notin R}u_x\right)
 \left(\prod_{y\notin C}v_y\right).\]
@@ -340,7 +363,10 @@ u_x,v_x\le L_n=2+o(1).\]
 \exp(O(f^2/N))
 \exp\left(\frac{2L_n^2f^2}{c_n^2N}\right).\]
 
-其中额外指数均为 \(o(1)\)。进一步删除短核心子集 \(U\) 后，上述估计仍统一成立。此时核心 Gaussian 因子改变为原来的 \(\exp(O(|U|/n))\) 倍：对 \(S_M/N\) 使用 Gaussian 删行列引理，对数损失为 \(O(|U|/n)\)；将归一化尺度从 \(N\) 改为 \(N-|U|\) 也有同阶成本。
+其中额外指数均为 \(o(1)\)。具体地，删除短核心子集 \(U\) 后，核心阶数为 \(N'=n-f-|U|\sim n\)，异常集合仍取原来的 \(F\)。核心的归一化比分最终仍不超过 \(0.95\)，平方比分和为 \(O(\log n)\)，而跨边删集大小为 \(t\le f=O(\log n)\)。因此\paperref{thm-3.1}{引理 3.1} 中的误差指数为
+\[O\!\left(\frac{(\log n)^{3/2}}{\sqrt n}+\frac{(\log n)^2}{n}\right)=o(1),\]
+
+其中常数与 \(U,I,J\) 无关。跨边邻点比例相较于原始全图仅改变 \(O((f+|U|)/n)\)，权重的一范数位移仍为 \(O(\sqrt{n\log n})\)，故前述跨边求和估计也一致成立。此时核心 Gaussian 因子改变为原来的 \(\exp(O(|U|/n))\) 倍：对 \(S_M/N\) 使用 Gaussian 删行列引理，对数损失为 \(O(|U|/n)\)；将归一化尺度从 \(N\) 改为 \(N-|U|\) 也有同阶成本。
 
 在路径卷积中，大小为 \(k\) 且与 \(F\) 相交的子集占比至多为 \(fk/n\)。通用永久式界因而使其全部归一化短项贡献至多为
 \[K\frac f{\sqrt n}\sum_k kw_k=o(1).\]
@@ -356,7 +382,18 @@ u_x,v_x\le L_n=2+o(1).\]
 \le(1/4)^f\rho_N(S_M)+o(1)
 \le C_*/4+o(1)<1,\qquad f\ge1.\]
 
-由于 \(P(n)\ge\mu_n\)，这个严格小于一的固定间隙说明：对所有充分大的阶数，这类竞赛图不能达到最大值。此处只需 \(o(1)\) 误差。
+由于 \(P(n)\ge\mu_n\)，这个严格小于一的固定间隙说明：对所有充分大的阶数，这类竞赛图不能达到最大值。此处只需 \(o(1)\) 误差。此处保留成对谱因子，以显示它与后续归约的联系。对于删除集与 \(F\) 不相交的短卷积项，Lean 证明使用较弱但足够的界 \((10/3)4^{-f}(1+\varepsilon_n)\)。与 \(F\) 相交的短项及长项另贡献 \(\delta_n\)，因此完整上界为
+\begin{equation}
+\frac{H(T)}{\mu_n}\le\frac{10}{3}4^{-f}(1+\varepsilon_n)+\delta_n,
+\qquad \varepsilon_n,\delta_n\longrightarrow0.
+\tag{3.1}\label{eq-exceptional-bound}
+\end{equation}
+
+两个误差在所讨论的低方差图类上一致成立。由于 \(f\) 可以随 \(n\) 增长，二者不能混同。形式化证明最终取 \(1+\varepsilon_n\le21/20\)，另外两部分各不超过 \(1/25\)。于是当 \(f\ge1\) 时，\paperref{eq-exceptional-bound}{式 (3.1)}给出明确预算
+\[\frac{10}{3}\cdot\frac14\cdot\frac{21}{20}+\frac1{25}+\frac1{25}
+=\frac{191}{200}<1.\]
+
+两种选择均不影响最终上界常数。
 
 \Needspace{7\baselineskip}
 \subsection{剩余图类中的比分罚项}\label{sec-3.4}
@@ -407,16 +444,19 @@ e^{R_\tau+K\delta_n}
 两个行列式均为正：\(W\) 的对称部分正定；加权行列式的主子式展开系数为正。\paperref{sec-3.3}{第 3.3 节}的无权秩一界在 \(N=n\) 时为 \(\det(W)\le2e\det(I+S/n)\)。
 
 合并上述各因子，最后仅加入长删集尾项，得到统一的比分敏感上界
-\[\frac{H(T)}{\mu_n}\le
+\begin{equation}
+\frac{H(T)}{\mu_n}\le
 \rho_n(S)\exp\left\{-\tau+
 K\left[\frac{1+\tau+\tau^2}{n}
 +\frac{\tau^{3/2}+\tau}{\sqrt n}+\sqrt{\tau/n}\right]\right\}
-+o(1/n).\]
++o(1/n).
+\tag{3.2}\label{eq-score-penalty}
+\end{equation}
 
 当 \(\tau\le K_0\log n\) 时，除常数 \(1/n\) 外的多项式误差项，在充分大阶数总共至多消耗 \(\tau/4\)。剩余平方根项由 Young 不等式控制：
 \[K\sqrt{\tau/n}\le\tau/4+K^2/n.\]
 
-因此总指数至多为 \(-\tau/2+K/n\)。再使用谱上限，得到
+\paperref{eq-score-penalty}{式 (3.2)}中的总指数因此至多为 \(-\tau/2+K/n\)。再使用谱上限，得到
 \[H(T)/\mu_n\le C_*e^{K/n}+o(1/n)=C_*+O(1/n).\]
 
 \Needspace{7\baselineskip}
@@ -468,7 +508,7 @@ K\left[\frac{1+\tau+\tau^2}{n}
 \[\det\left(I+\frac2n(I+A)\right)
 =2e\det(I+S/n)\left(1+O(n^{-1}+d^2/n^2)\right).\]
 
-代回即得定理。各估计使用同一个绝对常数；只有小比分条件开始成立的阶数依赖函数 \(d\)。\(\square\)
+代回即得定理。各估计使用同一个绝对常数；只有小比分条件开始成立的阶数依赖函数 \(d\)。\nobreak\hspace{.5em}\mbox{$\square$}
 
 \Needspace{7\baselineskip}
 \subsection{圆环竞赛图}\label{sec-4.2}
@@ -488,7 +528,7 @@ K\left[\frac{1+\tau+\tau^2}{n}
 故奇偶两类都有 \(H(\mathrm{Car}_n)/\mu_n=L+O(n^{-1})\)，于是
 \[P(n)\ge(L-O(n^{-1}))\mu_n.\]
 
-从带符号相似过渡到路径数，使用的是\paperref{thm-4.1}{定理 4.1}，分别对应 \(d=0\) 和 \(d=1\)。设下界与上界的常数和阈值分别为 \(K_l,N_l\) 与 \(K_u,N_u\)。取 \(K=K_l+K_u\)、\(n_0=\max(N_l,N_u,2)\)，即得\paperref{thm-1.1}{定理 1.1}。\(\square\)
+从带符号相似过渡到路径数，使用的是\paperref{thm-4.1}{定理 4.1}，分别对应 \(d=0\) 和 \(d=1\)。设下界与上界的常数和阈值分别为 \(K_l,N_l\) 与 \(K_u,N_u\)。取 \(K=K_l+K_u\)、\(n_0=\max(N_l,N_u,2)\)，即得\paperref{thm-1.1}{定理 1.1}。\nobreak\hspace{.5em}\mbox{$\square$}
 
 \Needspace{9\baselineskip}
 \section{统一永久式近似}\label{sec-5}
@@ -508,10 +548,13 @@ McCullagh \paperref{bib-5}{[5]} 在适度偏离条件下得到了行列式主项
 \|E/n\|_{\mathrm{op}}\le q.\]
 
 令 \(B=E/n\)。对所有满足上述条件的矩阵，一致地有
-\[\frac{\operatorname{per}(J_n+E)}{n!}
-=\det(I-BB^{\mathsf T})^{-1/2}+O_{C,q}(n^{-1}).\]
+\begin{equation}
+\frac{\operatorname{per}(J_n+E)}{n!}
+=\det(I-BB^{\mathsf T})^{-1/2}+O_{C,q}(n^{-1}).
+\tag{5.1}\label{eq-uniform-permanent}
+\end{equation}
 
-也可以把误差写成行列式因子乘以相对因子 \(1+O_{C,q}(n^{-1})\)。
+\paperref{eq-uniform-permanent}{式 (5.1)}也可写成行列式因子乘以相对误差 \(1+O_{C,q}(n^{-1})\)。
 
 本节所用行列式平方根，在有关实区间上均取正平方根。假设给出 \(\|B\|_{\mathrm F}^2\le C^2\)。因此，行列式因子不小于一，并且被只依赖 \(C,q\) 的常数一致控制。
 
@@ -590,7 +633,10 @@ F_3=\frac23\sum_{i,j}B_{ij}^3,
 T_1=\frac32W^2+\frac{10}{3}W^3.\]
 
 \paperstatement{引理 5.2（压缩核心活动量）。}{5.2}{thm-5.2} 在上述记号下，
-\[\|C_j\|_R\le(Dj/n)^j\qquad(j\ge1),\]
+\begin{equation}
+\|C_j\|_R\le(Dj/n)^j\qquad(j\ge1),
+\tag{5.2}\label{eq-core-activity}
+\end{equation}
 
 且首超额满足更精确的界
 \[\|C_1\|_R\le T_1/n.\]
@@ -602,12 +648,19 @@ T_1=\frac32W^2+\frac{10}{3}W^3.\]
 2j=\sum_{i=1}^b(d_i-2),\qquad
 1\le b\le2j,\qquad e\le3j.\]
 
-下面通过增饰计数确定对称因子。临时为 \(b\) 个高度数顶点及每个顶点的 \(d_i\) 个半边分别加标号，并用这些标号为每条链选择唯一读取方向。每个原始带边标号的核心有 \(b!\prod_i d_i!\) 种增饰。反过来，给定增饰后的半边配对及全部正链长，所有链位置均被确定，原始 \(h\) 个边标号可以按 \(h!\) 种方式分配到这些位置。在满足二部颜色奇偶条件时，内部顶点及其颜色也随之确定。
+\textbf{增饰计数恒等式。} 固定超额及原始边数，对所有有序度数序列 \((d_1,\ldots,d_b)\)、顶点的两种颜色配置、带标号半边配对及与颜色相容的正链长求和。除去临时标号后的绝对 Möbius 补偿为 \(1/(b!\prod_i d_i)\)。链收缩应先对内部数值指标求和，再取绝对值。
+
+证明时须区分结构顶点（两个边标号分拆的块）与其在 \([n]\) 中的数值指标。不同结构顶点可以取得相同的数值指标，但这不会将对应分拆块合并。原始互异性约束已经由 Möbius 反演处理；此处数的是分拆对，而不是将相同数值指标合并后得到的简单图。临时为 \(b\) 个高度数顶点及每个顶点的 \(d_i\) 个半边分别加标号，并用这些标号为每条链选择唯一读取方向。遍历全部有序度数序列后，每个原始带边标号的核心有 \(b!\prod_i d_i!\) 种增饰。对一个固定的度数序列，只有与之相容的顶点标号出现；对所有序列求和才恰好产生完整的 \(b!\) 因子。每个结构顶点都能由其颜色及入射原始边标号辨认，每个入射半边则由其原始边标号辨认，故没有额外的自同构稳定子。反过来，给定增饰后的半边配对及全部正链长，所有链位置均被确定，原始 \(h\) 个边标号可以按 \(h!\) 种方式分配到这些位置。在满足二部颜色奇偶条件时，内部顶点及其颜色也随之确定。
 
 除去原始指数生成函数的 \(h!\) 因子及临时增饰，再乘回高度数顶点的绝对 Möbius 权重 \(\prod_i(d_i-1)!\)，补偿为
 \[\frac1{b!\prod_i d_i}.\]
 
-这一步包含自环和链反转：它们的两个半边已经带标号，无须另加方向因子。内部二度顶点的绝对 Möbius 权重为一，也没有额外的链长阶乘。
+这一步包含自环和链反转：将每一对不同的带标号半边排序，从较小者开始读取该链。反转改变的是这些位置上的原始边标号列表，而不是额外提供自由的因子二；自环的两个半边也使用同一约定。内部二度顶点的绝对 Möbius 权重为一，也没有额外的链长阶乘。异色端点之间的链长为奇数，同色端点之间为偶数；尤其自环的长度至少为二且为偶数。这些限制属于精确恒等式的一部分。
+
+例如，取一个行色四度顶点，以及两个长度为二的自环，各经过一个单独的列色二度顶点。此时 \(j=b=1\)、\(h=4\)。四个原始边标号分成两对共有三种方式，四度顶点的 Möbius 权重为 \((-1)^3 3!=-6\)，而两个二度顶点的权重相乘为 \(+1\)；除以 \(4!\) 后，其带符号贡献为
+\[-\frac34\sum_i\left(\sum_k B_{ik}^2\right)^2.\]
+
+即使某些求和项中数值指标相等，两个结构列顶点仍然不同。交换两种颜色得到 \(-\tfrac34\sum_k(\sum_i B_{ik}^2)^2\)。绝对补偿界使用的是这些项的绝对值。重边的例子是一个行顶点和一个列顶点之间的三条长度为一的链，其贡献为 \(\tfrac{(2!)^2}{3!}\sum_{i,k}B_{ik}^3=\tfrac23\sum_{i,k}B_{ik}^3\)，恰为前述三次项。这些例子同时展示自环、平行边和反转约定，而原图仍满足二部性。
 
 仅在取上界时忽略颜色限制。固定 \(j,b\) 后，所得总补偿为
 \[U_{j,b}=
@@ -616,7 +669,7 @@ T_1=\frac32W^2+\frac{10}{3}W^3.\]
 \frac1{d_1\cdots d_b},
 \qquad e=b+j.\]
 
-长度为一的链对应矩阵元素，绝对值不超过 \(C/n\)。对于长度 \(\ell\ge2\) 的链，先求和内部标签，其收缩是由 \(B,B^{\mathsf T}\) 交替相乘所得矩阵的一个元素。两端行或列的二范数不超过 \(C/\sqrt n\)，中间因子的算子范数不超过 \(q\)。因此，收缩的绝对值不超过
+以下估计须先对每条链的内部数值指标求和，再取绝对值；若先逐项将 \(B\) 换成 \(|B|\)，便无法保留算子谱隙的控制。长度为一的链对应矩阵元素，绝对值不超过 \(C/n\)。对于长度 \(\ell\ge2\) 的链，先求和内部标签，其收缩是由 \(B,B^{\mathsf T}\) 交替相乘所得矩阵的一个元素。两端行或列的二范数不超过 \(C/\sqrt n\)，中间因子的算子范数不超过 \(q\)。因此，收缩的绝对值不超过
 \[\frac{C^2}{n}q^{\ell-2}.\]
 
 按 \(R\) 加权对长度求和，每条链的总活动量不超过 \(W/n\)。对 \(b\) 个高度数顶点标签求和至多给出 \(n^b\)，故
@@ -638,12 +691,12 @@ T_1=\frac32W^2+\frac{10}{3}W^3.\]
 当 \(j=1\) 时仅有 \(b=1,2\)。补偿公式分别给出
 \[U_{1,1}=\frac32,\qquad U_{1,2}=\frac{10}{3}.\]
 
-结合链界即有 \(\|C_1\|_R\le T_1/n\)。\(\square\)
+结合链界即有 \(\|C_1\|_R\le T_1/n\)。\nobreak\hspace{.5em}\mbox{$\square$}
 
 \Needspace{7\baselineskip}
 \subsection{线性系数窗口与阶乘恢复}\label{sec-5.4}
 
-当 \(j/n\) 较小时，\paperref{thm-5.2}{引理 5.2} 的界可以有效求和。取
+活动量界\paperref{eq-core-activity}{式 (5.2)}在 \(j/n\) 较小时有效。取
 \[\alpha=\min\left\{\frac14,\frac1{16D},\frac{\log\sigma}{2}\right\},
 \qquad M=\lfloor\alpha n\rfloor.\]
 
@@ -719,7 +772,7 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 \le\sqrt{\langle V^*\xi,TV^*\xi\rangle
 \langle\xi,T\xi\rangle}.\]
 
-两个因子分别为 \(\operatorname{per}(U|Z|U^*)=\operatorname{per}|Z^*|\) 与 \(\operatorname{per}|Z|\)。由于它们是半正定张量幂的对角矩阵元，均非负。\(\square\)
+两个因子分别为 \(\operatorname{per}(U|Z|U^*)=\operatorname{per}|Z^*|\) 与 \(\operatorname{per}|Z|\)。由于它们是半正定张量幂的对角矩阵元，均非负。\nobreak\hspace{.5em}\mbox{$\square$}
 
 \paperstatement{引理 5.4（半正定永久式界）。}{5.4}{thm-5.4} 设 \(H\) 为 Hermitian 半正定矩阵，特征值为 \(\lambda_1,\ldots,\lambda_n\)。则
 \[\operatorname{per}H\le\frac{n!}{n^n}h_n(\lambda_1,\ldots,\lambda_n),\]
@@ -732,9 +785,9 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 \[\mathbb E\left(\sum_i\lambda_i|\zeta_i|^2\right)^n
 =n!h_n(\lambda_1,\ldots,\lambda_n).\]
 
-最后，\(h_n(1,\lambda_2,\ldots,\lambda_n)\) 是关于 \(\lambda_2,\ldots,\lambda_n\)、总次数不超过 \(n\) 的全部单项式之和，不超过各自无穷几何级数的乘积。\(\square\)
+最后，\(h_n(1,\lambda_2,\ldots,\lambda_n)\) 是关于 \(\lambda_2,\ldots,\lambda_n\)、总次数不超过 \(n\) 的全部单项式之和，不超过各自无穷几何级数的乘积。\nobreak\hspace{.5em}\mbox{$\square$}
 
-\paperref{thm-5.4}{引理 5.4} 中的 Gaussian 恒等式和 AM--GM 比较，是 Han--Niles-Weed \paperref{bib-3}{[3，引理 4.3–4.4]} 用于半正定输入的工具。\paperref{thm-5.3}{引理 5.3} 将它们连接到这里需要的一般矩阵。
+\paperref{thm-5.4}{引理 5.4} 中的 Gaussian 恒等式和 AM--GM 比较，是 Han--Niles-Weed \paperref{bib-3}{[3，arXiv v2，引理 4.3–4.4]} 用于半正定输入的工具。\paperref{thm-5.3}{引理 5.3} 将它们连接到这里需要的一般矩阵。
 
 令 \(\beta=RC/(1-Rq)\)。双中心化假设给出 \(P_nB=BP_n=0\)。在 \(|t|=R\) 上，因而有
 \[|P_n+tB|=P_n+R(B^{\mathsf T}B)^{1/2},
@@ -756,7 +809,7 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 \le \Gamma(\sigma)\sigma^{-M}
 \le\sigma\Gamma(\sigma)\exp\!\left(-\alpha n\log\sigma\right).\]
 
-两个尾项均随 \(n\) 指数衰减。将它们与有限窗口中的 \(O(n^{-1})\) 估计合并，即证明\paperref{thm-5.1}{定理 5.1}。\(\square\)
+两个尾项均随 \(n\) 指数衰减。将它们与有限窗口中的 \(O(n^{-1})\) 估计合并，即证明\paperref{thm-5.1}{定理 5.1}。\nobreak\hspace{.5em}\mbox{$\square$}
 
 \Needspace{7\baselineskip}
 \subsection{合并误差界}\label{sec-5.6}
@@ -770,7 +823,7 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 +\sigma\Gamma(\sigma)\exp\!\left(-\alpha n\log\sigma\right).
 \end{aligned}\]
 
-前两项来自\paperref{sec-5.4}{第 5.4 节}的系数窗口及阶乘恢复误差，后两项来自\paperref{sec-5.5}{第 5.5 节}的尾界。两个指数项均为 \(o(n^{-1})\)，从而得到\paperref{thm-5.1}{定理 5.1} 的一致误差率。
+前两项来自\paperref{sec-5.4}{第 5.4 节}的系数窗口及阶乘恢复误差，后两项来自\paperref{sec-5.5}{第 5.5 节}的尾界。两个指数项均为 \(o(n^{-1})\)，从而得到\paperref{thm-5.1}{定理 5.1} 的一致误差率。Lean 工程通过几何系数矩证明了另一种足够的阶乘恢复估计，并非逐字形式化此处显示的特定常数 \(K_G\)（见\paperref{sec-A.1}{附录 A.1}）。
 
 \Needspace{9\baselineskip}
 \section{缩放与非主永久式估计}\label{sec-6}
@@ -781,6 +834,13 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 因此，需要在修正边际的同时，控制永久式及其 Gaussian 因子的变化。先构造局部对角缩放，估计其总对数代价；再用 Gram 矩阵比较控制删行、删列的影响；最后，通过成对比分修正，使竞赛图子矩阵满足局部定理的条件，从而证明\paperref{thm-3.1}{引理 3.1}。
 
 记 \(\mathbf1_p\) 为全一向量，\(P_p=\mathbf1_p\mathbf1_p^{\mathsf T}/p\)，\(\Pi_p=I-P_p\)。矩阵的总质量为 \(\mathfrak m(X)=\sum_{i,j}X_{ij}\)。以 \(\|\cdot\|_{\rm op}\) 表示 Euclidean 算子范数，\(\|\cdot\|_F\) 表示 Frobenius 范数，\(\|\cdot\|_*\) 表示迹范数。本节常数在给定稠密度与谱隙参数后统一。
+
+后续应用的维度与归一化约定如下。全图阶数为 \(n\)，保留阶数为 \(m=n-t\)；\(p\) 是\paperref{thm-6.1}{引理 6.1}--6.2 的一般矩阵阶数，仅在应用时令 \(p=m\)。矩阵 \(C,C',\widehat C\) 为 \(n\) 阶，而 \(X,\widetilde X,B_X,Z\) 为 \(m\) 阶。有关质量依次为
+\[\mathfrak m(C')=n+\nu,\quad \mathfrak m(\widehat C)=n,\quad
+\mathfrak m(X)=m+\kappa,\quad
+\mathfrak m(\widetilde X)=\mathfrak m(B_X)=m.\]
+
+这里 \(Z=\Pi_m[(S-I)/(n-1)][R,T]\Pi_m\) 是未作真实缩放的保留中心核，并非双随机矩阵。\(B_X\) 表示最终双随机矩阵；\paperref{thm-5.1}{定理 5.1} 中对应的扰动为 \(mB_X-J_m\)，其归一化为 \(B_X-P_m\)。这样可以明确区分全阶归一化 \(n-1\) 与保留阶归一化 \(m\)。
 
 \Needspace{7\baselineskip}
 \subsection{局部缩放及其代价}\label{sec-6.1}
@@ -927,7 +987,10 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 \[X=\frac n m\widehat C[R,T],\qquad \kappa=\mathfrak m(X)-m,\qquad \widetilde X=\frac m{\mathfrak m(X)}X.\]
 
 精确删行列质量恒等式为
-\[\kappa=\frac n m\left[-\sum_{i\in I}e_i-\sum_{j\in J}f_j+\sum_{i\in I,j\in J}\widehat C_{ij}-\frac{t^2}{n}\right].\]
+\begin{equation}
+\kappa=\frac n m\left[-\sum_{i\in I}e_i-\sum_{j\in J}f_j+\sum_{i\in I,j\in J}\widehat C_{ij}-\frac{t^2}{n}\right].
+\tag{6.1}\label{eq-deletion-mass}
+\end{equation}
 
 每个保留行在最后一次归一化前的边际误差为
 \[(X\mathbf 1_m)_i-1=\frac n m\left[e_i+\frac t n-\sum_{j\in J}\widehat C_{ij}\right],\]
@@ -944,7 +1007,7 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 则
 \[\Pi_m\widetilde X\Pi_m=\eta\left[Z+\Pi_mF[R,T]\Pi_m\right].\]
 
-由于 \(\mathfrak m(C')=n+o(1)\)、\(\mathfrak m(X)=m+o(1)\)，\(\eta\) 的主值为 \(n/m\)。压缩不增大 \(Y\) 的算子范数，第二项由已得 Frobenius 界控制。因此，在固定参数下，中心核的算子范数一致至多为 \(1/\sqrt2+o(1)\)。其元素为 \(O(1/m)\)，无穷范数边际误差趋于零。对所有充分大的 \(n\)，局部缩放引理适用，并构造真实的双随机矩阵 \(B_X\)。
+由于 \(\mathfrak m(C')=n+o(1)\)、\(\mathfrak m(X)=m+o(1)\)，\(\eta\) 的主值为 \(n/m\)。压缩不增大 \(Y\) 的算子范数，第二项由已得 Frobenius 界控制。因此，在固定参数下，中心核的算子范数一致至多为 \(1/\sqrt2+o(1)\)。其元素为 \(O(1/m)\)，无穷范数边际误差趋于零。由于 \(\widetilde X\) 的质量为 \(m\)，\paperref{thm-6.1}{引理 6.1} 中的 \(E\) 恰为 \(\Pi_m\widetilde X\Pi_m\)。因此可固定取 \(q=3/4\) 及固定的密度界 \(C,C_0\)。阈值 \(\varepsilon_0\) 和逆算子界 \(L_0\) 便只依赖 \(a_0,A_0,B_0\)，与 \(n\)、竞赛图及删集无关。局部缩放引理对所有充分大的 \(n\) 适用，并构造出真正的双随机矩阵 \(B_X\)；直接给出的谱范数界为 \(7/8\)。
 
 二范数位移引理给出
 \[\|B_X-\widetilde X\|_F\le K(\sqrt{\tau/n}+t/n).\]
@@ -955,6 +1018,8 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 \[|\log\mathcal G(B_X-P_m)-\log D_n(S)|\le K\left[\sqrt{\tau/n}+(t+1)/n\right].\]
 
 中心化产生的 \(\tau/n\) 项已吸收入 \(\sqrt{\tau/n}\)。其中由删除产生的误差与 \(t/n\) 成线性关系，正适合对后续子集权重求和。
+
+现在可在固定维度约定下汇总误差。所有常数与最终适用阈值只依赖固定的 \(a_0,A_0,B_0\)。全阶质量误差在恢复对数中产生 \(O(|\nu|)\le K\mathcal M_\tau\)；删除引起的质量变化至多为 \(K[t\sqrt{\tau/n}+t^2/n]\)；Gaussian 对数误差为 \(K[\sqrt{\tau/n}+(t+1)/n]\)。在阶数 \(m\ge n/2\) 使用\paperref{thm-5.1}{定理 5.1}，增加 \(O(1/m)=O(1/n)\)。最后的标量恢复贡献 \(e^{-1}\exp(O((t+1)/n))\)。对于质量为 \(m+\kappa\) 的 \(X\)，容量仅以 \(e^{-\theta_X}\le e^\kappa\) 的形式使用，不能断言这种非单位质量下的 \(\theta_X\) 非负。\paperref{sec-6.4}{第 6.4 节}精确恢复这些因子，得到\paperref{thm-3.1}{引理 3.1} 的误差指数。
 
 \Needspace{7\baselineskip}
 \subsection{非主永久式界的证明}\label{sec-6.4}
@@ -968,12 +1033,15 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 \[\prod_{i\in R}(1+a_i)\prod_{j\in T}(1-a_j)=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j.\]
 
 因此，删除行恢复 \(\ell\) 因子，删除列恢复 \(r\) 因子。完整的标量恒等式为
-\[\operatorname{per}A[R,T]=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j\left[\frac{m(n-1)\mathfrak m(C')}{2n^2}\right]^m e^{-\theta_X}\operatorname{per}B_X.\]
+\begin{equation}
+\operatorname{per}A[R,T]=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j\left[\frac{m(n-1)\mathfrak m(C')}{2n^2}\right]^m e^{-\theta_X}\operatorname{per}B_X.
+\tag{6.2}\label{eq-exact-restoration}
+\end{equation}
 
-恢复 \(m!/m^m\) 后，剩余标量为
+将 \(m!/m^m\) 代入\paperref{eq-exact-restoration}{式 (6.2)}后，剩余标量为
 \[\frac{m!}{2^m}(1-1/n)^m\left[\frac{\mathfrak m(C')}{n}\right]^m.\]
 
-其对数与 \(e^{-1}m!/2^m\) 的对数之差为 \(O((t+1)/n+|\nu|)\)。容量界给出 \(e^{-\theta_X}\le e^\kappa\)。代入质量、Gaussian 和零阶永久式误差，即得到所需指数预算。所有常数对竞赛图及两个删集一致，\paperref{thm-3.1}{引理 3.1} 得证。\(\square\)
+其对数与 \(e^{-1}m!/2^m\) 的对数之差为 \(O((t+1)/n+|\nu|)\)。容量界给出 \(e^{-\theta_X}\le e^\kappa\)。代入质量、Gaussian 和零阶永久式误差，即得到所需指数预算。所有常数对竞赛图及两个删集一致，\paperref{thm-3.1}{引理 3.1} 得证。\nobreak\hspace{.5em}\mbox{$\square$}
 
 \Needspace{7\baselineskip}
 \subsection{小比分时的双侧估计}\label{sec-6.5}
@@ -981,14 +1049,17 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 当每个比分均为 \(o(\sqrt n)\) 时，原始边际已足够接近一，可以直接使用局部缩放。容量界随后从两侧控制恢复因子，得到\paperref{thm-4.1}{定理 4.1} 所需的近似。
 
 \paperstatement{引理 6.4（小比分永久式近似）。}{6.4}{thm-6.4} 设 \(d=\|S\mathbf 1_n\|_\infty=o(\sqrt n)\)。固定 \(0<B_0<\infty\)，任删 \(t\le B_0\log n\) 行与 \(t\) 列，记 \(m=n-t\)。对这些选择一致地有
-\[\operatorname{per}A[R,T]=e^{-1}D_n(S)\frac{m!}{2^m}\left[1+O_{B_0}\left(\frac{(d+t+1)^2}{n}\right)\right].\]
+\begin{equation}
+\operatorname{per}A[R,T]=e^{-1}D_n(S)\frac{m!}{2^m}\left[1+O_{B_0}\left(\frac{(d+t+1)^2}{n}\right)\right].
+\tag{6.3}\label{eq-small-score-permanent}
+\end{equation}
 
-固定 \(B_0\) 后，只要 \((d+t+1)^2/n\) 足够小，隐含常数就是一致的；在所述渐近范围中此量趋于零。
+更明确地，对每个固定的 \(B_0>0\)，存在仅依赖于 \(B_0\) 的常数 \(C_{\mathrm{err}},\delta>0\) 及整数 \(N_0\ge4\)，使得对每个 \(n\ge N_0\)、每个竞赛图符号矩阵 \(S\) 及每对满足 \(|I|=|J|=t\le B_0\log n\) 的删集 \(I,J\subseteq[n]\)，均有如下结论：若 \(d=\|S\mathbf1_n\|_\infty\) 且 \(\eta=(d+t+1)^2/n\le\delta\)，则\paperref{eq-small-score-permanent}{式 (6.3)}中的绝对相对误差至多为 \(C_{\mathrm{err}}\eta\)。这里 \(R=[n]\setminus I\)、\(T=[n]\setminus J\)、\(m=n-t\)，且 \(I,J\) 可独立选择。这些常数先于阶数、竞赛图和删集选定。在所述渐近范围中，\(\eta\to0\)。
 
-\textbf{证明。} 此处不需要成对预缩放。令 \(C=2A/(n-1)\)、\(X=(n/m)C[R,T]\)。全矩阵 \(C\) 的行列误差分别为 \(s_i/(n-1)\)、\(-s_i/(n-1)\)。因此，\paperref{sec-6.3}{第 6.3 节}的精确质量与边际恒等式给出
+\textbf{证明。} 增大 \(N_0\)，使整个对数删除窗口内均有 \(2t\le n\)，于是 \(m\ge n/2>0\)。此处不需要成对预缩放。令 \(C=2A/(n-1)\)、\(X=(n/m)C[R,T]\)。全矩阵 \(C\) 的行列误差分别为 \(s_i/(n-1)\)、\(-s_i/(n-1)\)。因此，精确质量恒等式\paperref{eq-deletion-mass}{式 (6.1)}及\paperref{sec-6.3}{第 6.3 节}的边际公式给出
 \[|\kappa|=O(t(d+t)/n),\qquad \varepsilon(X)=O((d+t)/n),\qquad \|g(X)\|_2=O((d+t)/\sqrt n).\]
 
-归一化 \(\widetilde X=mX/\mathfrak m(X)\)。其稠密度与中心核谱隙固定，局部缩放引理适用。二范数位移和容量估计给出
+质量误差满足 \(|\kappa|\le K\eta\)。必要时缩小 \(\delta\)，便一致保证 \(\mathfrak m(X)=m+\kappa>0\)。归一化 \(\widetilde X=mX/\mathfrak m(X)\)。其稠密度与中心核谱隙固定，局部缩放引理适用。二范数位移和容量估计给出
 \[\|B_X-\widetilde X\|_F=O((d+t)/n),\qquad 0\le\theta_{\widetilde X}=O((d+t)^2/n).\]
 
 非单位质量修正随后给出 \(|\theta_X|=O((d+t)^2/n)\)。又有 \(\tau\le nd^2/(n-1)^2\)。有限删除估计、归一化因子和真实缩放扰动共同给出
@@ -997,7 +1068,7 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 此时不含比分乘积的精确恢复为
 \[\operatorname{per}A[R,T]=\left[\frac{m(n-1)}{2n}\right]^m e^{-\theta_X}\operatorname{per}B_X.\]
 
-应用统一永久式定理，并使用 \((1-1/n)^m=e^{-1}\exp(O((t+1)/n))\)。所有对数误差均为 \(O((d+t+1)^2/n)=o(1)\)，对其取指数即得到所述相对近似。这就证明了\paperref{thm-4.1}{定理 4.1} 所用的一致短余矩阵近似。\(\square\)
+应用统一永久式定理，并使用 \((1-1/n)^m=e^{-1}\exp(O((t+1)/n))\)。所有对数误差均由 \(\eta=(d+t+1)^2/n\) 的一个固定倍数控制。将 \(\delta\) 取得充分小，对这些界取指数，便在前述有限范围内一致得到不超过 \(C_{\mathrm{err}}\eta\) 的绝对相对误差。在 \(d=o(\sqrt n)\)、\(t\le B_0\log n\) 的渐近范围中，\(\eta\to0\)。这就证明了\paperref{thm-4.1}{定理 4.1} 所用的一致短余矩阵近似。\nobreak\hspace{.5em}\mbox{$\square$}
 
 \Needspace{9\baselineskip}
 \section{后续问题}\label{sec-7}
@@ -1018,12 +1089,14 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 
 声明 \texttt{Tournament\allowbreak{}Hamiltonian.\allowbreak{}main\allowbreak{}Bound : Tournament\allowbreak{}Hamiltonian.\allowbreak{}Main\allowbreak{}Bound} 以精确常数 \(L,C_*\) 证明\paperref{thm-1.1}{定理 1.1}。其结论先选定同一个 \(K\ge0\) 和 \(n_0\ge2\)，再对所有 \(n\ge n_0\) 量化。最终定理没有未证明的永久式、缩放、活动量或路径数前提。另一个声明 \texttt{small\_\allowbreak{}score\_\allowbreak{}path\allowbreak{}Count\_\allowbreak{}spectral\_\allowbreak{}approximation\_\allowbreak{}eventually} 证明\paperref{thm-4.1}{定理 4.1}：绝对误差常数不依赖比分上包络 \(d(n)\)，而最终成立的起始阶数可以依赖该函数。
 
-形式化工程同时证明了主要分析输入及上述结论。部分中间论证与正文不同：永久式证明以几何系数矩界代替正文列出的导数常数 \(K_G\)；高方差与异常顶点情形使用较弱但足够的估计，后者在 \(f\ge1\) 时得到 \((10/3)4^{-f}(1+o(1))<1\)；加权行列式比较使用正主子式矩；小比分恢复复用成对预缩放，局部缩放采用等价的压缩映射估计及不同的固定谱隙。形式化的短删集约定还相差一个边界层，极化和 Gaussian 矩工具则采用有限维实现。这些方法得到相同的误差率与最终界。所附{逐项结论对应表\footnote{源码包：\path|materials/verification/manuscript_alignment_20261011.md|}}记录了这些中间差异。
+形式化工程同时证明了主要分析输入及上述结论。部分中间论证与正文不同：永久式证明以几何系数矩界代替正文列出的导数常数 \(K_G\)；高方差与异常顶点情形使用较弱但足够的估计。后者的 \((10/3)4^{-f}(1+o(1))\) 仅控制删除集与 \(F\) 不相交的短项，其余项另贡献一致的加性 \(o(1)\)；完整上界见\paperref{eq-exceptional-bound}{式 (3.1)}，三部分相加后在 \(f\ge1\) 时最终不超过 \(191/200<1\)。加权行列式比较使用正主子式矩；小比分恢复复用成对预缩放，局部缩放采用等价的压缩映射估计及不同的固定谱隙。形式化的短删集约定还相差一个边界层，极化和 Gaussian 矩工具则采用有限维实现。这些方法得到相同的误差率与最终界。所附{逐项结论对应表\footnote{源码包：\path|materials/verification/manuscript_alignment_20261011.md|}}记录了这些中间差异。
 
 \Needspace{7\baselineskip}
 \subsection{核验记录与辅助计算}\label{sec-A.2}
 
 仓库的\href{https://github.com/LStar404/tournament-hamiltonian-paths/blob/8ea3fcffcc12b6a06294ba7559885b439eda3cac/formalization/VERIFICATION.md}{核验记录}记载了 2026 年 10 月 9 日的一次成功完整运行。命令 \texttt{python verify\_\allowbreak{}lean.\allowbreak{}py {-}{-}require{-}main} 执行工程构建、实际 \texttt{Main\allowbreak{}Bound} 声明检查、工程源码导入覆盖检查，并将定理的传递公理依赖限制为 \texttt{propext}、\texttt{Classical.\allowbreak{}choice} 和 \texttt{Quot.\allowbreak{}sound}。记录包含 3674 个定理常量，其中包括自动生成的引理。已存档的 246 项 Lean 源码及配置哈希均与本次修订所检查的源码一致。这些材料分别提供已记录的构建结果与源码对应检查；本次文字修订没有另行执行 Lean 构建。
+
+后续远端 CI 核验了工作 fork 中已合并的第二轮修订基线提交 \texttt{42ee0a15\allowbreak{}72e9e0cd\allowbreak{}f88bfc17\allowbreak{}811c7559\allowbreak{}b3b2e03c}：\href{https://github.com/makerY666/tournament-hamiltonian-paths/actions/runs/38073718040}{Verify proofs，第 38073718040 次运行}于 2026 年 10 月 10 日成功完成，其中 Lean 构建与审计、四项有限诊断及带符号核心例子测试均成功。这是针对该精确基线的远端证据，并非本地重新构建，也不表示后续文字修订提交已经通过 CI。本次第三轮修订未改变形式化证明源码；其自身提交对应的 CI 结果随拉取请求另行记录。编译与有限检查成功不能替代对正文每一步证明的人工审查。
 
 精确有限计算用于核对归一化、系数恒等式、删除因子及四块展开，与任意阶证明分别记录。存档的有理数计算给出
 \[2.855957892565113<L<2.855957892565114,\]
@@ -1040,7 +1113,7 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 
 \hypertarget{bib-2}{}\phantomsection\label{bib-2}\noindent {[}2{]} Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Combinatorica 10(4) (1990), 319--324. \href{https://doi.org/10.1007/BF02128667}{\nolinkurl{DOI: 10.1007/BF02128667}}.
 
-\hypertarget{bib-3}{}\phantomsection\label{bib-3}\noindent {[}3{]} Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. \href{https://arxiv.org/html/2408.09341v2}{arXiv:2408.09341v2} (2024).
+\hypertarget{bib-3}{}\phantomsection\label{bib-3}\noindent {[}3{]} Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. The Annals of Statistics, to appear（\href{https://yanjunhan2021.github.io/publication.html}{作者发表目录}）。\href{https://arxiv.org/html/2408.09341v2}{arXiv:2408.09341v2}（2024年9月9日）；正文所引引理编号对应这一版本。
 
 \hypertarget{bib-4}{}\phantomsection\label{bib-4}\noindent {[}4{]} Bo Deng, Xueliang Li, Bryan Shader and Wasin So. On the Maximum Skew Spectral Radius and Minimum Skew Energy of Tournaments. Linear and Multilinear Algebra 66(7) (2018), 1434--1441. \href{https://doi.org/10.1080/03081087.2017.1357676}{\nolinkurl{DOI: 10.1080/03081087.2017.1357676}}.
 
@@ -1051,4 +1124,8 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 \hypertarget{bib-7}{}\phantomsection\label{bib-7}\noindent {[}7{]} Ehud Friedgut and Jeff Kahn. On the Number of Hamiltonian Cycles in a Tournament. Combinatorics, Probability and Computing 14(5--6) (2005), 769--781. \href{https://doi.org/10.1017/S0963548305006863}{\nolinkurl{DOI: 10.1017/S0963548305006863}}.
 
 \hypertarget{bib-8}{}\phantomsection\label{bib-8}\noindent {[}8{]} Eric Li. The Godsil--McKay Asymptotic for Latin Rectangles in the Sublinear Range of Erdős Problem 725. \href{https://arxiv.org/html/2608.01671v1}{arXiv:2608.01671v1} (2026).
+
+\hypertarget{bib-9}{}\phantomsection\label{bib-9}\noindent {[}9{]} Ilan Adler, Noga Alon and Sheldon M. Ross. On the Maximum Number of Hamiltonian Paths in Tournaments. Random Structures \& Algorithms 18(3) (2001), 291--296. \href{https://doi.org/10.1002/rsa.1010}{\nolinkurl{DOI: 10.1002/rsa.1010}}.
+
+\hypertarget{bib-10}{}\phantomsection\label{bib-10}\noindent {[}10{]} Tibor Szele. Kombinatorikai vizsgálatok az irányított teljes gráffal kapcsolatban. Matematikai és Fizikai Lapok 50 (1943), 223--256. \href{https://real-j.mtak.hu/7300/}{Original volume archive}.
 \end{document}

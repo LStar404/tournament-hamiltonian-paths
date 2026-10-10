@@ -18,12 +18,15 @@ $$
 
 Set $B=E/n$. Uniformly over all such matrices,
 
+<a id="eq-uniform-permanent"></a>
+
 $$
 \frac{\operatorname{per}(J_n+E)}{n!}
 =\det(I-BB^{\mathsf T})^{-1/2}+O_{C,q}(n^{-1}).
+\tag{5.1}
 $$
 
-The same statement holds with a relative factor $1+O_{C,q}(n^{-1})$ multiplying the determinant factor.
+The approximation [Equation (5.1)](#eq-uniform-permanent) also holds with a relative factor $1+O_{C,q}(n^{-1})$ multiplying the determinant factor.
 
 Here and below the determinant square root is the positive square root on the real interval under consideration. The assumptions imply $\|B\|_{\mathrm F}^2\le C^2$. Consequently, the determinant factor is bounded above by a constant depending only on $C,q$, and it is at least one.
 
@@ -132,8 +135,11 @@ $$
 
 **Lemma 5.2 (Compressed-core activity).** With the notation above,
 
+<a id="eq-core-activity"></a>
+
 $$
 \|C_j\|_R\le(Dj/n)^j\qquad(j\ge1),
+\tag{5.2}
 $$
 
 and the first excess satisfies the sharper bound
@@ -152,7 +158,9 @@ e=b+j,\qquad
 1\le b\le2j,\qquad e\le3j.
 $$
 
-The following decorated count determines the symmetry factors. Temporarily label the $b$ high-degree vertices and the $d_i$ half-edges at each vertex. Use these labels to select one reading direction for every chain. A given original edge-labeled core has $b!\prod_i d_i!$ such decorations. Conversely, a decorated half-edge pairing and a list of positive chain lengths determine all chain positions. The original $h$ edge labels can be assigned to these positions in $h!$ ways. Subject to the bipartite parity condition, the internal vertices and their colors are then determined.
+**Decorated-count identity.** For fixed excess and number of original edges, sum over every ordered degree sequence $(d_1,\ldots,d_b)$, every assignment of the two vertex colors, every pairing of the labeled half-edges, and every positive chain length compatible with those colors. After removal of the temporary labels, the absolute Möbius compensation is $1/(b!\prod_i d_i)$. The chain contractions retain their signs until their internal numerical indices have been summed.
+
+To prove the identity, distinguish structural vertices (the blocks of the two edge-label partitions) from their numerical indices in $[n]$. Different structural vertices may receive the same numerical index; this does not identify their blocks. The original distinctness constraints have already been treated by Möbius inversion. Thus the present count is a count of partition pairs, not of simple graphs obtained by identifying equal numerical indices. Temporarily label the $b$ high-degree vertices and the $d_i$ half-edges at each vertex. Use these labels to select one reading direction for every chain. Over all ordered degree sequences, a given original edge-labeled core has $b!\prod_i d_i!$ such decorations. For one fixed degree sequence only the compatible vertex labelings occur; summing all sequences supplies exactly the full factor $b!$. Each structural vertex is identifiable from its color and incident original edge labels, and each incident half-edge from its original edge label, so no automorphism stabilizer remains. Conversely, a decorated half-edge pairing and a list of positive chain lengths determine all chain positions. The original $h$ edge labels can be assigned to these positions in $h!$ ways. Subject to the bipartite parity condition, the internal vertices and their colors are then determined.
 
 After division by the original exponential generating-function factor $h!$ and removal of the decorations, multiplication by the absolute Möbius weights $\prod_i(d_i-1)!$ leaves
 
@@ -160,7 +168,15 @@ $$
 \frac1{b!\prod_i d_i}.
 $$
 
-This argument includes loops and chain reversals: their two half-edges are already labeled, so no extra direction factor is introduced. Internal degree-two vertices have absolute Möbius weight one. There is no additional chain-length factorial.
+This argument includes loops and chain reversals: order each pair of distinct labeled half-edges and read the chain from the smaller one. Reversal changes the list of original edge labels occupying those positions, rather than supplying an additional free factor of two. This convention also applies to the two stubs of a loop. Internal degree-two vertices have absolute Möbius weight one. There is no additional chain-length factorial. A chain has odd length between opposite colors and even length between equal colors; in particular, a loop has even length at least two. These restrictions apply to the exact identity.
+
+For example, take one row-colored degree-four vertex and two length-two loops, each passing through a separate column-colored degree-two vertex. Here $j=b=1$ and $h=4$. There are three partitions of the four original edge labels into two pairs; the degree-four Möbius weight is $(-1)^3 3!=-6$, while the two degree-two weights multiply to $+1$. After division by $4!$, their signed contribution is
+
+$$
+-\frac34\sum_i\left(\sum_k B_{ik}^2\right)^2.
+$$
+
+The two structural column vertices remain distinct even in summands where their numerical indices agree. The color-dual configuration contributes $-\tfrac34\sum_k(\sum_i B_{ik}^2)^2$. Their magnitudes enter the absolute compensation bound. For parallel edges, three length-one chains between one row vertex and one column vertex give $\tfrac{(2!)^2}{3!}\sum_{i,k}B_{ik}^3=\tfrac23\sum_{i,k}B_{ik}^3$, exactly the cubic term above. These examples exhibit the loop, parallel-edge and reversal conventions without introducing non-bipartite original graphs.
 
 Ignore the color restrictions only when taking an upper bound. For fixed $j,b$, the resulting total compensation is
 
@@ -172,7 +188,7 @@ U_{j,b}=
 \qquad e=b+j.
 $$
 
-For a chain of length one the matrix entry is bounded by $C/n$. For a chain of length $\ell\ge2$, first sum its internal labels. Its contraction is an entry of an alternating product of $B$ and $B^{\mathsf T}$. Each endpoint row or column has norm at most $C/\sqrt n$, and all intermediate factors have operator norm at most $q$. Thus the absolute contraction is at most
+The next estimate is applied after summing the internal numerical indices of each chain, before taking absolute values; replacing $B$ entrywise by $|B|$ would not preserve the operator-gap argument. For a chain of length one the matrix entry is bounded by $C/n$. For a chain of length $\ell\ge2$, first sum its internal labels. Its contraction is an entry of an alternating product of $B$ and $B^{\mathsf T}$. Each endpoint row or column has norm at most $C/\sqrt n$, and all intermediate factors have operator norm at most $q$. Thus the absolute contraction is at most
 
 $$
 \frac{C^2}{n}q^{\ell-2}.
@@ -213,7 +229,7 @@ Their chain bounds give $\|C_1\|_R\le T_1/n$. $\square$
 
 ### 5.4 A linear coefficient window and factorial recovery
 
-The bound in Lemma 5.2 is useful while $j/n$ is small. Choose
+The activity bound [Equation (5.2)](#eq-core-activity) is useful while $j/n$ is small. Choose
 
 $$
 \alpha=\min\left\{\frac14,\frac1{16D},\frac{\log\sigma}{2}\right\},
@@ -362,7 +378,7 @@ $$
 
 Finally, $h_n(1,\lambda_2,\ldots,\lambda_n)$ is the sum of all monomials in $\lambda_2,\ldots,\lambda_n$ of total degree at most $n$, and is at most the product of their infinite geometric sums. $\square$
 
-The Gaussian identity and AM–GM comparison in Lemma 5.4 are the tools used in Han–Niles-Weed [3, Lemmas 4.3–4.4] for positive semidefinite inputs. Lemma 5.3 connects them to the general matrix required here.
+The Gaussian identity and AM–GM comparison in Lemma 5.4 are the tools used in Han–Niles-Weed [3, arXiv v2, Lemmas 4.3–4.4] for positive semidefinite inputs. Lemma 5.3 connects them to the general matrix required here.
 
 Put $\beta=RC/(1-Rq)$. The centering assumptions give $P_nB=BP_n=0$. On $|t|=R$ they imply
 
@@ -411,5 +427,5 @@ $$
 +\sigma\Gamma(\sigma)\exp\!\left(-\alpha n\log\sigma\right).
 $$
 
-The first two terms are the coefficient-window and factorial-recovery errors from Section 5.4; the last two are the tails from Section 5.5. The exponential terms are $o(n^{-1})$, proving the uniform rate in Theorem 5.1.
+The first two terms are the coefficient-window and factorial-recovery errors from Section 5.4; the last two are the tails from Section 5.5. The exponential terms are $o(n^{-1})$, proving the uniform rate in Theorem 5.1. The Lean development proves a sufficient alternative factorial-recovery estimate by geometric coefficient moments; it does not formalize this particular displayed constant $K_G$ verbatim (see Appendix A.1).
 

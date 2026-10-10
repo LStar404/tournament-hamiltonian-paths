@@ -10,6 +10,16 @@ $$
 
 记 $\mathbf1_p$ 为全一向量，$P_p=\mathbf1_p\mathbf1_p^{\mathsf T}/p$，$\Pi_p=I-P_p$。矩阵的总质量为 $\mathfrak m(X)=\sum_{i,j}X_{ij}$。以 $\|\cdot\|_{\rm op}$ 表示 Euclidean 算子范数，$\|\cdot\|_F$ 表示 Frobenius 范数，$\|\cdot\|_*$ 表示迹范数。本节常数在给定稠密度与谱隙参数后统一。
 
+后续应用的维度与归一化约定如下。全图阶数为 $n$，保留阶数为 $m=n-t$；$p$ 是引理 6.1–6.2 的一般矩阵阶数，仅在应用时令 $p=m$。矩阵 $C,C',\widehat C$ 为 $n$ 阶，而 $X,\widetilde X,B_X,Z$ 为 $m$ 阶。有关质量依次为
+
+$$
+\mathfrak m(C')=n+\nu,\quad \mathfrak m(\widehat C)=n,\quad
+\mathfrak m(X)=m+\kappa,\quad
+\mathfrak m(\widetilde X)=\mathfrak m(B_X)=m.
+$$
+
+这里 $Z=\Pi_m[(S-I)/(n-1)][R,T]\Pi_m$ 是未作真实缩放的保留中心核，并非双随机矩阵。$B_X$ 表示最终双随机矩阵；定理 5.1 中对应的扰动为 $mB_X-J_m$，其归一化为 $B_X-P_m$。这样可以明确区分全阶归一化 $n-1$ 与保留阶归一化 $m$。
+
 ### 6.1 局部缩放及其代价
 
 我们寻找形如 $B_{ij}=X_{ij}e^{x_i+y_j}$、行列和均为一的矩阵。将 $(x,y)$ 换为 $(x+c\mathbf1,y-c\mathbf1)$ 不改变 $B$；条件 $\sum x_i=\sum y_j$ 消去这一维自由度。奇异值谱隙控制其余子空间上的线性化平衡方程，而元素界进一步给出不依赖维数的无穷范数控制，从而可以使用压缩映射论证。
@@ -270,8 +280,11 @@ $$
 
 精确删行列质量恒等式为
 
+<a id="eq-deletion-mass"></a>
+
 $$
 \kappa=\frac n m\left[-\sum_{i\in I}e_i-\sum_{j\in J}f_j+\sum_{i\in I,j\in J}\widehat C_{ij}-\frac{t^2}{n}\right].
+\tag{6.1}
 $$
 
 每个保留行在最后一次归一化前的边际误差为
@@ -304,7 +317,7 @@ $$
 \Pi_m\widetilde X\Pi_m=\eta\left[Z+\Pi_mF[R,T]\Pi_m\right].
 $$
 
-由于 $\mathfrak m(C')=n+o(1)$、$\mathfrak m(X)=m+o(1)$，$\eta$ 的主值为 $n/m$。压缩不增大 $Y$ 的算子范数，第二项由已得 Frobenius 界控制。因此，在固定参数下，中心核的算子范数一致至多为 $1/\sqrt2+o(1)$。其元素为 $O(1/m)$，无穷范数边际误差趋于零。对所有充分大的 $n$，局部缩放引理适用，并构造真实的双随机矩阵 $B_X$。
+由于 $\mathfrak m(C')=n+o(1)$、$\mathfrak m(X)=m+o(1)$，$\eta$ 的主值为 $n/m$。压缩不增大 $Y$ 的算子范数，第二项由已得 Frobenius 界控制。因此，在固定参数下，中心核的算子范数一致至多为 $1/\sqrt2+o(1)$。其元素为 $O(1/m)$，无穷范数边际误差趋于零。由于 $\widetilde X$ 的质量为 $m$，引理 6.1 中的 $E$ 恰为 $\Pi_m\widetilde X\Pi_m$。因此可固定取 $q=3/4$ 及固定的密度界 $C,C_0$。阈值 $\varepsilon_0$ 和逆算子界 $L_0$ 便只依赖 $a_0,A_0,B_0$，与 $n$、竞赛图及删集无关。局部缩放引理对所有充分大的 $n$ 适用，并构造出真正的双随机矩阵 $B_X$；直接给出的谱范数界为 $7/8$。
 
 二范数位移引理给出
 
@@ -321,6 +334,8 @@ $$
 $$
 
 中心化产生的 $\tau/n$ 项已吸收入 $\sqrt{\tau/n}$。其中由删除产生的误差与 $t/n$ 成线性关系，正适合对后续子集权重求和。
+
+现在可在固定维度约定下汇总误差。所有常数与最终适用阈值只依赖固定的 $a_0,A_0,B_0$。全阶质量误差在恢复对数中产生 $O(|\nu|)\le K\mathcal M_\tau$；删除引起的质量变化至多为 $K[t\sqrt{\tau/n}+t^2/n]$；Gaussian 对数误差为 $K[\sqrt{\tau/n}+(t+1)/n]$。在阶数 $m\ge n/2$ 使用定理 5.1，增加 $O(1/m)=O(1/n)$。最后的标量恢复贡献 $e^{-1}\exp(O((t+1)/n))$。对于质量为 $m+\kappa$ 的 $X$，容量仅以 $e^{-\theta_X}\le e^\kappa$ 的形式使用，不能断言这种非单位质量下的 $\theta_X$ 非负。第 6.4 节精确恢复这些因子，得到引理 3.1 的误差指数。
 
 ### 6.4 非主永久式界的证明
 
@@ -340,11 +355,14 @@ $$
 
 因此，删除行恢复 $\ell$ 因子，删除列恢复 $r$ 因子。完整的标量恒等式为
 
+<a id="eq-exact-restoration"></a>
+
 $$
 \operatorname{per}A[R,T]=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j\left[\frac{m(n-1)\mathfrak m(C')}{2n^2}\right]^m e^{-\theta_X}\operatorname{per}B_X.
+\tag{6.2}
 $$
 
-恢复 $m!/m^m$ 后，剩余标量为
+将 $m!/m^m$ 代入[式 (6.2)](#eq-exact-restoration)后，剩余标量为
 
 $$
 \frac{m!}{2^m}(1-1/n)^m\left[\frac{\mathfrak m(C')}{n}\right]^m.
@@ -358,19 +376,22 @@ $$
 
 **引理 6.4（小比分永久式近似）。** 设 $d=\|S\mathbf 1_n\|_\infty=o(\sqrt n)$。固定 $0<B_0<\infty$，任删 $t\le B_0\log n$ 行与 $t$ 列，记 $m=n-t$。对这些选择一致地有
 
+<a id="eq-small-score-permanent"></a>
+
 $$
 \operatorname{per}A[R,T]=e^{-1}D_n(S)\frac{m!}{2^m}\left[1+O_{B_0}\left(\frac{(d+t+1)^2}{n}\right)\right].
+\tag{6.3}
 $$
 
-固定 $B_0$ 后，只要 $(d+t+1)^2/n$ 足够小，隐含常数就是一致的；在所述渐近范围中此量趋于零。
+更明确地，对每个固定的 $B_0>0$，存在仅依赖于 $B_0$ 的常数 $C_{\mathrm{err}},\delta>0$ 及整数 $N_0\ge4$，使得对每个 $n\ge N_0$、每个竞赛图符号矩阵 $S$ 及每对满足 $|I|=|J|=t\le B_0\log n$ 的删集 $I,J\subseteq[n]$，均有如下结论：若 $d=\|S\mathbf1_n\|_\infty$ 且 $\eta=(d+t+1)^2/n\le\delta$，则[式 (6.3)](#eq-small-score-permanent)中的绝对相对误差至多为 $C_{\mathrm{err}}\eta$。这里 $R=[n]\setminus I$、$T=[n]\setminus J$、$m=n-t$，且 $I,J$ 可独立选择。这些常数先于阶数、竞赛图和删集选定。在所述渐近范围中，$\eta\to0$。
 
-**证明。** 此处不需要成对预缩放。令 $C=2A/(n-1)$、$X=(n/m)C[R,T]$。全矩阵 $C$ 的行列误差分别为 $s_i/(n-1)$、$-s_i/(n-1)$。因此，第 6.3 节的精确质量与边际恒等式给出
+**证明。** 增大 $N_0$，使整个对数删除窗口内均有 $2t\le n$，于是 $m\ge n/2>0$。此处不需要成对预缩放。令 $C=2A/(n-1)$、$X=(n/m)C[R,T]$。全矩阵 $C$ 的行列误差分别为 $s_i/(n-1)$、$-s_i/(n-1)$。因此，精确质量恒等式[式 (6.1)](#eq-deletion-mass)及第 6.3 节的边际公式给出
 
 $$
 |\kappa|=O(t(d+t)/n),\qquad \varepsilon(X)=O((d+t)/n),\qquad \|g(X)\|_2=O((d+t)/\sqrt n).
 $$
 
-归一化 $\widetilde X=mX/\mathfrak m(X)$。其稠密度与中心核谱隙固定，局部缩放引理适用。二范数位移和容量估计给出
+质量误差满足 $|\kappa|\le K\eta$。必要时缩小 $\delta$，便一致保证 $\mathfrak m(X)=m+\kappa>0$。归一化 $\widetilde X=mX/\mathfrak m(X)$。其稠密度与中心核谱隙固定，局部缩放引理适用。二范数位移和容量估计给出
 
 $$
 \|B_X-\widetilde X\|_F=O((d+t)/n),\qquad 0\le\theta_{\widetilde X}=O((d+t)^2/n).
@@ -388,5 +409,5 @@ $$
 \operatorname{per}A[R,T]=\left[\frac{m(n-1)}{2n}\right]^m e^{-\theta_X}\operatorname{per}B_X.
 $$
 
-应用统一永久式定理，并使用 $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$。所有对数误差均为 $O((d+t+1)^2/n)=o(1)$，对其取指数即得到所述相对近似。这就证明了定理 4.1 所用的一致短余矩阵近似。$\square$
+应用统一永久式定理，并使用 $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$。所有对数误差均由 $\eta=(d+t+1)^2/n$ 的一个固定倍数控制。将 $\delta$ 取得充分小，对这些界取指数，便在前述有限范围内一致得到不超过 $C_{\mathrm{err}}\eta$ 的绝对相对误差。在 $d=o(\sqrt n)$、$t\le B_0\log n$ 的渐近范围中，$\eta\to0$。这就证明了定理 4.1 所用的一致短余矩阵近似。$\square$
 

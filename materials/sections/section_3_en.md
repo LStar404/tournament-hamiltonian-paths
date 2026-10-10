@@ -156,7 +156,31 @@ $$
 \operatorname{per}A[M\setminus I,M\setminus J].
 $$
 
-Every contributing permutation is classified exactly once. In the core bound, a deleted row supplies $\ell_i$, and a deleted column supplies $r_j$. Absorbing these factors into the corresponding cross matchings and dropping the distinctness restrictions bounds the two cross sums by
+Every contributing permutation is classified exactly once. Apply the uniform core bound of Lemma 3.1 before separating the cross sums. A deleted core row supplies $\ell_i$, and a deleted core column supplies $r_j$. For fixed $R,C$, the outgoing cross sum is exactly
+
+$$
+\begin{aligned}
+&\sum_{\substack{J\subseteq M\\|J|=t}}
+\operatorname{per}A[F\setminus R,J]\prod_{j\in J}r_j\\
+&=\sum_{\phi:F\setminus R\hookrightarrow M}
+\prod_{x\in F\setminus R}A_{x,\phi(x)}r_{\phi(x)}
+\le\prod_{x\in F\setminus R}\sum_{j\in M}A_{xj}r_j.
+\end{aligned}
+$$
+
+Independently, the incoming cross sum is
+
+$$
+\begin{aligned}
+&\sum_{\substack{I\subseteq M\\|I|=t}}
+\operatorname{per}A[I,F\setminus C]\prod_{i\in I}\ell_i\\
+&=\sum_{\psi:F\setminus C\hookrightarrow M}
+\prod_{y\in F\setminus C}A_{\psi(y),y}\ell_{\psi(y)}
+\le\prod_{y\in F\setminus C}\sum_{i\in M}A_{iy}\ell_i.
+\end{aligned}
+$$
+
+Here $\hookrightarrow$ denotes an injection. Each injection is counted once, by its image and the corresponding permanent term; there is no additional factor $t!$. The images $I,J$ need be neither equal nor disjoint, because they refer to separate row and column copies of the core. Removing injectivity is legitimate because all factors are nonnegative. The product of the two upper bounds is
 
 $$
 N^{2t}2^{-2t}
@@ -191,7 +215,13 @@ $$
 \exp\left(\frac{2L_n^2f^2}{c_n^2N}\right).
 $$
 
-The displayed extra exponents are $o(1)$. All these statements remain uniform after a short core subset $U$ is deleted. The core Gaussian factor then changes by $\exp(O(|U|/n))$: deleting rows and columns of $S_M/N$ costs $O(|U|/n)$ in logarithm by the Gaussian deletion lemma, and changing normalization from $N$ to $N-|U|$ has the same cost.
+The displayed extra exponents are $o(1)$. To make the uniformity explicit, after deleting a short core subset $U$ the core order is $N'=n-f-|U|\sim n$, while the exceptional set remains the original $F$. The normalized core score cap is still $0.95$ eventually, its squared-score sum is $O(\log n)$, and the cross deletion size is $t\le f=O(\log n)$. The exponent in Lemma 3.1 is consequently
+
+$$
+O\!\left(\frac{(\log n)^{3/2}}{\sqrt n}+\frac{(\log n)^2}{n}\right)=o(1),
+$$
+
+with constants independent of $U,I,J$. The cross-neighbor fractions change by only $O((f+|U|)/n)$ from the original full-tournament fractions, and the weight displacement remains $O(\sqrt{n\log n})$. Thus all the preceding cross-sum estimates are uniform as well. The core Gaussian factor then changes by $\exp(O(|U|/n))$: deleting rows and columns of $S_M/N$ costs $O(|U|/n)$ in logarithm by the Gaussian deletion lemma, and changing normalization from $N$ to $N-|U|$ has the same cost.
 
 In the path convolution, the fraction of $k$-subsets meeting $F$ is at most $fk/n$. The generic permanent bound therefore makes their entire normalized short contribution at most
 
@@ -216,7 +246,24 @@ $$
 \le C_*/4+o(1)<1,\qquad f\ge1.
 $$
 
-Since $P(n)\ge\mu_n$, the fixed gap below one excludes these tournaments from the maximum for all sufficiently large $n$. This case requires only an $o(1)$ error.
+Since $P(n)\ge\mu_n$, the fixed gap below one excludes these tournaments from the maximum for all sufficiently large $n$. This case requires only an $o(1)$ error. We keep the paired spectral factor here to make its connection with the later reduction visible. For the short convolution terms whose deletion sets are disjoint from $F$, the Lean proof uses the weaker sufficient bound $(10/3)4^{-f}(1+\varepsilon_n)$. The short terms meeting $F$ and the long terms contribute an additional $\delta_n$, giving
+
+<a id="eq-exceptional-bound"></a>
+
+$$
+\frac{H(T)}{\mu_n}\le\frac{10}{3}4^{-f}(1+\varepsilon_n)+\delta_n,
+\qquad \varepsilon_n,\delta_n\longrightarrow0.
+\tag{3.1}
+$$
+
+Both errors are uniform over the low-variance class under discussion. They are kept separate because $f$ may grow with $n$. In the formal proof, $1+\varepsilon_n\le21/20$ and each of the other two contributions is at most $1/25$ eventually. Thus, for $f\ge1$, [Equation (3.1)](#eq-exceptional-bound) gives the explicit budget
+
+$$
+\frac{10}{3}\cdot\frac14\cdot\frac{21}{20}+\frac1{25}+\frac1{25}
+=\frac{191}{200}<1.
+$$
+
+Neither choice affects the final upper constant.
 
 ### 3.4 The score penalty in the remaining class
 
@@ -300,12 +347,15 @@ Both determinants are positive: $W$ has positive-definite symmetric part, and th
 
 Combining these inequalities and adding only the long-subset tail gives the uniform score-sensitive bound
 
+<a id="eq-score-penalty"></a>
+
 $$
 \frac{H(T)}{\mu_n}\le
 \rho_n(S)\exp\left\{-\tau+
 K\left[\frac{1+\tau+\tau^2}{n}
 +\frac{\tau^{3/2}+\tau}{\sqrt n}+\sqrt{\tau/n}\right]\right\}
 +o(1/n).
+\tag{3.2}
 $$
 
 For $\tau\le K_0\log n$, all polynomial terms except the constant $1/n$ can consume at most $\tau/4$ for sufficiently large $n$. The remaining square-root term is bounded by Young's inequality:
@@ -314,7 +364,7 @@ $$
 K\sqrt{\tau/n}\le\tau/4+K^2/n.
 $$
 
-The entire exponent is consequently at most $-\tau/2+K/n$. The spectral cap now gives
+The exponent in [Equation (3.2)](#eq-score-penalty) is consequently at most $-\tau/2+K/n$. The spectral cap now gives
 
 $$
 H(T)/\mu_n\le C_*e^{K/n}+o(1/n)=C_*+O(1/n).

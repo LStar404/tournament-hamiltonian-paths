@@ -246,7 +246,24 @@ $$
 \le C_*/4+o(1)<1,\qquad f\ge1.
 $$
 
-Since $P(n)\ge\mu_n$, the fixed gap below one excludes these tournaments from the maximum for all sufficiently large $n$. This case requires only an $o(1)$ error. We keep the paired spectral factor here to make its connection with the later reduction visible; the Lean proof instead uses the weaker sufficient bound $(10/3)4^{-f}(1+o(1))<1$ for $f\ge1$. Neither choice affects the final upper constant.
+Since $P(n)\ge\mu_n$, the fixed gap below one excludes these tournaments from the maximum for all sufficiently large $n$. This case requires only an $o(1)$ error. We keep the paired spectral factor here to make its connection with the later reduction visible. For the short convolution terms whose deletion sets are disjoint from $F$, the Lean proof uses the weaker sufficient bound $(10/3)4^{-f}(1+\varepsilon_n)$. The short terms meeting $F$ and the long terms contribute an additional $\delta_n$, giving
+
+<a id="eq-exceptional-bound"></a>
+
+$$
+\frac{H(T)}{\mu_n}\le\frac{10}{3}4^{-f}(1+\varepsilon_n)+\delta_n,
+\qquad \varepsilon_n,\delta_n\longrightarrow0.
+\tag{3.1}
+$$
+
+Both errors are uniform over the low-variance class under discussion. They are kept separate because $f$ may grow with $n$. In the formal proof, $1+\varepsilon_n\le21/20$ and each of the other two contributions is at most $1/25$ eventually. Thus, for $f\ge1$, [Equation (3.1)](#eq-exceptional-bound) gives the explicit budget
+
+$$
+\frac{10}{3}\cdot\frac14\cdot\frac{21}{20}+\frac1{25}+\frac1{25}
+=\frac{191}{200}<1.
+$$
+
+Neither choice affects the final upper constant.
 
 ### 3.4 The score penalty in the remaining class
 
@@ -330,12 +347,15 @@ Both determinants are positive: $W$ has positive-definite symmetric part, and th
 
 Combining these inequalities and adding only the long-subset tail gives the uniform score-sensitive bound
 
+<a id="eq-score-penalty"></a>
+
 $$
 \frac{H(T)}{\mu_n}\le
 \rho_n(S)\exp\left\{-\tau+
 K\left[\frac{1+\tau+\tau^2}{n}
 +\frac{\tau^{3/2}+\tau}{\sqrt n}+\sqrt{\tau/n}\right]\right\}
 +o(1/n).
+\tag{3.2}
 $$
 
 For $\tau\le K_0\log n$, all polynomial terms except the constant $1/n$ can consume at most $\tau/4$ for sufficiently large $n$. The remaining square-root term is bounded by Young's inequality:
@@ -344,7 +364,7 @@ $$
 K\sqrt{\tau/n}\le\tau/4+K^2/n.
 $$
 
-The entire exponent is consequently at most $-\tau/2+K/n$. The spectral cap now gives
+The exponent in [Equation (3.2)](#eq-score-penalty) is consequently at most $-\tau/2+K/n$. The spectral cap now gives
 
 $$
 H(T)/\mu_n\le C_*e^{K/n}+o(1/n)=C_*+O(1/n).

@@ -18,12 +18,15 @@ $$
 
 Set $B=E/n$. Uniformly over all such matrices,
 
+<a id="eq-uniform-permanent"></a>
+
 $$
 \frac{\operatorname{per}(J_n+E)}{n!}
 =\det(I-BB^{\mathsf T})^{-1/2}+O_{C,q}(n^{-1}).
+\tag{5.1}
 $$
 
-The same statement holds with a relative factor $1+O_{C,q}(n^{-1})$ multiplying the determinant factor.
+The approximation [Equation (5.1)](#eq-uniform-permanent) also holds with a relative factor $1+O_{C,q}(n^{-1})$ multiplying the determinant factor.
 
 Here and below the determinant square root is the positive square root on the real interval under consideration. The assumptions imply $\|B\|_{\mathrm F}^2\le C^2$. Consequently, the determinant factor is bounded above by a constant depending only on $C,q$, and it is at least one.
 
@@ -132,8 +135,11 @@ $$
 
 **Lemma 5.2 (Compressed-core activity).** With the notation above,
 
+<a id="eq-core-activity"></a>
+
 $$
 \|C_j\|_R\le(Dj/n)^j\qquad(j\ge1),
+\tag{5.2}
 $$
 
 and the first excess satisfies the sharper bound
@@ -223,7 +229,7 @@ Their chain bounds give $\|C_1\|_R\le T_1/n$. $\square$
 
 ### 5.4 A linear coefficient window and factorial recovery
 
-The bound in Lemma 5.2 is useful while $j/n$ is small. Choose
+The activity bound [Equation (5.2)](#eq-core-activity) is useful while $j/n$ is small. Choose
 
 $$
 \alpha=\min\left\{\frac14,\frac1{16D},\frac{\log\sigma}{2}\right\},

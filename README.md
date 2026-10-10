@@ -10,10 +10,10 @@ Contact: [lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com)
 
 This repository contains the English and Chinese manuscripts, a Lean formalization, and computational checks for bounds on the maximum number of directed Hamiltonian paths in a tournament.
 
-**Read the paper:** [English PDF](papers/tournament_hamilton_paths_en.pdf) (25 pages) · [Chinese PDF](papers/tournament_hamilton_paths_zh.pdf) (23 pages)
+**Read the paper:** [English PDF](papers/tournament_hamilton_paths_en.pdf) (28 pages) · [Chinese PDF](papers/tournament_hamilton_paths_zh.pdf) (26 pages)
 **Archived manuscript:** [Version 1.1, 9 October 2026, on Zenodo](https://zenodo.org/records/23249802) · DOI: [10.5281/zenodo.23249802](https://doi.org/10.5281/zenodo.23249802)
 
-Repository version: **1.1.1** · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
+Latest tagged release: **1.1.1**; this branch contains the bilingual editorial revision of **11 October 2026** · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
 
 ### Main result
 
@@ -35,11 +35,13 @@ The leading constants are $L\approx2.855957892565114$ and $C_*\approx2.857401177
 
 ### Guide for reviewers
 
-Start with the main theorem in Section 1. Sections 3 and 4 establish the uniform permanent approximation and the scaling and deletion estimates. Section 5 assembles the upper bound for all tournaments; Section 6 gives the lower bound using carousel tournaments of both parities.
+Start with Theorem 1.1 and the proof roadmap. Section 2 explains the counting identity and the spectral factor. Section 3 presents the complete upper-bound argument; Section 4 gives the small-score formula and the carousel lower bound. Sections 5 and 6 supply the permanent, scaling and deletion proofs. Appendix A and the [revised correspondence guide](materials/verification/manuscript_alignment_20261011.md) connect these statements to the unchanged Lean development.
 
 For the formal proof, read the [finite definitions](formalization/TournamentHamiltonian/Definitions.lean) and [final theorem](formalization/TournamentHamiltonian/MainBound.lean), then consult the [verification guide](formalization/VERIFICATION.md) and [proof ledger](formalization/proof-status.json) for the intermediate connections. The declaration is `TournamentHamiltonian.mainBound : TournamentHamiltonian.MainBound`. The ledger explains where Lean uses different intermediate constants to obtain the same final bound.
 
 The manuscript is a preprint awaiting external expert review. AI assistance was used for proof reconstruction, internal cross-checks, translation, typesetting and computational diagnostics; the Lean formalization was contributed by Xiangyu Ye in [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1).
+
+The [11 October revision record](materials/revision_20261011.md) describes the bilingual text review, unchanged formal-source checks, fresh finite diagnostics and full-page PDF inspection.
 
 ### Reproduce the checks
 
@@ -55,7 +57,7 @@ python run_diagnostics.py
 
 The Lean verifier builds the project, checks the main theorem's type, audits transitive axiom dependencies, and checks that all project Lean sources are imported. The allowed axioms are `propext`, `Classical.choice` and `Quot.sound`. The diagnostic runner executes four finite checks and saves their output in `formalization/audit/`.
 
-The [9 October repository review](materials/repository_review_zh.md) includes a fresh complete Lean build, an independent main-theorem type check, an axiom audit of 3,674 project theorems, and all four diagnostics. All checks passed. The [Lean verification record](formalization/audit/lean-verification.json) contains the output and current source hashes. The [CI workflow](.github/workflows/verify.yml) runs the same verification commands on pushes and pull requests and can be started manually in GitHub Actions.
+The [9 October repository review](materials/repository_review_zh.md) includes a fresh complete Lean build, an independent main-theorem type check, an axiom audit of 3,674 project theorem constants (including generated declarations), and all four diagnostics. All checks passed. The [Lean verification record](formalization/audit/lean-verification.json) contains the output and current source hashes. The [CI workflow](.github/workflows/verify.yml) runs the same verification commands on pushes and pull requests and can be started manually in GitHub Actions.
 
 ### Repository contents
 
@@ -66,7 +68,7 @@ The [9 October repository review](materials/repository_review_zh.md) includes a 
 | [`formalization/`](formalization/VERIFICATION.md) | Lean proof, verification scripts, proof ledger, and build records |
 | [`materials/verification/`](materials/verification/) | Finite diagnostic programs and their supporting modules |
 
-The PDFs are the archived reading copies. Markdown is the editable master; the accompanying XeLaTeX files provide mathematical source. PDF equations are rendered images. See the [source and typesetting notes](materials/README.md) for editing and compilation details.
+The reading PDFs in this branch are generated from the revised Markdown masters through Pandoc and XeLaTeX, with native mathematical text. The original archived PDFs remain in the linked Zenodo version and Git history. See the [source and typesetting notes](materials/README.md) for the reproducible build and the distinction between current and historical verification records.
 
 ### Citation and license
 
@@ -84,10 +86,10 @@ Machine-readable citation metadata is in [`CITATION.cff`](CITATION.cff). The ver
 
 本仓库收录关于竞赛图中有向 Hamilton 路径最大数量的中英文论文、Lean 形式化证明和计算核验程序。
 
-**阅读论文：**[中文 PDF](papers/tournament_hamilton_paths_zh.pdf)（23 页）· [英文 PDF](papers/tournament_hamilton_paths_en.pdf)（25 页）
+**阅读论文：**[中文 PDF](papers/tournament_hamilton_paths_zh.pdf)（26 页）· [英文 PDF](papers/tournament_hamilton_paths_en.pdf)（28 页）
 **论文归档：**[Zenodo v1.1，2026 年 10 月 9 日](https://zenodo.org/records/23249802) · DOI：[10.5281/zenodo.23249802](https://doi.org/10.5281/zenodo.23249802)
 
-仓库版本：**1.1.1** · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
+最近的已发布标签：**1.1.1**；本分支包含 **2026 年 10 月 11 日**的双语文字修订 · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
 
 ### 主要结果
 
@@ -109,11 +111,13 @@ $$
 
 ### 专家阅读入口
 
-建议从第 1 节的主定理开始。第 3、4 节建立统一永久式近似以及缩放、删除估计；第 5 节将这些结果组合为所有竞赛图的上界；第 6 节用奇、偶两种轮转竞赛图给出下界。
+建议从定理 1.1 和证明路线图开始。第 2 节解释计数恒等式及谱因子的来源，第 3 节给出完整上界论证，第 4 节给出小比分公式和轮转竞赛图下界，第 5、6 节补齐永久式、缩放和删除估计的证明。附录 A 及[修订稿对应说明](materials/verification/manuscript_alignment_20261011.md)列出正文与未改动的 Lean 工程之间的联系。
 
 形式化证明可从[有限对象的定义](formalization/TournamentHamiltonian/Definitions.lean)和[最终定理](formalization/TournamentHamiltonian/MainBound.lean)读起，再通过[核验指南](formalization/VERIFICATION.md)与[证明台账](formalization/proof-status.json)查找中间连接。最终声明为 `TournamentHamiltonian.mainBound : TournamentHamiltonian.MainBound`。台账说明了 Lean 在部分中间估计中采用不同常数、最终得到同一结论的处理方式。
 
 论文目前为预印本，等待外部专家审阅。证明重建、内部交叉检查、翻译、排版和计算诊断使用了 AI 辅助；Lean 形式化证明由叶祥宇通过 [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1) 提交。
+
+[10 月 11 日修订记录](materials/revision_20261011.md)汇总双语全文审阅、形式化源码未变核对、新运行的有限诊断及逐页 PDF 检查。
 
 ### 复现核验
 
@@ -129,7 +133,7 @@ python run_diagnostics.py
 
 Lean 核验程序构建工程、检查主定理类型、审查传递公理依赖，并核对所有项目 Lean 源码是否已导入。允许使用的公理为 `propext`、`Classical.choice` 和 `Quot.sound`。计算核验程序运行四项有限检查，将输出保存在 `formalization/audit/` 中。
 
-[10 月 9 日仓库审阅](materials/repository_review_zh.md)已重跑完整 Lean 构建、独立主定理类型检查、3,674 个项目定理的公理审查及四项计算核验，全部通过。[Lean 核验记录](formalization/audit/lean-verification.json)保存运行输出与当前源码哈希。[CI 工作流](.github/workflows/verify.yml)在推送和拉取请求时执行上述核验，也可从 GitHub Actions 手动启动。
+[10 月 9 日仓库审阅](materials/repository_review_zh.md)已重跑完整 Lean 构建、独立主定理类型检查、3,674 个项目定理常量（含自动生成声明）的公理审查及四项计算核验，全部通过。[Lean 核验记录](formalization/audit/lean-verification.json)保存运行输出与当前源码哈希。[CI 工作流](.github/workflows/verify.yml)在推送和拉取请求时执行上述核验，也可从 GitHub Actions 手动启动。
 
 ### 仓库结构
 
@@ -140,7 +144,7 @@ Lean 核验程序构建工程、检查主定理类型、审查传递公理依赖
 | [`formalization/`](formalization/VERIFICATION.md) | Lean 证明、核验脚本、证明台账及构建记录 |
 | [`materials/verification/`](materials/verification/) | 有限计算核验程序及其辅助模块 |
 
-PDF 是已归档的阅读版本。Markdown 是可编辑主稿，附带的 XeLaTeX 文件提供数学源代码；PDF 中的公式以图像呈现。编辑与编译方法见[稿件与排版说明](materials/README.md)。
+本分支中的阅读版 PDF 由修订后的 Markdown 主稿经 Pandoc 和 XeLaTeX 生成，公式为原生数学文本。旧版 PDF 仍保留在所链接的 Zenodo 归档及 Git 历史中。可复现编译方法与新旧核验记录的区别见[稿件与排版说明](materials/README.md)。
 
 ### 引用与许可
 

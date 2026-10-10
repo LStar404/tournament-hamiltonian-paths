@@ -11,7 +11,7 @@ Contact: [lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com)
 This repository contains the English and Chinese manuscripts, a Lean formalization, and computational checks for bounds on the maximum number of directed Hamiltonian paths in a tournament.
 
 **Read the paper:** [English PDF](papers/tournament_hamilton_paths_en.pdf) (31 pages) · [Chinese PDF](papers/tournament_hamilton_paths_zh.pdf) (27 pages)
-**Archived manuscript:** [Version 1.1, 9 October 2026, on Zenodo](https://zenodo.org/records/23249802) · DOI: [10.5281/zenodo.23249802](https://doi.org/10.5281/zenodo.23249802)
+**Archived manuscript:** [[Version 1.2, 11 October 2026, on Zenodo](https://zenodo.org/records/23288896)) ·[10.5281/zenodo.23288896](https://doi.org/10.5281/zenodo.23288896)
 
 Latest tagged release: **1.1.1**; this branch contains the third-round bilingual revision of **11 October 2026** · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
 
@@ -78,7 +78,7 @@ The reading PDFs in this branch are generated from the revised Markdown masters 
 
 For the archived manuscript, cite:
 
-> Liu, Xingchen, and Ye, Xiangyu. *Constant-factor bounds for Hamiltonian paths in tournaments*. Version 1.1, Zenodo, 2026. https://doi.org/10.5281/zenodo.23249802.
+> Liu, Xingchen, and Ye, Xiangyu. *Constant-factor bounds for Hamiltonian paths in tournaments*. Version 1.2, Zenodo, 2026. https://doi.org/10.5281/zenodo.23288896.
 
 Machine-readable citation metadata is in [`CITATION.cff`](CITATION.cff). The version DOI identifies the archived manuscript; subsequent repository edits are recorded in Git history. The work is licensed under [CC BY 4.0](LICENSE).
 
@@ -91,7 +91,7 @@ Machine-readable citation metadata is in [`CITATION.cff`](CITATION.cff). The ver
 本仓库收录关于竞赛图中有向 Hamilton 路径最大数量的中英文论文、Lean 形式化证明和计算核验程序。
 
 **阅读论文：**[中文 PDF](papers/tournament_hamilton_paths_zh.pdf)（27 页）· [英文 PDF](papers/tournament_hamilton_paths_en.pdf)（31 页）
-**论文归档：**[Zenodo v1.1，2026 年 10 月 9 日](https://zenodo.org/records/23249802) · DOI：[10.5281/zenodo.23249802](https://doi.org/10.5281/zenodo.23249802)
+**论文归档：**[Zenodo v1.2，2026 年 10 月 11 日](https://zenodo.org/records/23288896) · [10.5281/zenodo.23288896](https://doi.org/10.5281/zenodo.23288896)
 
 最近的已发布标签：**1.1.1**；本分支包含 **2026 年 10 月 11 日**的第三轮双语修订 · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
 
@@ -158,6 +158,6 @@ Lean 核验程序构建工程、检查主定理类型、审查传递公理依赖
 
 引用已归档论文时，请使用：
 
-> Liu, Xingchen, and Ye, Xiangyu. *Constant-factor bounds for Hamiltonian paths in tournaments*. Version 1.1, Zenodo, 2026. https://doi.org/10.5281/zenodo.23249802.
+> Liu, Xingchen, and Ye, Xiangyu. *Constant-factor bounds for Hamiltonian paths in tournaments*. Version 1.2, Zenodo, 2026. https://doi.org/10.5281/zenodo.23288896.
 
 机器可读引用信息见 [`CITATION.cff`](CITATION.cff)。版本 DOI 对应已归档论文，后续仓库修改可在 Git 历史中查询。本成果采用 [CC BY 4.0](LICENSE) 许可。

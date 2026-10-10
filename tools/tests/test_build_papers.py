@@ -73,6 +73,16 @@ class ConverterTests(unittest.TestCase):
     def test_inline_code_spaces_preserved(self):
         tex,index=b.prepare('en',SOURCE.replace('An appendix.','Run `python verify_lean.py --require-main`.'))
         self.assertIn(r'\texttt{python verify\_\allowbreak{}lean.\allowbreak{}py {-}{-}require{-}main}',tex)
+    def test_commit_hash_can_wrap(self):
+        value='e07175db8b9b1df17a2434355953d3a05fbc625b'
+        tex,index=b.prepare('en',SOURCE.replace('An appendix.','Commit `'+value+'`.'))
+        self.assertIn(r'\texttt{e07175db\allowbreak{}8b9b1df1',tex)
+
+    def test_qed_binds_to_previous_word(self):
+        tex,index=b.prepare('en',SOURCE.replace('An appendix.',r'This proves the claim. $\square$'))
+        self.assertIn(r'claim.\nobreak\hspace{.5em}\mbox{$\square$}',tex)
+        self.assertNotIn(r'claim. \(\square\)',tex)
+
     def test_chinese_template(self):
         tex,index=b.prepare('zh',SOURCE.replace('Theorem 1.1','定理 1.1').replace('Appendix A.','附录 A.'))
         self.assertIn('Noto Serif CJK SC',tex)

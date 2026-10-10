@@ -57,3 +57,7 @@ hashes in a new dated record; never reuse the historical audit certificates.
 The `SOURCE_DATE_EPOCH` environment variable controls deterministic PDF creation
 timestamps. By default the script uses 10 October 2026, 00:00 UTC. Reproduction
 of byte-identical PDFs also requires the same TeX/Pandoc/font versions.
+
+## Second-round safeguards
+
+The exporter binds an inline proof-ending `\square` to its preceding word and inserts discretionary breaks every eight characters in 40–64-character hexadecimal code literals, so a full commit SHA remains readable without an overfull line. Both behaviors have regression tests. The separate `test_core_examples.py` uses exact rational arithmetic to verify the signed cubic and fourth-degree partition identities used to illustrate compressed cores; CI runs it without requiring the optional typesetting toolchain.

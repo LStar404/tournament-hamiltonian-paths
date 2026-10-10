@@ -28,7 +28,9 @@ python tools/build_papers.py --render --publish --sync-sections
 
 The build requires Python 3.10+, Pandoc 3+, XeLaTeX with the standard packages listed in [`tools/typesetting/README.md`](../tools/typesetting/README.md), Poppler, Latin Modern fonts and Noto Serif/Sans CJK SC. It installs nothing and performs no network access. The build documentation describes local format initialization for minimal TeX installations, source conventions, deterministic timestamps, and the distinction between compiler checks and visual review. The generated exports can also be compiled directly with XeLaTeX three times on a system with the required fonts and packages.
 
-The v1.1 archived PDFs were produced separately with ReportLab and mathematical images; the archived TeX was compiled during the 9 October review with Tectonic 0.17.0. That historical workflow and its 25 English / 23 Chinese page counts do not describe the current native-math revision. Historical audit receipts below are retained unchanged. The [11 October typesetting record](typesetting_revision_20261011.json) records the current source/PDF hashes, all-page visual review, native-formula counts, cross-reference checks and exact section synchronization.
+The v1.1 archived PDFs were produced separately with ReportLab and mathematical images; the archived TeX was compiled during the 9 October review with Tectonic 0.17.0. That historical workflow and its 25 English / 23 Chinese page counts do not describe the current native-math revision. Historical audit receipts below are retained unchanged. The [11 October typesetting record](typesetting_revision_20261011.json) records the first-round source/PDF hashes, all-page visual review, native-formula counts, cross-reference checks and exact section synchronization.
+
+The [second-round record](revision_round2_20261011.md) and [second-round typesetting receipt](typesetting_round2_20261011.json) identify the latest 31-page English and 27-page Chinese reading copies. The new proof examples have exact rational regression tests; all historical receipts continue to describe their original versions.
 
 ### Audits and diagnostics
 
@@ -73,7 +75,9 @@ python tools/build_papers.py --render --publish --sync-sections
 
 依赖为 Python 3.10+、Pandoc 3+、XeLaTeX、Poppler、Latin Modern 字体及 Noto Serif/Sans CJK SC 字体；所需常用 TeX 宏包详见[排版说明](../tools/typesetting/README.md)。脚本不安装任何依赖，也不访问网络。说明中同时记载精简 TeX 环境的本地格式初始化、主稿语法、确定性时间戳及编译检查与逐页视觉检查的区别。依赖齐全时，也可直接对导出稿运行三次 XeLaTeX。
 
-v1.1 归档 PDF 使用 ReportLab 与公式图像单独排版；旧 TeX 曾在 10 月 9 日审阅中使用 Tectonic 0.17.0 编译。该历史流程及英文 25 页、中文 23 页的旧页数，不描述当前原生公式修订版。以下历史审查记录原样保留。[10 月 11 日排版核验记录](typesetting_revision_20261011.json)另行保存当前源码与 PDF 哈希、逐页视觉检查、原生公式数量、交叉引用检查及分节稿精确同步结果。
+v1.1 归档 PDF 使用 ReportLab 与公式图像单独排版；旧 TeX 曾在 10 月 9 日审阅中使用 Tectonic 0.17.0 编译。该历史流程及英文 25 页、中文 23 页的旧页数，不描述当前原生公式修订版。以下历史审查记录原样保留。[10 月 11 日排版核验记录](typesetting_revision_20261011.json)另行保存首轮源码与 PDF 哈希、逐页视觉检查、原生公式数量、交叉引用检查及分节稿精确同步结果。
+
+[第二轮修订记录](revision_round2_20261011.md)及[第二轮排版记录](typesetting_round2_20261011.json)对应最新英文 31 页、中文 27 页阅读版。新增证明例子配有精确有理数回归测试；全部历史核验记录仍只描述各自的原始版本。
 
 ### 审查与计算核验
 

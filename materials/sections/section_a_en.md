@@ -12,6 +12,8 @@ The formal development proves the principal analytic inputs as well as these con
 
 The repository's [verification record](https://github.com/LStar404/tournament-hamiltonian-paths/blob/8ea3fcffcc12b6a06294ba7559885b439eda3cac/formalization/VERIFICATION.md) reports a successful complete run on 9 October 2026. The command `python verify_lean.py --require-main` builds the project, checks the actual `MainBound` declaration, checks project-source import coverage, and audits transitive theorem axioms against `propext`, `Classical.choice` and `Quot.sound`. The recorded audit contains 3674 theorem constants, including generated lemmas. All 246 stored Lean-source and configuration hashes match the sources inspected for this revision. These are the recorded build results and a source-correspondence check, rather than a new Lean build performed for the editorial revision.
 
+A later remote CI run verifies the merged first-round baseline, commit `e07175db8b9b1df17a2434355953d3a05fbc625b`: [Verify proofs, run 38070905246](https://github.com/LStar404/tournament-hamiltonian-paths/actions/runs/38070905246) completed successfully on 10 October 2026 at 17:24 UTC (11 October at 01:24 UTC+8). Its build-and-audit and finite-diagnostics steps succeeded. This is remote evidence for that exact baseline, not a local rebuild or a claim that later editorial commits have already passed CI. The proof sources are unchanged in the present second-round revision; its own commit-specific CI result is recorded with its pull request. Successful compilation and finite checks do not replace a human audit of every displayed proof step.
+
 Exact finite computations check normalizations, coefficient identities, deletion factors and the four-block expansion. They are separate from the all-order proof. The archived rational calculations give
 
 $$
@@ -32,7 +34,7 @@ Xiangyu Ye contributed the companion formalization, submitted in [pull request 1
 
 [2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Combinatorica 10(4) (1990), 319–324. [DOI: 10.1007/BF02128667](https://doi.org/10.1007/BF02128667).
 
-[3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. [arXiv:2408.09341v2](https://arxiv.org/html/2408.09341v2) (2024).
+[3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. The Annals of Statistics, to appear ([author publication list](https://yanjunhan2021.github.io/publication.html)). [arXiv:2408.09341v2](https://arxiv.org/html/2408.09341v2) (9 September 2024); this is the version used for the lemma numbering cited here.
 
 [4] Bo Deng, Xueliang Li, Bryan Shader and Wasin So. On the Maximum Skew Spectral Radius and Minimum Skew Energy of Tournaments. Linear and Multilinear Algebra 66(7) (2018), 1434–1441. [DOI: 10.1080/03081087.2017.1357676](https://doi.org/10.1080/03081087.2017.1357676).
 
@@ -43,3 +45,7 @@ Xiangyu Ye contributed the companion formalization, submitted in [pull request 1
 [7] Ehud Friedgut and Jeff Kahn. On the Number of Hamiltonian Cycles in a Tournament. Combinatorics, Probability and Computing 14(5–6) (2005), 769–781. [DOI: 10.1017/S0963548305006863](https://doi.org/10.1017/S0963548305006863).
 
 [8] Eric Li. The Godsil–McKay Asymptotic for Latin Rectangles in the Sublinear Range of Erdős Problem 725. [arXiv:2608.01671v1](https://arxiv.org/html/2608.01671v1) (2026).
+
+[9] Ilan Adler, Noga Alon and Sheldon M. Ross. On the Maximum Number of Hamiltonian Paths in Tournaments. Random Structures & Algorithms 18(3) (2001), 291–296. [DOI: 10.1002/rsa.1010](https://doi.org/10.1002/rsa.1010).
+
+[10] Tibor Szele. Kombinatorikai vizsgálatok az irányított teljes gráffal kapcsolatban. Matematikai és Fizikai Lapok 50 (1943), 223–256. [Original volume archive](https://real-j.mtak.hu/7300/).

@@ -12,6 +12,8 @@
 
 仓库的[核验记录](https://github.com/LStar404/tournament-hamiltonian-paths/blob/8ea3fcffcc12b6a06294ba7559885b439eda3cac/formalization/VERIFICATION.md)记载了 2026 年 10 月 9 日的一次成功完整运行。命令 `python verify_lean.py --require-main` 执行工程构建、实际 `MainBound` 声明检查、工程源码导入覆盖检查，并将定理的传递公理依赖限制为 `propext`、`Classical.choice` 和 `Quot.sound`。记录包含 3674 个定理常量，其中包括自动生成的引理。已存档的 246 项 Lean 源码及配置哈希均与本次修订所检查的源码一致。这些材料分别提供已记录的构建结果与源码对应检查；本次文字修订没有另行执行 Lean 构建。
 
+后续远端 CI 核验了已合并的首轮修订基线提交 `e07175db8b9b1df17a2434355953d3a05fbc625b`：[Verify proofs，第 38070905246 次运行](https://github.com/LStar404/tournament-hamiltonian-paths/actions/runs/38070905246)于 2026 年 10 月 10 日 17:24 UTC（UTC+8 为 10 月 11 日 01:24）成功完成，其中构建与审计、有限计算检查均成功。这是针对该精确基线的远端证据，并非本地重新构建，也不表示后续文字修订提交已经通过 CI。本次第二轮修订未改变形式化证明源码；其自身提交对应的 CI 结果随拉取请求另行记录。编译与有限检查成功不能替代对正文每一步证明的人工审查。
+
 精确有限计算用于核对归一化、系数恒等式、删除因子及四块展开，与任意阶证明分别记录。存档的有理数计算给出
 
 $$
@@ -32,7 +34,7 @@ $$
 
 [2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Combinatorica 10(4) (1990), 319–324. [DOI: 10.1007/BF02128667](https://doi.org/10.1007/BF02128667).
 
-[3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. [arXiv:2408.09341v2](https://arxiv.org/html/2408.09341v2) (2024).
+[3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. The Annals of Statistics, to appear（[作者发表目录](https://yanjunhan2021.github.io/publication.html)）。[arXiv:2408.09341v2](https://arxiv.org/html/2408.09341v2)（2024年9月9日）；正文所引引理编号对应这一版本。
 
 [4] Bo Deng, Xueliang Li, Bryan Shader and Wasin So. On the Maximum Skew Spectral Radius and Minimum Skew Energy of Tournaments. Linear and Multilinear Algebra 66(7) (2018), 1434–1441. [DOI: 10.1080/03081087.2017.1357676](https://doi.org/10.1080/03081087.2017.1357676).
 
@@ -43,3 +45,7 @@ $$
 [7] Ehud Friedgut and Jeff Kahn. On the Number of Hamiltonian Cycles in a Tournament. Combinatorics, Probability and Computing 14(5–6) (2005), 769–781. [DOI: 10.1017/S0963548305006863](https://doi.org/10.1017/S0963548305006863).
 
 [8] Eric Li. The Godsil–McKay Asymptotic for Latin Rectangles in the Sublinear Range of Erdős Problem 725. [arXiv:2608.01671v1](https://arxiv.org/html/2608.01671v1) (2026).
+
+[9] Ilan Adler, Noga Alon and Sheldon M. Ross. On the Maximum Number of Hamiltonian Paths in Tournaments. Random Structures & Algorithms 18(3) (2001), 291–296. [DOI: 10.1002/rsa.1010](https://doi.org/10.1002/rsa.1010).
+
+[10] Tibor Szele. Kombinatorikai vizsgálatok az irányított teljes gráffal kapcsolatban. Matematikai és Fizikai Lapok 50 (1943), 223–256. [Original volume archive](https://real-j.mtak.hu/7300/).

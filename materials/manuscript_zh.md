@@ -37,9 +37,11 @@ $$
 P(n)=\max_{|V(T)|=n}H(T),\qquad \mu_n=\frac{n!}{2^{n-1}}.
 $$
 
-在均匀随机竞赛图中，每个顶点排列成为有向路径的概率为 $2^{-(n-1)}$。因此，$\mathbb E H(T)=\mu_n$，从而 $P(n)\ge\mu_n$。问题在于：通过选择合适的定向，路径数能比这一期望大多少？
+每个排列在均匀随机竞赛图中形成有向路径的概率为 $2^{-(n-1)}$。因此 $\mathbb E H(T)=\mu_n$ 且 $P(n)\ge\mu_n$，即 Szele [10] 的经典下界。问题是如何通过选择方向，使路径数比这一期望大得更多。
 
-Alon [2] 用永久式证明了 $P(n)=O(n^{3/2})\mu_n$。将 Friedgut 与 Kahn [7] 的 Hamilton 圈上界与 [2, Proposition 2.5] 的路径到圈构造结合，可得 $P(n)=O(n^{3/2-\xi})\mu_n$，其中 $\xi\approx0.2507$。Wormald [6, Theorem 5] 对无穷多个 $n$ 证明了 $P(n)>2.85588\mu_n$，并猜想极限比值约为 $2.855958$。本文将最大路径数夹在 $\mu_n$ 的两个相近常数倍之间。
+Adler、Alon 和 Ross [9，定理 1] 将下界改进为 $P(n)\ge(e-o(1))\mu_n$，并提出 $P(n)=\Theta(\mu_n)$ 是否成立的问题 [9，备注 3]。Wormald [6, Theorem 5] 对无穷多个 $n$ 证明了 $P(n)>2.85588\mu_n$，并猜想极限比值约为 $2.855958$。
+
+上界方面，Alon [2] 用永久式证明了 $P(n)=O(n^{3/2})\mu_n$。将 Friedgut 与 Kahn [7] 的 Hamilton 圈上界与 [2, Proposition 2.5] 的路径到圈构造结合，可得 $P(n)=O(n^{3/2-\xi})\mu_n$，其中 $\xi\approx0.2507$。下面的定理 1.1 对任意竞赛图给出常数因子上界，从而确立 $P(n)=\Theta(\mu_n)$。其下界适用于所有充分大的阶数，给出显式首项常数和 $O(n^{-1})$ 误差；主要进展在于统一的常数因子上界，而不只是改进下界常数。
 
 **定理 1.1（主要结果）。** 存在绝对常数 $K\ge0$ 及 $n_0\ge2$，使得对每个整数 $n\ge n_0$，
 
@@ -408,7 +410,31 @@ $$
 \operatorname{per}A[M\setminus I,M\setminus J].
 $$
 
-每个有贡献的排列被唯一分类。核心永久式界中，删除行产生 $\ell_i$，删除列产生 $r_j$。将这些因子接入对应跨边匹配，再去掉互异性限制，两个跨边求和的乘积至多为
+每个有贡献的排列被唯一分类。先对核心永久式使用引理 3.1 的一致上界，再分离两个跨边求和。删除核心行产生 $\ell_i$，删除核心列产生 $r_j$。固定 $R,C$，向外跨边求和精确等于
+
+$$
+\begin{aligned}
+&\sum_{\substack{J\subseteq M\\|J|=t}}
+\operatorname{per}A[F\setminus R,J]\prod_{j\in J}r_j\\
+&=\sum_{\phi:F\setminus R\hookrightarrow M}
+\prod_{x\in F\setminus R}A_{x,\phi(x)}r_{\phi(x)}
+\le\prod_{x\in F\setminus R}\sum_{j\in M}A_{xj}r_j.
+\end{aligned}
+$$
+
+独立地，向内跨边求和为
+
+$$
+\begin{aligned}
+&\sum_{\substack{I\subseteq M\\|I|=t}}
+\operatorname{per}A[I,F\setminus C]\prod_{i\in I}\ell_i\\
+&=\sum_{\psi:F\setminus C\hookrightarrow M}
+\prod_{y\in F\setminus C}A_{\psi(y),y}\ell_{\psi(y)}
+\le\prod_{y\in F\setminus C}\sum_{i\in M}A_{iy}\ell_i.
+\end{aligned}
+$$
+
+其中 $\hookrightarrow$ 表示单射。每个单射由其像集及相应永久式项恰好计数一次，没有额外的 $t!$ 因子。像集 $I,J$ 不必相等，也不必不交，因为它们分别属于核心的行、列副本。所有因子非负，故可去掉单射限制。两个上界的乘积为
 
 $$
 N^{2t}2^{-2t}
@@ -443,7 +469,13 @@ $$
 \exp\left(\frac{2L_n^2f^2}{c_n^2N}\right).
 $$
 
-其中额外指数均为 $o(1)$。进一步删除短核心子集 $U$ 后，上述估计仍统一成立。此时核心 Gaussian 因子改变为原来的 $\exp(O(|U|/n))$ 倍：对 $S_M/N$ 使用 Gaussian 删行列引理，对数损失为 $O(|U|/n)$；将归一化尺度从 $N$ 改为 $N-|U|$ 也有同阶成本。
+其中额外指数均为 $o(1)$。具体地，删除短核心子集 $U$ 后，核心阶数为 $N'=n-f-|U|\sim n$，异常集合仍取原来的 $F$。核心的归一化比分最终仍不超过 $0.95$，平方比分和为 $O(\log n)$，而跨边删集大小为 $t\le f=O(\log n)$。因此引理 3.1 中的误差指数为
+
+$$
+O\!\left(\frac{(\log n)^{3/2}}{\sqrt n}+\frac{(\log n)^2}{n}\right)=o(1),
+$$
+
+其中常数与 $U,I,J$ 无关。跨边邻点比例相较于原始全图仅改变 $O((f+|U|)/n)$，权重的一范数位移仍为 $O(\sqrt{n\log n})$，故前述跨边求和估计也一致成立。此时核心 Gaussian 因子改变为原来的 $\exp(O(|U|/n))$ 倍：对 $S_M/N$ 使用 Gaussian 删行列引理，对数损失为 $O(|U|/n)$；将归一化尺度从 $N$ 改为 $N-|U|$ 也有同阶成本。
 
 在路径卷积中，大小为 $k$ 且与 $F$ 相交的子集占比至多为 $fk/n$。通用永久式界因而使其全部归一化短项贡献至多为
 
@@ -468,7 +500,7 @@ $$
 \le C_*/4+o(1)<1,\qquad f\ge1.
 $$
 
-由于 $P(n)\ge\mu_n$，这个严格小于一的固定间隙说明：对所有充分大的阶数，这类竞赛图不能达到最大值。此处只需 $o(1)$ 误差。
+由于 $P(n)\ge\mu_n$，这个严格小于一的固定间隙说明：对所有充分大的阶数，这类竞赛图不能达到最大值。此处只需 $o(1)$ 误差。此处保留成对谱因子，以显示它与后续归约的联系；Lean 证明使用较弱但足够的界 $(10/3)4^{-f}(1+o(1))<1$（$f\ge1$）。两种选择均不影响最终上界常数。
 
 ### 3.4 剩余图类中的比分罚项
 
@@ -832,7 +864,9 @@ e=b+j,\qquad
 1\le b\le2j,\qquad e\le3j.
 $$
 
-下面通过增饰计数确定对称因子。临时为 $b$ 个高度数顶点及每个顶点的 $d_i$ 个半边分别加标号，并用这些标号为每条链选择唯一读取方向。每个原始带边标号的核心有 $b!\prod_i d_i!$ 种增饰。反过来，给定增饰后的半边配对及全部正链长，所有链位置均被确定，原始 $h$ 个边标号可以按 $h!$ 种方式分配到这些位置。在满足二部颜色奇偶条件时，内部顶点及其颜色也随之确定。
+**增饰计数恒等式。** 固定超额及原始边数，对所有有序度数序列 $(d_1,\ldots,d_b)$、顶点的两种颜色配置、带标号半边配对及与颜色相容的正链长求和。除去临时标号后的绝对 Möbius 补偿为 $1/(b!\prod_i d_i)$。链收缩应先对内部数值指标求和，再取绝对值。
+
+证明时须区分结构顶点（两个边标号分拆的块）与其在 $[n]$ 中的数值指标。不同结构顶点可以取得相同的数值指标，但这不会将对应分拆块合并。原始互异性约束已经由 Möbius 反演处理；此处数的是分拆对，而不是将相同数值指标合并后得到的简单图。临时为 $b$ 个高度数顶点及每个顶点的 $d_i$ 个半边分别加标号，并用这些标号为每条链选择唯一读取方向。遍历全部有序度数序列后，每个原始带边标号的核心有 $b!\prod_i d_i!$ 种增饰。对一个固定的度数序列，只有与之相容的顶点标号出现；对所有序列求和才恰好产生完整的 $b!$ 因子。每个结构顶点都能由其颜色及入射原始边标号辨认，每个入射半边则由其原始边标号辨认，故没有额外的自同构稳定子。反过来，给定增饰后的半边配对及全部正链长，所有链位置均被确定，原始 $h$ 个边标号可以按 $h!$ 种方式分配到这些位置。在满足二部颜色奇偶条件时，内部顶点及其颜色也随之确定。
 
 除去原始指数生成函数的 $h!$ 因子及临时增饰，再乘回高度数顶点的绝对 Möbius 权重 $\prod_i(d_i-1)!$，补偿为
 
@@ -840,7 +874,15 @@ $$
 \frac1{b!\prod_i d_i}.
 $$
 
-这一步包含自环和链反转：它们的两个半边已经带标号，无须另加方向因子。内部二度顶点的绝对 Möbius 权重为一，也没有额外的链长阶乘。
+这一步包含自环和链反转：将每一对不同的带标号半边排序，从较小者开始读取该链。反转改变的是这些位置上的原始边标号列表，而不是额外提供自由的因子二；自环的两个半边也使用同一约定。内部二度顶点的绝对 Möbius 权重为一，也没有额外的链长阶乘。异色端点之间的链长为奇数，同色端点之间为偶数；尤其自环的长度至少为二且为偶数。这些限制属于精确恒等式的一部分。
+
+例如，取一个行色四度顶点，以及两个长度为二的自环，各经过一个单独的列色二度顶点。此时 $j=b=1$、$h=4$。四个原始边标号分成两对共有三种方式，四度顶点的 Möbius 权重为 $(-1)^3 3!=-6$，而两个二度顶点的权重相乘为 $+1$；除以 $4!$ 后，其带符号贡献为
+
+$$
+-\frac34\sum_i\left(\sum_k B_{ik}^2\right)^2.
+$$
+
+即使某些求和项中数值指标相等，两个结构列顶点仍然不同。交换两种颜色得到 $-\tfrac34\sum_k(\sum_i B_{ik}^2)^2$。绝对补偿界使用的是这些项的绝对值。重边的例子是一个行顶点和一个列顶点之间的三条长度为一的链，其贡献为 $\tfrac{(2!)^2}{3!}\sum_{i,k}B_{ik}^3=\tfrac23\sum_{i,k}B_{ik}^3$，恰为前述三次项。这些例子同时展示自环、平行边和反转约定，而原图仍满足二部性。
 
 仅在取上界时忽略颜色限制。固定 $j,b$ 后，所得总补偿为
 
@@ -852,7 +894,7 @@ U_{j,b}=
 \qquad e=b+j.
 $$
 
-长度为一的链对应矩阵元素，绝对值不超过 $C/n$。对于长度 $\ell\ge2$ 的链，先求和内部标签，其收缩是由 $B,B^{\mathsf T}$ 交替相乘所得矩阵的一个元素。两端行或列的二范数不超过 $C/\sqrt n$，中间因子的算子范数不超过 $q$。因此，收缩的绝对值不超过
+以下估计须先对每条链的内部数值指标求和，再取绝对值；若先逐项将 $B$ 换成 $|B|$，便无法保留算子谱隙的控制。长度为一的链对应矩阵元素，绝对值不超过 $C/n$。对于长度 $\ell\ge2$ 的链，先求和内部标签，其收缩是由 $B,B^{\mathsf T}$ 交替相乘所得矩阵的一个元素。两端行或列的二范数不超过 $C/\sqrt n$，中间因子的算子范数不超过 $q$。因此，收缩的绝对值不超过
 
 $$
 \frac{C^2}{n}q^{\ell-2}.
@@ -1042,7 +1084,7 @@ $$
 
 最后，$h_n(1,\lambda_2,\ldots,\lambda_n)$ 是关于 $\lambda_2,\ldots,\lambda_n$、总次数不超过 $n$ 的全部单项式之和，不超过各自无穷几何级数的乘积。$\square$
 
-引理 5.4 中的 Gaussian 恒等式和 AM–GM 比较，是 Han–Niles-Weed [3，引理 4.3–4.4] 用于半正定输入的工具。引理 5.3 将它们连接到这里需要的一般矩阵。
+引理 5.4 中的 Gaussian 恒等式和 AM–GM 比较，是 Han–Niles-Weed [3，arXiv v2，引理 4.3–4.4] 用于半正定输入的工具。引理 5.3 将它们连接到这里需要的一般矩阵。
 
 令 $\beta=RC/(1-Rq)$。双中心化假设给出 $P_nB=BP_n=0$。在 $|t|=R$ 上，因而有
 
@@ -1091,7 +1133,7 @@ $$
 +\sigma\Gamma(\sigma)\exp\!\left(-\alpha n\log\sigma\right).
 $$
 
-前两项来自第 5.4 节的系数窗口及阶乘恢复误差，后两项来自第 5.5 节的尾界。两个指数项均为 $o(n^{-1})$，从而得到定理 5.1 的一致误差率。
+前两项来自第 5.4 节的系数窗口及阶乘恢复误差，后两项来自第 5.5 节的尾界。两个指数项均为 $o(n^{-1})$，从而得到定理 5.1 的一致误差率。Lean 工程通过几何系数矩证明了另一种足够的阶乘恢复估计，并非逐字形式化此处显示的特定常数 $K_G$（见附录 A.1）。
 
 ## 6. 缩放与非主永久式估计
 
@@ -1104,6 +1146,16 @@ $$
 因此，需要在修正边际的同时，控制永久式及其 Gaussian 因子的变化。先构造局部对角缩放，估计其总对数代价；再用 Gram 矩阵比较控制删行、删列的影响；最后，通过成对比分修正，使竞赛图子矩阵满足局部定理的条件，从而证明引理 3.1。
 
 记 $\mathbf1_p$ 为全一向量，$P_p=\mathbf1_p\mathbf1_p^{\mathsf T}/p$，$\Pi_p=I-P_p$。矩阵的总质量为 $\mathfrak m(X)=\sum_{i,j}X_{ij}$。以 $\|\cdot\|_{\rm op}$ 表示 Euclidean 算子范数，$\|\cdot\|_F$ 表示 Frobenius 范数，$\|\cdot\|_*$ 表示迹范数。本节常数在给定稠密度与谱隙参数后统一。
+
+后续应用的维度与归一化约定如下。全图阶数为 $n$，保留阶数为 $m=n-t$；$p$ 是引理 6.1–6.2 的一般矩阵阶数，仅在应用时令 $p=m$。矩阵 $C,C',\widehat C$ 为 $n$ 阶，而 $X,\widetilde X,B_X,Z$ 为 $m$ 阶。有关质量依次为
+
+$$
+\mathfrak m(C')=n+\nu,\quad \mathfrak m(\widehat C)=n,\quad
+\mathfrak m(X)=m+\kappa,\quad
+\mathfrak m(\widetilde X)=\mathfrak m(B_X)=m.
+$$
+
+这里 $Z=\Pi_m[(S-I)/(n-1)][R,T]\Pi_m$ 是未作真实缩放的保留中心核，并非双随机矩阵。$B_X$ 表示最终双随机矩阵；定理 5.1 中对应的扰动为 $mB_X-J_m$，其归一化为 $B_X-P_m$。这样可以明确区分全阶归一化 $n-1$ 与保留阶归一化 $m$。
 
 ### 6.1 局部缩放及其代价
 
@@ -1399,7 +1451,7 @@ $$
 \Pi_m\widetilde X\Pi_m=\eta\left[Z+\Pi_mF[R,T]\Pi_m\right].
 $$
 
-由于 $\mathfrak m(C')=n+o(1)$、$\mathfrak m(X)=m+o(1)$，$\eta$ 的主值为 $n/m$。压缩不增大 $Y$ 的算子范数，第二项由已得 Frobenius 界控制。因此，在固定参数下，中心核的算子范数一致至多为 $1/\sqrt2+o(1)$。其元素为 $O(1/m)$，无穷范数边际误差趋于零。对所有充分大的 $n$，局部缩放引理适用，并构造真实的双随机矩阵 $B_X$。
+由于 $\mathfrak m(C')=n+o(1)$、$\mathfrak m(X)=m+o(1)$，$\eta$ 的主值为 $n/m$。压缩不增大 $Y$ 的算子范数，第二项由已得 Frobenius 界控制。因此，在固定参数下，中心核的算子范数一致至多为 $1/\sqrt2+o(1)$。其元素为 $O(1/m)$，无穷范数边际误差趋于零。由于 $\widetilde X$ 的质量为 $m$，引理 6.1 中的 $E$ 恰为 $\Pi_m\widetilde X\Pi_m$。因此可固定取 $q=3/4$ 及固定的密度界 $C,C_0$。阈值 $\varepsilon_0$ 和逆算子界 $L_0$ 便只依赖 $a_0,A_0,B_0$，与 $n$、竞赛图及删集无关。局部缩放引理对所有充分大的 $n$ 适用，并构造出真正的双随机矩阵 $B_X$；直接给出的谱范数界为 $7/8$。
 
 二范数位移引理给出
 
@@ -1416,6 +1468,8 @@ $$
 $$
 
 中心化产生的 $\tau/n$ 项已吸收入 $\sqrt{\tau/n}$。其中由删除产生的误差与 $t/n$ 成线性关系，正适合对后续子集权重求和。
+
+现在可在固定维度约定下汇总误差。所有常数与最终适用阈值只依赖固定的 $a_0,A_0,B_0$。全阶质量误差在恢复对数中产生 $O(|\nu|)\le K\mathcal M_\tau$；删除引起的质量变化至多为 $K[t\sqrt{\tau/n}+t^2/n]$；Gaussian 对数误差为 $K[\sqrt{\tau/n}+(t+1)/n]$。在阶数 $m\ge n/2$ 使用定理 5.1，增加 $O(1/m)=O(1/n)$。最后的标量恢复贡献 $e^{-1}\exp(O((t+1)/n))$。对于质量为 $m+\kappa$ 的 $X$，容量仅以 $e^{-\theta_X}\le e^\kappa$ 的形式使用，不能断言这种非单位质量下的 $\theta_X$ 非负。第 6.4 节精确恢复这些因子，得到引理 3.1 的误差指数。
 
 ### 6.4 非主永久式界的证明
 
@@ -1505,6 +1559,8 @@ $$
 
 仓库的[核验记录](https://github.com/LStar404/tournament-hamiltonian-paths/blob/8ea3fcffcc12b6a06294ba7559885b439eda3cac/formalization/VERIFICATION.md)记载了 2026 年 10 月 9 日的一次成功完整运行。命令 `python verify_lean.py --require-main` 执行工程构建、实际 `MainBound` 声明检查、工程源码导入覆盖检查，并将定理的传递公理依赖限制为 `propext`、`Classical.choice` 和 `Quot.sound`。记录包含 3674 个定理常量，其中包括自动生成的引理。已存档的 246 项 Lean 源码及配置哈希均与本次修订所检查的源码一致。这些材料分别提供已记录的构建结果与源码对应检查；本次文字修订没有另行执行 Lean 构建。
 
+后续远端 CI 核验了已合并的首轮修订基线提交 `e07175db8b9b1df17a2434355953d3a05fbc625b`：[Verify proofs，第 38070905246 次运行](https://github.com/LStar404/tournament-hamiltonian-paths/actions/runs/38070905246)于 2026 年 10 月 10 日 17:24 UTC（UTC+8 为 10 月 11 日 01:24）成功完成，其中构建与审计、有限计算检查均成功。这是针对该精确基线的远端证据，并非本地重新构建，也不表示后续文字修订提交已经通过 CI。本次第二轮修订未改变形式化证明源码；其自身提交对应的 CI 结果随拉取请求另行记录。编译与有限检查成功不能替代对正文每一步证明的人工审查。
+
 精确有限计算用于核对归一化、系数恒等式、删除因子及四块展开，与任意阶证明分别记录。存档的有理数计算给出
 
 $$
@@ -1525,7 +1581,7 @@ $$
 
 [2] Noga Alon. The Maximum Number of Hamiltonian Paths in Tournaments. Combinatorica 10(4) (1990), 319–324. [DOI: 10.1007/BF02128667](https://doi.org/10.1007/BF02128667).
 
-[3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. [arXiv:2408.09341v2](https://arxiv.org/html/2408.09341v2) (2024).
+[3] Yanjun Han and Jonathan Niles-Weed. Approximate independence of permutation mixtures. The Annals of Statistics, to appear（[作者发表目录](https://yanjunhan2021.github.io/publication.html)）。[arXiv:2408.09341v2](https://arxiv.org/html/2408.09341v2)（2024年9月9日）；正文所引引理编号对应这一版本。
 
 [4] Bo Deng, Xueliang Li, Bryan Shader and Wasin So. On the Maximum Skew Spectral Radius and Minimum Skew Energy of Tournaments. Linear and Multilinear Algebra 66(7) (2018), 1434–1441. [DOI: 10.1080/03081087.2017.1357676](https://doi.org/10.1080/03081087.2017.1357676).
 
@@ -1536,3 +1592,7 @@ $$
 [7] Ehud Friedgut and Jeff Kahn. On the Number of Hamiltonian Cycles in a Tournament. Combinatorics, Probability and Computing 14(5–6) (2005), 769–781. [DOI: 10.1017/S0963548305006863](https://doi.org/10.1017/S0963548305006863).
 
 [8] Eric Li. The Godsil–McKay Asymptotic for Latin Rectangles in the Sublinear Range of Erdős Problem 725. [arXiv:2608.01671v1](https://arxiv.org/html/2608.01671v1) (2026).
+
+[9] Ilan Adler, Noga Alon and Sheldon M. Ross. On the Maximum Number of Hamiltonian Paths in Tournaments. Random Structures & Algorithms 18(3) (2001), 291–296. [DOI: 10.1002/rsa.1010](https://doi.org/10.1002/rsa.1010).
+
+[10] Tibor Szele. Kombinatorikai vizsgálatok az irányított teljes gráffal kapcsolatban. Matematikai és Fizikai Lapok 50 (1943), 223–256. [Original volume archive](https://real-j.mtak.hu/7300/).

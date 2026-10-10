@@ -73,6 +73,13 @@ def rewrite_inlines(inlines, labels, sections, refs, lang="en"):
     # Link only prose text; math, code and existing link destinations stay intact.
     result=[]
     for x in inlines:
+        if x['t']=='Math' and x['c'][0]['t']=='InlineMath' and x['c'][1].strip()==r'\square':
+            # Bind the end-of-proof marker to the preceding word so it cannot
+            # become the sole item on a new line or page.
+            while result and result[-1]['t'] in ('Space','SoftBreak'):
+                result.pop()
+            result.append(raw(r'\nobreak\hspace{.5em}\mbox{$\square$}'))
+            continue
         if x['t']=='Math':
             x=copy.deepcopy(x)
             if x['c'][0]['t']=='DisplayMath': x['c'][1]=re.sub(r'\n[ \t]*\n+', '\n', math_layout(x['c'][1]))
@@ -80,6 +87,8 @@ def rewrite_inlines(inlines, labels, sections, refs, lang="en"):
             escapes={'\\':r'\textbackslash{}','{':r'\{','}':r'\}','_':r'\_\allowbreak{}','.':r'.\allowbreak{}','/':r'/\allowbreak{}','-':'{-}','&':r'\&','%':r'\%','$':r'\$','#':r'\#','~':r'\textasciitilde{}','^':r'\textasciicircum{}'}
             code=x['c'][1]
             escaped=''.join(escapes.get(ch,ch)+(r'\allowbreak{}' if ch.islower() and i+1<len(code) and code[i+1].isupper() else '') for i,ch in enumerate(code))
+            if re.fullmatch(r'[0-9a-f]{40,64}',code):
+                escaped=r'\allowbreak{}'.join(code[i:i+8] for i in range(0,len(code),8))
             x=raw(r'\texttt{'+escaped+'}')
         elif x['t']=='Link':
             x=copy.deepcopy(x)

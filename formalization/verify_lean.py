@@ -96,7 +96,7 @@ def main():
                           hashlib.sha256(path.read_bytes()).hexdigest()
                           for path in source_paths},
         "commands": records,
-        "scope": "Only the checked declarations are certified. MainBound needs an unconditional proof and a passing axiom audit before submission.",
+        "scope": "Only the imported and checked declarations are certified; MainBound is checked independently, and submission also requires every project source to be imported for audit.",
     }
     output = ROOT / "audit" / "lean-verification.json"
     output.parent.mkdir(exist_ok=True)

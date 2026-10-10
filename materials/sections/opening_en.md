@@ -1,14 +1,14 @@
 # Constant-factor bounds for Hamiltonian paths in tournaments
 
-Xingchen Liu
+Xingchen Liu and Xiangyu Ye
 
-Independent Researcher
+Independent Researchers
 
 lxc-em5158@outlook.com
 
-8 October 2026
+8 October 2026; revised 9 October 2026
 
-Research manuscript. The arguments have undergone an AI-assisted internal proof audit, not external peer review. No claim of publication priority or a complete determination of the extremal tournaments is made.
+Research manuscript with a companion Lean formalization of the main theorem. The arguments have undergone an AI-assisted internal proof audit; external human peer review has not been reported. No claim of publication priority or a complete determination of the extremal tournaments is made.
 
 ## Abstract
 

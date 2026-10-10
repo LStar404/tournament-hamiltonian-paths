@@ -14,6 +14,11 @@ ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / 'tools/typesetting/paper.tex'
 BUILD = ROOT / 'build/papers'
 LABEL_RE = r'(?:Theorem|Lemma|Proposition|Corollary|定理|引理|命题|推论)\s*([1-9]\d*\.\d+)'
+EQUATION_ID_RE = r'eq-[A-Za-z0-9][A-Za-z0-9_-]*'
+EQUATION_NUMBER_RE = r'(?:[1-9]\d*|[A-Z])\.\d+'
+EQUATION_ANCHOR_RE = re.compile(
+    r'''<a\s+id=(["'])('''+EQUATION_ID_RE+r''')\1\s*>\s*</a>''')
+EQUATION_REFERENCE_RE = re.compile(r'(?:Equation|式)\s*\(('+EQUATION_NUMBER_RE+r')\)')
 
 def run(args, *, cwd=ROOT, env=None, input=None):
     p = subprocess.run([str(a) for a in args], cwd=cwd, env=env, input=input,
@@ -37,6 +42,156 @@ def text_of(inlines):
     return ''.join(out)
 
 def raw(s, block=False): return {'t':'RawBlock' if block else 'RawInline', 'c':['latex',s]}
+
+def read_markdown(src):
+    return json.loads(run(['pandoc','--from=markdown+tex_math_dollars+raw_tex-smart','--to=json'],input=src))
+
+def nodes_in(value):
+    """Visit all AST nodes, including those inside lists, notes and tables."""
+    if isinstance(value,dict):
+        if 't' in value: yield value
+        for child in value.values(): yield from nodes_in(child)
+    elif isinstance(value,list):
+        for child in value: yield from nodes_in(child)
+
+def count_display_math(src):
+    # Counting delimiter lines misses compact displays and counts code examples.
+    return sum(node['t']=='Math' and node['c'][0]['t']=='DisplayMath'
+               for node in nodes_in(read_markdown(src)))
+
+def tex_commands(formula):
+    """Locate real control words, ignoring comments and escaped backslashes."""
+    # Mask comments without changing offsets, then tokenize TeX control sequences.
+    visible=list(formula)
+    for match in re.finditer(r'\\(?:[A-Za-z]+|[^\n])|%[^\n]*',formula):
+        if match.group().startswith('%'):
+            visible[match.start():match.end()]=' '*len(match.group())
+    return list(re.finditer(r'\\(?:[A-Za-z]+|[^\n])',''.join(visible)))
+
+def equation_tag(formula):
+    """Return the sole source tag and formula with only that command removed."""
+    commands=tex_commands(formula)
+    if any(match.group()==r'\label' for match in commands):
+        raise ValueError('Use an eq-* HTML anchor instead of a raw equation label')
+    tags=[match for match in commands if match.group()==r'\tag']
+    if len(tags)>1: raise ValueError('Multiple equation tags in one display')
+    if not tags: return None,formula
+    start=tags[0].start()
+    match=re.match(r'\\tag\s*\{('+EQUATION_NUMBER_RE+r')\}',formula[start:])
+    if not match: raise ValueError('Malformed equation tag; expected \\tag{2.1} or \\tag{A.1}')
+    return match.group(1),formula[:start]+formula[start+match.end():]
+
+def prepare_equations(ast, version):
+    """Replace standalone anchor/display pairs and link their declared numbers."""
+    equations={}; anchor_ids=[]
+    for node in nodes_in(ast):
+        if node['t'] in ('RawInline','RawBlock') and node['c'][0]=='html':
+            for match in re.finditer(r'''\bid\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))''',node['c'][1]):
+                ident=next(group for group in match.groups() if group is not None)
+                if ident.startswith('eq-'): anchor_ids.append(ident)
+        elif node['t'] in ('Header','Div','Span'):
+            attr=node['c'][1] if node['t']=='Header' else node['c'][0]
+            if attr[0].startswith('eq-'):
+                raise ValueError('Equation anchors must use standalone empty HTML <a> elements: '+attr[0])
+    seen=set()
+    for ident in anchor_ids:
+        if ident in seen: raise ValueError('Duplicate equation anchor: '+ident)
+        if not re.fullmatch(EQUATION_ID_RE,ident): raise ValueError('Malformed equation anchor: '+ident)
+        seen.add(ident)
+
+    def parts(block):
+        """Recognize only empty HTML anchors, optionally beside one display."""
+        if not isinstance(block,dict): return None,None
+        if block.get('t')=='RawBlock' and block['c'][0]=='html':
+            match=EQUATION_ANCHOR_RE.fullmatch(block['c'][1].strip())
+            return (match.group(2),None) if match else (None,None)
+        if block.get('t') not in ('Para','Plain'): return None,None
+        inlines=[n for n in block['c'] if n['t'] not in ('Space','SoftBreak','LineBreak')]
+        maths=[n for n in inlines if n['t']=='Math' and n['c'][0]['t']=='DisplayMath']
+        html=[n for n in inlines if n['t']=='RawInline' and n['c'][0]=='html']
+        if len(maths)+len(html)!=len(inlines) or len(maths)>1: return None,None
+        if not html: return (None,maths[0]) if len(maths)==1 else (None,None)
+        # An anchor must precede the display; reversed pairs must not be accepted.
+        if maths and inlines[-1] is not maths[0]: return None,None
+        match=EQUATION_ANCHOR_RE.fullmatch(''.join(n['c'][1] for n in html))
+        return (match.group(2),maths[0] if maths else None) if match else (None,None)
+
+    def transform(value):
+        if isinstance(value,dict):
+            return {key:transform(child) for key,child in value.items()}
+        if not isinstance(value,list): return value
+        result=[]; i=0
+        while i<len(value):
+            ident,math=parts(value[i])
+            consumed=1
+            if ident:
+                if math is None and i+1<len(value):
+                    next_ident,math=parts(value[i+1])
+                    if next_ident: math=None
+                    else: consumed=2
+                if math is None: raise ValueError('Equation anchor must immediately precede a standalone display: '+ident)
+                tag,formula=equation_tag(math['c'][1])
+                if tag is None: raise ValueError('Missing equation tag for '+ident)
+                if tag in equations.values(): raise ValueError('Duplicate equation tag: '+tag)
+                equations[ident]=tag
+                formula=re.sub(r'\n[ \t]*\n+','\n',math_layout(formula))
+                result.append(raw('\\begin{equation}\n'+formula+'\n\\tag{'+tag+'}\\label{'+ident+'}\n\\end{equation}',True))
+                i+=consumed
+            else:
+                result.append(transform(value[i])); i+=1
+        return result
+
+    ast=transform(ast)
+    if set(anchor_ids)!=set(equations):
+        raise ValueError('Equation anchor must be standalone and immediately precede a display: '+', '.join(sorted(set(anchor_ids)-set(equations))))
+    for node in nodes_in(ast):
+        if node['t']=='Math':
+            tag,_=equation_tag(node['c'][1])
+            if tag is not None: raise ValueError('Missing equation anchor for tag '+tag)
+
+    def link(value):
+        if isinstance(value,list): return [link(child) for child in value]
+        if not isinstance(value,dict): return value
+        if value.get('t')=='Link':
+            target=value['c'][2][0]; wording=text_of(value['c'][1])
+            match=EQUATION_REFERENCE_RE.fullmatch(wording)
+            if target.startswith('#eq-') or (target.startswith('#') and match):
+                ident=target[1:]
+                if ident not in equations: raise ValueError('Unresolved equation reference: '+target)
+                if not match or match.group(1)!=equations[ident]:
+                    raise ValueError('Equation reference number mismatch for '+ident+': '+wording)
+                return raw(r'\paperref{'+ident+'}{'+to_tex(value['c'][1],version)+'}')
+        return {key:link(child) for key,child in value.items()}
+
+    return link(ast),equations
+
+def validate_label_values(index, aux):
+    expected={key:key.split('-',1)[1] for category in ('sections','statements') for key in index[category]}
+    expected.update(index['equations'])
+    values={}
+    for key,number in expected.items():
+        hits=[]
+        for match in re.finditer(r'\\newlabel\{'+re.escape(key)+r'\}\{',aux):
+            tail=aux[match.end():]; depth=0; value=None
+            if tail.startswith('{'):
+                for end,char in enumerate(tail):
+                    if char=='{': depth+=1
+                    elif char=='}': depth-=1
+                    if depth==0:
+                        # AMS adds a grouping pair around the explicit tag value.
+                        value=tail[1:end].replace('{','').replace('}',''); break
+            hits.append(value)
+        if hits!=[number]:
+            raise ValueError(f'Number mismatch for {key}: expected {number}; got {hits}')
+        values[key]=hits[0]
+    return values
+
+def validate_bilingual_indices(en, zh):
+    for category in ('sections','statements','references'):
+        if set(en[category])!=set(zh[category]):
+            raise ValueError('Bilingual '+category+' numbering differs: '+str(set(en[category])^set(zh[category])))
+    if en['equations']!=zh['equations']:
+        raise ValueError('Bilingual equation ID/number maps differ')
 
 def to_tex(inlines, version):
     doc = {'pandoc-api-version':version,'meta':{},'blocks':[{'t':'Plain','c':inlines}]}
@@ -131,7 +286,8 @@ def rewrite_inlines(inlines, labels, sections, refs, lang="en"):
     return out
 
 def prepare(lang, src):
-    ast=json.loads(run(['pandoc','--from=markdown+tex_math_dollars+raw_tex-smart','--to=json'],input=src))
+    ast=read_markdown(src)
+    ast,equations=prepare_equations(ast,ast['pandoc-api-version'])
     version=ast['pandoc-api-version']; blocks=ast['blocks']
     if blocks[0]['t']!='Header' or blocks[0]['c'][0]!=1: raise ValueError('Master must start with one title')
     title=blocks.pop(0)['c'][2]
@@ -205,8 +361,9 @@ def prepare(lang, src):
     # Keep a prose lead-in in the same TeX paragraph as its following display,
     # enabling amsmath's predisplay penalty to prevent stranded introductions.
     tex=tex.replace('\n\n'+r'\[','\n'+r'\[')
+    tex=tex.replace('\n\n'+r'\begin{equation}','\n'+r'\begin{equation}')
     tex=tex.replace(r'\]'+ '\n'+r'\[',r'\]'+ '\n'+r'\nopagebreak[3]'+r'\[')
-    return tex, {'sections':sections,'statements':labels,'references':refs}
+    return tex, {'sections':sections,'statements':labels,'references':refs,'equations':equations}
 
 def tex_env(work):
     env=os.environ.copy()
@@ -254,8 +411,8 @@ def build(lang, args):
     source=ROOT/f'materials/manuscript_{lang}.md'; src=source.read_text()
     work=BUILD/lang; work.mkdir(parents=True,exist_ok=True)
     tex,index=prepare(lang,src)
-    display_count=len(re.findall(r'^\$\$\s*$',src,re.M))//2
-    if tex.count(r'\[')!=display_count:
+    display_count=count_display_math(src)
+    if tex.count(r'\[')+tex.count(r'\begin{equation}')!=display_count:
         raise ValueError(f'{lang}: display-math count changed during export')
     texpath=work/f'manuscript_{lang}.tex'; texpath.write_text(tex)
     (work/'crossref-index.json').write_text(json.dumps(index,ensure_ascii=False,indent=2)+'\n')
@@ -266,13 +423,7 @@ def build(lang, args):
         (work/f'pass-{iteration+1}.stdout.log').write_text(out)
     log=texpath.with_suffix('.log').read_text(errors='replace')
     aux=texpath.with_suffix('.aux').read_text(errors='replace')
-    label_values={}
-    for key in list(index['sections'])+list(index['statements']):
-        hit=re.search(r'\\newlabel\{'+re.escape(key)+r'\}\{\{([^}]*)\}',aux)
-        expected=key.split('-',1)[1]
-        if not hit or hit.group(1)!=expected:
-            raise ValueError(f'Number mismatch for {key}: expected {expected}; got {hit.group(1) if hit else None}')
-        label_values[key]=hit.group(1)
+    label_values=validate_label_values(index,aux)
     problems=[line for line in log.splitlines() if re.search(r'Overfull|Missing character|undefined|multiply defined',line)]
     pdf=texpath.with_suffix('.pdf')
     info=run(['pdfinfo',pdf]); pages=int(re.search(r'^Pages:\s+(\d+)',info,re.M).group(1))
@@ -303,12 +454,10 @@ def main():
     for tool in ['pandoc','xelatex','kpsewhich','pdfinfo','pdftoppm']:
         if not shutil.which(tool): raise SystemExit('Required executable not found: '+tool)
     result=[build(lang,args) for lang in (['en','zh'] if args.lang=='both' else [args.lang])]
-    if args.lang=='both' and not args.tex_only:
+    if args.lang=='both':
         en=json.loads((BUILD/'en/crossref-index.json').read_text())
         zh=json.loads((BUILD/'zh/crossref-index.json').read_text())
-        for category in ('sections','statements','references'):
-            if set(en[category])!=set(zh[category]):
-                raise ValueError('Bilingual '+category+' numbering differs: '+str(set(en[category])^set(zh[category])))
+        validate_bilingual_indices(en,zh)
     if not args.tex_only:
         for report in result:
             lang=report['language']; source=ROOT/f'materials/manuscript_{lang}.md'

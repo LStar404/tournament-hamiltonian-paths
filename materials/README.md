@@ -30,7 +30,9 @@ The build requires Python 3.10+, Pandoc 3+, XeLaTeX with the standard packages l
 
 The v1.1 archived PDFs were produced separately with ReportLab and mathematical images; the archived TeX was compiled during the 9 October review with Tectonic 0.17.0. That historical workflow and its 25 English / 23 Chinese page counts do not describe the current native-math revision. Historical audit receipts below are retained unchanged. The [11 October typesetting record](typesetting_revision_20261011.json) records the first-round source/PDF hashes, all-page visual review, native-formula counts, cross-reference checks and exact section synchronization.
 
-The [second-round record](revision_round2_20261011.md) and [second-round typesetting receipt](typesetting_round2_20261011.json) identify the latest 31-page English and 27-page Chinese reading copies. The new proof examples have exact rational regression tests; all historical receipts continue to describe their original versions.
+The [second-round record](revision_round2_20261011.md) and [second-round typesetting receipt](typesetting_round2_20261011.json) identify the second-round 31-page English and 27-page Chinese reading copies. The new proof examples have exact rational regression tests; all historical receipts continue to describe their original versions.
+
+The current third-round reading copies are documented in the [third-round revision record](revision_round3_20261011.md) and [typesetting receipt](typesetting_round3_20261011.json). They clarify the additive exceptional error and uniform small-score quantifiers, with eight matching equation labels and linked references in both languages. New regression tests guard these source conventions and the exact three-part budget.
 
 ### Audits and diagnostics
 
@@ -77,7 +79,9 @@ python tools/build_papers.py --render --publish --sync-sections
 
 v1.1 归档 PDF 使用 ReportLab 与公式图像单独排版；旧 TeX 曾在 10 月 9 日审阅中使用 Tectonic 0.17.0 编译。该历史流程及英文 25 页、中文 23 页的旧页数，不描述当前原生公式修订版。以下历史审查记录原样保留。[10 月 11 日排版核验记录](typesetting_revision_20261011.json)另行保存首轮源码与 PDF 哈希、逐页视觉检查、原生公式数量、交叉引用检查及分节稿精确同步结果。
 
-[第二轮修订记录](revision_round2_20261011.md)及[第二轮排版记录](typesetting_round2_20261011.json)对应最新英文 31 页、中文 27 页阅读版。新增证明例子配有精确有理数回归测试；全部历史核验记录仍只描述各自的原始版本。
+[第二轮修订记录](revision_round2_20261011.md)及[第二轮排版记录](typesetting_round2_20261011.json)对应第二轮英文 31 页、中文 27 页阅读版。新增证明例子配有精确有理数回归测试；全部历史核验记录仍只描述各自的原始版本。
+
+当前第三轮阅读版见[第三轮修订记录](revision_round3_20261011.md)与[排版记录](typesetting_round3_20261011.json)。本轮澄清异常点的加性误差及小比分一致量词，中英文新增八个一致的公式编号与链接引用；新回归测试核对源码约定及三部分精确预算。
 
 ### 审查与计算核验
 

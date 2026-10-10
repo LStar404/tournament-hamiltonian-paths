@@ -50,11 +50,14 @@ $$
 
 **引理 2.1（路径卷积）。** 对任意竞赛图，
 
+<a id="eq-path-convolution"></a>
+
 $$
 H(T)=\sum_{U\subseteq V(T)}\det(I+A[U])\operatorname{per}A[U^c].
+\tag{2.1}
 $$
 
-邻接矩阵的永久式计算有向圈覆盖数。该恒等式将互补顶点集上的圈覆盖计数转化为路径数。它是 Irving 与 Omar 的 Proposition 2 [1] 在竞赛图上的特化，其中补邻接矩阵为 $\overline A=J-A=I+A^{\mathsf T}$，包含对角元。
+邻接矩阵的永久式计算有向圈覆盖数。卷积[式 (2.1)](#eq-path-convolution)把互补顶点集上的圈覆盖数转换成路径数。它是 Irving 与 Omar 的 Proposition 2 [1] 在竞赛图上的特化，其中补邻接矩阵为 $\overline A=J-A=I+A^{\mathsf T}$，包含对角元。
 
 也可用生成函数直接核对。令 $X=\operatorname{diag}(z_1,\ldots,z_n)$，每次访问一个顶点即乘上对应变量，则全部游走的生成函数为
 

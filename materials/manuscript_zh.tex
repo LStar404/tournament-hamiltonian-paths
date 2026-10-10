@@ -125,9 +125,12 @@ D_n(S)=\det(I-S^{\mathsf T}S/n^2)^{-1/2},\]
 \subsection{正路径卷积}\label{sec-2.2}
 
 \paperstatement{引理 2.1（路径卷积）。}{2.1}{thm-2.1} 对任意竞赛图，
-\[H(T)=\sum_{U\subseteq V(T)}\det(I+A[U])\operatorname{per}A[U^c].\]
+\begin{equation}
+H(T)=\sum_{U\subseteq V(T)}\det(I+A[U])\operatorname{per}A[U^c].
+\tag{2.1}\label{eq-path-convolution}
+\end{equation}
 
-邻接矩阵的永久式计算有向圈覆盖数。该恒等式将互补顶点集上的圈覆盖计数转化为路径数。它是 Irving 与 Omar 的 Proposition 2 \paperref{bib-1}{[1]} 在竞赛图上的特化，其中补邻接矩阵为 \(\overline A=J-A=I+A^{\mathsf T}\)，包含对角元。
+邻接矩阵的永久式计算有向圈覆盖数。卷积\paperref{eq-path-convolution}{式 (2.1)}把互补顶点集上的圈覆盖数转换成路径数。它是 Irving 与 Omar 的 Proposition 2 \paperref{bib-1}{[1]} 在竞赛图上的特化，其中补邻接矩阵为 \(\overline A=J-A=I+A^{\mathsf T}\)，包含对角元。
 
 也可用生成函数直接核对。令 \(X=\operatorname{diag}(z_1,\ldots,z_n)\)，每次访问一个顶点即乘上对应变量，则全部游走的生成函数为
 \[1+\mathbf1^{\mathsf T}(I-XA)^{-1}X\mathbf1
@@ -379,7 +382,18 @@ u_x,v_x\le L_n=2+o(1).\]
 \le(1/4)^f\rho_N(S_M)+o(1)
 \le C_*/4+o(1)<1,\qquad f\ge1.\]
 
-由于 \(P(n)\ge\mu_n\)，这个严格小于一的固定间隙说明：对所有充分大的阶数，这类竞赛图不能达到最大值。此处只需 \(o(1)\) 误差。此处保留成对谱因子，以显示它与后续归约的联系；Lean 证明使用较弱但足够的界 \((10/3)4^{-f}(1+o(1))<1\)（\(f\ge1\)）。两种选择均不影响最终上界常数。
+由于 \(P(n)\ge\mu_n\)，这个严格小于一的固定间隙说明：对所有充分大的阶数，这类竞赛图不能达到最大值。此处只需 \(o(1)\) 误差。此处保留成对谱因子，以显示它与后续归约的联系。对于删除集与 \(F\) 不相交的短卷积项，Lean 证明使用较弱但足够的界 \((10/3)4^{-f}(1+\varepsilon_n)\)。与 \(F\) 相交的短项及长项另贡献 \(\delta_n\)，因此完整上界为
+\begin{equation}
+\frac{H(T)}{\mu_n}\le\frac{10}{3}4^{-f}(1+\varepsilon_n)+\delta_n,
+\qquad \varepsilon_n,\delta_n\longrightarrow0.
+\tag{3.1}\label{eq-exceptional-bound}
+\end{equation}
+
+两个误差在所讨论的低方差图类上一致成立。由于 \(f\) 可以随 \(n\) 增长，二者不能混同。形式化证明最终取 \(1+\varepsilon_n\le21/20\)，另外两部分各不超过 \(1/25\)。于是当 \(f\ge1\) 时，\paperref{eq-exceptional-bound}{式 (3.1)}给出明确预算
+\[\frac{10}{3}\cdot\frac14\cdot\frac{21}{20}+\frac1{25}+\frac1{25}
+=\frac{191}{200}<1.\]
+
+两种选择均不影响最终上界常数。
 
 \Needspace{7\baselineskip}
 \subsection{剩余图类中的比分罚项}\label{sec-3.4}
@@ -430,16 +444,19 @@ e^{R_\tau+K\delta_n}
 两个行列式均为正：\(W\) 的对称部分正定；加权行列式的主子式展开系数为正。\paperref{sec-3.3}{第 3.3 节}的无权秩一界在 \(N=n\) 时为 \(\det(W)\le2e\det(I+S/n)\)。
 
 合并上述各因子，最后仅加入长删集尾项，得到统一的比分敏感上界
-\[\frac{H(T)}{\mu_n}\le
+\begin{equation}
+\frac{H(T)}{\mu_n}\le
 \rho_n(S)\exp\left\{-\tau+
 K\left[\frac{1+\tau+\tau^2}{n}
 +\frac{\tau^{3/2}+\tau}{\sqrt n}+\sqrt{\tau/n}\right]\right\}
-+o(1/n).\]
++o(1/n).
+\tag{3.2}\label{eq-score-penalty}
+\end{equation}
 
 当 \(\tau\le K_0\log n\) 时，除常数 \(1/n\) 外的多项式误差项，在充分大阶数总共至多消耗 \(\tau/4\)。剩余平方根项由 Young 不等式控制：
 \[K\sqrt{\tau/n}\le\tau/4+K^2/n.\]
 
-因此总指数至多为 \(-\tau/2+K/n\)。再使用谱上限，得到
+\paperref{eq-score-penalty}{式 (3.2)}中的总指数因此至多为 \(-\tau/2+K/n\)。再使用谱上限，得到
 \[H(T)/\mu_n\le C_*e^{K/n}+o(1/n)=C_*+O(1/n).\]
 
 \Needspace{7\baselineskip}
@@ -531,10 +548,13 @@ McCullagh \paperref{bib-5}{[5]} 在适度偏离条件下得到了行列式主项
 \|E/n\|_{\mathrm{op}}\le q.\]
 
 令 \(B=E/n\)。对所有满足上述条件的矩阵，一致地有
-\[\frac{\operatorname{per}(J_n+E)}{n!}
-=\det(I-BB^{\mathsf T})^{-1/2}+O_{C,q}(n^{-1}).\]
+\begin{equation}
+\frac{\operatorname{per}(J_n+E)}{n!}
+=\det(I-BB^{\mathsf T})^{-1/2}+O_{C,q}(n^{-1}).
+\tag{5.1}\label{eq-uniform-permanent}
+\end{equation}
 
-也可以把误差写成行列式因子乘以相对因子 \(1+O_{C,q}(n^{-1})\)。
+\paperref{eq-uniform-permanent}{式 (5.1)}也可写成行列式因子乘以相对误差 \(1+O_{C,q}(n^{-1})\)。
 
 本节所用行列式平方根，在有关实区间上均取正平方根。假设给出 \(\|B\|_{\mathrm F}^2\le C^2\)。因此，行列式因子不小于一，并且被只依赖 \(C,q\) 的常数一致控制。
 
@@ -613,7 +633,10 @@ F_3=\frac23\sum_{i,j}B_{ij}^3,
 T_1=\frac32W^2+\frac{10}{3}W^3.\]
 
 \paperstatement{引理 5.2（压缩核心活动量）。}{5.2}{thm-5.2} 在上述记号下，
-\[\|C_j\|_R\le(Dj/n)^j\qquad(j\ge1),\]
+\begin{equation}
+\|C_j\|_R\le(Dj/n)^j\qquad(j\ge1),
+\tag{5.2}\label{eq-core-activity}
+\end{equation}
 
 且首超额满足更精确的界
 \[\|C_1\|_R\le T_1/n.\]
@@ -673,7 +696,7 @@ T_1=\frac32W^2+\frac{10}{3}W^3.\]
 \Needspace{7\baselineskip}
 \subsection{线性系数窗口与阶乘恢复}\label{sec-5.4}
 
-当 \(j/n\) 较小时，\paperref{thm-5.2}{引理 5.2} 的界可以有效求和。取
+活动量界\paperref{eq-core-activity}{式 (5.2)}在 \(j/n\) 较小时有效。取
 \[\alpha=\min\left\{\frac14,\frac1{16D},\frac{\log\sigma}{2}\right\},
 \qquad M=\lfloor\alpha n\rfloor.\]
 
@@ -964,7 +987,10 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 \[X=\frac n m\widehat C[R,T],\qquad \kappa=\mathfrak m(X)-m,\qquad \widetilde X=\frac m{\mathfrak m(X)}X.\]
 
 精确删行列质量恒等式为
-\[\kappa=\frac n m\left[-\sum_{i\in I}e_i-\sum_{j\in J}f_j+\sum_{i\in I,j\in J}\widehat C_{ij}-\frac{t^2}{n}\right].\]
+\begin{equation}
+\kappa=\frac n m\left[-\sum_{i\in I}e_i-\sum_{j\in J}f_j+\sum_{i\in I,j\in J}\widehat C_{ij}-\frac{t^2}{n}\right].
+\tag{6.1}\label{eq-deletion-mass}
+\end{equation}
 
 每个保留行在最后一次归一化前的边际误差为
 \[(X\mathbf 1_m)_i-1=\frac n m\left[e_i+\frac t n-\sum_{j\in J}\widehat C_{ij}\right],\]
@@ -1007,9 +1033,12 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 \[\prod_{i\in R}(1+a_i)\prod_{j\in T}(1-a_j)=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j.\]
 
 因此，删除行恢复 \(\ell\) 因子，删除列恢复 \(r\) 因子。完整的标量恒等式为
-\[\operatorname{per}A[R,T]=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j\left[\frac{m(n-1)\mathfrak m(C')}{2n^2}\right]^m e^{-\theta_X}\operatorname{per}B_X.\]
+\begin{equation}
+\operatorname{per}A[R,T]=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j\left[\frac{m(n-1)\mathfrak m(C')}{2n^2}\right]^m e^{-\theta_X}\operatorname{per}B_X.
+\tag{6.2}\label{eq-exact-restoration}
+\end{equation}
 
-恢复 \(m!/m^m\) 后，剩余标量为
+将 \(m!/m^m\) 代入\paperref{eq-exact-restoration}{式 (6.2)}后，剩余标量为
 \[\frac{m!}{2^m}(1-1/n)^m\left[\frac{\mathfrak m(C')}{n}\right]^m.\]
 
 其对数与 \(e^{-1}m!/2^m\) 的对数之差为 \(O((t+1)/n+|\nu|)\)。容量界给出 \(e^{-\theta_X}\le e^\kappa\)。代入质量、Gaussian 和零阶永久式误差，即得到所需指数预算。所有常数对竞赛图及两个删集一致，\paperref{thm-3.1}{引理 3.1} 得证。\nobreak\hspace{.5em}\mbox{$\square$}
@@ -1020,14 +1049,17 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 当每个比分均为 \(o(\sqrt n)\) 时，原始边际已足够接近一，可以直接使用局部缩放。容量界随后从两侧控制恢复因子，得到\paperref{thm-4.1}{定理 4.1} 所需的近似。
 
 \paperstatement{引理 6.4（小比分永久式近似）。}{6.4}{thm-6.4} 设 \(d=\|S\mathbf 1_n\|_\infty=o(\sqrt n)\)。固定 \(0<B_0<\infty\)，任删 \(t\le B_0\log n\) 行与 \(t\) 列，记 \(m=n-t\)。对这些选择一致地有
-\[\operatorname{per}A[R,T]=e^{-1}D_n(S)\frac{m!}{2^m}\left[1+O_{B_0}\left(\frac{(d+t+1)^2}{n}\right)\right].\]
+\begin{equation}
+\operatorname{per}A[R,T]=e^{-1}D_n(S)\frac{m!}{2^m}\left[1+O_{B_0}\left(\frac{(d+t+1)^2}{n}\right)\right].
+\tag{6.3}\label{eq-small-score-permanent}
+\end{equation}
 
-固定 \(B_0\) 后，只要 \((d+t+1)^2/n\) 足够小，隐含常数就是一致的；在所述渐近范围中此量趋于零。
+更明确地，对每个固定的 \(B_0>0\)，存在仅依赖于 \(B_0\) 的常数 \(C_{\mathrm{err}},\delta>0\) 及整数 \(N_0\ge4\)，使得对每个 \(n\ge N_0\)、每个竞赛图符号矩阵 \(S\) 及每对满足 \(|I|=|J|=t\le B_0\log n\) 的删集 \(I,J\subseteq[n]\)，均有如下结论：若 \(d=\|S\mathbf1_n\|_\infty\) 且 \(\eta=(d+t+1)^2/n\le\delta\)，则\paperref{eq-small-score-permanent}{式 (6.3)}中的绝对相对误差至多为 \(C_{\mathrm{err}}\eta\)。这里 \(R=[n]\setminus I\)、\(T=[n]\setminus J\)、\(m=n-t\)，且 \(I,J\) 可独立选择。这些常数先于阶数、竞赛图和删集选定。在所述渐近范围中，\(\eta\to0\)。
 
-\textbf{证明。} 此处不需要成对预缩放。令 \(C=2A/(n-1)\)、\(X=(n/m)C[R,T]\)。全矩阵 \(C\) 的行列误差分别为 \(s_i/(n-1)\)、\(-s_i/(n-1)\)。因此，\paperref{sec-6.3}{第 6.3 节}的精确质量与边际恒等式给出
+\textbf{证明。} 增大 \(N_0\)，使整个对数删除窗口内均有 \(2t\le n\)，于是 \(m\ge n/2>0\)。此处不需要成对预缩放。令 \(C=2A/(n-1)\)、\(X=(n/m)C[R,T]\)。全矩阵 \(C\) 的行列误差分别为 \(s_i/(n-1)\)、\(-s_i/(n-1)\)。因此，精确质量恒等式\paperref{eq-deletion-mass}{式 (6.1)}及\paperref{sec-6.3}{第 6.3 节}的边际公式给出
 \[|\kappa|=O(t(d+t)/n),\qquad \varepsilon(X)=O((d+t)/n),\qquad \|g(X)\|_2=O((d+t)/\sqrt n).\]
 
-归一化 \(\widetilde X=mX/\mathfrak m(X)\)。其稠密度与中心核谱隙固定，局部缩放引理适用。二范数位移和容量估计给出
+质量误差满足 \(|\kappa|\le K\eta\)。必要时缩小 \(\delta\)，便一致保证 \(\mathfrak m(X)=m+\kappa>0\)。归一化 \(\widetilde X=mX/\mathfrak m(X)\)。其稠密度与中心核谱隙固定，局部缩放引理适用。二范数位移和容量估计给出
 \[\|B_X-\widetilde X\|_F=O((d+t)/n),\qquad 0\le\theta_{\widetilde X}=O((d+t)^2/n).\]
 
 非单位质量修正随后给出 \(|\theta_X|=O((d+t)^2/n)\)。又有 \(\tau\le nd^2/(n-1)^2\)。有限删除估计、归一化因子和真实缩放扰动共同给出
@@ -1036,7 +1068,7 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 此时不含比分乘积的精确恢复为
 \[\operatorname{per}A[R,T]=\left[\frac{m(n-1)}{2n}\right]^m e^{-\theta_X}\operatorname{per}B_X.\]
 
-应用统一永久式定理，并使用 \((1-1/n)^m=e^{-1}\exp(O((t+1)/n))\)。所有对数误差均为 \(O((d+t+1)^2/n)=o(1)\)，对其取指数即得到所述相对近似。这就证明了\paperref{thm-4.1}{定理 4.1} 所用的一致短余矩阵近似。\nobreak\hspace{.5em}\mbox{$\square$}
+应用统一永久式定理，并使用 \((1-1/n)^m=e^{-1}\exp(O((t+1)/n))\)。所有对数误差均由 \(\eta=(d+t+1)^2/n\) 的一个固定倍数控制。将 \(\delta\) 取得充分小，对这些界取指数，便在前述有限范围内一致得到不超过 \(C_{\mathrm{err}}\eta\) 的绝对相对误差。在 \(d=o(\sqrt n)\)、\(t\le B_0\log n\) 的渐近范围中，\(\eta\to0\)。这就证明了\paperref{thm-4.1}{定理 4.1} 所用的一致短余矩阵近似。\nobreak\hspace{.5em}\mbox{$\square$}
 
 \Needspace{9\baselineskip}
 \section{后续问题}\label{sec-7}
@@ -1057,14 +1089,14 @@ e_{\pi(1)}\otimes\cdots\otimes e_{\pi(n)}.\]
 
 声明 \texttt{Tournament\allowbreak{}Hamiltonian.\allowbreak{}main\allowbreak{}Bound : Tournament\allowbreak{}Hamiltonian.\allowbreak{}Main\allowbreak{}Bound} 以精确常数 \(L,C_*\) 证明\paperref{thm-1.1}{定理 1.1}。其结论先选定同一个 \(K\ge0\) 和 \(n_0\ge2\)，再对所有 \(n\ge n_0\) 量化。最终定理没有未证明的永久式、缩放、活动量或路径数前提。另一个声明 \texttt{small\_\allowbreak{}score\_\allowbreak{}path\allowbreak{}Count\_\allowbreak{}spectral\_\allowbreak{}approximation\_\allowbreak{}eventually} 证明\paperref{thm-4.1}{定理 4.1}：绝对误差常数不依赖比分上包络 \(d(n)\)，而最终成立的起始阶数可以依赖该函数。
 
-形式化工程同时证明了主要分析输入及上述结论。部分中间论证与正文不同：永久式证明以几何系数矩界代替正文列出的导数常数 \(K_G\)；高方差与异常顶点情形使用较弱但足够的估计，后者在 \(f\ge1\) 时得到 \((10/3)4^{-f}(1+o(1))<1\)；加权行列式比较使用正主子式矩；小比分恢复复用成对预缩放，局部缩放采用等价的压缩映射估计及不同的固定谱隙。形式化的短删集约定还相差一个边界层，极化和 Gaussian 矩工具则采用有限维实现。这些方法得到相同的误差率与最终界。所附{逐项结论对应表\footnote{源码包：\path|materials/verification/manuscript_alignment_20261011.md|}}记录了这些中间差异。
+形式化工程同时证明了主要分析输入及上述结论。部分中间论证与正文不同：永久式证明以几何系数矩界代替正文列出的导数常数 \(K_G\)；高方差与异常顶点情形使用较弱但足够的估计。后者的 \((10/3)4^{-f}(1+o(1))\) 仅控制删除集与 \(F\) 不相交的短项，其余项另贡献一致的加性 \(o(1)\)；完整上界见\paperref{eq-exceptional-bound}{式 (3.1)}，三部分相加后在 \(f\ge1\) 时最终不超过 \(191/200<1\)。加权行列式比较使用正主子式矩；小比分恢复复用成对预缩放，局部缩放采用等价的压缩映射估计及不同的固定谱隙。形式化的短删集约定还相差一个边界层，极化和 Gaussian 矩工具则采用有限维实现。这些方法得到相同的误差率与最终界。所附{逐项结论对应表\footnote{源码包：\path|materials/verification/manuscript_alignment_20261011.md|}}记录了这些中间差异。
 
 \Needspace{7\baselineskip}
 \subsection{核验记录与辅助计算}\label{sec-A.2}
 
 仓库的\href{https://github.com/LStar404/tournament-hamiltonian-paths/blob/8ea3fcffcc12b6a06294ba7559885b439eda3cac/formalization/VERIFICATION.md}{核验记录}记载了 2026 年 10 月 9 日的一次成功完整运行。命令 \texttt{python verify\_\allowbreak{}lean.\allowbreak{}py {-}{-}require{-}main} 执行工程构建、实际 \texttt{Main\allowbreak{}Bound} 声明检查、工程源码导入覆盖检查，并将定理的传递公理依赖限制为 \texttt{propext}、\texttt{Classical.\allowbreak{}choice} 和 \texttt{Quot.\allowbreak{}sound}。记录包含 3674 个定理常量，其中包括自动生成的引理。已存档的 246 项 Lean 源码及配置哈希均与本次修订所检查的源码一致。这些材料分别提供已记录的构建结果与源码对应检查；本次文字修订没有另行执行 Lean 构建。
 
-后续远端 CI 核验了已合并的首轮修订基线提交 \texttt{e07175db\allowbreak{}8b9b1df1\allowbreak{}7a243435\allowbreak{}5953d3a0\allowbreak{}5fbc625b}：\href{https://github.com/LStar404/tournament-hamiltonian-paths/actions/runs/38070905246}{Verify proofs，第 38070905246 次运行}于 2026 年 10 月 10 日 17:24 UTC（UTC+8 为 10 月 11 日 01:24）成功完成，其中构建与审计、有限计算检查均成功。这是针对该精确基线的远端证据，并非本地重新构建，也不表示后续文字修订提交已经通过 CI。本次第二轮修订未改变形式化证明源码；其自身提交对应的 CI 结果随拉取请求另行记录。编译与有限检查成功不能替代对正文每一步证明的人工审查。
+后续远端 CI 核验了工作 fork 中已合并的第二轮修订基线提交 \texttt{42ee0a15\allowbreak{}72e9e0cd\allowbreak{}f88bfc17\allowbreak{}811c7559\allowbreak{}b3b2e03c}：\href{https://github.com/makerY666/tournament-hamiltonian-paths/actions/runs/38073718040}{Verify proofs，第 38073718040 次运行}于 2026 年 10 月 10 日成功完成，其中 Lean 构建与审计、四项有限诊断及带符号核心例子测试均成功。这是针对该精确基线的远端证据，并非本地重新构建，也不表示后续文字修订提交已经通过 CI。本次第三轮修订未改变形式化证明源码；其自身提交对应的 CI 结果随拉取请求另行记录。编译与有限检查成功不能替代对正文每一步证明的人工审查。
 
 精确有限计算用于核对归一化、系数恒等式、删除因子及四块展开，与任意阶证明分别记录。存档的有理数计算给出
 \[2.855957892565113<L<2.855957892565114,\]

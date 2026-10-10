@@ -280,8 +280,11 @@ $$
 
 The exact deletion mass identity is
 
+<a id="eq-deletion-mass"></a>
+
 $$
 \kappa=\frac n m\left[-\sum_{i\in I}e_i-\sum_{j\in J}f_j+\sum_{i\in I,j\in J}\widehat C_{ij}-\frac{t^2}{n}\right].
+\tag{6.1}
 $$
 
 For each remaining row, the exact marginal error before the last normalization is
@@ -352,11 +355,14 @@ $$
 
 Thus deleted rows restore $\ell$ factors and deleted columns restore $r$ factors. The complete scalar identity is
 
+<a id="eq-exact-restoration"></a>
+
 $$
 \operatorname{per}A[R,T]=\Gamma\prod_{i\in I}\ell_i\prod_{j\in J}r_j\left[\frac{m(n-1)\mathfrak m(C')}{2n^2}\right]^m e^{-\theta_X}\operatorname{per}B_X.
+\tag{6.2}
 $$
 
-After restoring $m!/m^m$, the remaining scalar is
+After inserting $m!/m^m$ into [Equation (6.2)](#eq-exact-restoration), the remaining scalar is
 
 $$
 \frac{m!}{2^m}(1-1/n)^m\left[\frac{\mathfrak m(C')}{n}\right]^m.
@@ -370,19 +376,22 @@ When every score is $o(\sqrt n)$, the original margins are already close enough 
 
 **Lemma 6.4 (Small-score permanent approximation).** Let $d=\|S\mathbf 1_n\|_\infty=o(\sqrt n)$. Fix $0<B_0<\infty$, delete any $t\le B_0\log n$ rows and any $t$ columns, and put $m=n-t$. Uniformly over these choices,
 
+<a id="eq-small-score-permanent"></a>
+
 $$
 \operatorname{per}A[R,T]=e^{-1}D_n(S)\frac{m!}{2^m}\left[1+O_{B_0}\left(\frac{(d+t+1)^2}{n}\right)\right].
+\tag{6.3}
 $$
 
-For fixed $B_0$, the implied constant is uniform once $(d+t+1)^2/n$ is sufficiently small. In the stated regime this quantity tends to zero.
+More explicitly, for every fixed $B_0>0$ there are constants $C_{\mathrm{err}},\delta>0$ and an integer $N_0\ge4$, depending only on $B_0$, such that for every $n\ge N_0$, every tournament sign matrix $S$, and every pair of deletion sets $I,J\subseteq[n]$ with $|I|=|J|=t\le B_0\log n$, the following holds: if $d=\|S\mathbf1_n\|_\infty$ and $\eta=(d+t+1)^2/n\le\delta$, then the absolute relative error in [Equation (6.3)](#eq-small-score-permanent) is at most $C_{\mathrm{err}}\eta$. Here $R=[n]\setminus I$, $T=[n]\setminus J$, and $m=n-t$; the sets $I,J$ are independent. The constants are chosen before the dimension, tournament and deletion sets. In the stated asymptotic regime, $\eta\to0$.
 
-**Proof.** No paired preconditioning is needed. Set $C=2A/(n-1)$ and $X=(n/m)C[R,T]$. The row and column errors of the full matrix $C$ are $s_i/(n-1)$ and $-s_i/(n-1)$, respectively. The exact mass and marginal formulas from Section 6.3 therefore give
+**Proof.** Enlarge $N_0$ so that $2t\le n$ throughout the logarithmic deletion window; hence $m\ge n/2>0$. No paired preconditioning is needed. Set $C=2A/(n-1)$ and $X=(n/m)C[R,T]$. The row and column errors of the full matrix $C$ are $s_i/(n-1)$ and $-s_i/(n-1)$, respectively. The exact mass identity [Equation (6.1)](#eq-deletion-mass) and the marginal formulas from Section 6.3 therefore give
 
 $$
 |\kappa|=O(t(d+t)/n),\qquad \varepsilon(X)=O((d+t)/n),\qquad \|g(X)\|_2=O((d+t)/\sqrt n).
 $$
 
-Normalize $\widetilde X=mX/\mathfrak m(X)$. Its density and centered gap are fixed, and the local scaling lemma applies. The Euclidean displacement and capacity estimates give
+The mass error satisfies $|\kappa|\le K\eta$. By reducing $\delta$ if necessary, $\mathfrak m(X)=m+\kappa>0$ uniformly. Normalize $\widetilde X=mX/\mathfrak m(X)$. Its density and centered gap are fixed, and the local scaling lemma applies. The Euclidean displacement and capacity estimates give
 
 $$
 \|B_X-\widetilde X\|_F=O((d+t)/n),\qquad 0\le\theta_{\widetilde X}=O((d+t)^2/n).
@@ -400,5 +409,5 @@ $$
 \operatorname{per}A[R,T]=\left[\frac{m(n-1)}{2n}\right]^m e^{-\theta_X}\operatorname{per}B_X.
 $$
 
-Apply the uniform permanent theorem and use $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$. All logarithmic errors are $O((d+t+1)^2/n)=o(1)$, so exponentiating them proves the stated relative approximation. This proves the uniform short-minor approximation used in Theorem 4.1. $\square$
+Apply the uniform permanent theorem and use $(1-1/n)^m=e^{-1}\exp(O((t+1)/n))$. All logarithmic errors are bounded by a fixed multiple of $\eta=(d+t+1)^2/n$. Choose $\delta$ sufficiently small; exponentiating these bounds gives an absolute relative error at most $C_{\mathrm{err}}\eta$, uniformly in the finite domain stated above. In the asymptotic regime $d=o(\sqrt n)$ and $t\le B_0\log n$, we have $\eta\to0$. This proves the uniform short-minor approximation used in Theorem 4.1. $\square$
 

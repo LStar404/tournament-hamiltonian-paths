@@ -50,11 +50,14 @@ $$
 
 **Lemma 2.1 (Path convolution).** For every tournament,
 
+<a id="eq-path-convolution"></a>
+
 $$
 H(T)=\sum_{U\subseteq V(T)}\det(I+A[U])\operatorname{per}A[U^c].
+\tag{2.1}
 $$
 
-The permanent of an adjacency matrix counts directed cycle covers. This identity converts those counts on complementary vertex sets into a path count. It is the tournament specialization of Irving and Omar's Proposition 2 [1], with complement adjacency matrix $\overline A=J-A=I+A^{\mathsf T}$; the complement includes its diagonal entries.
+The permanent of an adjacency matrix counts directed cycle covers. The convolution [Equation (2.1)](#eq-path-convolution) converts those counts on complementary vertex sets into a path count. It is the tournament specialization of Irving and Omar's Proposition 2 [1], with complement adjacency matrix $\overline A=J-A=I+A^{\mathsf T}$; the complement includes its diagonal entries.
 
 Here is also a generating-function verification. Put $X=\operatorname{diag}(z_1,\ldots,z_n)$. The generating series of all walks, with each vertex occurrence carrying its variable, is
 

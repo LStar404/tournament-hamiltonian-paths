@@ -19,6 +19,9 @@ run_cmd do
             throwError "Disallowed axiom {axiomName} in {name}"
         count := count + 1
         logInfo m!"AUDIT {name}: {axioms}"
-  logInfo m!"Audited {count} project theorems. MainBound is still an unproved proposition."
+  logInfo m!"Audited {count} project theorems; all transitive axioms are standard."
 
 #check TournamentHamiltonian.MainBound
+
+#check TournamentHamiltonian.mainBound
+example : TournamentHamiltonian.MainBound := TournamentHamiltonian.mainBound

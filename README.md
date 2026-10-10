@@ -1,102 +1,155 @@
-# Hamiltonian paths in tournaments / 竞赛图中的 Hamilton 路径
+# Hamiltonian paths in tournaments
 
-**Author / 作者:** Xingchen Liu / 刘星辰  
-**Affiliation / 单位:** Independent Researcher / 个人研究者  
-**Contact / 联系:** lxc-em5158@outlook.com  
-**Manuscript snapshot / 稿件版本:** 2026-10-08
+[English](#english) · [中文](#中文)
 
-This repository contains a bilingual research manuscript on constant-factor bounds for the maximum number of directed Hamiltonian paths in an n-vertex tournament, together with proof-audit reports and reproducible finite diagnostics.
+## English
 
-本仓库收录 n 阶竞赛图中有向 Hamilton 路径最大数量的常数因子界研究，包括中英文论文、完整证明、内部审查记录和有限核验程序。
+**Constant-factor bounds for Hamiltonian paths in tournaments**
+Xingchen Liu and Xiangyu Ye · Independent Researchers
+Contact: [lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com)
 
-## Read the paper / 阅读论文
+This repository contains the English and Chinese manuscripts, a Lean formalization, and computational checks for bounds on the maximum number of directed Hamiltonian paths in a tournament.
 
-- [English PDF (25 pages)](papers/tournament_hamilton_paths_en.pdf)
-- [中文 PDF（22 页）](papers/tournament_hamilton_paths_zh.pdf)
-- [Editable English manuscript](materials/manuscript_en.md) / [可编辑中文主稿](materials/manuscript_zh.md)
-- [English LaTeX source](materials/manuscript_en.tex) / [中文 LaTeX 源文件](materials/manuscript_zh.tex)
-- [核验结论与未证明事项](materials/audit_summary_zh.md)
+**Read the paper:** [English PDF](papers/tournament_hamilton_paths_en.pdf) (28 pages) · [Chinese PDF](papers/tournament_hamilton_paths_zh.pdf) (26 pages)
+**Archived manuscript:** [Version 1.1, 9 October 2026, on Zenodo](https://zenodo.org/records/23249802) · DOI: [10.5281/zenodo.23249802](https://doi.org/10.5281/zenodo.23249802)
 
-## Main result and its scope / 主要结果与范围
+Latest tagged release: **1.1.1**; this branch contains the bilingual editorial revision of **11 October 2026** · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
 
-Let H(T) count vertex permutations forming a directed Hamiltonian path, and let P(n) be its maximum over n-vertex tournaments. Put
+### Main result
+
+Let $H(T)$ count vertex permutations forming a directed Hamiltonian path, and let $P(n)$ be its maximum over tournaments on $n$ vertices. Write
 
 $$
-\mu_n=\frac{n!}{2^{n-1}},\qquad L=\frac{\cosh 1}{\cos 1},\qquad C_* = \frac{3\pi^4+4\pi^2-32}{\pi^4+4\pi^2-32}.
+\mu_n=\frac{n!}{2^{n-1}},\qquad
+L=\frac{\cosh 1}{\cos 1},\qquad
+C_* = \frac{3\pi^4+4\pi^2-32}{\pi^4+4\pi^2-32}.
 $$
 
-The manuscript gives a proof that there are absolute constants K and n_0 such that, for all n at least n_0,
+There are absolute constants $K\ge0$ and $n_0\ge2$ such that, for every $n\ge n_0$,
 
 $$
 (L-K/n)\mu_n\le P(n)\le(C_*+K/n)\mu_n.
 $$
 
-Here L is approximately 2.855957892565114 and C_* approximately 2.857401177672317. Their relative leading-constant gap is about 0.050536%; it is **not** a finite-n error certificate. The constants K and n_0 have not been evaluated to a usable numerical threshold.
+The leading constants are $L\approx2.855957892565114$ and $C_*\approx2.857401177672317$, a relative gap of about $0.050536\%$. The theorem is asymptotic; numerical values of $K$ and $n_0$ remain to be evaluated. The exact finite maximum and a sharp common leading constant remain open in this work.
 
-The proof uses a uniform zeroth-order permanent approximation, local matrix scaling, Gaussian determinant estimates for nonprincipal deletions, and a full-tournament reduction retaining the score penalty. Existing work is credited in the manuscripts; this repository makes no publication-priority claim.
+### Guide for reviewers
 
-正文建立上述充分大阶数的上下界，并未求出一般有限 P(n) 的精确值。上下常数的相对间隙不是有限阶误差证书；误差常数和起始阶数尚未给出可实用的有效数值。
+Start with Theorem 1.1 and the proof roadmap. Section 2 explains the counting identity and the spectral factor. Section 3 presents the complete upper-bound argument; Section 4 gives the small-score formula and the carousel lower bound. Sections 5 and 6 supply the permanent, scaling and deletion proofs. Appendix A and the [revised correspondence guide](materials/verification/manuscript_alignment_20261011.md) connect these statements to the unchanged Lean development.
 
-### Research status / 研究状态
+For the formal proof, read the [finite definitions](formalization/TournamentHamiltonian/Definitions.lean) and [final theorem](formalization/TournamentHamiltonian/MainBound.lean), then consult the [verification guide](formalization/VERIFICATION.md) and [proof ledger](formalization/proof-status.json) for the intermediate connections. The declaration is `TournamentHamiltonian.mainBound : TournamentHamiltonian.MainBound`. The ledger explains where Lean uses different intermediate constants to obtain the same final bound.
 
-The arguments were reconstructed and cross-checked in an AI-assisted internal research workflow. They have **not** undergone external human peer review or formal proof-assistant verification. Finite computations are diagnostics, not replacements for the all-order proof. Independent expert review is recommended before relying on the manuscript as a settled result.
+The manuscript is a preprint awaiting external expert review. AI assistance was used for proof reconstruction, internal cross-checks, translation, typesetting and computational diagnostics; the Lean formalization was contributed by Xiangyu Ye in [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1).
 
-证明经过 AI 辅助内部重建和交叉复核，当前未发现致命缺口；这不等于外部人工同行评审或形式化证明认证。建议投稿前由作者和独立专家进一步检查。
+The [11 October revision record](materials/revision_20261011.md) describes the bilingual text review, unchanged formal-source checks, fresh finite diagnostics and full-page PDF inspection.
 
-Not claimed / 未声称证明：
+### Reproduce the checks
 
-- The sharp global identity P(n) = (L + O(1/n)) mu_n.
-- An exact finite formula for P(n).
-- Regularity, balance or uniqueness of finite-order extremal tournaments.
-- The first correction coefficient for Hamiltonian path counts.
-- Effective numerical values of K and n_0.
+Install [Lean through elan](https://leanprover-community.github.io/get_started.html) and Python 3.11 or newer. The project pins Lean 4.34.1 and the Mathlib revision in `formalization/lake-manifest.json`. From the repository root:
 
-## Files and audits / 文件与核验
-
-- `papers/`: final, visually checked PDF manuscripts.
-- `materials/`: editable manuscripts, LaTeX exports, component audit reports and diagnostic records.
-- `materials/sections/`: modular bilingual manuscript chapters.
-- `materials/verification/`: four diagnostic entry points and their local dependency modules.
-- [Build/editing notes](materials/README.md): details on manuscript editing and the distinction between exported LaTeX and independently typeset PDFs.
-- [Raw diagnostic reruns](materials/audit_computations.json), [delivery checks and hashes](materials/delivery_qa.json).
-
-This is the internally audited manuscript snapshot, not a dump of all exploratory drafts. Earlier speculative or superseded conclusions are not published as established results. Local machine paths and temporary rendering files are excluded; manuscript and PDF contents are unchanged.
-
-本次发布只包含已复核论文版本及必要的核验材料，不将早期探索稿或已被替代的结论作为已证结果上传。本机路径和临时渲染文件不公开，论文与 PDF 内容保持原样。
-
-## Lean formalization in progress / Lean 形式化进展
-
-The [Lean project](formalization/TournamentHamiltonian.lean) pins Lean and Mathlib 4.34.1. Verified components include finite tournament/path definitions and averaging, paired skew spectra and spectral-factor identities, the generic Euclidean operator-norm gap and Gaussian Gram positivity, principal-weight positivity and Hadamard bounds, weighted subset moments and the logarithmic-cutoff scalar tail, the exact transitive determinant formula, actual carousel constructions for both parities and their spectral-factor O(1/n) approximation, unconditional actual spectral packing and the C_* spectral bound, the upper-constant enclosure, exact permanent coefficient normalization and partition expansion with explicit signed-factorial Mobius weights and singleton cancellation, the exact original Hamiltonian-path positive convolution, finite walk interfaces and exact inverse determinant/permanent convolution, the full shifted kernel Gram and norm gap, nonprincipal mass and marginal deletion identities, exact paired preconditioning mass and marginals, and Gaussian deletion/centering loss, the explicit (24t+18tau+11)/n centered-tournament loss, and Frobenius logarithmic Lipschitz bounds, actual preconditioning marginal and displacement bounds, rectangular normalization/deletion budgets, explicit balanced gauge Hessian inverse bounds, finite Wick pairing counts, true Gaussian bilinear integrals and Taylor coefficients, exact Gaussian/nonpairing permanent-coefficient splitting, the complete Brégman permanent bound, actual Banach construction of doubly stochastic scalings with density and gap control, complete Euclidean/Frobenius scaling displacement and capacity control, actual mass restoration, uniform full-mass and marginal thresholds in the logarithmic variance range, convergent actual Gaussian coefficient series, alternating-chain activity bounds, degree balancing and the explicit variance permanent penalty with all-order Stirling normalization, independent rectangular relabelling invariance, uniform nonprincipal deleted-mass positivity and eta bounds, and a uniform 9/10 centered singular gap, actual rectangular nonprincipal scaling witnesses with uniform normalized-deleted marginal and density thresholds, Gaussian comparison for the same genuine scaling witness with uniformly vanishing scaling displacement, unconditional complex permanent polarization including singular and nonnormal matrices, genuine pure/core component extraction and weighted factorization, actual long-subset path tails and high-variance exclusion, exact pure/core subset assembly and Gaussian coefficient decomposition, dimension-independent Gaussian factorial recovery, circle Parseval coefficient and permanent-tail extraction, exact nonprincipal four-block permanent expansion, weighted cross-minor bounds and actual dense exceptional cores, uniform scaled Gaussian log cost, actual exponential and finite-phase complex Wick moments, unconditional Gram permanent and PSD AM-GM bounds, actual compressed half-edge pairings, true paired permanent restoration and exceptional cross profiles, actual core decoration compensation and the numerical 710 activity majorant, finite excess-window tails, retained-mass power normalization and full exceptional four-block aggregation, actual compressed edge/vertex coordinates, finite Gaussian/core convolution error, unconditional centered-matrix circle majorants and actual exceptional convolution bounds, permanent scaling/restoration, and scalar score-penalty estimates. Its [proof ledger](formalization/proof-status.json) records the remaining all-order obligations. **The main asymptotic theorem is not yet formally proved or independently certified.**
-
-Lean 工程已形式化上述有限计数和代数部分，以及一般锦标赛的谱配对、精确配对质量、D_n 与 rho_n 的行列式公式和实/复数算子范数间隙与高斯 Gram 矩阵正定性、任意阶主子矩阵权重的正性与上界、固定加权矩收敛、对数截断的标量尾项、传递矩阵行列式公式、奇偶两种实际轮转锦标赛的构造及 rho_n 的统一 O(1/n) 误差。任意实际锦标赛的强算子谱界及 rho_n <= C_*、实际永久量系数的精确归一化、缩放前核 Y 的有限阶 Gram 和范数间隙、不同删行删列集合的精确质量和边际公式、一般矩形高斯因子的删除损失以及实际永久量系数的递归 Möbius 分划展开与单例消去、配对预处理的精确总质量及边际恒等式、行列式—永久量的全阶逆卷积消去与高斯居中损失、Frobenius 对数 Lipschitz 估计及配对预处理总质量的统一方差误差界也已证明。实际 Hamilton 路径数与正权卷积的全阶等式、一般分划的显式带符号阶乘权重、任意不同删行删列的 (24t+18tau+11)/n 高斯误差界，以及实际预处理矩阵的密度与 Frobenius/算子位移界现已证明。实际预处理边际误差、矩形质量归一化与删除预算、缩放规范 Hessian 的显式逆及范数界、Wick 配对的通用有限计数也已证明。真实 Banach 构造的双随机缩放势、缩放后的密度与谱界、完整 Brégman 永久量上界、真实高斯积分与 Wick/Taylor 系数，以及实际永久量系数的高斯主项/非配对余项分解也已证明。缩放的 Euclidean/Frobenius 位移与容量预算、任意正质量的实际恢复、对数方差范围内总质量和边际误差的统一阈值、真实高斯系数级数及链收缩活动度、度数均衡与显式方差永久量惩罚及全阶 Stirling 归一化、独立行列重编号不变量、对数删除窗口内保留质量正性与 η 误差，以及居中核的统一 9/10 算子范数界也已证明。独立删行删列的真实缩放见证及统一边际/密度阈值、同一真实缩放见证的高斯比较及统一趋零的缩放位移、一般复矩阵的无条件永久量极化、实际纯配对与核心分量提取及权重分解、实际路径卷积长项与高方差情形的统一排除也已证明。实际纯配对/核心分解的双射与高斯系数分解、与阶数无关的高斯阶乘恢复误差、真实圆周 Parseval 系数和尾项提取、以及非主四块永久量展开也已证明。实际非主子矩阵的统一高斯误差界、加权交叉子永久量界、低方差异常删点后的稠密核心，以及实际指数径向测度和有限相位的复 Wick 矩也已证明。实际 Gram 永久量恒等式、无条件 PSD 永久量 AM–GM 界、真实压缩半边配对，以及保留 Γ 的实际永久量恢复与异常点交叉轮廓也已证明。真实核心路径覆盖、装饰补偿与数值活动度上界、有限余量窗口尾项、保留质量归一化，以及异常点四块永久量总界也已证明。压缩图的实际边与顶点对应、有限高斯/核心卷积误差、无额外谱假设的中心化矩阵圆周永久量界，以及真实异常点卷积界也已证明。完整永久量近似、轮转锦标赛的实际路径数近似以及完整渐近主定理仍未完成。编译成功不代表全文已得到形式化认证。以下提交检查必须等无条件的 `MainBound` 证明完成后才会通过：
-
-```text
-cd formalization
-lake exe cache get Mathlib.Analysis.Real.Pi.Bounds Mathlib.Tactic Mathlib.Data.Fintype.Perm Mathlib.Data.Finset.Lattice.Fold Mathlib.LinearAlgebra.Matrix.Permanent Mathlib.LinearAlgebra.Matrix.Adjugate Mathlib.Analysis.InnerProductSpace.Orientation Mathlib.Analysis.MeanInequalities Mathlib.Analysis.SpecificLimits.Normed Mathlib.Analysis.Complex.ExponentialBounds Mathlib.Analysis.SpecialFunctions.Stirling Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics Mathlib.LinearAlgebra.Matrix.SchurComplement Mathlib.LinearAlgebra.Matrix.Block Mathlib.Analysis.SpecialFunctions.Complex.LogBounds Mathlib.Analysis.Matrix.Spectrum Mathlib.Analysis.CStarAlgebra.Matrix Mathlib.Analysis.CStarAlgebra.Basic Mathlib.LinearAlgebra.Matrix.PosDef Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds Mathlib.Data.Finset.Sort Mathlib.Data.Prod.Lex Mathlib.Algebra.Polynomial.BigOperators Mathlib.Algebra.BigOperators.Group.Finset.Powerset Mathlib.Algebra.Order.Star.Real Mathlib.Analysis.Matrix.Order Mathlib.Combinatorics.Enumerative.IncidenceAlgebra Mathlib.Order.Partition.Finpartition Mathlib.Data.Setoid.Partition Mathlib.GroupTheory.Perm.Cycle.Factors Mathlib.GroupTheory.Perm.Sign Mathlib.GroupTheory.Perm.Cycle.Type Mathlib.Algebra.BigOperators.Pi Mathlib.Probability.Distributions.Gaussian.Real Mathlib.Probability.Distributions.Gaussian.Multivariate Mathlib.MeasureTheory.Integral.Pi Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas Mathlib.Data.Nat.Factorial.DoubleFactorial Mathlib.Data.Matrix.Block Mathlib.MeasureTheory.Integral.DominatedConvergence Mathlib.Analysis.Polynomial.Fourier Mathlib.Algebra.Polynomial.Eval.Degree Mathlib.GroupTheory.Perm.DomMulAct Mathlib.Data.Nat.Choose.Multinomial Mathlib.RingTheory.RootsOfUnity.Complex Mathlib.Algebra.Field.GeomSum Mathlib.Probability.Distributions.Exponential Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap Mathlib.Combinatorics.Enumerative.Composition Mathlib.Data.Fin.Tuple.NatAntidiagonal Mathlib.Analysis.SpecificLimits.Basic Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff Mathlib.Data.Matrix.ColumnRowPartitioned Mathlib.Data.Fin.Rev
-python verify_lean.py --require-main
-```
-
-For component verification during development, omit `--require-main`. The verifier builds the project, checks transitive axiom dependencies, records hashes of the project sources reached through imports, lists unimported sources separately, and reports the main-theorem status. The submission gate also requires every project Lean source to be imported for audit. `python run_diagnostics.py` reruns the four published finite diagnostics and records their scope and raw output under `formalization/audit/`.
-
-## Reproduce the finite diagnostics / 复现有限检查
-
-Use Python 3.11 or newer. From the repository root:
-
-```text
+```sh
 python -m pip install -r requirements.txt
-cd materials/verification
-python verify_operator_packing_path_constant.py
-python verify_uniform_permanent_zeroth_audit.py
-python verify_nonprincipal_gaussian_deletion.py
-python verify_standalone_linear_energy_reduction.py
+cd formalization
+lake exe cache get
+python verify_lean.py --require-main
+python run_diagnostics.py
 ```
 
-These entry points check finite algebraic, arithmetic and floating-point examples within the scopes recorded in their JSON output. They do not establish an effective all-order threshold or perform a new general extremal search. Other modules are included as dependencies; their presence does not assert the validity of every historical exploratory claim.
+The Lean verifier builds the project, checks the main theorem's type, audits transitive axiom dependencies, and checks that all project Lean sources are imported. The allowed axioms are `propext`, `Classical.choice` and `Quot.sound`. The diagnostic runner executes four finite checks and saves their output in `formalization/audit/`.
 
-LaTeX sources target XeLaTeX, using Times New Roman and, for Chinese, SimSun; substitute available fonts when necessary. The exported LaTeX sources were **not compiled locally**. The delivered PDFs were independently typeset and visually checked; formulas are high-resolution rendered glyph images. Edit formulas in the Markdown or LaTeX sources.
+The [9 October repository review](materials/repository_review_zh.md) includes a fresh complete Lean build, an independent main-theorem type check, an axiom audit of 3,674 project theorem constants (including generated declarations), and all four diagnostics. All checks passed. The [Lean verification record](formalization/audit/lean-verification.json) contains the output and current source hashes. The [CI workflow](.github/workflows/verify.yml) runs the same verification commands on pushes and pull requests and can be started manually in GitHub Actions.
 
-## License / 授权
+### Repository contents
 
-This work is released under [CC BY 4.0 International](LICENSE). Reuse, modification, redistribution, and commercial use are permitted, provided that appropriate credit is given to Xingchen Liu / 刘星辰, a link to the license is provided, and changes are indicated.
+| Location | Contents |
+| --- | --- |
+| [`papers/`](papers/) | English and Chinese PDF manuscripts |
+| [`materials/`](materials/README.md) | Markdown and LaTeX manuscripts, synchronized sections, and internal audit reports |
+| [`formalization/`](formalization/VERIFICATION.md) | Lean proof, verification scripts, proof ledger, and build records |
+| [`materials/verification/`](materials/verification/) | Finite diagnostic programs and their supporting modules |
 
-本成果采用 [CC BY 4.0 International](LICENSE) 发布；允许再利用、修改、再发布和商业使用，但必须对刘星辰作适当署名、附上许可证链接并说明改动。
+The reading PDFs in this branch are generated from the revised Markdown masters through Pandoc and XeLaTeX, with native mathematical text. The original archived PDFs remain in the linked Zenodo version and Git history. See the [source and typesetting notes](materials/README.md) for the reproducible build and the distinction between current and historical verification records.
+
+### Citation and license
+
+For the archived manuscript, cite:
+
+> Liu, Xingchen, and Ye, Xiangyu. *Constant-factor bounds for Hamiltonian paths in tournaments*. Version 1.1, Zenodo, 2026. https://doi.org/10.5281/zenodo.23249802.
+
+Machine-readable citation metadata is in [`CITATION.cff`](CITATION.cff). The version DOI identifies the archived manuscript; subsequent repository edits are recorded in Git history. The work is licensed under [CC BY 4.0](LICENSE).
+
+## 中文
+
+**竞赛图中 Hamilton 路径数的常数因子界**
+刘星辰、叶祥宇 · 个人研究者
+联系邮箱：[lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com)
+
+本仓库收录关于竞赛图中有向 Hamilton 路径最大数量的中英文论文、Lean 形式化证明和计算核验程序。
+
+**阅读论文：**[中文 PDF](papers/tournament_hamilton_paths_zh.pdf)（26 页）· [英文 PDF](papers/tournament_hamilton_paths_en.pdf)（28 页）
+**论文归档：**[Zenodo v1.1，2026 年 10 月 9 日](https://zenodo.org/records/23249802) · DOI：[10.5281/zenodo.23249802](https://doi.org/10.5281/zenodo.23249802)
+
+最近的已发布标签：**1.1.1**；本分支包含 **2026 年 10 月 11 日**的双语文字修订 · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
+
+### 主要结果
+
+记 $H(T)$ 为竞赛图 $T$ 中构成有向 Hamilton 路径的顶点排列数，$P(n)$ 为所有 $n$ 阶竞赛图中这一数量的最大值。令
+
+$$
+\mu_n=\frac{n!}{2^{n-1}},\qquad
+L=\frac{\cosh 1}{\cos 1},\qquad
+C_* = \frac{3\pi^4+4\pi^2-32}{\pi^4+4\pi^2-32}.
+$$
+
+存在绝对常数 $K\ge0$ 和 $n_0\ge2$，使得对所有 $n\ge n_0$，都有
+
+$$
+(L-K/n)\mu_n\le P(n)\le(C_*+K/n)\mu_n.
+$$
+
+首项常数分别为 $L\approx2.855957892565114$ 和 $C_*\approx2.857401177672317$，相对间隙约为 $0.050536\%$。这是渐近定理，$K$ 与 $n_0$ 的数值尚待计算。有限阶精确最大值及上下界共同的最优首项常数，仍是本工作的未解问题。
+
+### 专家阅读入口
+
+建议从定理 1.1 和证明路线图开始。第 2 节解释计数恒等式及谱因子的来源，第 3 节给出完整上界论证，第 4 节给出小比分公式和轮转竞赛图下界，第 5、6 节补齐永久式、缩放和删除估计的证明。附录 A 及[修订稿对应说明](materials/verification/manuscript_alignment_20261011.md)列出正文与未改动的 Lean 工程之间的联系。
+
+形式化证明可从[有限对象的定义](formalization/TournamentHamiltonian/Definitions.lean)和[最终定理](formalization/TournamentHamiltonian/MainBound.lean)读起，再通过[核验指南](formalization/VERIFICATION.md)与[证明台账](formalization/proof-status.json)查找中间连接。最终声明为 `TournamentHamiltonian.mainBound : TournamentHamiltonian.MainBound`。台账说明了 Lean 在部分中间估计中采用不同常数、最终得到同一结论的处理方式。
+
+论文目前为预印本，等待外部专家审阅。证明重建、内部交叉检查、翻译、排版和计算诊断使用了 AI 辅助；Lean 形式化证明由叶祥宇通过 [PR #1](https://github.com/LStar404/tournament-hamiltonian-paths/pull/1) 提交。
+
+[10 月 11 日修订记录](materials/revision_20261011.md)汇总双语全文审阅、形式化源码未变核对、新运行的有限诊断及逐页 PDF 检查。
+
+### 复现核验
+
+安装[由 elan 管理的 Lean](https://leanprover-community.github.io/get_started.html)及 Python 3.11 或更新版本。工程固定 Lean 4.34.1，Mathlib 的具体提交记录在 `formalization/lake-manifest.json` 中。从仓库根目录运行：
+
+```sh
+python -m pip install -r requirements.txt
+cd formalization
+lake exe cache get
+python verify_lean.py --require-main
+python run_diagnostics.py
+```
+
+Lean 核验程序构建工程、检查主定理类型、审查传递公理依赖，并核对所有项目 Lean 源码是否已导入。允许使用的公理为 `propext`、`Classical.choice` 和 `Quot.sound`。计算核验程序运行四项有限检查，将输出保存在 `formalization/audit/` 中。
+
+[10 月 9 日仓库审阅](materials/repository_review_zh.md)已重跑完整 Lean 构建、独立主定理类型检查、3,674 个项目定理常量（含自动生成声明）的公理审查及四项计算核验，全部通过。[Lean 核验记录](formalization/audit/lean-verification.json)保存运行输出与当前源码哈希。[CI 工作流](.github/workflows/verify.yml)在推送和拉取请求时执行上述核验，也可从 GitHub Actions 手动启动。
+
+### 仓库结构
+
+| 位置 | 内容 |
+| --- | --- |
+| [`papers/`](papers/) | 中英文 PDF 论文 |
+| [`materials/`](materials/README.md) | Markdown、LaTeX 主稿，同步分节稿及内部审查记录 |
+| [`formalization/`](formalization/VERIFICATION.md) | Lean 证明、核验脚本、证明台账及构建记录 |
+| [`materials/verification/`](materials/verification/) | 有限计算核验程序及其辅助模块 |
+
+本分支中的阅读版 PDF 由修订后的 Markdown 主稿经 Pandoc 和 XeLaTeX 生成，公式为原生数学文本。旧版 PDF 仍保留在所链接的 Zenodo 归档及 Git 历史中。可复现编译方法与新旧核验记录的区别见[稿件与排版说明](materials/README.md)。
+
+### 引用与许可
+
+引用已归档论文时，请使用：
+
+> Liu, Xingchen, and Ye, Xiangyu. *Constant-factor bounds for Hamiltonian paths in tournaments*. Version 1.1, Zenodo, 2026. https://doi.org/10.5281/zenodo.23249802.
+
+机器可读引用信息见 [`CITATION.cff`](CITATION.cff)。版本 DOI 对应已归档论文，后续仓库修改可在 Git 历史中查询。本成果采用 [CC BY 4.0](LICENSE) 许可。

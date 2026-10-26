@@ -13,7 +13,7 @@ This repository contains the English and Chinese manuscripts, a Lean formalizati
 **Read the paper:** [English PDF](papers/tournament_hamilton_paths_en.pdf) (31 pages) · [Chinese PDF](papers/tournament_hamilton_paths_zh.pdf) (27 pages)
 **Archived manuscript:** [[Version 1.2, 11 October 2026, on Zenodo](https://zenodo.org/records/23288896)) ·[10.5281/zenodo.23288896](https://doi.org/10.5281/zenodo.23288896)
 
-Latest tagged release: **1.1.1**; this branch contains the third-round bilingual revision of **11 October 2026** · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
+Latest tagged release: **1.2.0**; this branch contains the third-round bilingual revision of **11 October 2026** · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
 
 ### Main result
 
@@ -93,7 +93,7 @@ Machine-readable citation metadata is in [`CITATION.cff`](CITATION.cff). The ver
 **阅读论文：**[中文 PDF](papers/tournament_hamilton_paths_zh.pdf)（27 页）· [英文 PDF](papers/tournament_hamilton_paths_en.pdf)（31 页）
 **论文归档：**[Zenodo v1.2，2026 年 10 月 11 日](https://zenodo.org/records/23288896) · [10.5281/zenodo.23288896](https://doi.org/10.5281/zenodo.23288896)
 
-最近的已发布标签：**1.1.1**；本分支包含 **2026 年 10 月 11 日**的第三轮双语修订 · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
+最近的已发布标签：**1.2.0**；本分支包含 **2026 年 10 月 11 日**的第三轮双语修订 · [GitHub Releases](https://github.com/LStar404/tournament-hamiltonian-paths/releases)
 
 ### 主要结果
 

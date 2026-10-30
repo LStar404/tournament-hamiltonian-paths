@@ -5,7 +5,7 @@
 ## English
 
 **Constant-factor bounds for Hamiltonian paths in tournaments**
-Xingchen Liu and Xiangyu Ye · Independent Researchers
+Xingchen Liu (Sichuan University) and Xiangyu Ye (University of Electronic Science and Technology of China) · Independent Researchers
 Contact: [lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com)
 
 This repository contains the English and Chinese manuscripts, a Lean formalization, and computational checks for bounds on the maximum number of directed Hamiltonian paths in a tournament.
@@ -85,7 +85,7 @@ Machine-readable citation metadata is in [`CITATION.cff`](CITATION.cff). The ver
 ## 中文
 
 **竞赛图中 Hamilton 路径数的常数因子界**
-刘星辰、叶祥宇 · 个人研究者
+刘星辰（四川大学）、叶祥宇（电子科技大学） · 个人研究者
 联系邮箱：[lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com)
 
 本仓库收录关于竞赛图中有向 Hamilton 路径最大数量的中英文论文、Lean 形式化证明和计算核验程序。

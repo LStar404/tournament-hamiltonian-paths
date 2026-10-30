@@ -253,7 +253,7 @@ def rewrite_inlines(inlines, labels, sections, refs, lang="en"):
                 source_path=(ROOT/'materials'/target).resolve()
                 if not source_path.is_file() or not source_path.is_relative_to(ROOT):
                     raise ValueError('Missing relative source link: '+target)
-                archive_path=str(source_path.relative_to(ROOT))
+                archive_path=source_path.relative_to(ROOT).as_posix()
                 note=[{'t':'Str','c':'源码包：' if lang=='zh' else 'Source archive: '},raw(r'\path|'+archive_path+'|')]
                 x={'t':'Span','c':[['',[],[]],x['c'][1]+[{'t':'Note','c':[{'t':'Para','c':note}]}]]}
             elif re.match(r'(?:DOI: )?10\.\d{4,}/',label):
@@ -426,7 +426,7 @@ def build(lang, args):
     label_values=validate_label_values(index,aux)
     problems=[line for line in log.splitlines() if re.search(r'Overfull|Missing character|undefined|multiply defined',line)]
     pdf=texpath.with_suffix('.pdf')
-    info=run(['pdfinfo',pdf]); pages=int(re.search(r'^Pages:\s+(\d+)',info,re.M).group(1))
+    info=run(['pdfinfo','-isodates',pdf]); pages=int(re.search(r'^Pages:\s+(\d+)',info,re.M).group(1))
     if args.render:
         render=work/'pages'; render.mkdir(exist_ok=True)
         for p in render.glob('page-*.png'): p.unlink()

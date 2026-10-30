@@ -1,6 +1,7 @@
 # Constant-factor bounds for Hamiltonian paths in tournaments
 
-Xingchen Liu and Xiangyu Ye
+Xingchen Liu (Sichuan University) and\
+Xiangyu Ye (University of Electronic Science and Technology of China)
 
 Independent Researchers
 

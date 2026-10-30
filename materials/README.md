@@ -4,7 +4,7 @@
 
 ## English
 
-The manuscript authors are Xingchen Liu and Xiangyu Ye, both independent researchers. Contact: [lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com). The working manuscripts are a later editorial revision of the 9 October 2026 manuscript archived as [version 1.1 on Zenodo](https://doi.org/10.5281/zenodo.23249802). The archived DOI identifies that earlier version, not these revised files.
+The manuscript authors are Xingchen Liu (Sichuan University) and Xiangyu Ye (University of Electronic Science and Technology of China), both independent researchers. Contact: [lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com). The working manuscripts are a later editorial revision of the 9 October 2026 manuscript archived as [version 1.1 on Zenodo](https://doi.org/10.5281/zenodo.23249802). The archived DOI identifies that earlier version, not these revised files.
 
 ### Sources and editing
 
@@ -53,7 +53,7 @@ Run them in `verification/` after installing the root `requirements.txt`, or run
 
 ## 中文
 
-论文作者为刘星辰、叶祥宇，两位作者均为个人研究者。联系邮箱：[lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com)。当前工作稿是在 2026 年 10 月 9 日论文基础上的后续编辑修订；旧稿已在 [Zenodo 以 v1.1 归档](https://doi.org/10.5281/zenodo.23249802)。该 DOI 对应旧归档版本，不对应这里的新修订文件。
+论文作者为刘星辰（四川大学）、叶祥宇（电子科技大学），两位作者均为个人研究者。联系邮箱：[lxc-em5158@outlook.com](mailto:lxc-em5158@outlook.com)。当前工作稿是在 2026 年 10 月 9 日论文基础上的后续编辑修订；旧稿已在 [Zenodo 以 v1.1 归档](https://doi.org/10.5281/zenodo.23249802)。该 DOI 对应旧归档版本，不对应这里的新修订文件。
 
 ### 源文件与编辑
 

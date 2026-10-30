@@ -1,0 +1,98 @@
+{
+  "revision": "Author university affiliations, 30 October 2026",
+  "checked_at_utc": "2026-10-30T13:02:44.308955+00:00",
+  "changes": {
+    "Xingchen Liu / 刘星辰": "Sichuan University / 四川大学",
+    "Xiangyu Ye / 叶祥宇": "University of Electronic Science and Technology of China / 电子科技大学"
+  },
+  "independent_researcher_status_preserved": true,
+  "validation": {
+    "typesetting_tests": {
+      "run": 41,
+      "passed": 41,
+      "skipped": 0
+    },
+    "languages": [
+      {
+        "language": "en",
+        "pages": 31,
+        "files": {
+          "materials/manuscript_en.md": "f98576b250a3cb9c4778f002f008e1b886fa54b2463e1ac0893918a9a82ff55f",
+          "materials/manuscript_en.tex": "b7e157e40935b19394bd15630c064c5c6c49c33a2f14c2966921b8513d0c09eb",
+          "papers/tournament_hamilton_paths_en.pdf": "ac77241c98b10f7cf86bdd81fe1a8589ad84c75d363b6d8fe8815a98f2757ccc"
+        },
+        "display_math_blocks": 194,
+        "crossrefs": {
+          "sections": 32,
+          "statements": 16,
+          "references": 10,
+          "equations": 8
+        },
+        "compiler_problems": [],
+        "compiler_notes": [
+          "Package hyperref Warning: Token not allowed in a PDF string (Unicode):",
+          "Underfull \\hbox (badness 2856) in paragraph at lines 854--855",
+          "Underfull \\hbox (badness 10000) in paragraph at lines 1084--1085"
+        ],
+        "toolchain": {
+          "pandoc": "pandoc 3.1.11.1",
+          "xelatex": "XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)"
+        },
+        "source_date_epoch": "1791590400",
+        "all_pages_rendered": true,
+        "visual_review": "passed",
+        "visual_review_scope": "Title-page authors and affiliations; all rendered pages checked for clipping, overlap, missing glyphs, margins, pagination and formula layout.",
+        "published_pdf_matches_visually_reviewed_pdf": true,
+        "manuscript_and_tex_bodies_unchanged": true,
+        "exact_section_synchronization": true,
+        "title_page_author_text_verified": [
+          "Xingchen Liu",
+          "Sichuan University",
+          "Xiangyu Ye",
+          "University of Electronic Science and Technology of China",
+          "Independent Researchers"
+        ]
+      },
+      {
+        "language": "zh",
+        "pages": 27,
+        "files": {
+          "materials/manuscript_zh.md": "176d8a9ae4f52e79ecaf978cdc031a7b3edd582b755d716cadfb03d97e9adb96",
+          "materials/manuscript_zh.tex": "e97cb3079e1c6f7aee1bb79da252b4f248af18b75e2196f03f4a756a6847c62b",
+          "papers/tournament_hamilton_paths_zh.pdf": "fb265b9c6074536e581b603510e2f688850034aa7716f095156fca899d41c3b9"
+        },
+        "display_math_blocks": 194,
+        "crossrefs": {
+          "sections": 32,
+          "statements": 16,
+          "references": 10,
+          "equations": 8
+        },
+        "compiler_problems": [],
+        "compiler_notes": [
+          "Underfull \\hbox (badness 1629) in paragraph at lines 1090--1091"
+        ],
+        "toolchain": {
+          "pandoc": "pandoc 3.1.11.1",
+          "xelatex": "XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)"
+        },
+        "source_date_epoch": "1791590400",
+        "all_pages_rendered": true,
+        "visual_review": "passed",
+        "visual_review_scope": "Title-page authors and affiliations; all rendered pages checked for clipping, overlap, missing glyphs, margins, pagination and formula layout.",
+        "published_pdf_matches_visually_reviewed_pdf": true,
+        "manuscript_and_tex_bodies_unchanged": true,
+        "exact_section_synchronization": true,
+        "title_page_author_text_verified": [
+          "刘星辰",
+          "四川大学",
+          "叶祥宇",
+          "电子科技大学",
+          "个人研究者"
+        ]
+      }
+    ]
+  },
+  "build_portability": "Use forward slashes in source-archive footnotes and ISO dates in pdfinfo output for Windows builds.",
+  "scope": "Author affiliations and typesetting only; mathematical and Lean proof sources unchanged. Historical receipts and archived versions are preserved."
+}
